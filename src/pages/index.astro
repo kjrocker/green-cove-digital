@@ -1,4 +1,5 @@
 ---
+import Curve from "../components/Curve.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -18,10 +19,10 @@ import "../css/index.css";
     <title>Starburst Digital</title>
   </head>
   <body>
-    <header>
-      <h1>Starburst Digital</h1>
-      <nav>
-        <ul class="cluster">
+    <header class="flow">
+      <h1 class="ml-md-sm mt-l-xl">Starburst Digital</h1>
+      <nav class="b-primary">
+        <ul class="cluster ml-md-sm" role="list">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -30,17 +31,22 @@ import "../css/index.css";
     </header>
 
     <main>
-      <div class="wrapper flow">
-        <h1>Get Your Small Business Online for $150/Month</h1>
-        <p>
-          I build custom websites that help small businesses compete online
-          without breaking the bank. No huge upfront costs. No cookie-cutter
-          templates. Just a professional web presence you can afford and
-          actually use.
-        </p>
-        <p>
-          <a href="/contact">Get started today</a>
-        </p>
+      <div class="section spot-color-primary">
+        <div class="section__inner">
+          <div class="wrapper flow region">
+            <h1>Get Your Small Business Online for $150/Month</h1>
+            <p>
+              I build custom websites that help small businesses compete online
+              without breaking the bank. No huge upfront costs. No cookie-cutter
+              templates. Just a professional web presence you can afford and
+              actually use.
+            </p>
+            <p>
+              <a href="/contact">Get started today</a>
+            </p>
+          </div>
+        </div>
+        <Curve />
       </div>
 
       <article class="region wrapper">
@@ -122,16 +128,22 @@ import "../css/index.css";
         </ul>
       </article>
 
-      <article class="flow region wrapper">
-        <h2>Experience You Can Trust</h2>
-        <p>
-          I've spent years building software that people depend on—from
-          mission-critical systems used by first responders to real estate
-          management platforms and marketing analytics tools. I bring that same
-          level of reliability and attention to detail to every small business
-          website I create.
-        </p>
-      </article>
+      <div class="section spot-color-secondary">
+        <Curve />
+        <div class="section__inner">
+          <article class="flow region wrapper">
+            <h2>Experience You Can Trust</h2>
+            <p>
+              I've spent years building software that people depend on—from
+              mission-critical systems used by first responders to real estate
+              management platforms and marketing analytics tools. I bring that
+              same level of reliability and attention to detail to every small
+              business website I create.
+            </p>
+          </article>
+        </div>
+        <Curve />
+      </div>
 
       <article class="flow region wrapper">
         <h2>Services</h2>
