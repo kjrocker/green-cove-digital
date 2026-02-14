@@ -1,0 +1,53 @@
+header {
+  nav {
+    ul {
+      padding: var(--space-xs-s) 0;
+      border-top: 2px solid var(--color-primary);
+      border-bottom: 2px solid var(--color-primary);
+      display: flex;
+      gap: var(--gutter);
+      flex-direction: row;
+      list-style: none;
+    }
+  }
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+
+  &[data-flow="sm"] {
+    --flow-space: 0.5em;
+  }
+}
+
+.region {
+  padding-bottom: var(--region-space, var(--space-l-2xl));
+  padding-top: var(--region-space, var(--space-l-2xl));
+}
+
+.grid {
+  display: grid;
+  gap: var(--gutter, var(--space-s-l));
+  grid-template-columns: repeat(
+    var(--grid-placement, auto-fill),
+    minmax(var(--grid-min-item-size, 16rem), 1fr)
+  );
+
+  &[data-layout="50-50"] {
+    --grid-placement: auto-fit;
+    --grid-min-item-size: clamp(16rem, 50vw, 26rem);
+  }
+}
+
+.card {
+  background: var(--color-dark);
+  border-radius: var(--border-radius);
+  color: var(--color-light);
+  max-width: unset;
+  padding: var(--space-m-l);
+
+  ::selection {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+  }
+}

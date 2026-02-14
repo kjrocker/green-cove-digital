@@ -1,17 +1,138 @@
 ---
-
+import "../css/reset.css";
+import "../css/global.css";
+import "../css/index.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Affordable small business websites starting at $150/month with zero down. Custom web development and technical consulting from an experienced software engineer."
+    />
+    <title>Starburst Digital</title>
+  </head>
+  <body>
+    <header>
+      <h1>Starburst Digital</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flow">
+      <h1>Get Your Small Business Online for $150/Month</h1>
+      <p>
+        I build custom websites that help small businesses compete online
+        without breaking the bank. No huge upfront costs. No cookie-cutter
+        templates. Just a professional web presence you can afford and actually
+        use.
+      </p>
+      <p>
+        <a href="/contact">Get started today</a>
+      </p>
+
+      <article class="flow region">
+        <h2>Why Work With Me?</h2>
+        <ul class="flow">
+          <li>
+            <strong>Human Expertise:</strong> I'm a real software engineer with real
+            experience—not a template factory or AI content mill. Every line of code
+            is written with your business in mind.
+          </li>
+          <li>
+            <strong>Performance Optimization:</strong> Fast-loading, efficient websites
+            that rank well in search engines and keep visitors engaged. I build for
+            speed and results.
+          </li>
+          <li>
+            <strong>Internationalization Support:</strong> Need to reach customers
+            in multiple languages? I can build your site to support global markets
+            from day one.
+          </li>
+        </ul>
+      </article>
+
+      <article class="flow region">
+        <h2>Experience You Can Trust</h2>
+        <p>
+          I've spent years building software that people depend on—from
+          mission-critical systems used by first responders to real estate
+          management platforms and marketing analytics tools. I bring that same
+          level of reliability and attention to detail to every small business
+          website I create.
+        </p>
+      </article>
+
+      <article class="flow region">
+        <h2>Services</h2>
+        <div class="grid" data-layout="50-50">
+          <div class="flow card">
+            <h3>Small Business Websites</h3>
+            <p>
+              A professional website designed specifically for your business. No
+              templates, no bloat—just clean, fast, and effective web design
+              that helps you get found and get customers.
+            </p>
+            <p>
+              <strong>Pricing:</strong> $150/month with zero down payment. Pay as
+              you grow.
+            </p>
+            <p><strong>What's Included:</strong></p>
+            <ul class="flow" data-flow="sm">
+              <li>Custom branded website design</li>
+              <li>Domain name management</li>
+              <li>Responsive mobile-friendly design</li>
+              <li>Content management system</li>
+              <li>Basic SEO optimization</li>
+              <li>Hosting and maintenance</li>
+              <li>Regular updates and security patches</li>
+              <li>Translation services (available for an additional fee)</li>
+            </ul>
+          </div>
+
+          <div class="flow card">
+            <h3>Technical Consulting</h3>
+            <p>
+              Need strategic guidance on a technical decision? Platform
+              evaluation? Code review? I offer hourly and project-based
+              consulting to help you make smart choices without hiring
+              full-time.
+            </p>
+            <p>
+              <strong>Pricing:</strong> Starting at $120/hour. Weekly and Project
+              rates available.
+            </p>
+            <p><strong>What's Included:</strong></p>
+            <ul class="flow" data-flow="sm">
+              <li>Full access to my expertise and experience</li>
+              <li>Strategic planning and recommendations</li>
+              <li>Technology and platform guidance</li>
+              <li>Ongoing support and advice</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="flow region">
+        <h2>Ready to Get Started?</h2>
+        <p>
+          Let's talk about your project. I'll give you straight answers, honest
+          timelines, and a plan that actually fits your budget.
+        </p>
+        <p>
+          <a href="/contact">Contact me today</a>
+        </p>
+      </article>
+    </main>
+  </body>
 </html>
