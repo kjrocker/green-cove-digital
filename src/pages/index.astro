@@ -13,7 +13,7 @@ import "../css/index.css";
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Affordable small business websites starting at $150/month with zero down. Custom web development and technical consulting from an experienced software engineer."
+      content="Affordable small business websites starting at $150/month. Custom web development and technical consulting from an experienced software engineer."
     />
     <title>Starburst Digital</title>
   </head>
@@ -21,7 +21,7 @@ import "../css/index.css";
     <header>
       <h1>Starburst Digital</h1>
       <nav>
-        <ul>
+        <ul class="cluster">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -29,40 +29,100 @@ import "../css/index.css";
       </nav>
     </header>
 
-    <main class="flow">
-      <h1>Get Your Small Business Online for $150/Month</h1>
-      <p>
-        I build custom websites that help small businesses compete online
-        without breaking the bank. No huge upfront costs. No cookie-cutter
-        templates. Just a professional web presence you can afford and actually
-        use.
-      </p>
-      <p>
-        <a href="/contact">Get started today</a>
-      </p>
+    <main>
+      <div class="wrapper flow">
+        <h1>Get Your Small Business Online for $150/Month</h1>
+        <p>
+          I build custom websites that help small businesses compete online
+          without breaking the bank. No huge upfront costs. No cookie-cutter
+          templates. Just a professional web presence you can afford and
+          actually use.
+        </p>
+        <p>
+          <a href="/contact">Get started today</a>
+        </p>
+      </div>
 
-      <article class="flow region">
+      <article class="region wrapper">
         <h2>Why Work With Me?</h2>
-        <ul class="flow">
-          <li>
-            <strong>Human Expertise:</strong> I'm a real software engineer with real
-            experience—not a template factory or AI content mill. Every line of code
-            is written with your business in mind.
+        <ul class="grid" data-layout="50-50" role="list">
+          <li class="card flow">
+            <h3>Human Expertise</h3>
+            <p>
+              I'm a real software engineer with real experience—not a template
+              factory or AI content mill. Every line of code is written with
+              your business in mind.
+            </p>
+            <p>
+              When you work with me, you're talking directly to the person
+              building your site. No account managers, no outsourced development
+              teams, no chatbots. Just straightforward communication and
+              technical know-how you can rely on.
+            </p>
+            <p>
+              I've been writing code professionally for years, and I bring that
+              same rigor and craftsmanship to every small business website I
+              build.
+            </p>
           </li>
-          <li>
-            <strong>Performance Optimization:</strong> Fast-loading, efficient websites
-            that rank well in search engines and keep visitors engaged. I build for
-            speed and results.
+          <li class="card flow">
+            <h3>Performance Optimization</h3>
+            <p>
+              Fast-loading, efficient websites that rank well in search engines
+              and keep visitors engaged. I build for speed and results.
+            </p>
+            <p>
+              Your customers won't wait around for a slow website—studies show
+              that every extra second of load time costs you visitors and sales.
+              I optimize images, minimize code bloat, and use modern web
+              standards to deliver sites that load in under a second.
+            </p>
+            <p>
+              Fast sites rank better on Google, convert better, and cost less to
+              host. Performance isn't an afterthought—it's built in from the
+              start.
+            </p>
           </li>
-          <li>
-            <strong>Internationalization Support:</strong> Need to reach customers
-            in multiple languages? I can build your site to support global markets
-            from day one.
+          <li class="card flow">
+            <h3>Internationalization Support</h3>
+            <p>
+              Need to reach customers in multiple languages? I can build your
+              site to support global markets from day one.
+            </p>
+            <p>
+              Whether you're targeting Spanish-speaking customers in your local
+              market or expanding internationally, I'll set up your website with
+              proper language support, locale-specific formatting, and
+              translation workflows.
+            </p>
+            <p>
+              No bolted-on plugins or half-working solutions—just sites built
+              the right way for multilingual audiences.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>No Vendor Lock-In</h3>
+            <p>
+              Your content, your domain, your customer data—it all stays yours.
+              Unlike Squarespace or Wix, you're not trapped in a proprietary
+              platform that controls your business.
+            </p>
+            <p>
+              I build sites on open web standards, which means your content is
+              portable and you're not subject to arbitrary price hikes, forced
+              feature restrictions, or platform policy changes that could hurt
+              your business overnight.
+            </p>
+            <p>
+              If your needs change or you want to move in a different direction,
+              you won't have to rebuild from scratch. Your digital presence is
+              yours to control.
+            </p>
           </li>
         </ul>
       </article>
 
-      <article class="flow region">
+      <article class="flow region wrapper">
         <h2>Experience You Can Trust</h2>
         <p>
           I've spent years building software that people depend on—from
@@ -73,10 +133,10 @@ import "../css/index.css";
         </p>
       </article>
 
-      <article class="flow region">
+      <article class="flow region wrapper">
         <h2>Services</h2>
         <div class="grid" data-layout="50-50">
-          <div class="flow card">
+          <div class="flow card" data-flow="sm">
             <h3>Small Business Websites</h3>
             <p>
               A professional website designed specifically for your business. No
@@ -100,7 +160,7 @@ import "../css/index.css";
             </ul>
           </div>
 
-          <div class="flow card">
+          <div class="flow card" data-flow="sm">
             <h3>Technical Consulting</h3>
             <p>
               Need strategic guidance on a technical decision? Platform
@@ -123,7 +183,7 @@ import "../css/index.css";
         </div>
       </article>
 
-      <article class="flow region">
+      <article class="flow region wrapper">
         <h2>Ready to Get Started?</h2>
         <p>
           Let's talk about your project. I'll give you straight answers, honest

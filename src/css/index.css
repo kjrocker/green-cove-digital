@@ -51,3 +51,23 @@ header {
     color: var(--color-dark);
   }
 }
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--wrapper-max-width, 85rem);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  position: relative;
+}
+.mt-l-xl {
+  margin-top: clamp(2rem, 1.46rem + 2.72vw, 3.75rem);
+}
