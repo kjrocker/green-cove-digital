@@ -1,6 +1,6 @@
 .b-primary {
-  border-top: 2px solid var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
+  border-top: 2px solid var(--color-dark);
+  border-bottom: 2px solid var(--color-dark);
 }
 
 .flow > * + * {
@@ -104,4 +104,15 @@ h1.big {
 
 .spot-color-secondary {
   --spot-color: #ee5141;
+}
+
+header.spot-color-primary {
+  background: var(--color-primary);
+  color: var(--color-light);
+  padding: 1px;
+
+  nav {
+    background: var(--color-light);
+    color: var(--color-dark);
+  }
 }
