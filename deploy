@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pnpm run build
+rsync -avz --delete ./dist/* personal:/var/www/agency
