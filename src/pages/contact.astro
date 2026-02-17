@@ -1,0 +1,167 @@
+---
+import Curve from "../components/Curve.astro";
+import Footer from "../components/Footer.astro";
+import "../css/reset.css";
+import "../css/global.css";
+import "../css/index.css";
+import Navigation from "../components/Navigation.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Raleigh, NC — serving small businesses everywhere."
+    />
+    <meta property="og:title" content="Contact Starburst Digital" />
+    <meta
+      property="og:description"
+      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Raleigh, NC — serving small businesses everywhere."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Contact Starburst Digital" />
+    <meta
+      name="twitter:description"
+      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Raleigh, NC — serving small businesses everywhere."
+    />
+    <title>Contact - Starburst Digital</title>
+  </head>
+  <body>
+    <header class="flow section spot-color-primary">
+      <h1 class="wrapper mt-m-l">
+        <a href="/">Starburst Digital</a>
+      </h1>
+      <nav class="" style="padding-top:1px;padding-bottom:1px;">
+        <Navigation />
+      </nav>
+    </header>
+
+    <main>
+      <div class="section spot-color-primary">
+        <div class="section__inner">
+          <div class="wrapper flow region">
+            <h1>Get in Touch</h1>
+            <p>
+              Ready to get your business online or need technical guidance? Send
+              me a message and I'll get back to you within one business day.
+            </p>
+          </div>
+        </div>
+        <Curve />
+      </div>
+
+      <article class="flow region wrapper">
+        <div class="grid" data-layout="50-50">
+          <form
+            class="flow contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+          >
+            <div class="form-field flow" data-flow="sm">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-field flow" data-flow="sm">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-field flow" data-flow="sm">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required
+              ></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+
+          <div class="flow">
+            <h2>Other Ways to Reach Me</h2>
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:hello@starburstdigital.com"
+                >hello@starburstdigital.com</a
+              >
+            </p>
+            <p>
+              <strong>Based in:</strong> Raleigh, NC
+            </p>
+            <p>
+              I work with small businesses locally and remotely. Whether you're
+              down the street or across the country, I'd love to hear about your
+              project.
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+
+    <style>
+      .contact-form {
+        max-width: 100%;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-field label {
+        font-weight: 700;
+        font-size: var(--size-step-0);
+      }
+
+      .form-field input,
+      .form-field textarea {
+        border: 2px solid var(--color-dark);
+        border-radius: calc(var(--border-radius) / 2);
+        font-family: var(--font-base);
+        font-size: var(--size-step-0);
+        padding: var(--space-xs);
+        max-width: 100%;
+      }
+
+      .form-field input:focus,
+      .form-field textarea:focus {
+        border-color: var(--color-primary);
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+
+      button[type="submit"] {
+        background: var(--color-primary);
+        border: none;
+        border-radius: calc(var(--border-radius) / 2);
+        color: var(--color-light);
+        cursor: pointer;
+        font-family: var(--font-base);
+        font-size: var(--size-step-1);
+        font-weight: 700;
+        padding: var(--space-xs) var(--space-m);
+      }
+
+      button[type="submit"]:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </body>
+</html>

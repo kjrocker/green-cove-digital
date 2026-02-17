@@ -46,6 +46,14 @@ h1.big {
   font-size: var(--size-step-6);
 }
 
+.big-brand {
+  font-size: var(--size-step-4);
+  font-weight: 700;
+  letter-spacing: var(--tracking-s);
+  line-height: 1;
+  text-decoration: none;
+}
+
 .card {
   background: var(--color-dark);
   border-radius: var(--border-radius);

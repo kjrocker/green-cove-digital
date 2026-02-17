@@ -1,0 +1,242 @@
+---
+import Curve from "../../components/Curve.astro";
+import Footer from "../../components/Footer.astro";
+import "../../css/reset.css";
+import "../../css/global.css";
+import "../../css/index.css";
+import Navigation from "../../components/Navigation.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour with weekly and project rates available. First consultation is free."
+    />
+    <meta
+      property="og:title"
+      content="Technical Consulting | Starburst Digital"
+    />
+    <meta
+      property="og:description"
+      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour. First consultation is free."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Technical Consulting | Starburst Digital"
+    />
+    <meta
+      name="twitter:description"
+      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour. First consultation is free."
+    />
+    <title>Technical Consulting - Starburst Digital</title>
+  </head>
+  <body>
+    <header class="flow section spot-color-primary">
+      <p class="wrapper mt-m-l">
+        <a href="/" class="big-brand">Starburst Digital</a>
+      </p>
+      <nav class="" style="padding-top:1px;padding-bottom:1px;">
+        <Navigation />
+      </nav>
+    </header>
+
+    <main>
+      <div class="section spot-color-primary">
+        <div class="section__inner">
+          <div class="wrapper flow region">
+            <h1>Technical Consulting</h1>
+            <p class="big">
+              Need strategic guidance on a technical decision? Platform
+              evaluation? Code review? I offer hourly and project-based
+              consulting to help you make smart choices without hiring
+              full-time.
+            </p>
+          </div>
+        </div>
+        <Curve />
+      </div>
+
+      <article class="flow region wrapper">
+        <h2>Pricing</h2>
+        <div class="grid" data-layout="50-50">
+          <div class="flow">
+            <h3>Starting at $120/Hour</h3>
+            <p>
+              Flexible engagement models to fit your needs. Whether you need a
+              quick code review, ongoing strategic guidance, or help with a
+              specific project, I offer pricing options that make sense.
+            </p>
+            <p>
+              <strong>Hourly consulting</strong> is perfect for one-off questions,
+              second opinions, or when you need expert input on a specific technical
+              decision.
+            </p>
+            <p>
+              <strong>Weekly retainers and project-based pricing</strong> are available
+              for ongoing engagements or larger projects, providing better value and
+              predictable costs.
+            </p>
+            <p>
+              <a href="/contact">Contact me</a> to discuss your specific needs and
+              get a custom quote.
+            </p>
+          </div>
+          <div class="card flow">
+            <h3>What You Get</h3>
+            <ul class="flow" data-flow="sm">
+              <li>Full access to my expertise and experience</li>
+              <li>Strategic planning and recommendations</li>
+              <li>Technology and platform guidance</li>
+              <li>Ongoing support and advice</li>
+              <li>Code review and architecture feedback</li>
+              <li>Unbiased vendor and tool evaluations</li>
+              <li>Follow-up support as your project evolves</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="flow region wrapper">
+        <h2>Ready to Talk?</h2>
+        <p>
+          Describe your challenge and I'll let you know if I can help. First
+          consultation is free — no obligation, no sales pitch.
+        </p>
+        <p>
+          <a href="/contact">Book Your Free Consultation</a>
+        </p>
+      </article>
+
+      <article class="flow region wrapper">
+        <h2>How I Can Help</h2>
+        <ul class="grid" data-layout="50-50" role="list">
+          <li class="card flow">
+            <h3>Code Review & Audit</h3>
+            <p>
+              Get a second pair of eyes on your codebase. I'll identify security
+              issues, performance bottlenecks, maintainability concerns, and
+              provide actionable recommendations.
+            </p>
+            <p>
+              Whether you're preparing for a launch, inheriting legacy code, or
+              want to ensure your team is following best practices, a
+              professional code review catches problems before they become
+              expensive to fix.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>Platform Evaluation</h3>
+            <p>
+              Choosing between AWS, Vercel, and Netlify? React vs. Vue? MongoDB
+              or PostgreSQL? I'll help you evaluate options based on your
+              specific needs, not vendor marketing.
+            </p>
+            <p>
+              Technology decisions have long-term consequences. I'll help you
+              assess trade-offs, estimate costs, and choose platforms that align
+              with your team's skills and your business goals.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>Architecture Planning</h3>
+            <p>
+              Design scalable, maintainable systems from the start. Whether
+              you're building a new application or refactoring an existing one,
+              I'll help you avoid common pitfalls.
+            </p>
+            <p>
+              Good architecture saves time and money in the long run. I'll work
+              with your team to design systems that can grow with your business
+              without requiring complete rewrites.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>Technical Due Diligence</h3>
+            <p>
+              Acquiring a company or evaluating a technology partner? I'll
+              assess technical capabilities, code quality, infrastructure, and
+              technical debt.
+            </p>
+            <p>
+              Understanding the technical reality behind the pitch can save you
+              from costly surprises. I provide thorough, honest assessments that
+              help you make informed decisions.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>Performance Optimization</h3>
+            <p>
+              Slow application? High server costs? I'll identify bottlenecks,
+              optimize database queries, improve caching strategies, and reduce
+              infrastructure costs.
+            </p>
+            <p>
+              Performance problems hurt user experience and waste money. I'll
+              profile your application, identify the actual bottlenecks, and
+              implement targeted fixes that deliver measurable improvements.
+            </p>
+          </li>
+          <li class="card flow">
+            <h3>Team Training & Mentorship</h3>
+            <p>
+              Level up your development team with targeted training on best
+              practices, modern tools, security, testing, and software
+              architecture.
+            </p>
+            <p>
+              Investing in your team's skills pays long-term dividends. I offer
+              practical, hands-on training tailored to your technology stack and
+              business needs—not generic tutorials.
+            </p>
+          </li>
+        </ul>
+      </article>
+
+      <div class="section spot-color-primary">
+        <Curve />
+        <div class="section__inner">
+          <article class="flow region wrapper">
+            <h2>Who I Work With</h2>
+            <p>
+              I work with startups, small businesses, and growing companies who
+              need senior-level technical expertise without hiring full-time.
+            </p>
+            <p>
+              Whether you're a non-technical founder trying to make smart
+              technology choices, a small development team that needs strategic
+              guidance, or a business evaluating a technical acquisition, I can
+              help.
+            </p>
+            <p>
+              My goal is to give you the information and confidence you need to
+              make good decisions—not to sell you services you don't need.
+            </p>
+          </article>
+        </div>
+        <Curve />
+      </div>
+
+      <article class="flow region wrapper">
+        <h2>Let's Talk</h2>
+        <p>
+          Whether you need a quick code review or long-term strategic guidance,
+          I'm here to help. First consultation is free — no obligation, no sales
+          pitch.
+        </p>
+        <p>
+          <a href="/contact">Book Your Free Consultation</a>
+        </p>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
