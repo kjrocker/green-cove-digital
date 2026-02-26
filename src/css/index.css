@@ -128,3 +128,14 @@ header.spot-color-primary {
     color: var(--color-dark);
   }
 }
+
+.section header {
+  background: var(--spot-color, var(--color-dark));
+  color: var(--color-light);
+  padding: 1px;
+}
+
+.section nav {
+  background: var(--color-light);
+  color: var(--color-dark);
+}

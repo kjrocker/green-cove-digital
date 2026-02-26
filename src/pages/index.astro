@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
+import "../css/starfield.css";
 import Navigation from "../components/Navigation.astro";
 ---
 
@@ -63,33 +64,35 @@ import Navigation from "../components/Navigation.astro";
     />
   </head>
   <body>
-    <header class="flow section spot-color-primary">
-      <h1 class="wrapper ml-md-sm mt-l-xl big">Starburst Digital</h1>
-      <nav class="" style="padding-top:1px;padding-bottom:1px;">
-        <Navigation />
-      </nav>
-    </header>
+    <div id="background-wrapper" class="section spot-color-primary">
+      <div class="stars"></div>
+      <div class="stars-medium"></div>
+      <div class="stars-big"></div>
+      <header class="flow">
+        <h1 class="wrapper ml-md-sm mt-l-xl big">Starburst Digital</h1>
+        <nav style="padding-top:1px;padding-bottom:1px;">
+          <Navigation />
+        </nav>
+      </header>
+      <div class="section__inner">
+        <div class="wrapper flow region">
+          <h1>
+            A Professional Website Your Small Business Can Actually Afford
+          </h1>
+          <p>
+            Custom websites starting at $150/month — no huge upfront costs, no
+            cookie-cutter templates. Just a fast, professional web presence
+            built by a real software engineer from Charlotte, NC.
+          </p>
+          <p>
+            <a href="/contact">Get a Free Website Quote</a>
+          </p>
+        </div>
+      </div>
+      <Curve />
+    </div>
 
     <main>
-      <div class="section spot-color-primary">
-        <div class="section__inner">
-          <div class="wrapper flow region">
-            <h1>
-              A Professional Website Your Small Business Can Actually Afford
-            </h1>
-            <p>
-              Custom websites starting at $150/month — no huge upfront costs, no
-              cookie-cutter templates. Just a fast, professional web presence
-              built by a real software engineer from Charlotte, NC.
-            </p>
-            <p>
-              <a href="/contact">Get a Free Website Quote</a>
-            </p>
-          </div>
-        </div>
-        <Curve />
-      </div>
-
       <article class="region wrapper flow">
         <h2>Why Work With Me?</h2>
         <ul class="grid" data-layout="50-50" role="list">
