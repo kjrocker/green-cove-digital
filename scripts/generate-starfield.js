@@ -60,6 +60,13 @@ const css = `\
 #background-wrapper {
   overflow: hidden;
   position: relative;
+  --spot-color: radial-gradient(
+    ellipse at ${POLE_X} ${POLE_Y},
+    #0d1b4b 0%,
+    #060d2e 35%,
+    #020510 65%,
+    #000005 100%
+  );
 }
 
 /* Each layer is an oversized square centred on the celestial pole.
