@@ -53,6 +53,13 @@ function svgDataUri(count, size) {
   return `url("data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}")`;
 }
 
+// White wave that fills the area BELOW the wave line — used as ::after to create the curved bottom edge.
+// Path derived from Curve.astro (viewBox="0 0 1440 96"), but closing via V96 H0 instead of V0 H0 v96.
+const wavePathBelow =
+  "M0 96 l80-5.3C160 85 320 75 480 64s320-21 480-21.3c160 .3 320 10.3 400 16l80 5.3V96H0Z";
+const waveSvgWhite = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${wavePathBelow}" fill="#f3f3f3"/></svg>`;
+const waveUri = `url("data:image/svg+xml;base64,${Buffer.from(waveSvgWhite).toString("base64")}")`;
+
 const css = `\
 /* Auto-generated — do not edit by hand.
    Regenerate: node scripts/generate-starfield.js --field=${FIELD} --small=${COUNT_SMALL} --medium=${COUNT_MEDIUM} --big=${COUNT_BIG} --pole=${POLE} */
@@ -60,13 +67,32 @@ const css = `\
 #background-wrapper {
   overflow: hidden;
   position: relative;
-  --spot-color: radial-gradient(
+  background: radial-gradient(
     ellipse at ${POLE_X} ${POLE_Y},
     #0d1b4b 0%,
     #060d2e 35%,
     #020510 65%,
     #000005 100%
   );
+  padding-bottom: 3.5em;
+}
+
+#background-wrapper header,
+#background-wrapper .section__inner {
+  background: transparent;
+}
+
+#background-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5em;
+  background-image: ${waveUri};
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* Each layer is an oversized square centred on the celestial pole.
