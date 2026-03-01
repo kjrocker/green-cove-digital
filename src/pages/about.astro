@@ -1,6 +1,7 @@
 ---
 import Curve from "../components/Curve.astro";
 import Footer from "../components/Footer.astro";
+import Starfield from "../components/Starfield.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -33,24 +34,21 @@ import Navigation from "../components/Navigation.astro";
     <title>About - Starburst Digital</title>
   </head>
   <body>
-    <header class="flow section spot-color-primary">
-      <p class="wrapper mt-m-l">
-        <a href="/" class="big-brand">Starburst Digital</a>
-      </p>
-      <nav class="" style="padding-top:1px;padding-bottom:1px;">
+    <Starfield>
+      <header class="flow">
+        <p class="wrapper mt-m-l">
+          <a href="/" class="big-brand">Starburst Digital</a>
+        </p>
         <Navigation />
-      </nav>
-    </header>
+      </header>
+      <div class="section__inner">
+        <div class="wrapper flow region">
+          <h1>About Me</h1>
+        </div>
+      </div>
+    </Starfield>
 
     <main>
-      <div class="section spot-color-primary">
-        <div class="section__inner">
-          <div class="wrapper flow region">
-            <h1>About Me</h1>
-          </div>
-        </div>
-        <Curve />
-      </div>
       <article class="flow region wrapper">
         <div class="grid" data-layout="50-50">
           <div>

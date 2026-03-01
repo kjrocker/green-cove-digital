@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
-import "../css/starfield.css";
+import Starfield from "../components/Starfield.astro";
 import Navigation from "../components/Navigation.astro";
 ---
 
@@ -64,10 +64,7 @@ import Navigation from "../components/Navigation.astro";
     />
   </head>
   <body>
-    <div id="background-wrapper" class="section spot-color-primary">
-      <div class="stars"></div>
-      <div class="stars-medium"></div>
-      <div class="stars-big"></div>
+    <Starfield>
       <header class="flow">
         <h1 class="wrapper ml-md-sm mt-l-xl big">Starburst Digital</h1>
         <nav style="padding-top:1px;padding-bottom:1px;">
@@ -89,7 +86,7 @@ import Navigation from "../components/Navigation.astro";
           </p>
         </div>
       </div>
-    </div>
+    </Starfield>
 
     <main>
       <article class="region wrapper flow">

@@ -1,5 +1,143 @@
 ---
+interface Props {
+  static?: boolean;
+}
+const { static: isStatic = false } = Astro.props;
 
+const FIELD = 2000;
+const COUNT_SMALL = 800;
+const COUNT_MEDIUM = 300;
+const COUNT_BIG = 200;
+const POLE_X = "20%";
+const POLE_Y = "80%";
+
+function svgDataUri(count: number, size: number): string {
+  const dots = Array.from(
+    { length: count },
+    () =>
+      `<rect x="${Math.floor(Math.random() * FIELD)}" y="${Math.floor(Math.random() * FIELD)}" width="${size}" height="${size}"/>`,
+  ).join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${FIELD}" height="${FIELD}"><g fill="white">${dots}</g></svg>`;
+  return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+}
+
+// White wave that fills the area BELOW the wave line — used as ::after to create the curved bottom edge.
+// Path derived from Curve.astro (viewBox="0 0 1440 96"), but closing via V96 H0 instead of V0 H0 v96.
+const wavePathBelow =
+  "M0 96 l80-5.3C160 85 320 75 480 64s320-21 480-21.3c160 .3 320 10.3 400 16l80 5.3V96H0Z";
+const waveSvgWhite = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${wavePathBelow}" fill="#f3f3f3"/></svg>`;
+const waveUri = `url("data:image/svg+xml;base64,${btoa(waveSvgWhite)}")`;
+
+const smallUri = svgDataUri(COUNT_SMALL, 1);
+const mediumUri = svgDataUri(COUNT_MEDIUM, 2);
+const bigUri = svgDataUri(COUNT_BIG, 3);
 ---
 
-<style is:global></style>
+<div id="background-wrapper" class="section spot-color-primary" data-static={isStatic || undefined}>
+  <div class="stars"></div>
+  <div class="stars-medium"></div>
+  <div class="stars-big"></div>
+  <slot />
+</div>
+
+<style
+  is:global
+  define:vars={{
+    smallUri,
+    mediumUri,
+    bigUri,
+    waveUri,
+    POLE_X,
+    POLE_Y,
+    fieldPx: `${FIELD}px`,
+  }}
+>
+  #background-wrapper {
+    overflow: hidden;
+    position: relative;
+    background: radial-gradient(
+      ellipse at var(--POLE_X) var(--POLE_Y),
+      #0d1b4b 0%,
+      #060d2e 35%,
+      #020510 65%,
+      #000005 100%
+    );
+    padding-bottom: 3.5em;
+  }
+
+  #background-wrapper header,
+  #background-wrapper .section__inner {
+    background: transparent;
+  }
+
+  #background-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5em;
+    background-image: var(--waveUri);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Each layer is an oversized square centred on the celestial pole.
+     Rotating around its own centre (50% 50%) keeps all viewport corners
+     covered throughout a full 360° rotation. 300vmax gives 150vmax radius
+     from the pole — enough for any viewport aspect ratio. */
+  .stars,
+  .stars-medium,
+  .stars-big {
+    position: absolute;
+    top: var(--POLE_Y);
+    left: var(--POLE_X);
+    width: 300vmax;
+    height: 300vmax;
+    translate: -50% -50%;
+    pointer-events: none;
+    background-repeat: repeat;
+    background-size: var(--fieldPx) var(--fieldPx);
+    transform-origin: 50% 50%;
+  }
+
+  .stars {
+    background-image: var(--smallUri);
+    animation: animStar 250s linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .stars-medium {
+    background-image: var(--mediumUri);
+    animation: animStar 200s linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .stars-big {
+    background-image: var(--bigUri);
+    animation: animStar 150s linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  #background-wrapper[data-static] .stars,
+  #background-wrapper[data-static] .stars-medium,
+  #background-wrapper[data-static] .stars-big {
+    animation: none;
+  }
+
+  @keyframes animStar {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+</style>
