@@ -1,9 +1,9 @@
 ---
-
+const { class: className } = Astro.props;
 ---
 
 <svg
-  class="curve"
+  class:list={["curve", className]}
   preserveAspectRatio="none"
   viewBox="0 0 1440 96"
   fill="none"
