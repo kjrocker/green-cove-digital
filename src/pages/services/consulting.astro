@@ -1,6 +1,7 @@
 ---
 import Curve from "../../components/Curve.astro";
 import Footer from "../../components/Footer.astro";
+import Starfield from "../../components/Starfield.astro";
 import "../../css/reset.css";
 import "../../css/global.css";
 import "../../css/index.css";
@@ -39,31 +40,29 @@ import Navigation from "../../components/Navigation.astro";
     <title>Technical Consulting - Starburst Digital</title>
   </head>
   <body>
-    <header class="flow section spot-color-primary">
-      <p class="wrapper mt-m-l">
-        <a href="/" class="big-brand">Starburst Digital</a>
-      </p>
-      <nav class="" style="padding-top:1px;padding-bottom:1px;">
-        <Navigation />
-      </nav>
-    </header>
+    <Starfield static>
+      <header class="flow">
+        <p class="wrapper mt-m-l">
+          <a href="/" class="big-brand">Starburst Digital</a>
+        </p>
+        <nav style="padding-top:1px;padding-bottom:1px;">
+          <Navigation />
+        </nav>
+      </header>
+      <div class="section__inner">
+        <div class="wrapper flow region">
+          <h1>Technical Consulting</h1>
+          <p class="big">
+            Need strategic guidance on a technical decision? Platform
+            evaluation? Code review? I offer hourly and project-based
+            consulting to help you make smart choices without hiring
+            full-time.
+          </p>
+        </div>
+      </div>
+    </Starfield>
 
     <main>
-      <div class="section spot-color-primary">
-        <div class="section__inner">
-          <div class="wrapper flow region">
-            <h1>Technical Consulting</h1>
-            <p class="big">
-              Need strategic guidance on a technical decision? Platform
-              evaluation? Code review? I offer hourly and project-based
-              consulting to help you make smart choices without hiring
-              full-time.
-            </p>
-          </div>
-        </div>
-        <Curve />
-      </div>
-
       <article class="flow region wrapper">
         <h2>Pricing</h2>
         <div class="grid" data-layout="50-50">
