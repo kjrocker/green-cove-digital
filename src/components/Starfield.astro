@@ -33,7 +33,11 @@ const mediumUri = svgDataUri(COUNT_MEDIUM, 2);
 const bigUri = svgDataUri(COUNT_BIG, 3);
 ---
 
-<div id="background-wrapper" class="section spot-color-primary" data-static={isStatic || undefined}>
+<div
+  id="background-wrapper"
+  class="section"
+  data-static={isStatic || undefined}
+>
   <div class="stars"></div>
   <div class="stars-medium"></div>
   <div class="stars-big"></div>
@@ -41,7 +45,6 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
 </div>
 
 <style
-  is:global
   define:vars={{
     smallUri,
     mediumUri,
@@ -53,6 +56,7 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
   }}
 >
   #background-wrapper {
+    --spot-color: transparent;
     overflow: hidden;
     position: relative;
     background: radial-gradient(
@@ -63,11 +67,6 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
       #000005 100%
     );
     padding-bottom: 3.5em;
-  }
-
-  #background-wrapper header,
-  #background-wrapper .section__inner {
-    background: transparent;
   }
 
   #background-wrapper::after {
