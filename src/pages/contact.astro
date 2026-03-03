@@ -15,6 +15,7 @@ import Navigation from "../components/Navigation.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href="https://starburstdigital.com/contact" />
     <meta
       name="description"
       content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Charlotte, NC — serving small businesses everywhere."
@@ -54,6 +55,7 @@ import Navigation from "../components/Navigation.astro";
 
     <main>
       <article class="flow region wrapper">
+        <h2>Send a Message</h2>
         <div class="grid" data-layout="50-50">
           <form
             class="flow contact-form"
@@ -90,7 +92,7 @@ import Navigation from "../components/Navigation.astro";
           </form>
 
           <div class="flow">
-            <h2>Other Ways to Reach Me</h2>
+            <h3>Other Ways to Reach Me</h3>
             <p>
               <strong>Email:</strong>
               <a href="mailto:hello@starburstdigital.com"
@@ -98,16 +100,27 @@ import Navigation from "../components/Navigation.astro";
               >
             </p>
             <p>
-              <strong>Based in:</strong> Charlotte, NC
-            </p>
-            <p>
-              I work with small businesses locally and remotely. Whether you're
-              down the street or across the country, I'd love to hear about your
-              project.
+              <strong>Based in:</strong> Charlotte, NC — working with
+              businesses locally and remotely.
             </p>
           </div>
         </div>
       </article>
+
+      <div class="section spot-color-secondary">
+        <Curve />
+        <div class="section__inner">
+          <article class="flow region wrapper">
+            <h2>What Happens Next</h2>
+            <p>
+              I'll reply within one business day with some initial questions
+              about your project. From there we'll set up a short call to
+              talk through scope and next steps — no obligation.
+            </p>
+          </article>
+        </div>
+        <Curve />
+      </div>
     </main>
 
     <Footer />

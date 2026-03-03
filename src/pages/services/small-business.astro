@@ -15,6 +15,7 @@ import Navigation from "../../components/Navigation.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href="https://starburstdigital.com/services/small-business" />
     <meta
       name="description"
       content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance. Cancel anytime."
@@ -38,6 +39,41 @@ import Navigation from "../../components/Navigation.astro";
       content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
     />
     <title>Small Business Website Pricing & Features - Starburst Digital</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Small Business Website Development",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Starburst Digital",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Charlotte",
+            addressRegion: "NC",
+            addressCountry: "US",
+          },
+        },
+        description:
+          "Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance.",
+        areaServed: {
+          "@type": "Country",
+          name: "US",
+        },
+        offers: {
+          "@type": "Offer",
+          price: "150",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: "150",
+            priceCurrency: "USD",
+            unitText: "month",
+          },
+        },
+      })}
+    />
   </head>
   <body>
     <Starfield>
@@ -53,9 +89,10 @@ import Navigation from "../../components/Navigation.astro";
         <div class="wrapper flow region">
           <h1>Small Business Websites</h1>
           <p class="big">
-            A professional website designed specifically for your business. No
-            templates, no bloat—just clean, fast, and effective web design that
-            helps you get found and get customers.
+            A custom website designed for your business — built by hand,
+            optimized for local search, and fast enough to score 100 on
+            Google Lighthouse. Serving small businesses in Charlotte, NC
+            and everywhere else.
           </p>
         </div>
       </div>
@@ -68,13 +105,17 @@ import Navigation from "../../components/Navigation.astro";
           <div class="flow">
             <h3>$150/Month</h3>
             <p>
-              No huge upfront costs. No surprises. Just one predictable monthly
-              payment that includes everything you need to run a professional
-              website.
+              One predictable monthly payment that covers design, hosting,
+              maintenance, and updates. Squarespace charges $33/month for a
+              template — I build something custom for $150.
             </p>
             <p>
               <strong>Zero down payment.</strong> Pay as you grow. Cancel anytime
               with 30 days notice.
+            </p>
+            <p>
+              <strong>Typical turnaround:</strong> 2–4 weeks from our first
+              conversation to a live site, depending on content and scope.
             </p>
           </div>
           <div class="card flow">
@@ -83,7 +124,7 @@ import Navigation from "../../components/Navigation.astro";
               <li>Custom branded website design</li>
               <li>Domain name management</li>
               <li>Responsive mobile-friendly design</li>
-              <li>Content management system</li>
+              <li>Content management (you can update text and images yourself)</li>
               <li>Basic SEO optimization</li>
               <li>Hosting and maintenance</li>
               <li>Regular updates and security patches</li>
@@ -99,20 +140,14 @@ import Navigation from "../../components/Navigation.astro";
           <article class="flow region wrapper">
             <h2>Built for Performance</h2>
             <p>
-              Fast-loading websites that rank well in search engines and keep
-              visitors engaged. Every site I build is optimized for speed from
-              the ground up.
+              Every extra second of load time costs you visitors and sales.
+              My sites load in under a second — I optimize images, strip out
+              unnecessary code, and use modern hosting infrastructure to keep
+              things fast.
             </p>
             <p>
-              Your customers won't wait around for a slow website. Studies show
-              that every extra second of load time costs you visitors and sales.
-              I optimize images, minimize code bloat, and use modern web
-              standards to deliver sites that load in under a second.
-            </p>
-            <p>
-              Fast sites rank better on Google, convert better, and cost less to
-              host. Performance isn't an afterthought—it's built in from the
-              start.
+              Fast sites rank higher on Google and convert better. This site
+              scores 100 on Google Lighthouse, and yours will too.
             </p>
           </article>
         </div>
@@ -125,76 +160,33 @@ import Navigation from "../../components/Navigation.astro";
           <li class="card flow">
             <h3>Local Services</h3>
             <p>
-              Plumbers, electricians, landscapers, contractors—if you serve your
-              local community, you need a website that shows up when people
-              search for your services.
-            </p>
-            <p>
-              Most of your customers find you through Google searches like
-              "plumber near me" or "electrician in [city]." A well-optimized
-              website helps you show up in those searches and makes it easy for
-              customers to call, email, or book appointments.
-            </p>
-            <p>
-              I'll build you a mobile-friendly site with clear contact
-              information, service area details, and all the technical SEO work
-              needed to rank in local searches. No complicated dashboards or
-              technical jargon—just a website that brings you customers.
+              Plumbers, electricians, landscapers, contractors. A mobile-friendly
+              site with clear contact info, service areas, and the SEO work
+              needed to show up when someone searches "plumber near me."
             </p>
           </li>
           <li class="card flow">
             <h3>Retail & E-commerce</h3>
             <p>
-              Small shops, boutiques, and online stores that need a professional
-              web presence without the complexity and cost of enterprise
-              platforms.
-            </p>
-            <p>
-              Whether you're selling handmade goods, running a local boutique,
-              or starting an online store, you need a website that showcases
-              your products and makes purchasing simple.
-            </p>
-            <p>
-              I can integrate payment processing, inventory management, and
-              shipping calculations—or keep it simple with a product showcase
-              and contact form. Your site will work seamlessly on phones and
-              tablets, where most shopping happens.
+              Small shops and boutiques. Product showcases, payment processing
+              if you need it, and a site that works on phones and tablets where
+              most shopping happens.
             </p>
           </li>
           <li class="card flow">
             <h3>Professional Services</h3>
             <p>
-              Consultants, lawyers, accountants, real estate agents—establish
-              credibility and make it easy for clients to find and contact you.
-            </p>
-            <p>
-              Your website is often the first impression potential clients have
-              of your practice. A professional, well-designed site builds trust
-              and positions you as an expert in your field.
-            </p>
-            <p>
-              I'll create a site that highlights your credentials, showcases
-              testimonials, explains your services clearly, and makes it
-              effortless for clients to schedule consultations or reach out. No
-              stock photos or generic content—your expertise deserves better.
+              Consultants, lawyers, accountants. A site that establishes
+              credibility, explains your services clearly, and makes it easy
+              for clients to schedule a consultation.
             </p>
           </li>
           <li class="card flow">
             <h3>Restaurants & Hospitality</h3>
             <p>
-              Showcase your menu, take reservations, and keep customers informed
-              about hours, events, and special offers.
-            </p>
-            <p>
-              Customers want to see your menu, check your hours, and make
-              reservations before they visit. A fast, mobile-friendly website
-              answers these questions instantly and drives more foot traffic.
-            </p>
-            <p>
-              I'll build a site with an easy-to-update menu, online reservation
-              integration if needed, photo galleries of your space and dishes,
-              and clear location and parking information. Update specials and
-              hours yourself without calling a developer.
+              Easy-to-update menus, hours, location info, and reservation
+              integration if needed. Update specials yourself without calling
+              a developer.
             </p>
           </li>
         </ul>
@@ -229,8 +221,8 @@ import Navigation from "../../components/Navigation.astro";
       <article class="flow region wrapper">
         <h2>Ready to Get Started?</h2>
         <p>
-          Let's talk about your project. I'll give you straight answers, honest
-          timelines, and a plan that actually fits your budget.
+          Tell me about your business and I'll let you know what a site
+          would look like and how long it'll take. No commitment.
         </p>
         <p>
           <a href="/contact">Start Your Website — $0 Down</a>

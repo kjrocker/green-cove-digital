@@ -15,6 +15,7 @@ import "../../css/index.css";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href="https://starburstdigital.com/services/consulting" />
     <meta
       name="description"
       content="TypeScript monorepo and PostgreSQL consulting from an experienced software engineer. Expert guidance on monorepo architecture (Turborepo, Nx, pnpm workspaces), PostgreSQL schema design, query optimization, code review, and platform evaluation. Starting at $120/hour."
@@ -38,6 +39,41 @@ import "../../css/index.css";
       content="TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization. Starting at $120/hour."
     />
     <title>TypeScript Monorepo & PostgreSQL Consulting - Starburst Digital</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "TypeScript Monorepo & PostgreSQL Consulting",
+        provider: {
+          "@type": "LocalBusiness",
+          name: "Starburst Digital",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Charlotte",
+            addressRegion: "NC",
+            addressCountry: "US",
+          },
+        },
+        description:
+          "TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization.",
+        areaServed: {
+          "@type": "Country",
+          name: "US",
+        },
+        offers: {
+          "@type": "Offer",
+          price: "120",
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: "120",
+            priceCurrency: "USD",
+            unitText: "hour",
+          },
+        },
+      })}
+    />
   </head>
   <body>
     <Starfield>
@@ -55,9 +91,8 @@ import "../../css/index.css";
           <p class="big">
             I specialize in TypeScript monorepos and PostgreSQL — two
             technologies that large teams depend on and that are genuinely hard
-            to get right. Whether you need architecture guidance, a code review,
-            or a trusted second opinion, I offer hourly and project-based
-            consulting that saves you from expensive mistakes.
+            to get right. Hourly and project-based engagements for engineering
+            teams in Charlotte, NC and remote.
           </p>
         </div>
       </div>
@@ -70,34 +105,26 @@ import "../../css/index.css";
           <div class="flow">
             <h3>Starting at $120/Hour</h3>
             <p>
-              Flexible engagement models to fit your needs. Whether you need a
-              quick code review, ongoing strategic guidance, or help with a
-              specific project, I offer pricing options that make sense.
+              <strong>Hourly consulting</strong> for one-off questions, code
+              reviews, or a second opinion on a technical decision.
             </p>
             <p>
-              <strong>Hourly consulting</strong> is perfect for one-off questions,
-              second opinions, or when you need expert input on a specific technical
-              decision.
+              <strong>Weekly retainers and project-based pricing</strong> for
+              ongoing engagements — better value and predictable costs.
             </p>
             <p>
-              <strong>Weekly retainers and project-based pricing</strong> are available
-              for ongoing engagements or larger projects, providing better value and
-              predictable costs.
-            </p>
-            <p>
-              <a href="/contact">Contact me</a> to discuss your specific needs and
-              get a custom quote.
+              First consultation is free.
+              <a href="/contact">Tell me what you're working on</a> and I'll
+              let you know how I can help.
             </p>
           </div>
           <div class="card flow">
-            <h3>What You Get</h3>
+            <h3>Concrete Deliverables</h3>
             <ul class="flow" data-flow="sm">
-              <li>Full access to my expertise and experience</li>
-              <li>Strategic planning and recommendations</li>
-              <li>Technology and platform guidance</li>
-              <li>Ongoing support and advice</li>
-              <li>Code review and architecture feedback</li>
-              <li>Unbiased vendor and tool evaluations</li>
+              <li>Written architecture proposals with diagrams</li>
+              <li>Annotated code reviews with prioritized fixes</li>
+              <li>Migration plans with timelines and risk assessment</li>
+              <li>Vendor evaluations with side-by-side comparisons</li>
               <li>Follow-up support as your project evolves</li>
             </ul>
           </div>
@@ -121,7 +148,7 @@ import "../../css/index.css";
               TypeScript project reference configurations that tie it all
               together. Whether you're migrating an existing multi-repo setup or
               architecting a new one, I'll help you build a codebase your team
-              can actually work in.
+              can work in productively.
             </p>
           </div>
           <div class="card flow">
@@ -158,7 +185,7 @@ import "../../css/index.css";
               From there, we scope the engagement together. Some engagements are
               a single session to answer a specific question. Others are ongoing
               retainers where I'm available on a weekly basis. I'll recommend
-              whatever structure actually fits your needs.
+              the structure that fits your situation.
             </p>
             <p>
               No retainer required to get started. No sales pitch on the first
@@ -175,55 +202,35 @@ import "../../css/index.css";
           <li class="card flow">
             <h3>Code Review & Audit</h3>
             <p>
-              Get a second pair of eyes on your codebase. I'll identify security
-              issues, performance bottlenecks, maintainability concerns, and
-              provide actionable recommendations.
-            </p>
-            <p>
-              Whether you're preparing for a launch, inheriting legacy code, or
-              want to ensure your team is following best practices, a
-              professional code review catches problems before they become
-              expensive to fix.
+              A second pair of eyes on your codebase. I'll produce an annotated
+              report covering security, performance, and maintainability — with
+              prioritized fixes, not just a list of problems.
             </p>
           </li>
           <li class="card flow">
             <h3>Platform Evaluation</h3>
             <p>
-              Choosing between AWS, Vercel, and Netlify? React vs. Vue? MongoDB
-              or PostgreSQL? I'll help you evaluate options based on your
-              specific needs, not vendor marketing.
-            </p>
-            <p>
-              Technology decisions have long-term consequences. I'll help you
-              assess trade-offs, estimate costs, and choose platforms that align
-              with your team's skills and your business goals.
+              AWS vs. Vercel vs. Netlify? React vs. Vue? I'll give you a
+              side-by-side comparison with cost estimates, trade-offs, and a
+              recommendation based on your team's skills and your growth plans.
             </p>
           </li>
           <li class="card flow">
             <h3>Monorepo Architecture</h3>
             <p>
               Design a TypeScript monorepo that scales with your team — fast
-              builds, clear package boundaries, shared tooling, and a structure
-              developers actually want to work in.
-            </p>
-            <p>
-              I'll help you choose the right tools (Turborepo, Nx, pnpm
-              workspaces), configure TypeScript project references correctly, and
-              establish patterns for code sharing that don't create a tangled
-              dependency mess down the road.
+              builds, clear package boundaries, and shared tooling. I'll help
+              you choose between Turborepo, Nx, and pnpm workspaces, configure
+              TypeScript project references, and establish code-sharing patterns
+              that won't become a dependency mess.
             </p>
           </li>
           <li class="card flow">
             <h3>Technical Due Diligence</h3>
             <p>
               Acquiring a company or evaluating a technology partner? I'll
-              assess technical capabilities, code quality, infrastructure, and
-              technical debt.
-            </p>
-            <p>
-              Understanding the technical reality behind the pitch can save you
-              from costly surprises. I provide thorough, honest assessments that
-              help you make informed decisions.
+              assess code quality, infrastructure, and technical debt — and
+              give you a written report so you know what you're buying.
             </p>
           </li>
           <li class="card flow">
@@ -243,14 +250,9 @@ import "../../css/index.css";
           <li class="card flow">
             <h3>Team Training & Mentorship</h3>
             <p>
-              Level up your development team with targeted training on best
-              practices, modern tools, security, testing, and software
-              architecture.
-            </p>
-            <p>
-              Investing in your team's skills pays long-term dividends. I offer
-              practical, hands-on training tailored to your technology stack and
-              business needs—not generic tutorials.
+              Hands-on training tailored to your stack — TypeScript best
+              practices, testing strategy, security fundamentals, or monorepo
+              workflows. Practical sessions, not slide decks.
             </p>
           </li>
         </ul>
@@ -262,18 +264,14 @@ import "../../css/index.css";
           <article class="flow region wrapper">
             <h2>Who I Work With</h2>
             <p>
-              I work with startups, small businesses, and growing companies who
-              need senior-level technical expertise without hiring full-time.
+              Engineering leads and CTOs at startups and mid-size companies
+              (typically teams of 5–50 engineers) who need senior-level
+              expertise without a full-time hire.
             </p>
             <p>
-              Whether you're a non-technical founder trying to make smart
-              technology choices, a small development team that needs strategic
-              guidance, or a business evaluating a technical acquisition, I can
-              help.
-            </p>
-            <p>
-              My goal is to give you the information and confidence you need to
-              make good decisions—not to sell you services you don't need.
+              Non-technical founders making their first infrastructure
+              decisions. Small development teams that need a second opinion on
+              architecture. Companies evaluating a technical acquisition.
             </p>
           </article>
         </div>
@@ -283,9 +281,8 @@ import "../../css/index.css";
       <article class="flow region wrapper">
         <h2>Let's Talk</h2>
         <p>
-          Whether you need a quick code review or long-term strategic guidance,
-          I'm here to help. First consultation is free — no obligation, no sales
-          pitch.
+          Tell me what you're working on. First consultation is free — no
+          obligation, no sales pitch.
         </p>
         <p>
           <a href="/contact">Book Your Free Consultation</a>
