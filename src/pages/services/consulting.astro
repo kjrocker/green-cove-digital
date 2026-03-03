@@ -17,27 +17,27 @@ import "../../css/index.css";
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour with weekly and project rates available. First consultation is free."
+      content="TypeScript monorepo and PostgreSQL consulting from an experienced software engineer. Expert guidance on monorepo architecture (Turborepo, Nx, pnpm workspaces), PostgreSQL schema design, query optimization, code review, and platform evaluation. Starting at $120/hour."
     />
     <meta
       property="og:title"
-      content="Technical Consulting | Starburst Digital"
+      content="TypeScript Monorepo & PostgreSQL Consulting | Starburst Digital"
     />
     <meta
       property="og:description"
-      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour. First consultation is free."
+      content="TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization. Starting at $120/hour. First consultation is free."
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="Technical Consulting | Starburst Digital"
+      content="TypeScript Monorepo & PostgreSQL Consulting | Starburst Digital"
     />
     <meta
       name="twitter:description"
-      content="Expert technical consulting for strategic guidance, platform evaluation, and code review. Starting at $120/hour. First consultation is free."
+      content="TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization. Starting at $120/hour."
     />
-    <title>Technical Consulting - Starburst Digital</title>
+    <title>TypeScript Monorepo & PostgreSQL Consulting - Starburst Digital</title>
   </head>
   <body>
     <Starfield>
@@ -53,9 +53,11 @@ import "../../css/index.css";
         <div class="wrapper flow region">
           <h1>Technical Consulting</h1>
           <p class="big">
-            Need strategic guidance on a technical decision? Platform
-            evaluation? Code review? I offer hourly and project-based consulting
-            to help you make smart choices without hiring full-time.
+            I specialize in TypeScript monorepos and PostgreSQL — two
+            technologies that large teams depend on and that are genuinely hard
+            to get right. Whether you need architecture guidance, a code review,
+            or a trusted second opinion, I offer hourly and project-based
+            consulting that saves you from expensive mistakes.
           </p>
         </div>
       </div>
@@ -103,15 +105,69 @@ import "../../css/index.css";
       </article>
 
       <article class="flow region wrapper">
-        <h2>Ready to Talk?</h2>
-        <p>
-          Describe your challenge and I'll let you know if I can help. First
-          consultation is free — no obligation, no sales pitch.
-        </p>
-        <p>
-          <a href="/contact">Book Your Free Consultation</a>
-        </p>
+        <h2>Specialties</h2>
+        <div class="grid" data-layout="50-50">
+          <div class="card flow">
+            <h3>TypeScript Monorepos</h3>
+            <p>
+              Monorepos are a powerful pattern for large teams, but they're
+              notoriously painful to set up and maintain. Slow builds, tangled
+              dependencies, inconsistent tooling — I've solved these problems
+              before and can help you avoid them from the start.
+            </p>
+            <p>
+              I have deep experience with the entire monorepo ecosystem:
+              Turborepo, Nx, pnpm workspaces, Yarn workspaces, and the
+              TypeScript project reference configurations that tie it all
+              together. Whether you're migrating an existing multi-repo setup or
+              architecting a new one, I'll help you build a codebase your team
+              can actually work in.
+            </p>
+          </div>
+          <div class="card flow">
+            <h3>PostgreSQL</h3>
+            <p>
+              PostgreSQL is used everywhere — and it's easy to use it wrong.
+              Slow queries, poorly designed schemas, missing indexes, N+1
+              problems — these issues compound over time and become expensive to
+              fix once data grows.
+            </p>
+            <p>
+              I can help with schema design and normalization, query
+              optimization, index strategy, connection pooling, and migration
+              planning. Whether you're starting fresh or inheriting a legacy
+              database, I'll help you get PostgreSQL working for you instead of
+              against you.
+            </p>
+          </div>
+        </div>
       </article>
+
+      <div class="section spot-color-secondary">
+        <Curve />
+        <div class="section__inner">
+          <article class="flow region wrapper">
+            <h2>How It Works</h2>
+            <p>
+              Start with a free consultation. Tell me what you're working on —
+              a problem you're stuck on, a decision you're weighing, or a system
+              you need reviewed. I'll ask questions, give you my honest read on
+              the situation, and let you know whether and how I can help.
+            </p>
+            <p>
+              From there, we scope the engagement together. Some engagements are
+              a single session to answer a specific question. Others are ongoing
+              retainers where I'm available on a weekly basis. I'll recommend
+              whatever structure actually fits your needs.
+            </p>
+            <p>
+              No retainer required to get started. No sales pitch on the first
+              call.
+            </p>
+          </article>
+        </div>
+        <Curve />
+      </div>
 
       <article class="flow region wrapper">
         <h2>How I Can Help</h2>
@@ -144,16 +200,17 @@ import "../../css/index.css";
             </p>
           </li>
           <li class="card flow">
-            <h3>Architecture Planning</h3>
+            <h3>Monorepo Architecture</h3>
             <p>
-              Design scalable, maintainable systems from the start. Whether
-              you're building a new application or refactoring an existing one,
-              I'll help you avoid common pitfalls.
+              Design a TypeScript monorepo that scales with your team — fast
+              builds, clear package boundaries, shared tooling, and a structure
+              developers actually want to work in.
             </p>
             <p>
-              Good architecture saves time and money in the long run. I'll work
-              with your team to design systems that can grow with your business
-              without requiring complete rewrites.
+              I'll help you choose the right tools (Turborepo, Nx, pnpm
+              workspaces), configure TypeScript project references correctly, and
+              establish patterns for code sharing that don't create a tangled
+              dependency mess down the road.
             </p>
           </li>
           <li class="card flow">
@@ -170,16 +227,17 @@ import "../../css/index.css";
             </p>
           </li>
           <li class="card flow">
-            <h3>Performance Optimization</h3>
+            <h3>PostgreSQL Performance</h3>
             <p>
-              Slow application? High server costs? I'll identify bottlenecks,
-              optimize database queries, improve caching strategies, and reduce
-              infrastructure costs.
+              Slow queries, runaway costs, or a schema that's started working
+              against you? I'll identify the actual bottlenecks — missing
+              indexes, inefficient queries, N+1 patterns — and fix them.
             </p>
             <p>
-              Performance problems hurt user experience and waste money. I'll
-              profile your application, identify the actual bottlenecks, and
-              implement targeted fixes that deliver measurable improvements.
+              I'll profile your queries with <code>EXPLAIN ANALYZE</code>,
+              optimize index strategy, tune connection pooling, and make
+              targeted changes that deliver measurable improvements without
+              rewriting your entire data layer.
             </p>
           </li>
           <li class="card flow">

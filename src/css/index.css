@@ -139,3 +139,11 @@ header.spot-color-primary {
   background: var(--color-light);
   color: var(--color-dark);
 }
+
+.section footer nav {
+  background: transparent;
+  color: var(--color-light);
+  ul {
+    margin-block-start: 0;
+  }
+}

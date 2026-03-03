@@ -1,9 +1,8 @@
 ---
-import Curve from "./Curve.astro";
+import Starfield from "./Starfield.astro";
 ---
 
-<div class="section spot-color-primary">
-  <Curve />
+<Starfield top static bottom={false}>
   <div class="section__inner">
     <footer class="wrapper grid region" data-layout="50-50">
       <div class="flow" data-flow="sm">
@@ -15,7 +14,7 @@ import Curve from "./Curve.astro";
             >hello@starburstdigital.com</a
           >
         </p>
-        <p>Based in Charlotte, NC — serving small businesses everywhere.</p>
+        <!-- <p>Based in Charlotte, NC — serving small businesses everywhere.</p> -->
       </div>
       <nav>
         <ul class="cluster" role="list">
@@ -30,4 +29,4 @@ import Curve from "./Curve.astro";
       </nav>
     </footer>
   </div>
-</div>
+</Starfield>

@@ -1,8 +1,10 @@
 ---
 interface Props {
   static?: boolean;
+  top?: boolean;
+  bottom?: boolean;
 }
-const { static: isStatic = false } = Astro.props;
+const { static: isStatic = false, top = false, bottom = true } = Astro.props;
 
 const FIELD = 2000;
 const COUNT_SMALL = 800;
@@ -37,6 +39,8 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
   id="background-wrapper"
   class="section"
   data-static={isStatic || undefined}
+  data-top={top || undefined}
+  data-bottom={bottom || undefined}
 >
   <div class="stars"></div>
   <div class="stars-medium"></div>
@@ -66,10 +70,13 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
       #020510 65%,
       #000005 100%
     );
+  }
+
+  #background-wrapper[data-bottom] {
     padding-bottom: 3.5em;
   }
 
-  #background-wrapper::after {
+  #background-wrapper[data-bottom]::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -80,6 +87,24 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
     background-size: 100% 100%;
     pointer-events: none;
     z-index: 2;
+  }
+
+  #background-wrapper[data-top] {
+    padding-top: 3.5em;
+  }
+
+  #background-wrapper[data-top]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5em;
+    background-image: var(--waveUri);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+    transform: rotate(180deg);
   }
 
   /* Each layer is an oversized square centred on the celestial pole.
