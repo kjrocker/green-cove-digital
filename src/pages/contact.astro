@@ -56,6 +56,16 @@ import Navigation from "../components/Navigation.astro";
     <main>
       <article class="flow region wrapper">
         <h2>Send a Message</h2>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:hello@starburstdigital.com"
+            >hello@starburstdigital.com</a
+          >
+        </p>
+        <p>
+          <strong>Based in:</strong> Charlotte, NC — working with businesses locally
+          and remotely.
+        </p>
         <div class="grid" data-layout="50-50">
           <form
             class="flow contact-form"
@@ -90,20 +100,6 @@ import Navigation from "../components/Navigation.astro";
             </div>
             <button type="submit">Send Message</button>
           </form>
-
-          <div class="flow">
-            <h3>Other Ways to Reach Me</h3>
-            <p>
-              <strong>Email:</strong>
-              <a href="mailto:hello@starburstdigital.com"
-                >hello@starburstdigital.com</a
-              >
-            </p>
-            <p>
-              <strong>Based in:</strong> Charlotte, NC — working with
-              businesses locally and remotely.
-            </p>
-          </div>
         </div>
       </article>
 
@@ -114,8 +110,8 @@ import Navigation from "../components/Navigation.astro";
             <h2>What Happens Next</h2>
             <p>
               I'll reply within one business day with some initial questions
-              about your project. From there we'll set up a short call to
-              talk through scope and next steps — no obligation.
+              about your project. From there we'll set up a short call to talk
+              through scope and next steps — no obligation.
             </p>
           </article>
         </div>
@@ -127,7 +123,7 @@ import Navigation from "../components/Navigation.astro";
 
     <style>
       .contact-form {
-        max-width: 100%;
+        max-width: 50ch;
       }
 
       .form-field {
