@@ -79,10 +79,10 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
   #background-wrapper[data-bottom]::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
     width: 100%;
-    height: 3.5em;
+    height: calc(3.5em + 3px);
     background-image: var(--waveUri);
     background-size: 100% 100%;
     pointer-events: none;
@@ -96,10 +96,10 @@ const bigUri = svgDataUri(COUNT_BIG, 3);
   #background-wrapper[data-top]::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: -2px;
     left: 0;
     width: 100%;
-    height: 3.5em;
+    height: calc(3.5em + 3px);
     background-image: var(--waveUri);
     background-size: 100% 100%;
     pointer-events: none;

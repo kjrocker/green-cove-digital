@@ -99,7 +99,10 @@ h1.big {
     opacity: 95%;
   }
   > .curve:first-child {
-    transform: rotate(180deg) translateY(-1px);
+    transform: rotate(180deg) translateY(-2px);
+  }
+  > .curve:last-child {
+    transform: translateY(-1px);
   }
 }
 
