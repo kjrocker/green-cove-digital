@@ -1,0 +1,10 @@
+path = "{home}/repos/worktrees/{project}.{name}"
+
+[setup]
+commands = ["pnpm install"]
+
+[[server]]
+name = "frontend"
+command = "pnpm dev"
+port-env = "PORT"
+base-port = 3000
