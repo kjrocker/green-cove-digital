@@ -1,10 +1,20 @@
+# Worktree directory layout (default: sibling directories)
+#
+# Available tokens: {project}, {name}, {parent}, {home}
+# Examples:
+#   "{parent}/{project}.worktrees/{name}"  — subdirectory of project
+#   "{home}/worktrees/{project}/{name}"    — global worktree directory
 path = "{home}/repos/worktrees/{project}.{name}"
 
+# Setup commands issued on worktree creation.
+# Examples:
+#   ["npm install"]
 [setup]
 commands = ["pnpm install"]
+# commands = ["npm install", "cp .env.example .env"]
 
-[[server]]
-name = "frontend"
-command = "pnpm dev"
-port-env = "PORT"
-base-port = 3000
+# Environment variables exported into the worktree subshell.
+# Use {base:N} for port allocation (N + worktree slot).
+# Use {name} for worktree name, {project} for project name.
+[env]
+PORT = "{base:3000}"
