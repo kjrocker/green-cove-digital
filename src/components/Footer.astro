@@ -1,5 +1,6 @@
 ---
 import Starfield from "./Starfield.astro";
+import { BUSINESS } from "../data/client";
 ---
 
 <Starfield top static bottom={false}>
@@ -10,9 +11,7 @@ import Starfield from "./Starfield.astro";
           &copy; {new Date().getFullYear()} Starburst Digital. All rights reserved.
         </p>
         <p>
-          Email: <a href="mailto:hello@starburstdigital.com"
-            >hello@starburstdigital.com</a
-          >
+          Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
         </p>
         <!-- <p>Based in Charlotte, NC — serving small businesses everywhere.</p> -->
       </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Footer from "../components/Footer.astro";
 import Starfield from "../components/Starfield.astro";
 import "../css/reset.css";
@@ -6,6 +7,7 @@ import "../css/global.css";
 import "../css/index.css";
 import Navigation from "../components/Navigation.astro";
 import { SITE, BUSINESS, PERSON } from "../data/client";
+import kevinPhoto from "../assets/kevin.jpg";
 ---
 
 <html lang="en">
@@ -79,12 +81,11 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
       <article class="flow region wrapper">
         <div class="grid" data-layout="50-50">
           <div>
-            <!-- TODO: Replace with actual photo -->
-            <div
-              style="background: var(--color-dark); aspect-ratio: 3/4; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--color-light); font-size: var(--size-step-0);"
-            >
-              Photo coming soon
-            </div>
+            <Image
+              src={kevinPhoto}
+              alt={`${PERSON.firstName}, founder of ${SITE.title}`}
+              class="about-photo"
+            />
           </div>
           <div class="flow">
             <p>
@@ -185,3 +186,13 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
     <Footer />
   </body>
 </html>
+
+<style>
+  .about-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+  }
+</style>
