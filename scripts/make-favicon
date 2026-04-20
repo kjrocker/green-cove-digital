@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Regenerate public/favicon.ico from public/favicon.svg.
+#
+# Run after editing favicon.svg so the multi-size .ico (served to
+# legacy browsers and social embeds) stays in sync with the SVG.
+#
+# Usage:
+#   ./scripts/make-favicon
+#
+# Requires ImageMagick 7 (`magick` on PATH).
+# Writes a 256px PNG preview to $TMPDIR for a quick visual check.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+magick -background none -density 384 public/favicon.svg \
+    -define icon:auto-resize=16,32,48,64 public/favicon.ico
+
+preview="${TMPDIR:-/tmp}/favicon-preview.png"
+magick -background none -density 512 public/favicon.svg \
+    -resize 256x256 "$preview"
+
+echo "wrote public/favicon.ico"
+echo "preview: $preview"
