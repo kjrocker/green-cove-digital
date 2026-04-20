@@ -23,21 +23,27 @@
   src: url(/fonts/inter-v8-latin-900.woff2) format("woff2");
 } */
 
+/* @link https://utopia.fyi/space/calculator?c=360,18,1.125,1240,20,1.2,6,0,&s=0.75,1.5|2|3|4|6,l-2xl&g=s,l,xl,12 */
+
 :root {
-  --space-xs: clamp(0.75rem, 0.69rem + 0.29vw, 0.9375rem);
-  --space-s: clamp(1rem, 0.92rem + 0.39vw, 1.25rem);
-  --space-m: clamp(1.5rem, 1.38rem + 0.58vw, 1.875rem);
-  --space-l: clamp(2rem, 1.84rem + 0.78vw, 2.5rem);
-  --space-xl: clamp(3rem, 2.77rem + 1.17vw, 3.75rem);
-  --space-2xl: clamp(4rem, 3.69rem + 1.55vw, 5rem);
-  --space-3xl: clamp(6rem, 5.53rem + 2.33vw, 7.5rem);
-  --space-xs-s: clamp(0.75rem, 0.59rem + 0.78vw, 1.25rem);
-  --space-s-m: clamp(1rem, 0.73rem + 1.36vw, 1.875rem);
-  --space-m-l: clamp(1.5rem, 1.19rem + 1.55vw, 2.5rem);
-  --space-l-xl: clamp(2rem, 1.46rem + 2.72vw, 3.75rem);
-  --space-l-2xl: clamp(2rem, 1.07rem + 4.66vw, 5rem);
-  --space-xl-2xl: clamp(3rem, 2.38rem + 3.11vw, 5rem);
-  --space-2xl-3xl: clamp(4rem, 2.91rem + 5.44vw, 7.5rem);
+  --space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem);
+  --space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+  --space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+  --space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
+  --space-2xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem);
+  --space-3xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem);
+
+  /* One-up pairs */
+  --space-xs-s: clamp(0.875rem, 0.7216rem + 0.6818vw, 1.25rem);
+  --space-s-m: clamp(1.125rem, 0.8182rem + 1.3636vw, 1.875rem);
+  --space-m-l: clamp(1.6875rem, 1.3551rem + 1.4773vw, 2.5rem);
+  --space-l-xl: clamp(2.25rem, 1.6364rem + 2.7273vw, 3.75rem);
+  --space-xl-2xl: clamp(3.375rem, 2.7102rem + 2.9545vw, 5rem);
+  --space-2xl-3xl: clamp(4.5rem, 3.2727rem + 5.4545vw, 7.5rem);
+
+  /* Custom pairs */
+  --space-l-2xl: clamp(2.25rem, 1.125rem + 5vw, 5rem);
 }
 
 /* @link https://utopia.fyi/type/calculator?c=360,16,1.2,1380,20,1.333,6,0,&s=0.75,1.5|2|3|4|6,l-2xl&g=s,l,xl,12 */
