@@ -6,6 +6,7 @@ import Navigation from "../../components/Navigation.astro";
 import "../../css/reset.css";
 import "../../css/global.css";
 import "../../css/index.css";
+import { SITE, BUSINESS } from "../../data/client";
 ---
 
 <html lang="en">
@@ -17,7 +18,7 @@ import "../../css/index.css";
     <meta name="generator" content={Astro.generator} />
     <link
       rel="canonical"
-      href="https://starburstdigital.com/services/consulting"
+      href={`${SITE.url}/services/consulting`}
     />
     <meta
       name="description"
@@ -25,7 +26,7 @@ import "../../css/index.css";
     />
     <meta
       property="og:title"
-      content="TypeScript Monorepo & PostgreSQL Consulting | Starburst Digital"
+      content={`TypeScript Monorepo & PostgreSQL Consulting | ${SITE.title}`}
     />
     <meta
       property="og:description"
@@ -35,14 +36,14 @@ import "../../css/index.css";
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="TypeScript Monorepo & PostgreSQL Consulting | Starburst Digital"
+      content={`TypeScript Monorepo & PostgreSQL Consulting | ${SITE.title}`}
     />
     <meta
       name="twitter:description"
       content="TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization. Starting at $120/hour."
     />
     <title>
-      TypeScript Monorepo & PostgreSQL Consulting - Starburst Digital
+      TypeScript Monorepo & PostgreSQL Consulting - {SITE.title}
     </title>
     <script
       type="application/ld+json"
@@ -52,11 +53,11 @@ import "../../css/index.css";
         name: "TypeScript Monorepo & PostgreSQL Consulting",
         provider: {
           "@type": "LocalBusiness",
-          name: "Starburst Digital",
+          name: BUSINESS.name,
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Charlotte",
-            addressRegion: "NC",
+            addressLocality: BUSINESS.address.city,
+            addressRegion: BUSINESS.address.state,
             addressCountry: "US",
           },
         },
@@ -84,7 +85,7 @@ import "../../css/index.css";
     <Starfield>
       <header class="flow">
         <p class="wrapper mt-m-l">
-          <a href="/" class="big-brand">Starburst Digital</a>
+          <a href="/" class="big-brand">{SITE.title}</a>
         </p>
         <nav style="padding-top:1px;padding-bottom:1px;">
           <Navigation />
@@ -97,7 +98,7 @@ import "../../css/index.css";
             I specialize in TypeScript monorepos and PostgreSQL — two
             technologies that large teams depend on and that are genuinely hard
             to get right. Hourly and project-based engagements for engineering
-            teams in Charlotte, NC and remote.
+            teams in {BUSINESS.address.city}, {BUSINESS.address.state} and remote.
           </p>
         </div>
       </div>

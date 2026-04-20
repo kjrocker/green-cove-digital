@@ -6,6 +6,7 @@ import "../css/global.css";
 import "../css/index.css";
 import Starfield from "../components/Starfield.astro";
 import Navigation from "../components/Navigation.astro";
+import { SITE, BUSINESS, PERSON } from "../data/client";
 ---
 
 <html lang="en">
@@ -15,51 +16,51 @@ import Navigation from "../components/Navigation.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href="https://starburstdigital.com/" />
+    <link rel="canonical" href={`${SITE.url}/`} />
     <meta
       name="description"
-      content="Custom web development and TypeScript/PostgreSQL consulting from an experienced software engineer in Charlotte, NC. Small business websites starting at $150/month. Monorepo architecture and database consulting starting at $120/hour."
+      content={`Custom web development and TypeScript/PostgreSQL consulting from an experienced software engineer in ${BUSINESS.address.city}, ${BUSINESS.address.state}. Small business websites starting at $150/month. Monorepo architecture and database consulting starting at $120/hour.`}
     />
     <meta
       property="og:title"
-      content="Custom Web Development & Technical Consulting | Starburst Digital"
+      content={`Custom Web Development & Technical Consulting | ${SITE.title}`}
     />
     <meta
       property="og:description"
-      content="Custom web development and TypeScript/PostgreSQL consulting in Charlotte, NC. Small business websites from $150/month. Technical consulting from $120/hour."
+      content={`Custom web development and TypeScript/PostgreSQL consulting in ${BUSINESS.address.city}, ${BUSINESS.address.state}. Small business websites from $150/month. Technical consulting from $120/hour.`}
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="Custom Web Development & Technical Consulting | Starburst Digital"
+      content={`Custom Web Development & Technical Consulting | ${SITE.title}`}
     />
     <meta
       name="twitter:description"
-      content="Custom web development and TypeScript/PostgreSQL consulting in Charlotte, NC. Small business websites from $150/month. Technical consulting from $120/hour."
+      content={`Custom web development and TypeScript/PostgreSQL consulting in ${BUSINESS.address.city}, ${BUSINESS.address.state}. Small business websites from $150/month. Technical consulting from $120/hour.`}
     />
     <title>
-      Custom Web Development & Technical Consulting | Starburst Digital
+      Custom Web Development & Technical Consulting | {SITE.title}
     </title>
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        name: "Starburst Digital",
+        name: BUSINESS.name,
         description:
           "Custom web development and technical consulting for small businesses.",
-        url: "https://starburstdigital.com",
-        email: "hello@starburstdigital.com",
+        url: SITE.url,
+        email: BUSINESS.email,
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Charlotte",
-          addressRegion: "NC",
+          addressLocality: BUSINESS.address.city,
+          addressRegion: BUSINESS.address.state,
           addressCountry: "US",
         },
         founder: {
           "@type": "Person",
-          name: "Kevin",
+          name: PERSON.firstName,
         },
         serviceType: ["Web Development", "Technical Consulting"],
         priceRange: "$150/month",
@@ -69,7 +70,7 @@ import Navigation from "../components/Navigation.astro";
   <body>
     <Starfield>
       <header class="flow">
-        <h1 class="wrapper ml-md-sm mt-l-xl big">Starburst Digital</h1>
+        <h1 class="wrapper ml-md-sm mt-l-xl big">{SITE.title}</h1>
         <nav style="padding-top:1px;padding-bottom:1px;">
           <Navigation />
         </nav>
@@ -78,7 +79,7 @@ import Navigation from "../components/Navigation.astro";
         <div class="wrapper flow region">
           <h1>Software Engineering for Businesses That Need It Done Right</h1>
           <p>
-            I'm Kevin, a software engineer in Charlotte, NC. I build custom
+            I'm {PERSON.firstName}, a software engineer in {BUSINESS.address.city}, {BUSINESS.address.state}. I build custom
             websites for small businesses and consult on TypeScript monorepos
             and PostgreSQL for engineering teams.
           </p>

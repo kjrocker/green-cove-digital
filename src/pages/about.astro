@@ -5,6 +5,7 @@ import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
 import Navigation from "../components/Navigation.astro";
+import { SITE, BUSINESS, PERSON } from "../data/client";
 ---
 
 <html lang="en">
@@ -14,40 +15,40 @@ import Navigation from "../components/Navigation.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href="https://starburstdigital.com/about" />
+    <link rel="canonical" href={`${SITE.url}/about`} />
     <meta
       name="description"
-      content="Kevin is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded Starburst Digital in Charlotte, NC to bring enterprise-quality web development and technical consulting to teams that need it most."
+      content={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to bring enterprise-quality web development and technical consulting to teams that need it most.`}
     />
-    <meta property="og:title" content="About Kevin - Starburst Digital" />
+    <meta property="og:title" content={`About ${PERSON.firstName} - ${SITE.title}`} />
     <meta
       property="og:description"
-      content="Kevin is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded Starburst Digital in Charlotte, NC to bring enterprise-quality development to teams that need it most."
+      content={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to bring enterprise-quality development to teams that need it most.`}
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="About Kevin - Starburst Digital" />
+    <meta name="twitter:title" content={`About ${PERSON.firstName} - ${SITE.title}`} />
     <meta
       name="twitter:description"
-      content="Kevin is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. Founded Starburst Digital in Charlotte, NC."
+      content={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. Founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state}.`}
     />
-    <title>About - Starburst Digital</title>
+    <title>About - {SITE.title}</title>
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Kevin",
-        jobTitle: "Software Engineer",
-        url: "https://starburstdigital.com/about",
+        name: PERSON.firstName,
+        jobTitle: PERSON.jobTitle,
+        url: `${SITE.url}/about`,
         worksFor: {
           "@type": "Organization",
-          name: "Starburst Digital",
+          name: BUSINESS.name,
         },
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Charlotte",
-          addressRegion: "NC",
+          addressLocality: BUSINESS.address.city,
+          addressRegion: BUSINESS.address.state,
           addressCountry: "US",
         },
         knowsAbout: [
@@ -63,7 +64,7 @@ import Navigation from "../components/Navigation.astro";
     <Starfield>
       <header class="flow">
         <p class="wrapper mt-m-l">
-          <a href="/" class="big-brand">Starburst Digital</a>
+          <a href="/" class="big-brand">{SITE.title}</a>
         </p>
         <Navigation />
       </header>
@@ -87,14 +88,14 @@ import Navigation from "../components/Navigation.astro";
           </div>
           <div class="flow">
             <p>
-              I'm Kevin, a software engineer based in Charlotte, NC. I've been
+              I'm {PERSON.firstName}, a software engineer based in {BUSINESS.address.city}, {BUSINESS.address.state}. I've been
               building web applications for over a decade — dispatch systems for
               first responders, real estate platforms, marketing analytics
               tools. My deep specialties are TypeScript monorepos and
               PostgreSQL.
             </p>
             <p>
-              I started Starburst Digital because I kept seeing the same gap:
+              I started {SITE.title} because I kept seeing the same gap:
               small businesses paying too much for mediocre websites, and
               engineering teams paying too much for mediocre consulting. I knew
               I could do better at both.

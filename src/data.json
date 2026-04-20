@@ -1,0 +1,7 @@
+{
+  name: "Starburst Digital",
+  email: "me@kevinrocker.com"
+  me: {
+    firstName: "Kevin"
+  }
+}

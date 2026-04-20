@@ -6,6 +6,7 @@ import "../../css/reset.css";
 import "../../css/global.css";
 import "../../css/index.css";
 import Navigation from "../../components/Navigation.astro";
+import { SITE, BUSINESS } from "../../data/client";
 ---
 
 <html lang="en">
@@ -17,7 +18,7 @@ import Navigation from "../../components/Navigation.astro";
     <meta name="generator" content={Astro.generator} />
     <link
       rel="canonical"
-      href="https://starburstdigital.com/services/small-business"
+      href={`${SITE.url}/services/small-business`}
     />
     <meta
       name="description"
@@ -25,7 +26,7 @@ import Navigation from "../../components/Navigation.astro";
     />
     <meta
       property="og:title"
-      content="Small Business Website Pricing & Features | Starburst Digital"
+      content={`Small Business Website Pricing & Features | ${SITE.title}`}
     />
     <meta
       property="og:description"
@@ -35,13 +36,13 @@ import Navigation from "../../components/Navigation.astro";
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content="Small Business Website Pricing & Features | Starburst Digital"
+      content={`Small Business Website Pricing & Features | ${SITE.title}`}
     />
     <meta
       name="twitter:description"
       content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
     />
-    <title>Small Business Website Pricing & Features - Starburst Digital</title>
+    <title>Small Business Website Pricing & Features - {SITE.title}</title>
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -50,11 +51,11 @@ import Navigation from "../../components/Navigation.astro";
         name: "Small Business Website Development",
         provider: {
           "@type": "LocalBusiness",
-          name: "Starburst Digital",
+          name: BUSINESS.name,
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Charlotte",
-            addressRegion: "NC",
+            addressLocality: BUSINESS.address.city,
+            addressRegion: BUSINESS.address.state,
             addressCountry: "US",
           },
         },
@@ -82,7 +83,7 @@ import Navigation from "../../components/Navigation.astro";
     <Starfield>
       <header class="flow">
         <p class="wrapper mt-m-l">
-          <a href="/" class="big-brand">Starburst Digital</a>
+          <a href="/" class="big-brand">{SITE.title}</a>
         </p>
         <nav style="padding-top:1px;padding-bottom:1px;">
           <Navigation />
@@ -94,7 +95,7 @@ import Navigation from "../../components/Navigation.astro";
           <p class="big">
             A custom website designed for your business — built by hand,
             optimized for local search, and fast enough to score 100 on Google
-            Lighthouse. Serving small businesses in Charlotte, NC and everywhere
+            Lighthouse. Serving small businesses in {BUSINESS.address.city}, {BUSINESS.address.state} and everywhere
             else.
           </p>
         </div>

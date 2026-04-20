@@ -6,6 +6,7 @@ import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
 import Navigation from "../components/Navigation.astro";
+import { SITE, BUSINESS } from "../data/client";
 ---
 
 <html lang="en">
@@ -15,30 +16,30 @@ import Navigation from "../components/Navigation.astro";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href="https://starburstdigital.com/contact" />
+    <link rel="canonical" href={`${SITE.url}/contact`} />
     <meta
       name="description"
-      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Charlotte, NC — serving small businesses everywhere."
+      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
     />
-    <meta property="og:title" content="Contact Starburst Digital" />
+    <meta property="og:title" content={`Contact ${SITE.title}`} />
     <meta
       property="og:description"
-      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Charlotte, NC — serving small businesses everywhere."
+      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
     />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Contact Starburst Digital" />
+    <meta name="twitter:title" content={`Contact ${SITE.title}`} />
     <meta
       name="twitter:description"
-      content="Get in touch with Starburst Digital for a free website quote or consulting consultation. Based in Charlotte, NC — serving small businesses everywhere."
+      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
     />
-    <title>Contact - Starburst Digital</title>
+    <title>Contact - {SITE.title}</title>
   </head>
   <body>
     <Starfield>
       <header class="flow">
         <p class="wrapper mt-m-l">
-          <a href="/" class="big-brand">Starburst Digital</a>
+          <a href="/" class="big-brand">{SITE.title}</a>
         </p>
         <Navigation />
       </header>
@@ -58,12 +59,10 @@ import Navigation from "../components/Navigation.astro";
         <h2>Send a Message</h2>
         <p>
           <strong>Email:</strong>
-          <a href="mailto:hello@starburstdigital.com"
-            >hello@starburstdigital.com</a
-          >
+          <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
         </p>
         <p>
-          <strong>Based in:</strong> Charlotte, NC — working with businesses locally
+          <strong>Based in:</strong> {BUSINESS.address.city}, {BUSINESS.address.state} — working with businesses locally
           and remotely.
         </p>
         <div class="grid" data-layout="50-50">

@@ -1,4 +1,21 @@
 #!/bin/sh
+set -e
 
-pnpm run build
-rsync -avz --delete ./dist/* personal:/var/www/agency
+case "${1:-}" in
+  "")
+    if ! pnpm exec wrangler whoami >/dev/null 2>&1; then
+      echo "wrangler is not authenticated — run 'pnpm exec wrangler login'" >&2
+      exit 1
+    fi
+    pnpm run build
+    pnpm exec wrangler pages deploy
+    ;;
+  preview)
+    pnpm run build
+    rsync -avz --delete ./dist/ personal:/var/www/agency
+    ;;
+  *)
+    echo "usage: deploy [preview]" >&2
+    exit 1
+    ;;
+esac
