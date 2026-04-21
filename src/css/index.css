@@ -56,7 +56,8 @@ h1.big {
 
 .card {
   background: var(--color-dark);
-  border-radius: var(--border-radius);
+  border-radius: 0;
+  box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
   color: var(--color-light);
   max-width: unset;
   padding: var(--space-m-l);
@@ -114,11 +115,11 @@ h1.big {
 }
 
 .spot-color-primary {
-  --spot-color: #0042bf;
+  --spot-color: var(--color-primary);
 }
 
 .spot-color-secondary {
-  --spot-color: #ee5141;
+  --spot-color: var(--color-secondary);
 }
 
 header.spot-color-primary {

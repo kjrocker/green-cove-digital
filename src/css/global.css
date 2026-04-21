@@ -59,13 +59,13 @@
 }
 
 :root {
-  --color-dark: #404040;
-  --color-light: #f3f3f3;
-  --color-light-glare: #fff;
-  --color-primary: #0042bf;
-  --color-primary-glare: #d8e2f4;
-  --color-secondary: #ee5141;
-  --color-secondary-glare: #ffe3e5;
+  --color-dark: hsl(0, 0%, 25%);
+  --color-light: hsl(0, 0%, 95%);
+  --color-light-glare: hsl(0, 0%, 100%);
+  --color-primary: hsl(226, 85%, 28%);
+  --color-primary-glare: hsl(219, 56%, 90%);
+  --color-secondary: hsl(6, 84%, 59%);
+  --color-secondary-glare: hsl(356, 100%, 95%);
   --font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
   --font-serif: Georgia, sans-serif;
   --gutter: var(--space-s-m);

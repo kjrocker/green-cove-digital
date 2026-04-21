@@ -16,10 +16,7 @@ import { SITE, BUSINESS } from "../../data/client";
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link
-      rel="canonical"
-      href={`${SITE.url}/services/small-business`}
-    />
+    <link rel="canonical" href={`${SITE.url}/services/small-business`} />
     <meta
       name="description"
       content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance. Cancel anytime."
@@ -95,8 +92,9 @@ import { SITE, BUSINESS } from "../../data/client";
           <p class="big">
             A custom website designed for your business — built by hand,
             optimized for local search, and fast enough to score 100 on Google
-            Lighthouse. Serving small businesses in {BUSINESS.address.city}, {BUSINESS.address.state} and everywhere
-            else.
+            Lighthouse. Serving small businesses in {BUSINESS.address.city}, {
+              BUSINESS.address.state
+            } and everywhere else.
           </p>
         </div>
       </div>
@@ -140,7 +138,7 @@ import { SITE, BUSINESS } from "../../data/client";
         </div>
       </article>
 
-      <div class="section spot-color-secondary">
+      <div class="section spot-color-primary">
         <Curve />
         <div class="section__inner">
           <article class="flow region wrapper">

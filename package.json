@@ -6,13 +6,17 @@
     "dev": "astro dev --port ${PORT:-4321}",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "./scripts/deploy",
+    "deploy:preview": "./scripts/deploy preview",
+    "make-favicon": "./scripts/make-favicon"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "astro": "^5.17.1"
   },
   "devDependencies": {
+    "sharp": "^0.34.5",
     "wrangler": "^4.84.0"
   }
 }
