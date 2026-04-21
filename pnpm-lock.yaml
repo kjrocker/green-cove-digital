@@ -11,9 +11,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.0
         version: 3.7.0
-      '@cloudflare/pages-plugin-static-forms':
-        specifier: ^1.0.3
-        version: 1.0.3
       astro:
         specifier: ^5.17.1
         version: 5.17.2(lightningcss@1.32.0)(rollup@4.57.1)(typescript@5.9.3)
@@ -74,9 +71,6 @@ packages:
   '@cloudflare/kv-asset-handler@0.4.2':
     resolution: {integrity: sha512-SIOD2DxrRRwQ+jgzlXCqoEFiKOFqaPjhnNTGKXSRLvp1HiOvapLaFG2kEr9dYQTYe8rKrd9uvDUzmAITeNyaHQ==}
     engines: {node: '>=18.0.0'}
-
-  '@cloudflare/pages-plugin-static-forms@1.0.3':
-    resolution: {integrity: sha512-plt4ZalqAyG01B4PeznTOgrUTKeDmEzq7Tub2Hj7r2ynaAhZhkKUTQS9Ye+hIe7mv+jSIvaabAH7HkTqS/n0PA==}
 
   '@cloudflare/unenv-preset@2.16.0':
     resolution: {integrity: sha512-8ovsRpwzPoEqPUzoErAYVv8l3FMZNeBVQfJTvtzP4AgLSRGZISRfuChFxHWUQd3n6cnrwkuTGxT+2cGo8EsyYg==}
@@ -1962,8 +1956,6 @@ snapshots:
       fontkitten: 1.0.2
 
   '@cloudflare/kv-asset-handler@0.4.2': {}
-
-  '@cloudflare/pages-plugin-static-forms@1.0.3': {}
 
   '@cloudflare/unenv-preset@2.16.0(unenv@2.0.0-rc.24)(workerd@1.20260420.1)':
     dependencies:

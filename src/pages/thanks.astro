@@ -1,0 +1,58 @@
+---
+import Footer from "../components/Footer.astro";
+import Starfield from "../components/Starfield.astro";
+import "../css/reset.css";
+import "../css/global.css";
+import "../css/index.css";
+import Navigation from "../components/Navigation.astro";
+import { SITE, BUSINESS } from "../data/client";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex" />
+    <title>Thanks - {SITE.title}</title>
+  </head>
+  <body>
+    <Starfield>
+      <header class="flow">
+        <p class="wrapper mt-m-l">
+          <a href="/" class="big-brand">{SITE.title}</a>
+        </p>
+        <Navigation />
+      </header>
+      <div class="section__inner">
+        <div class="wrapper flow region">
+          <h1>Thanks — message received</h1>
+          <p>
+            I'll get back to you within one business day. If it's urgent, you
+            can also reach me directly at
+            <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+          </p>
+        </div>
+      </div>
+    </Starfield>
+
+    <main>
+      <article class="flow region wrapper">
+        <h2>What Happens Next</h2>
+        <p>
+          You should see a confirmation email in your inbox shortly. I'll reply
+          with some initial questions about your project, and from there we'll
+          set up a short call to talk through scope and next steps — no
+          obligation.
+        </p>
+        <p>
+          <a href="/">← Back to home</a>
+        </p>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

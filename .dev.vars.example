@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local `wrangler pages dev` runs.
+# .dev.vars is gitignored; this file (.dev.vars.example) is committed as a template.
+RESEND_API_KEY=re_your_test_key_here
+CONTACT_TO_EMAIL=me@kevinrocker.com
+CONTACT_FROM_EMAIL=hello@starburstdigital.com

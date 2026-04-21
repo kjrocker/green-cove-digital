@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
-    "@cloudflare/pages-plugin-static-forms": "^1.0.3",
     "astro": "^5.17.1"
   },
   "devDependencies": {

@@ -7,6 +7,8 @@ import "../css/global.css";
 import "../css/index.css";
 import Navigation from "../components/Navigation.astro";
 import { SITE, BUSINESS } from "../data/client";
+
+const hasError = Astro.url.searchParams.get("error") === "1";
 ---
 
 <html lang="en">
@@ -69,9 +71,17 @@ import { SITE, BUSINESS } from "../data/client";
         <div class="grid" data-layout="50-50">
           <form
             class="flow contact-form"
-            name="contact"
-            data-static-form-name="contact"
+            action="/api/contact"
+            method="POST"
           >
+            {
+              hasError && (
+                <p class="form-error" role="alert">
+                  Something went wrong sending your message. Please try again,
+                  or email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> directly.
+                </p>
+              )
+            }
             <div class="form-field flow" data-flow="sm">
               <label for="name">Name</label>
               <input
@@ -96,6 +106,16 @@ import { SITE, BUSINESS } from "../data/client";
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="6" required
               ></textarea>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <label for="company">Company (leave blank)</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                tabindex="-1"
+                autocomplete="off"
+              />
             </div>
             <button type="submit">Send Message</button>
           </form>
@@ -166,6 +186,26 @@ import { SITE, BUSINESS } from "../data/client";
 
       button[type="submit"]:hover {
         opacity: 0.9;
+      }
+
+      .form-error {
+        background: var(--color-secondary);
+        color: var(--color-dark);
+        padding: var(--space-xs) var(--space-s);
+        border-radius: calc(var(--border-radius) / 2);
+        font-size: var(--size-step-0);
+      }
+
+      .form-error a {
+        color: inherit;
+      }
+
+      .honeypot {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
       }
     </style>
   </body>

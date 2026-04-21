@@ -2,5 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "starburst-digital",
   "pages_build_output_dir": "./dist",
-  "compatibility_date": "2026-04-20"
+  "compatibility_date": "2026-04-20",
+  "vars": {
+    "CONTACT_TO_EMAIL": "me@kevinrocker.com",
+    "CONTACT_FROM_EMAIL": "hello@starburstdigital.com"
+  }
 }
