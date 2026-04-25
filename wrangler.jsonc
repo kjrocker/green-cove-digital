@@ -5,6 +5,9 @@
   "compatibility_date": "2026-04-20",
   "vars": {
     "CONTACT_TO_EMAIL": "me@kevinrocker.com",
-    "CONTACT_FROM_EMAIL": "hello@starburstdigital.com"
-  }
+    "CONTACT_FROM_EMAIL": "send@starburstdigital.com",
+  },
+  "secrets": {
+    "required": ["RESEND_API_KEY"],
+  },
 }
