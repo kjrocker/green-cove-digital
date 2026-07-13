@@ -1,0 +1,224 @@
+---
+interface Props {
+  static?: boolean;
+  top?: boolean;
+  bottom?: boolean;
+}
+const { static: isStatic = false, top = false, bottom = true } = Astro.props;
+
+// Each wave layer is a seamless horizontal tile: an integer number of sine
+// periods drawn with Q/T (T mirrors the previous control point, so crests and
+// troughs alternate and the end slope matches the start slope), then closed
+// down to the tile bottom so the fill covers everything below the wave line.
+const TILE = 900;
+
+function waveUriGen(height: number, amp: number, periods: number): string {
+  const half = TILE / periods / 2;
+  const baseline = amp + 1;
+  let d = `M0 ${baseline} Q ${half / 2} ${baseline - amp} ${half} ${baseline}`;
+  for (let i = 2; i <= periods * 2; i++) d += ` T ${half * i} ${baseline}`;
+  d += ` V${height} H0 Z`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${TILE}" height="${height}"><path d="${d}" fill="#9fe8cf"/></svg>`;
+  return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+}
+
+// Sparse field of tiny light motes — sunlight scattering through the water.
+const FIELD = 1400;
+function motesUri(count: number, size: number): string {
+  const dots = Array.from(
+    { length: count },
+    () =>
+      `<circle cx="${Math.floor(Math.random() * FIELD)}" cy="${Math.floor(Math.random() * FIELD)}" r="${size}"/>`,
+  ).join("");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${FIELD}" height="${FIELD}"><g fill="#c8f2e2">${dots}</g></svg>`;
+  return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+}
+
+// White wave that fills the area BELOW the wave line — used as ::after to
+// create the curved bottom edge. Fill matches --color-light (hsl 150 20% 96%).
+const wavePathBelow =
+  "M0 96 l80-5.3C160 85 320 75 480 64s320-21 480-21.3c160 .3 320 10.3 400 16l80 5.3V96H0Z";
+const waveSvgLight = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${wavePathBelow}" fill="#f3f7f5"/></svg>`;
+const edgeUri = `url("data:image/svg+xml;base64,${btoa(waveSvgLight)}")`;
+
+const wave1Uri = waveUriGen(260, 14, 2);
+const wave2Uri = waveUriGen(190, 18, 3);
+const wave3Uri = waveUriGen(130, 22, 4);
+const wave4Uri = waveUriGen(80, 26, 5);
+const motesSmallUri = motesUri(160, 1);
+const motesBigUri = motesUri(60, 2);
+---
+
+<div
+  id="background-wrapper"
+  class="section"
+  data-static={isStatic || undefined}
+  data-top={top || undefined}
+  data-bottom={bottom || undefined}
+>
+  <div class="motes motes-small"></div>
+  <div class="motes motes-big"></div>
+  <div class="wave wave-1"></div>
+  <div class="wave wave-2"></div>
+  <div class="wave wave-3"></div>
+  <div class="wave wave-4"></div>
+  <slot />
+</div>
+
+<style
+  define:vars={{
+    wave1Uri,
+    wave2Uri,
+    wave3Uri,
+    wave4Uri,
+    motesSmallUri,
+    motesBigUri,
+    edgeUri,
+    tilePx: `${TILE}px`,
+    fieldPx: `${FIELD}px`,
+  }}
+>
+  #background-wrapper {
+    --spot-color: transparent;
+    overflow: hidden;
+    position: relative;
+    background:
+      radial-gradient(
+        ellipse 90% 60% at 80% -10%,
+        hsla(160, 60%, 50%, 0.16) 0%,
+        transparent 65%
+      ),
+      radial-gradient(
+        ellipse at 20% 100%,
+        hsl(168, 50%, 16%) 0%,
+        hsl(172, 55%, 11%) 35%,
+        hsl(178, 60%, 6%) 65%,
+        hsl(186, 70%, 3%) 100%
+      );
+  }
+
+  #background-wrapper[data-bottom] {
+    padding-bottom: 3.5em;
+  }
+
+  #background-wrapper[data-bottom]::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: calc(3.5em + 3px);
+    background-image: var(--edgeUri);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  #background-wrapper[data-top] {
+    padding-top: 3.5em;
+  }
+
+  #background-wrapper[data-top]::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: calc(3.5em + 3px);
+    background-image: var(--edgeUri);
+    background-size: 100% 100%;
+    pointer-events: none;
+    z-index: 2;
+    transform: rotate(180deg);
+  }
+
+  /* Layers are one tile wider than the section; translating by exactly one
+     tile width and looping is seamless because the tile repeats. */
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% + var(--tilePx));
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    pointer-events: none;
+    animation: drift linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .wave-1 {
+    height: 260px;
+    background-image: var(--wave1Uri);
+    opacity: 0.07;
+    animation-duration: 110s;
+  }
+
+  .wave-2 {
+    height: 190px;
+    background-image: var(--wave2Uri);
+    opacity: 0.1;
+    animation-duration: 75s;
+    animation-direction: reverse;
+  }
+
+  .wave-3 {
+    height: 130px;
+    background-image: var(--wave3Uri);
+    opacity: 0.14;
+    animation-duration: 50s;
+  }
+
+  .wave-4 {
+    height: 80px;
+    background-image: var(--wave4Uri);
+    opacity: 0.2;
+    animation-duration: 34s;
+    animation-direction: reverse;
+  }
+
+  .motes {
+    position: absolute;
+    inset: 0;
+    width: calc(100% + var(--fieldPx));
+    background-repeat: repeat;
+    background-size: var(--fieldPx) var(--fieldPx);
+    pointer-events: none;
+    animation: drift linear infinite;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .motes-small {
+    background-image: var(--motesSmallUri);
+    opacity: 0.35;
+    animation-duration: 340s;
+    animation-name: drift-field;
+  }
+
+  .motes-big {
+    background-image: var(--motesBigUri);
+    opacity: 0.25;
+    animation-duration: 240s;
+    animation-name: drift-field;
+    animation-direction: reverse;
+  }
+
+  #background-wrapper[data-static] :is(.wave, .motes) {
+    animation: none;
+  }
+
+  @keyframes drift {
+    to {
+      transform: translateX(calc(-1 * var(--tilePx)));
+    }
+  }
+
+  @keyframes drift-field {
+    to {
+      transform: translateX(calc(-1 * var(--fieldPx)));
+    }
+  }
+</style>

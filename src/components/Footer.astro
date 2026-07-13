@@ -1,14 +1,14 @@
 ---
-import Starfield from "./Starfield.astro";
+import Cove from "./Cove.astro";
 import { BUSINESS } from "../data/client";
 ---
 
-<Starfield top static bottom={false}>
+<Cove top static bottom={false}>
   <div class="section__inner">
     <footer class="wrapper grid region" data-layout="50-50">
       <div class="flow" data-flow="sm">
         <p>
-          &copy; {new Date().getFullYear()} Starburst Digital. All rights reserved.
+          &copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
         </p>
         <p>
           Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
@@ -26,4 +26,4 @@ import { BUSINESS } from "../data/client";
       </nav>
     </footer>
   </div>
-</Starfield>
+</Cove>

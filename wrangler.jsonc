@@ -1,10 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "starburst-digital",
+  "name": "green-cove-digital",
   "pages_build_output_dir": "./dist",
   "compatibility_date": "2026-04-20",
   "vars": {
+    "AWS_REGION": "us-east-1",
     "CONTACT_TO_EMAIL": "me@kevinrocker.com",
-    "CONTACT_FROM_EMAIL": "send@starburstdigital.com",
+    "CONTACT_FROM_EMAIL": "send@greencovedigital.com",
   },
 }

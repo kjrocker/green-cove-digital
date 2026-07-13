@@ -1,5 +1,7 @@
 # build output
 dist/
+# driver screenshot output (run-green-cove-digital skill)
+tmp/
 # generated types
 .astro/
 

@@ -1,14 +1,14 @@
 export const SITE = {
-	title: "Starburst Digital",
+	title: "Green Cove Digital",
 	tagline: "Web Expertise, Pure and Simple",
 	description: "Custom Web Development & Technical Consulting based in Charlotte, NC — serving small businesses everywhere.",
-	url: "https://starburstdigital.com",
+	url: "https://greencovedigital.com",
 	author: "Kevin Rocker",
 	locale: "en",
 };
 
 export const BUSINESS = {
-	name: "Starburst Digital",
+	name: "Green Cove Digital",
 	email: "me@kevinrocker.com",
 	logo: "/favicon.svg",
 	address: {

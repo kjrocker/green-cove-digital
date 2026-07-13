@@ -59,13 +59,13 @@
 }
 
 :root {
-  --color-dark: hsl(0, 0%, 25%);
-  --color-light: hsl(0, 0%, 95%);
+  --color-dark: hsl(172, 15%, 18%);
+  --color-light: hsl(150, 20%, 96%);
   --color-light-glare: hsl(0, 0%, 100%);
-  --color-primary: hsl(226, 85%, 28%);
-  --color-primary-glare: hsl(219, 56%, 90%);
-  --color-secondary: hsl(6, 84%, 59%);
-  --color-secondary-glare: hsl(356, 100%, 95%);
+  --color-primary: hsl(168, 60%, 21%);
+  --color-primary-glare: hsl(160, 42%, 91%);
+  --color-secondary: hsl(40, 90%, 55%);
+  --color-secondary-glare: hsl(45, 100%, 94%);
   --font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
   --font-serif: Georgia, sans-serif;
   --gutter: var(--space-s-m);

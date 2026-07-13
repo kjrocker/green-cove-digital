@@ -1,7 +1,7 @@
 ---
 import Curve from "../components/Curve.astro";
 import Footer from "../components/Footer.astro";
-import Starfield from "../components/Starfield.astro";
+import Cove from "../components/Cove.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -38,7 +38,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";
     <title>Contact - {SITE.title}</title>
   </head>
   <body>
-    <Starfield>
+    <Cove>
       <header class="flow">
         <p class="wrapper mt-m-l">
           <a href="/" class="big-brand">{SITE.title}</a>
@@ -54,7 +54,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";
           </p>
         </div>
       </div>
-    </Starfield>
+    </Cove>
 
     <main>
       <article class="flow region wrapper">

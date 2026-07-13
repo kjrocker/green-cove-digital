@@ -22,3 +22,7 @@ All spacing, colors, and typography use CSS custom properties. Fluid typography 
 **Spot colors:** `.spot-color-primary` or `.spot-color-secondary` override `--spot-color` for section backgrounds.
 
 When styling: use existing custom properties, maintain fluid clamp() approach, scope page-specific styles to component `<style>` blocks.
+
+## Documentation
+
+Project notes, decisions, and known issues live in `docs/` in this repo. Kevin prefers in-repo documentation over Claude's memory directory — when something is worth remembering across sessions, write it to `docs/` (or here if it's an instruction for working in the repo) instead of saving a memory.

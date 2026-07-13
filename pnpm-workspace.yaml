@@ -1,0 +1,8 @@
+# pnpm 11 reads build-script allowlists from here (not package.json).
+# These three deps ship postinstall scripts that compile native binaries —
+# esbuild (astro build), sharp (image optimization), workerd (wrangler dev).
+# Without this allowlist `pnpm install` skips them and the build/dev servers break.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
