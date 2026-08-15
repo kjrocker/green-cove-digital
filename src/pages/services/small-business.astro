@@ -14,11 +14,19 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Is there a contract or a minimum term?",
-    a: "No. There's no down payment and no minimum term. You can cancel with 30 days' notice at any time.",
+    a: "Twelve months, starting the day you approve the site and it goes live — not the day we first talk. The honest reason is that the build is the expensive part and you are not paying for it up front. A custom site is weeks of work, and at $150 a month it takes about the first year for that work to be worth doing. The minimum term is what buys you the $0 down; the alternative is a few thousand dollars before I start, which is exactly the bill I'm trying to keep off your desk. After the twelve months you're month to month and can cancel with 30 days' notice. Nothing is due until the site is live, and there's nothing to sign before you've seen the design.",
+  },
+  {
+    q: "What if I have to cancel during the first year?",
+    a: "There are two answers, and the line between them is the day you approve the site and it goes live. Before that — during design, during the build, sitting on the preview link — “this isn't working” means we shake hands and stop. You owe nothing and I don't invoice for the time. Once the site is approved and deployed, the first year of payments is what's owed: $1,800, less whatever you've already paid. Cancel in month six and it's the remaining six months. That is the whole of it — no penalty on top, and nothing at all to pay for leaving once the year is up. Either side of that line, your domain and your content are yours and stay yours; nothing you own is ever leverage.",
+  },
+  {
+    q: "Can I just buy the site outright instead?",
+    a: "Yes — and it's worth knowing it's a different product, not the same one paid for differently. You pay for the build once and own it outright, the design and the code included, with no minimum term because there's nothing left to pay off. Afterwards you either leave the site with me on a nominal monthly hosting fee, or take the files and go. What you give up is the part the subscription is really selling: changes included instead of billed, the periodic design refresh, and one person who already knows your site. “The Other Way to Buy It” above lays out both shapes. Tell me which one you want and I'll quote it.",
   },
   {
     q: "Do I keep my website if I cancel?",
-    a: "The site itself, no. There's no down payment because the monthly fee is how the build gets paid for over time — so when the subscription ends, the site comes down. What you always keep: your domain, which is registered in your name from day one; every word of content you wrote or approved; and every logo, photo and file you sent me. I hand all of it back in one folder and point the domain wherever you tell me. Nothing that belongs to your business is ever contingent on paying me.",
+    a: "The site itself, no. There's no down payment because the monthly fee is how the build gets paid for — that's what the first twelve months cover — so when the subscription ends, the site comes down. What you always keep: your domain, which is registered in your name from day one; every word of content you wrote or approved; and every logo, photo and file you sent me. I hand all of it back in one folder and point the domain wherever you tell me. Nothing that belongs to your business is ever contingent on paying me.",
   },
   {
     q: "What if I need more than five pages?",
@@ -26,7 +34,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens after the first year?",
-    a: "Nothing changes. The price doesn't step up, and there's no “introductory rate”. Every couple of years I'll refresh the design so it doesn't go stale — that's included too.",
+    a: "The price doesn't move and the service doesn't change — there's no “introductory rate” that quietly steps up in month thirteen. The one thing that does change is the commitment: the minimum term is served, so from then on you're month to month and can cancel with 30 days' notice. Every couple of years I'll refresh the design so it doesn't go stale — that's included too.",
   },
   {
     q: "How long does it take?",
@@ -38,7 +46,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What if I don't like the design?",
-    a: "Then we don't build it. You approve the design before any code is written, and after that you can watch the build on a private preview link, so surprises don't accumulate. If we can't land on a design you're happy with, you walk away — and because there's no down payment, walking away costs you nothing.",
+    a: "Then we don't build it. You approve the design before any code is written, and after that you can watch the build on a private preview link, so surprises don't accumulate. If we can't land on a design you're happy with, you walk away and owe nothing — there's no down payment to refund. That holds through the build as well, not just the design stage: right up until you approve the site and it goes live, “this isn't working” means we stop, with no invoice for the time.",
   },
   {
     q: "Can I update the site myself?",
@@ -89,7 +97,7 @@ const jsonLd = {
         },
       },
       description:
-        "Custom small business websites for $150/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. No contract; cancel anytime.",
+        "Custom small business websites for $150/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. Twelve-month minimum term from launch, then month-to-month with 30 days' notice.",
       areaServed: [
         { "@type": "City", name: BUSINESS.address.city },
         { "@type": "Country", name: "US" },
@@ -122,8 +130,8 @@ const jsonLd = {
   title={`Small Business Website Pricing — $150/Month, $0 Down | ${SITE.title}`}
   path="/services/small-business"
   ogTitle={`Small Business Websites: $150/Month, $0 Down | ${SITE.title}`}
-  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for $150/month with zero down. Design, hosting, domain, updates and local SEO included. No contract, cancel anytime. Your domain and content stay yours.`}
-  ogDescription="Custom small business websites for $150/month with zero down. Design, hosting, updates and local SEO included. No contract, cancel anytime — your domain and content are always yours."
+  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for $150/month with zero down. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month. Your domain and content stay yours.`}
+  ogDescription="Custom small business websites for $150/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours."
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Small Business Websites">
@@ -152,9 +160,10 @@ const jsonLd = {
           and keep looking after it.
         </p>
         <p>
-          <strong>No contract.</strong> No minimum term, no down payment.
-          Cancel anytime with 30 days' notice — your domain and your
-          content are yours either way.
+          <strong>$0 down, twelve-month minimum.</strong> The build is weeks
+          of work you aren't paying for up front, so the first year is what
+          covers it. After that you're month to month — cancel with 30 days'
+          notice. Your domain and your content are yours either way.
         </p>
         <p>
           <strong>Typical turnaround:</strong> 2–4 weeks from our first
@@ -162,8 +171,10 @@ const jsonLd = {
         </p>
         <p>
           <strong>Nothing to lose:</strong> you approve the design before
-          any code is written. Don't like it? Walk away — with $0 down,
-          there's nothing to refund.
+          any code is written, and the twelve months don't start until you
+          approve the finished site. Up to that point, either of us can say
+          it isn't working and we stop — no invoice, and with $0 down,
+          nothing to refund.
         </p>
       </div>
       <Card>
@@ -201,6 +212,14 @@ const jsonLd = {
       paid next month if the site is still fast, secure and online this
       month. And it turns a $5,000 decision into a $150 one you can make
       this week.
+    </p>
+    <p>
+      It's also the trade behind the twelve-month minimum, and I'd rather be
+      plain about it than bury it. Building the site is weeks of work. If
+      you're not writing a cheque for that up front, the first year of
+      subscription is what pays for it — so a year is what I ask for. I'd
+      much rather ask you for twelve months than for a few thousand dollars
+      on day one. I just can't ask for neither.
     </p>
   </SpotBand>
 
@@ -306,22 +325,83 @@ const jsonLd = {
     <p>
       The one thing the subscription covers is the site itself — my design
       and code, hosted and looked after by me for as long as you're a
-      client. That's the trade that makes $0 down and $150 a month possible.
-      If you'd rather own the site outright, ask me about a one-time build
-      instead.
+      client. That's what makes $0 down and $150 a month possible. If you'd
+      rather own the code too, that's the other way to buy this, and it's
+      right below.
     </p>
   </SpotBand>
 
+  <Section id="own-it">
+    <h2>The Other Way to Buy It</h2>
+    <Grid layout="50-50">
+      <div class="flow">
+        <h3>Pay Once. Own It Outright.</h3>
+        <p>
+          Most small businesses would rather not write a four-figure cheque
+          for a website. If you'd rather write it, you can — and the site is
+          yours outright, design and code included, with no minimum term.
+          There's nothing left to pay off.
+        </p>
+        <p>
+          <strong>Built, then hosted.</strong> The site stays on the same
+          managed infrastructure — SSL, backups, security updates — for a
+          nominal monthly fee. Changes are quoted as they come up.
+        </p>
+        <p>
+          <strong>Built, then handed over.</strong> You take the files and
+          we're done. No monthly bill, nothing to cancel, and nothing that
+          happens on its own.
+        </p>
+        <p>
+          <strong>The price:</strong> quoted per project. Which model costs
+          less over a few years depends on that number and on how much your
+          site actually changes — that's a conversation, not a table.
+        </p>
+      </div>
+      <Card>
+        <h3>What Changes</h3>
+        <ul class="flow" data-flow="sm">
+          <li>You own the design and the code — not just your domain and content</li>
+          <li>No minimum term; there's nothing left to pay off</li>
+          <li>One larger payment up front instead of $150 a month</li>
+          <li>Hosting is either a nominal monthly fee or entirely yours</li>
+          <li>Changes aren't included — quoted as they come up, or yours to make</li>
+          <li>No design refresh every couple of years</li>
+          <li>The site stays up whether or not you're still paying me</li>
+        </ul>
+      </Card>
+    </Grid>
+    <p>
+      <a href="/contact">Ask about a one-time build</a>
+    </p>
+  </Section>
+
   <Section id="faq">
     <h2>Questions, Answered Honestly</h2>
+    <div class="accordion">
+      {
+        faqs.map(({ q, a }) => (
+          <details open>
+            <summary>
+              <h3>{q}</h3>
+            </summary>
+            <p>{a}</p>
+          </details>
+        ))
+      }
+    </div>
     {
-      faqs.map(({ q, a }) => (
-        <div class="flow" data-flow="sm">
-          <h3>{q}</h3>
-          <p>{a}</p>
-        </div>
-      ))
+      /* The only script on the site. Every panel is rendered `open`, so with
+         JavaScript off the FAQ is a plain list of questions and answers —
+         and `<details>` still toggles natively. This collapses them into an
+         accordion. `is:inline` keeps it here in the markup rather than
+         bundling it into a deferred module, so it runs while the parser is
+         still inside this section and the FAQ never paints open. */
     }
+    <script is:inline>
+      for (const item of document.querySelectorAll("#faq details"))
+        item.open = false;
+    </script>
     <p>
       Something I didn't cover? <a href="/contact">Ask {PERSON.firstName}</a>
       — I reply within one business day.
@@ -339,3 +419,86 @@ const jsonLd = {
     </p>
   </Section>
 </BaseLayout>
+
+<style>
+  .accordion {
+    --rule: color-mix(in srgb, currentColor 20%, transparent);
+    border-block-end: 1px solid var(--rule);
+    /* Lets ::details-content animate between 0 and auto where supported. */
+    interpolate-size: allow-keywords;
+  }
+
+  .accordion > details {
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .accordion summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: var(--space-s);
+    justify-content: space-between;
+    /* The default marker, in Firefox and Safari respectively. */
+    list-style: none;
+    padding-block: var(--space-s);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  /* A step down from a standalone h3: fifteen rows of --size-step-3 read as
+     fifteen headings rather than as one list. The global 20ch cap on headings
+     is a measure for a block of prose — in a row with a chevron pinned to the
+     far right it just wraps short questions in two for no reason. */
+  .accordion h3 {
+    font-size: var(--size-step-2);
+    max-width: 40ch;
+  }
+
+  /* Chevron, drawn from two borders so it needs no asset. */
+  .accordion summary::after {
+    block-size: 0.5em;
+    border-block-end: 2px solid;
+    border-inline-end: 2px solid;
+    content: "";
+    flex: none;
+    inline-size: 0.5em;
+    transform: translateY(-0.15em) rotate(45deg);
+    transition: transform var(--transition-base);
+  }
+
+  .accordion details[open] summary::after {
+    transform: translateY(0.1em) rotate(-135deg);
+  }
+
+  .accordion p {
+    padding-block-end: var(--space-m);
+  }
+
+  /* Height animation. Inert in browsers without ::details-content — they just
+     snap open, which is the pre-2024 <details> behaviour. */
+  .accordion details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size var(--transition-base),
+      content-visibility var(--transition-base);
+    transition-behavior: allow-discrete;
+  }
+
+  .accordion details[open]::details-content {
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accordion summary::after,
+    .accordion details::details-content {
+      transition: none;
+    }
+  }
+</style>

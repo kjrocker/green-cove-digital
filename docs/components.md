@@ -173,6 +173,54 @@ change (verified pixel-identical). Two shims from the extraction —
 body text. The rule used to be written `h1.big`, so it matched nothing on a
 paragraph and the three pages using it silently rendered leads at body size.
 
+## The FAQ accordion — and the site's one script
+
+`small-business.astro` ships the site's only JavaScript: three lines, inline,
+in the page. It exists to collapse the FAQ.
+
+The rule it follows is that the *markup* is the accessible, complete version
+and the script only takes things away:
+
+```astro
+<details open>…</details>          <!-- fifteen of these, all open -->
+<script is:inline>
+  for (const item of document.querySelectorAll("#faq details")) item.open = false;
+</script>
+```
+
+- **No JavaScript** — every panel is open, so the FAQ is a plain list of
+  questions and answers, exactly what it was before. `<details>` still toggles
+  natively, so even the no-JS reader gets a working accordion; they just start
+  from open instead of closed.
+- **JavaScript** — the panels collapse and the page gets short enough to skim.
+
+Three things are load-bearing:
+
+- **`is:inline`.** Astro's default `<script>` is bundled into a deferred
+  module, which runs after first paint — the FAQ would flash fully open and
+  then snap shut. Inline, the script runs while the parser is still inside the
+  section, before those elements ever paint.
+- **`open` in the HTML, not added by script.** The other direction (render
+  closed, open with JS) hides the answers from anyone whose JS fails, and from
+  anything that reads the HTML rather than the DOM.
+- **No `name` attribute on the `<details>`.** `name` gives native exclusive
+  accordion behaviour for free, but browsers enforce it at parse time by
+  force-closing all but the first — which is exactly the no-JS state we need.
+  Panels toggle independently instead.
+
+Find-in-page still works: browsers auto-expand a closed `<details>` to reveal a
+match. The `FAQPage` JSON-LD is built from the same `faqs` array and is
+unaffected either way.
+
+The styling is a page-scoped `<style>` block. It hides the default marker,
+draws the chevron from two borders (no asset), and animates height via
+`::details-content` + `interpolate-size: allow-keywords` — inert in browsers
+without them, where panels just snap open, which is what `<details>` did until
+2024. Two overrides of the global type rules: questions drop to
+`--size-step-2`, because fifteen rows of `--size-step-3` read as fifteen
+headings rather than one list, and the 20ch cap on headings goes up to 40ch, so
+a short question doesn't wrap into two lines with a chevron floating 900px away.
+
 ## Deliberately not extracted
 
 - **A CTA component.** The closing "Ready to Get Started?" blocks share a shape

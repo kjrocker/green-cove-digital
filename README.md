@@ -1,6 +1,12 @@
 # Green Cove Digital
 
-Web agency site. Built on the principles of https://buildexcellentwebsit.es/ with zero shipped Javascript.
+Web agency site. Built on the principles of https://buildexcellentwebsit.es/.
+
+Effectively no shipped JavaScript: three inline lines on
+`/services/small-business` that collapse the FAQ into an accordion, plus
+Astro's own prefetch bundle. The FAQ renders fully open, so the page is
+complete without them — see
+[docs/components.md](docs/components.md#the-faq-accordion--the-sites-one-script).
 
 ## 🧞 Commands
 

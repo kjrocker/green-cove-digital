@@ -189,8 +189,51 @@ Kevin reviewed the terms stated in the 2026-08-15 rewrite. Resolved:
   "professionally managed hosting" / "modern infrastructure".
 - **Pages**: Oak Harbor model for now — five-page base, one-time $100 per
   extra page. Oui-style tiered packages are tempting; revisit later.
+- **Minimum term** (decided 2026-08-15, after the first rewrite): **twelve
+  months, starting at launch**, then month-to-month with 30 days' notice.
+  This replaces the "no contract, cancel anytime" line the site launched
+  with — that claim is gone from every page. The reasoning is stated in the
+  copy rather than buried: the build is weeks of work, nobody is paying for
+  it up front, so the first year of subscription is what pays it off. It is
+  framed throughout as the explicit price of $0 down, with the lump-sum
+  build offered as the alternative for anyone who'd rather pay up front and
+  skip the term. Nothing is owed before the site is live, so the
+  design-stage "walk away and owe nothing" guarantee is untouched.
+  Where it lands: homepage hero + price band + not-a-fit list;
+  small-business price card, "Why a Monthly Fee?", "No Vendor Lock-In",
+  meta/`Service` JSON-LD, and five FAQs ("Is there a contract or a minimum
+  term?", "What if I have to cancel during the first year?", "Can I just buy
+  the site outright instead?", "What happens after the first year?", "What
+  if I don't like the design?"). This is the same shape as Oak Harbor's
+  12-month minimum noted above — the pattern, not the sentences.
+- **Cancellation, confirmed by Kevin 2026-08-15.** One line divides it, and
+  the line is **approval + deployment**, not the design stage:
+  - *Before* the site is approved and live — including mid-build, on the
+    preview link — either party can say it isn't working and walk. Nothing
+    owed, no invoice for the time. The copy says this everywhere the term is
+    mentioned, because it's what makes a 12-month minimum reasonable to ask
+    for.
+  - *After* approval and deployment: the first year of payments is owed —
+    **$1,800 less whatever has already been paid**. No penalty on top,
+    nothing owed for leaving after month 12.
+- **The one-time build is a second product, not a payment option** (Kevin,
+  2026-08-15). It has its own section, `#own-it` on the small-business page,
+  because the trade-offs are genuinely different rather than a footnote on
+  the subscription. Client pays for the build once and owns it outright —
+  **design and code included**, which is the one case where the code
+  changes hands — and there is no minimum term, because there's nothing left
+  to pay off. Two shapes after launch:
+  - **Built, then hosted.** Stays on the same managed infrastructure for a
+    *nominal* monthly fee — hosting, SSL, backups, security updates. Content
+    changes are quoted as they come up, **not** included.
+  - **Built, then handed over.** Files to the client, no hosting, no edits,
+    no monthly bill, nothing to cancel. Everything after launch is theirs.
+
+  No price is stated for either, and none should be until Kevin sets one —
+  the copy says "quoted per project" and routes to `/contact`. Deliberately
+  *not* claimed: which model is cheaper over N years (depends on the build
+  price), and whether the nominal hosting fee is fixed or per-project.
 - Still stated, not explicitly confirmed: backups; tap-to-call; content
   edits "within a couple of business days"; two-to-four-week turnaround;
-  design-stage "owe nothing" guarantee; "$5,000 agency build" comparison;
-  a lump-sum "own it outright" build offered as an alternative in the
-  small-business "No Vendor Lock-In" band (no price stated).
+  "$5,000 agency build" comparison; that a one-time build's "changes quoted
+  as they come up" is billing-per-change rather than a small retainer.

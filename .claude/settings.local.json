@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm build:*)",
       "Bash(node:*)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(pnpm check *)"
     ]
   },
   "sandbox": {
