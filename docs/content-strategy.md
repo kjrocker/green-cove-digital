@@ -114,6 +114,20 @@ address — and stop trying to be a local business in the SEO sense.
    single-purpose entity" argument was sound, but the local half of it no
    longer applies; the single-purpose half still does.
 
+**Why not New Mexico instead?** (asked 2026-08-16.) The LLC has a real
+address there, but it's a registered-agent address — a *legal* location, not
+an *operating* one. GBP guidelines name registered agents, virtual offices
+and PO boxes as ineligible, so it buys no local presence; and even if it
+did, "web design Albuquerque" is a market with no story behind it. "Based in
+New Mexico" would be as untrue as "based in Charlotte". Its legitimate use is
+as the entity's legal address — contracts, invoices, terms, payment
+processors, WHOIS, an optional footer/terms line "Green Cove Digital LLC, a
+New Mexico limited liability company" — never as NAP or in structured data.
+Kevin's stated intent is national/remote, which is also the only framing that
+is true everywhere it's said; prefer "across the US" over "global" — the
+audience is US small businesses and the phrasing signals that without
+disclosing where Kevin is.
+
 None of the copy changes above have been made yet — this is a decision for
 Kevin, because it changes the SEO strategy the 2026-08-15 rewrite was built
 on. Once decided, the edit is mechanical (see the list of locations above).
