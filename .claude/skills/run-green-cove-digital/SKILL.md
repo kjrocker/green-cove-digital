@@ -20,8 +20,14 @@ Two ways to run it — pick by what you're changing:
 | **Fast dev** | `pnpm dev` | **No** (`/api/contact` → 404) | Iterating on page markup/CSS with hot reload |
 
 The running site is driven by **`.claude/skills/run-green-cove-digital/drive.sh`**
-— it `curl`s the `/api/contact` Function through its honeypot / invalid / valid
-cases and screenshots every page with headless chromium.
+— it `curl`s the `/api/contact` Function through its honeypot / invalid /
+oversize cases and screenshots every page with headless chromium.
+
+> **The contact form sends real email.** `.dev.vars` on this machine holds
+> *working* AWS credentials, so a valid submission delivers to the owner's real
+> inbox. The driver therefore **skips the valid case by default**; it is opt-in
+> via `LIVE_SEND=1`. To exercise the whole SES path without delivering anything,
+> see [Exercising SES safely](#exercising-ses-safely).
 
 **All paths below are relative to the repo root.**
 
@@ -62,11 +68,16 @@ setsid pnpm exec wrangler pages dev ./dist --port 8788 --ip 127.0.0.1 \
   > /tmp/green-cove-wrangler.log 2>&1 < /dev/null &
 ```
 
-The Function reads its env from **`.dev.vars`** (gitignored). Create it once:
+The Function reads its env from **`.dev.vars`** (gitignored). Create it only if
+missing — **never blind-`cp` over it**, the existing file holds real AWS keys
+that are not recoverable from git:
 
 ```sh
-cp .dev.vars.example .dev.vars     # placeholder AWS creds are fine for smoke tests
+[ -f .dev.vars ] || cp .dev.vars.example .dev.vars
 ```
+
+The placeholder creds in `.dev.vars.example` are fine for the default smoke run,
+which never calls SES.
 
 In a **separate** step, wait for the server, then drive it with one command:
 
@@ -75,27 +86,56 @@ until curl -fsS -o /dev/null http://127.0.0.1:8788/ 2>/dev/null; do sleep 1; don
 .claude/skills/run-green-cove-digital/drive.sh all ./tmp/green-cove-shots
 ```
 
-`drive.sh [api|shots|all] [OUTDIR]` (default `all ./tmp/green-cove-shots`):
+`drive.sh [api|shots|all|stop] [OUTDIR]` (default `all ./tmp/green-cove-shots`):
 
-- **`api`** — POSTs `/api/contact` three ways and asserts each server-side
-  redirect:
-  - *honeypot* (hidden `company` field filled) → `/thanks`, no email sent
-  - *invalid* (missing/bad fields) → `/contact?error=1`, no email sent
-  - *valid* → the Function calls SES for the owner notification. With placeholder
-    creds the owner send fails and it redirects to `/contact?error=1` (SES
-    rejects — expected); with real AWS creds in `.dev.vars` the owner send
-    succeeds and it redirects to `/thanks`. (The visitor auto-reply is
-    best-effort — it fails to unverified recipients in the SES sandbox but is
-    swallowed, so it never affects the redirect.)
+- **`api`** — POSTs `/api/contact` and asserts each server-side redirect. The
+  three default cases **never send email** (each returns in ~2ms — no SES
+  round-trip):
+  - *honeypot* (hidden `company` field filled) → `/thanks`, short-circuits before SES
+  - *invalid* (missing/bad fields) → `/contact?error=1`
+  - *oversize* (message > `MAX_MESSAGE_LEN` = 5000) → `/contact?error=1`
+  - *valid* → **skipped unless `LIVE_SEND=1`.** With it set, the Function makes a
+    real SES call: working creds → `/thanks` **and mail is delivered**; expired or
+    placeholder creds → `/contact?error=1`. (The visitor auto-reply is best-effort
+    — it fails for unverified recipients in the SES sandbox but is swallowed, so it
+    never affects the redirect.)
 - **`shots`** — writes `home.png`, `about.png`, `contact.png`, `thanks.png`,
   `small-business.png`, `consulting.png` to OUTDIR. **Look at the PNGs** — the
   home hero should show the animated cove waves with the "Software Engineering"
   headline; `thanks.png` should read "Thanks — message received".
+- **`stop`** — kills the server by port and cleans up the orphaned `workerd`.
 
 Point the driver elsewhere with `BASE=http://127.0.0.1:4321 drive.sh shots`
 (but `api` needs the wrangler host — see the mode table).
 
-Stop the server when done: `pkill -f 'wrangler pages dev'`.
+Stop the server when done:
+
+```sh
+.claude/skills/run-green-cove-digital/drive.sh stop
+```
+
+Do **not** reach for `pkill -f 'wrangler pages dev'` — see Gotchas, it kills
+your own shell.
+
+### Exercising SES safely
+
+To run the full valid path — signed SES request, owner notification accepted,
+`/thanks` redirect — without anything landing in a real inbox, point
+`CONTACT_TO_EMAIL` at the AWS mailbox simulator, which accepts and discards:
+
+```sh
+cp -p .dev.vars /tmp/dev.vars.backup     # .dev.vars is gitignored — no undo
+sed -i 's|^CONTACT_TO_EMAIL=.*|CONTACT_TO_EMAIL=success@simulator.amazonses.com|' .dev.vars
+```
+
+Restart wrangler (it reads `.dev.vars` only at startup), then:
+
+```sh
+LIVE_SEND=1 .claude/skills/run-green-cove-digital/drive.sh api
+```
+
+Verified: this redirects to `/thanks` with no real delivery. Restore afterwards
+with `cp -p /tmp/dev.vars.backup .dev.vars`.
 
 ## Run (human path)
 
@@ -132,6 +172,22 @@ the verification harness — run it after any change and eyeball the screenshots
   A failed submission redirects to `/contact?error=1` but the user sees a plain
   contact page with **no visible error message**. (`contact?error=1` screenshots
   byte-identically to `contact` — that's why the driver doesn't shoot it.)
+- **A "successful" smoke test used to email the owner for real.** `.dev.vars`
+  here holds working AWS keys (not the `AKIA_your_access_key_here` placeholder
+  from `.dev.vars.example`), so the valid case genuinely delivered to
+  `CONTACT_TO_EMAIL`. Tell-tale: that POST takes ~1100ms in the wrangler log
+  versus ~2ms for every non-sending case. That's why the valid case is now
+  behind `LIVE_SEND=1`.
+- **`pkill -f 'wrangler pages dev'` kills your own shell.** `-f` matches full
+  command lines, and the shell running your script has that exact string in its
+  own argv — so the shell dies mid-script (exit 144) before later commands run.
+  The `[w]rangler` bracket trick does **not** save you either if any *other*
+  line in the same invocation mentions the literal string. Kill by port instead:
+  `fuser -k 8788/tcp`. This is what `drive.sh stop` does.
+- **`fuser -k` leaves an orphaned `workerd`.** Killing the listener doesn't reap
+  the `@cloudflare/workerd-linux-64` child, which lingers holding memory. Follow
+  with `pkill -x workerd` — `-x` matches the process *name* exactly, so unlike
+  `-f` it can never match your shell.
 - **`.dev.vars` is required and gitignored.** Without it the Function has no
   `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY`/`CONTACT_*` and every valid
   submission errors out. Copy `.dev.vars.example`. The committed `wrangler.jsonc`
@@ -160,9 +216,12 @@ the verification harness — run it after any change and eyeball the screenshots
   loop; check `/tmp/green-cove-wrangler.log`.
 - `POST /api/contact` → **404** — you're hitting `astro dev` (:4321), not
   wrangler (:8788). Only wrangler serves `functions/`.
-- Valid submission always lands on `/contact?error=1` — expected with
-  placeholder AWS creds (the owner send fails); put real
-  `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` in `.dev.vars` to reach `/thanks`.
+- Valid submission lands on `/contact?error=1` under `LIVE_SEND=1` — the owner
+  send failed. Placeholder or expired `AWS_ACCESS_KEY_ID` /
+  `AWS_SECRET_ACCESS_KEY` in `.dev.vars`; the Function logs the SES status and
+  body via `console.error` to the wrangler log.
+- Shell exits with **144** partway through a launch/stop script — a `pkill -f`
+  pattern matched the shell itself. Use `drive.sh stop`.
 - `drive.sh shots` fails but `api` passes — no browser found; install
   `chromium-browser` or `firefox`, or run `drive.sh api` only.
 - `Ignored build scripts: esbuild, sharp, workerd` on install — restore
