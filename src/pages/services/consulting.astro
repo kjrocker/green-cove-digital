@@ -1,4 +1,6 @@
 ---
+import Card from "../../components/Card.astro";
+import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
 import Footer from "../../components/Footer.astro";
@@ -105,7 +107,7 @@ import { SITE, BUSINESS } from "../../data/client";
     <main>
       <Section>
         <h2>Pricing</h2>
-        <div class="grid" data-layout="50-50">
+        <Grid layout="50-50">
           <div class="flow">
             <h3>Starting at $120/Hour</h3>
             <p>
@@ -122,7 +124,7 @@ import { SITE, BUSINESS } from "../../data/client";
               know how I can help.
             </p>
           </div>
-          <div class="card flow">
+          <Card>
             <h3>Concrete Deliverables</h3>
             <ul class="flow" data-flow="sm">
               <li>Written architecture proposals with diagrams</li>
@@ -131,14 +133,14 @@ import { SITE, BUSINESS } from "../../data/client";
               <li>Vendor evaluations with side-by-side comparisons</li>
               <li>Follow-up support as your project evolves</li>
             </ul>
-          </div>
-        </div>
+          </Card>
+        </Grid>
       </Section>
 
       <Section>
         <h2>Specialties</h2>
-        <div class="grid" data-layout="50-50">
-          <div class="card flow">
+        <Grid layout="50-50">
+          <Card>
             <h3>TypeScript Monorepos</h3>
             <p>
               Monorepos are a powerful pattern for large teams, but they're
@@ -154,8 +156,8 @@ import { SITE, BUSINESS } from "../../data/client";
               architecting a new one, I'll help you build a codebase your team
               can work in productively.
             </p>
-          </div>
-          <div class="card flow">
+          </Card>
+          <Card>
             <h3>PostgreSQL</h3>
             <p>
               PostgreSQL is used everywhere — and it's easy to use it wrong.
@@ -170,8 +172,8 @@ import { SITE, BUSINESS } from "../../data/client";
               database, I'll help you get PostgreSQL working for you instead of
               against you.
             </p>
-          </div>
-        </div>
+          </Card>
+        </Grid>
       </Section>
 
       <SpotBand>
@@ -196,7 +198,7 @@ import { SITE, BUSINESS } from "../../data/client";
 
       <Section>
         <h2>How I Can Help</h2>
-        <ul class="features grid mt-l-xl" role="list">
+        <Grid as="ul" class="features mt-l-xl" role="list">
           <li class="flow">
             <div aria-hidden="true"></div>
             <h3>Code Review & Audit</h3>
@@ -259,7 +261,7 @@ import { SITE, BUSINESS } from "../../data/client";
               workflows. Practical sessions, not slide decks.
             </p>
           </li>
-        </ul>
+        </Grid>
       </Section>
 
       <SpotBand>

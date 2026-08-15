@@ -1,0 +1,13 @@
+---
+interface Props {
+  as?: "li" | "div";
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { as: Tag = "div", class: className, ...rest } = Astro.props;
+---
+
+<Tag class:list={["card", "flow", className]} {...rest}>
+  <slot />
+</Tag>

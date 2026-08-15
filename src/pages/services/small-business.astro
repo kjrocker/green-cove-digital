@@ -1,4 +1,6 @@
 ---
+import Card from "../../components/Card.astro";
+import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
 import Footer from "../../components/Footer.astro";
@@ -104,7 +106,7 @@ import { SITE, BUSINESS } from "../../data/client";
     <main>
       <Section>
         <h2>Pricing That Makes Sense</h2>
-        <div class="grid" data-layout="50-50">
+        <Grid layout="50-50">
           <div class="flow">
             <h3>$150/Month</h3>
             <p>
@@ -121,7 +123,7 @@ import { SITE, BUSINESS } from "../../data/client";
               to a live site, depending on content and scope.
             </p>
           </div>
-          <div class="card flow">
+          <Card>
             <h3>What's Included</h3>
             <ul class="flow" data-flow="sm">
               <li>Custom branded website design</li>
@@ -135,8 +137,8 @@ import { SITE, BUSINESS } from "../../data/client";
               <li>Regular updates and security patches</li>
               <li>Translation services (available for an additional fee)</li>
             </ul>
-          </div>
-        </div>
+          </Card>
+        </Grid>
       </Section>
 
       <SpotBand>
@@ -155,8 +157,8 @@ import { SITE, BUSINESS } from "../../data/client";
 
       <Section>
         <h2>Perfect For</h2>
-        <ul class="grid" data-layout="50-50" role="list">
-          <li class="card flow">
+        <Grid as="ul" layout="50-50" role="list">
+          <Card as="li">
             <h3>Local Services</h3>
             <p>
               Plumbers, electricians, landscapers, contractors. A
@@ -164,32 +166,32 @@ import { SITE, BUSINESS } from "../../data/client";
               the SEO work needed to show up when someone searches "plumber near
               me."
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>Retail & E-commerce</h3>
             <p>
               Small shops and boutiques. Product showcases, payment processing
               if you need it, and a site that works on phones and tablets where
               most shopping happens.
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>Professional Services</h3>
             <p>
               Consultants, lawyers, accountants. A site that establishes
               credibility, explains your services clearly, and makes it easy for
               clients to schedule a consultation.
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>Restaurants & Hospitality</h3>
             <p>
               Easy-to-update menus, hours, location info, and reservation
               integration if needed. Update specials yourself without calling a
               developer.
             </p>
-          </li>
-        </ul>
+          </Card>
+        </Grid>
       </Section>
 
       <SpotBand>

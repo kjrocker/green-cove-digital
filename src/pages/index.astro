@@ -1,4 +1,6 @@
 ---
+import Card from "../components/Card.astro";
+import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
 import Footer from "../components/Footer.astro";
@@ -97,8 +99,8 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
     <main>
       <Section>
         <h2>Why Work With Me?</h2>
-        <ul class="grid" data-layout="50-50" role="list">
-          <li class="card flow">
+        <Grid as="ul" layout="50-50" role="list">
+          <Card as="li">
             <h3>One Person, Start to Finish</h3>
             <p>
               You talk directly to the person writing your code. I've built
@@ -106,8 +108,8 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
               estate platforms, and marketing analytics tools — and I bring that
               same rigor to a five-page small business site.
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>Sub-Second Load Times</h3>
             <p>
               This site scores 100 on Google Lighthouse. Every site I build hits
@@ -119,24 +121,24 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
                 >Learn more about my approach to performance</a
               >
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>Mobile-First by Default</h3>
             <p>
               Over 60% of web traffic comes from phones. I design for small
               screens first and scale up — large tap targets, readable type, and
               layouts that reflow cleanly.
             </p>
-          </li>
-          <li class="card flow">
+          </Card>
+          <Card as="li">
             <h3>You Own Everything</h3>
             <p>
               Your content, your domain, your data. I build on open web
               standards, so you're never locked into a proprietary platform. If
               you outgrow me, you take your site with you — no rebuild required.
             </p>
-          </li>
-        </ul>
+          </Card>
+        </Grid>
       </Section>
 
       <SpotBand>
@@ -155,8 +157,8 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
 
       <Section>
         <h2>Services</h2>
-        <div class="grid" data-layout="50-50">
-          <div class="flow card" data-flow="sm">
+        <Grid layout="50-50">
+          <Card data-flow="sm">
             <h3>
               <a href="/services/small-business">Small Business Websites</a>
             </h3>
@@ -180,9 +182,9 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
               <li>Regular updates and security patches</li>
               <li>Translation services (available for an additional fee)</li>
             </ul>
-          </div>
+          </Card>
 
-          <div class="flow card" data-flow="sm">
+          <Card data-flow="sm">
             <h3><a href="/services/consulting">Technical Consulting</a></h3>
             <p>
               Specialized consulting in TypeScript monorepos and PostgreSQL —
@@ -200,8 +202,8 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
               <li>Code review and architecture feedback</li>
               <li>Technology and platform guidance</li>
             </ul>
-          </div>
-        </div>
+          </Card>
+        </Grid>
       </Section>
 
       <Section>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: "ul" | "ol" | "div";
+  layout?: "50-50";
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { as: Tag = "div", layout, class: className, ...rest } = Astro.props;
+---
+
+<Tag class:list={["grid", className]} data-layout={layout} {...rest}>
+  <slot />
+</Tag>
