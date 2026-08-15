@@ -1,4 +1,5 @@
 ---
+import Section from "../../components/Section.astro";
 import Curve from "../../components/Curve.astro";
 import Footer from "../../components/Footer.astro";
 import Cove from "../../components/Cove.astro";
@@ -102,7 +103,7 @@ import { SITE, BUSINESS } from "../../data/client";
     </Cove>
 
     <main>
-      <article class="flow region wrapper">
+      <Section>
         <h2>Pricing</h2>
         <div class="grid" data-layout="50-50">
           <div class="flow">
@@ -132,9 +133,9 @@ import { SITE, BUSINESS } from "../../data/client";
             </ul>
           </div>
         </div>
-      </article>
+      </Section>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Specialties</h2>
         <div class="grid" data-layout="50-50">
           <div class="card flow">
@@ -171,12 +172,12 @@ import { SITE, BUSINESS } from "../../data/client";
             </p>
           </div>
         </div>
-      </article>
+      </Section>
 
       <div class="section spot-color-primary">
         <Curve />
         <div class="section__inner">
-          <article class="flow region wrapper">
+          <Section>
             <h2>How It Works</h2>
             <p>
               Start with a free consultation. Tell me what you're working on — a
@@ -194,12 +195,12 @@ import { SITE, BUSINESS } from "../../data/client";
               No retainer required to get started. No sales pitch on the first
               call.
             </p>
-          </article>
+          </Section>
         </div>
         <Curve />
       </div>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>How I Can Help</h2>
         <ul class="features grid mt-l-xl" role="list">
           <li class="flow">
@@ -265,12 +266,12 @@ import { SITE, BUSINESS } from "../../data/client";
             </p>
           </li>
         </ul>
-      </article>
+      </Section>
 
       <div class="section spot-color-primary">
         <Curve />
         <div class="section__inner">
-          <article class="flow region wrapper">
+          <Section>
             <h2>Who I Work With</h2>
             <p>
               Engineering leads and CTOs at startups and mid-size companies
@@ -282,12 +283,12 @@ import { SITE, BUSINESS } from "../../data/client";
               decisions. Small development teams that need a second opinion on
               architecture. Companies evaluating a technical acquisition.
             </p>
-          </article>
+          </Section>
         </div>
         <Curve />
       </div>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Let's Talk</h2>
         <p>
           Tell me what you're working on. First consultation is free — no
@@ -296,7 +297,7 @@ import { SITE, BUSINESS } from "../../data/client";
         <p>
           <a href="/contact">Book Your Free Consultation</a>
         </p>
-      </article>
+      </Section>
     </main>
 
     <Footer />

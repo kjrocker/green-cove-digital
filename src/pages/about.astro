@@ -1,4 +1,5 @@
 ---
+import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
 import Footer from "../components/Footer.astro";
 import Cove from "../components/Cove.astro";
@@ -83,7 +84,7 @@ import kevinPhoto from "../assets/kevin.jpg";
     </Cove>
 
     <main>
-      <article class="flow region wrapper">
+      <Section>
         <div class="grid" data-layout="50-50">
           <div>
             <Image
@@ -118,11 +119,11 @@ import kevinPhoto from "../assets/kevin.jpg";
             </p>
           </div>
         </div>
-      </article>
+      </Section>
 
       <Cove top static>
         <div class="section__inner">
-          <article class="flow region wrapper">
+          <Section>
             <h2>What I Believe</h2>
             <p>
               The web should be fast, accessible, and owned by the people who
@@ -138,11 +139,11 @@ import kevinPhoto from "../assets/kevin.jpg";
               >
               and <a href="/services/consulting">consulting engagement</a>.
             </p>
-          </article>
+          </Section>
         </div>
       </Cove>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Technical Expertise</h2>
         <div class="grid" data-layout="50-50">
           <div class="card flow">
@@ -175,9 +176,9 @@ import kevinPhoto from "../assets/kevin.jpg";
             </p>
           </div>
         </div>
-      </article>
+      </Section>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Let's Work Together</h2>
         <p>
           Need a website for your business or technical help with your codebase?
@@ -186,7 +187,7 @@ import kevinPhoto from "../assets/kevin.jpg";
         <p>
           <a href="/contact">Get in Touch</a>
         </p>
-      </article>
+      </Section>
     </main>
     <Footer />
   </body>

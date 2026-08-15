@@ -1,4 +1,5 @@
 ---
+import Section from "../../components/Section.astro";
 import Curve from "../../components/Curve.astro";
 import Footer from "../../components/Footer.astro";
 import Cove from "../../components/Cove.astro";
@@ -101,7 +102,7 @@ import { SITE, BUSINESS } from "../../data/client";
     </Cove>
 
     <main>
-      <article class="flow region wrapper">
+      <Section>
         <h2>Pricing That Makes Sense</h2>
         <div class="grid" data-layout="50-50">
           <div class="flow">
@@ -136,12 +137,12 @@ import { SITE, BUSINESS } from "../../data/client";
             </ul>
           </div>
         </div>
-      </article>
+      </Section>
 
       <div class="section spot-color-primary">
         <Curve />
         <div class="section__inner">
-          <article class="flow region wrapper">
+          <Section>
             <h2>Built for Performance</h2>
             <p>
               Every extra second of load time costs you visitors and sales. My
@@ -153,12 +154,12 @@ import { SITE, BUSINESS } from "../../data/client";
               Fast sites rank higher on Google and convert better. This site
               scores 100 on Google Lighthouse, and yours will too.
             </p>
-          </article>
+          </Section>
         </div>
         <Curve />
       </div>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Perfect For</h2>
         <ul class="grid" data-layout="50-50" role="list">
           <li class="card flow">
@@ -195,12 +196,12 @@ import { SITE, BUSINESS } from "../../data/client";
             </p>
           </li>
         </ul>
-      </article>
+      </Section>
 
       <div class="section spot-color-primary">
         <Curve />
         <div class="section__inner">
-          <article class="flow region wrapper">
+          <Section>
             <h2>No Vendor Lock-In</h2>
             <p>
               Your content, your domain, your customer data—it all stays yours.
@@ -218,12 +219,12 @@ import { SITE, BUSINESS } from "../../data/client";
               you won't have to rebuild from scratch. Your digital presence is
               yours to control.
             </p>
-          </article>
+          </Section>
         </div>
         <Curve />
       </div>
 
-      <article class="flow region wrapper">
+      <Section>
         <h2>Ready to Get Started?</h2>
         <p>
           Tell me about your business and I'll let you know what a site would
@@ -232,7 +233,7 @@ import { SITE, BUSINESS } from "../../data/client";
         <p>
           <a href="/contact">Start Your Website — $0 Down</a>
         </p>
-      </article>
+      </Section>
     </main>
 
     <Footer />
