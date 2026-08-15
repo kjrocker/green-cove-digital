@@ -6,27 +6,24 @@ import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
 import { SITE, BUSINESS, PERSON } from "../../data/client";
+import { PRICING, usd } from "../../data/pricing";
 
 const faqs: { q: string; a: string }[] = [
   {
-    q: "What does $150 a month actually cover?",
+    q: `What does ${usd(PRICING.monthly)} a month actually cover?`,
     a: "Design and build of your site (up to five pages to start), hosting, SSL, your domain, security and software updates, and ongoing content changes — new hours, a new service, a photo swap. Email me the change and it's done, usually within a couple of business days. There is no separate maintenance plan and no hosting bill.",
   },
   {
     q: "When does the first payment happen?",
-    a: "When the work starts. The first $150 is what puts you on the calendar — there's no lump sum up front and no deposit on top of it. If you change your mind in that first month, ask and I'll refund it. From there you pay month to month while the site is designed and built.",
+    a: `When the work starts. The first ${usd(PRICING.monthly)} is what puts you on the calendar — there's no lump sum up front and no deposit on top of it. From there it's the same ${usd(PRICING.monthly)} every month, while the site is being built and after it's live.`,
   },
   {
     q: "Is there a contract or a minimum term?",
-    a: "Twelve months, starting the day the site goes live — not the day we first talk. A custom site is weeks of work, and at $150 a month it takes about a year for that work to be worth doing. Before launch there's no term to speak of: you're paying month to month for work in progress. After the twelve months you're month to month again and can cancel with 30 days' notice.",
+    a: `Yes: twelve monthly payments, starting with the first one. A custom site is weeks of work, and at ${usd(PRICING.monthly)} a month it takes about a year for that work to be worth doing — that's the trade for $0 down. After the twelve months you're month to month and can cancel with 30 days' notice.`,
   },
   {
     q: "What if I have to cancel during the first year?",
-    a: "Before launch, a simple “this isn't working” means we shake hands and stop. You've paid for the months we worked and nothing else. Once the site is live, the cancellation fee is the same as the minimum term: $1,800, minus whatever you've already paid. That's it: no penalty on top, and nothing at all once the year is up. Either way, your domain and your content are yours and stay yours.",
-  },
-  {
-    q: "Can I just buy the site outright instead?",
-    a: "Yes. You pay for the build once and it's yours, the design and the code included, and there's no minimum term. Afterwards you either leave the site with me on a nominal monthly hosting fee, or take the files and go.",
+    a: `The first year is a commitment, so the remaining monthly payments are still owed — there's no penalty on top of that, and nothing at all once the year is up. Either way, your domain and your content are yours and stay yours.`,
   },
   {
     q: "Do I keep my website if I cancel?",
@@ -34,7 +31,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What if I need more than five pages?",
-    a: "Extra pages are a one-time $100 each — not a monthly increase. If you need something much larger, we can work it out.",
+    a: `Extra pages are a one-time ${usd(PRICING.extraPage)} each — not a monthly increase. If you need something much larger, we can work it out.`,
   },
   {
     q: "What happens after the first year?",
@@ -100,19 +97,18 @@ const jsonLd = {
           addressCountry: "US",
         },
       },
-      description:
-        "Custom small business websites for $150/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. Twelve-month minimum term from launch, then month-to-month with 30 days' notice.",
+      description: `Custom small business websites for ${usd(PRICING.monthly)}/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. Twelve-month minimum, then month-to-month with 30 days' notice.`,
       areaServed: [
         { "@type": "City", name: BUSINESS.address.city },
         { "@type": "Country", name: "US" },
       ],
       offers: {
         "@type": "Offer",
-        price: "150",
+        price: String(PRICING.monthly),
         priceCurrency: "USD",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "150",
+          price: String(PRICING.monthly),
           priceCurrency: "USD",
           unitText: "month",
         },
@@ -131,11 +127,11 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Small Business Website Pricing — $150/Month, $0 Down | ${SITE.title}`}
+  title={`Small Business Website Pricing — ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
   path="/services/small-business"
-  ogTitle={`Small Business Websites: $150/Month, $0 Down | ${SITE.title}`}
-  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for $150/month with zero down. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month. Your domain and content stay yours.`}
-  ogDescription="Custom small business websites for $150/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours."
+  ogTitle={`Small Business Websites: ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
+  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month. Your domain and content stay yours.`}
+  ogDescription={`Custom small business websites for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Small Business Websites">
@@ -155,20 +151,20 @@ const jsonLd = {
     <h2>What It Costs</h2>
     <Grid layout="50-50">
       <div class="flow">
-        <h3>$150/Month. $0 Down.</h3>
+        <h3>{usd(PRICING.monthly)}/Month. $0 Down.</h3>
         <p>
           One predictable monthly payment that covers design, hosting,
           maintenance, and updates. Squarespace charges $33/month and makes you
-          build it. I build something custom for $150 and keep looking after it.
+          build it. I build something custom for {usd(PRICING.monthly)} and keep looking after it.
         </p>
         <p>
           <strong>What $0 down means:</strong> no lump sum up front. The first
-          month's $150 is what starts the work, and there's nothing else to pay.
+          month's {usd(PRICING.monthly)} is what starts the work, and there's nothing else to pay.
         </p>
         <p>
-          <strong>Twelve-month minimum, starting at launch.</strong> Nothing is locked
-          in until the site is live. After the twelve months you're month to month,
-          just cancel with 30 days' notice.
+          <strong>Twelve-month minimum.</strong> After the first year you're
+          month to month — cancel with 30 days' notice. The
+          <a href="#faq">FAQ</a> has the details.
         </p>
         <p>
           <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
@@ -207,13 +203,12 @@ const jsonLd = {
       A subscription puts those small fixes inside the price, so they actually
       happen. It lines up my incentives with yours: I only get paid next month
       if the site is still fast, secure and online this month. And it turns a
-      $5,000 decision into a $150 one you can make this week.
+      $5,000 decision into a {usd(PRICING.monthly)} one you can make this week.
     </p>
     <p>
       It's also the trade behind the twelve-month minimum. Building the site is
       weeks of work, paid for by the first year of the subscription. I'd rather
-      ask you for twelve months than for a few thousand dollars on day one — and
-      those twelve months don't start until the site is live.
+      ask you for twelve months than for a few thousand dollars on day one.
     </p>
   </SpotBand>
 
@@ -316,53 +311,10 @@ const jsonLd = {
     </p>
     <p>
       The only thing I own is the design and the code, hosted and looked after
-      for as long as you're a client. If you'd rather own that too, that's the
-      other way to buy this, and it's right below.
+      for as long as you're a client. If you ever leave, you take everything
+      that's yours with you.
     </p>
   </SpotBand>
-
-  <Section id="own-it">
-    <h2>The Other Way to Buy It</h2>
-    <Grid layout="50-50">
-      <div class="flow">
-        <h3>Pay Once. Own It Outright.</h3>
-        <p>
-          Most small businesses would rather not write a four-figure check for a
-          website. If you would, you can — and the site is yours outright, design
-          and code included, with no minimum term.
-        </p>
-        <p>
-          <strong>Built, then hosted.</strong> The site stays on the same managed
-          infrastructure — SSL, backups, security updates — for a nominal monthly
-          fee. Changes are quoted as they come up.
-        </p>
-        <p>
-          <strong>Built, then handed over.</strong> You take the files and we're done.
-          No monthly bill, nothing to cancel.
-        </p>
-        <p>
-          <strong>The price:</strong> quoted per project. Which model costs less over
-          a few years depends on that number and on how much your site actually changes.
-        </p>
-      </div>
-      <Card>
-        <h3>What Changes</h3>
-        <ul class="flow" data-flow="sm">
-          <li>You own the design and the code</li>
-          <li>No minimum term; there's nothing left to pay off</li>
-          <li>One larger payment up front instead of $150 a month</li>
-          <li>Hosting is either a nominal monthly fee or entirely yours</li>
-          <li>
-            Changes aren't included — quoted as they come up, or yours to make
-          </li>
-          <li>No design refresh every couple of years</li>
-        </ul>
-      </Card>
-    </Grid>
-    <p>
-      <a href="/contact">Ask about a one-time build</a>
-    </p>
-  </Section>
 
   <Section id="faq">
     <h2>Frequently Asked Questions</h2>

@@ -186,12 +186,11 @@ document.
 
 Where the terms surface in the copy:
 
-- **Minimum term** — homepage hero, price band and not-a-fit list;
-  small-business price card, "Why a Monthly Fee?", "No Vendor Lock-In",
-  meta/`Service` JSON-LD, and five FAQs ("Is there a contract or a minimum
-  term?", "What if I have to cancel during the first year?", "Can I just buy
-  the site outright instead?", "What happens after the first year?", "What if
-  I don't like the design?").
+- **Minimum term** — homepage price band (one clause) and not-a-fit list;
+  small-business price card (one clause, links to FAQ), "Why a Monthly Fee?",
+  meta/`Service` JSON-LD, and four FAQs ("Is there a contract or a minimum
+  term?", "What if I have to cancel during the first year?", "What happens
+  after the first year?", "What if I don't like the design?").
 - **Ownership / cancellation** — homepage "Your Domain, Your Content, Your
   Data"; small-business FAQ and "No Vendor Lock-In".
-- **One-time build** — its own section, `#own-it` on the small-business page.
+- **One-time build** — none. Removed 2026-08-16; see business-model.md.

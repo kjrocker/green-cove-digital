@@ -7,64 +7,70 @@ otherwise.
 For *how* the site markets this — positioning, SEO, page structure — see
 [content-strategy.md](content-strategy.md).
 
-## Two products
+## One product: the subscription website
 
-### 1. Subscription website (the main offer)
+The model is Oui Digital's — tiered monthly plans — with **one tier for now**.
+There is no lump-sum / pay-once / one-time-build option, and the site must not
+offer, hint at, or answer questions about one (Kevin, 2026-08-16: it
+complicates the sale; a `#own-it` section and a "buy it outright" FAQ existed
+briefly on 2026-08-15 and were removed). If a prospect asks, that's a
+conversation for Kevin, not a promise on the site.
 
-The site is built for **$0 down** and billed **$150/month**. Green Cove owns
+Every figure the copy quotes lives in `src/data/pricing.ts`; page copy
+imports `PRICING` and `usd()` rather than writing numbers out. Three fields
+hold the whole offer — `monthly`, `termMonths`, `extraPage` — and changing
+`monthly` there is the *only* edit a price change needs.
+
+Any total quoted on the site is **derived, not independent** — computed at the
+call site as `monthly × termMonths` — so it can't drift from the monthly
+price. But any dollar amount written out *in this document* is a copy and can
+go stale; when the price moves, re-check every figure here against the
+arithmetic. The competitor numbers ($5,000 agency, $33 Squarespace) are
+deliberately *not* in `pricing.ts` — they aren't ours and shouldn't move when
+our price does. The "three years with me is $X" comparison was dropped
+2026-08-16: a multi-year total reads badly next to a $5,000 one-off, so the
+copy compares $180/month against the agency's up-front price directly.
+
+The site is built for **$0 down** and billed **$180/month**. Green Cove owns
 the code; the site comes down if the subscription ends.
 
-- **Billing starts when the work starts, not at launch.** The first $150 is
-  what puts a client on the calendar — no lump sum, no deposit on top.
-  Refundable on request within that first month. Pre-launch months are
-  month-to-month, paying for work in progress.
-- **Minimum term: twelve months, starting the day the site goes live** — not
-  the day billing starts — then month-to-month with 30 days' notice.
+- **Billing starts when the work starts, not at launch.** The first $180 is
+  what puts a client on the calendar — no lump sum, no deposit on top. **No
+  refunds once work starts** — and the site doesn't talk about refunds at all.
+- **Minimum term: twelve monthly payments, starting with the first one** —
+  i.e. from the day the work starts, *not* from launch — then month-to-month
+  with 30 days' notice. (An earlier version of this doc and the copy said the
+  term started at launch; corrected 2026-08-16.)
 - **Base is five pages**, one-time **$100 per extra page** (Oak Harbor's
-  model). Oui-style tiered packages are tempting; revisit later.
+  model). Additional Oui-style tiers can be added later without changing the
+  shape of the offer.
 - Content edits included. Design refresh every few years included.
 
-### 2. One-time build
+## Minimum term (decided 2026-08-15, corrected 2026-08-16)
 
-**A second product, not a payment option** (Kevin, 2026-08-15) — the
-trade-offs are genuinely different rather than a footnote on the subscription.
-It gets its own section, `#own-it` on the small-business page.
+Twelve monthly payments from day one. This **replaces the "no contract, cancel
+anytime" line the site launched with** — that claim is gone from every page.
 
-Client pays for the build once and owns it outright — **design and code
-included**, the one case where the code changes hands. No minimum term,
-because there's nothing left to pay off. Two shapes after launch:
+The reasoning is stated once, in the FAQ and "Why a Monthly Fee?": the build
+is weeks of work, nobody is paying for it up front, so the first year of
+subscription is what pays it off. It's framed as the explicit price of $0
+down, and the copy doesn't offer an alternative — anyone who won't commit to a
+first year is simply "not a fit" (homepage list).
 
-- **Built, then hosted.** Stays on the same managed infrastructure for a
-  *nominal* monthly fee — hosting, SSL, backups, security updates. Content
-  changes are quoted as they come up, **not** included.
-- **Built, then handed over.** Files to the client, no hosting, no edits, no
-  monthly bill, nothing to cancel. Everything after launch is theirs.
-
-**No price is stated for either, and none should be until Kevin sets one.**
-Copy says "quoted per project" and routes to `/contact`. Deliberately *not*
-claimed: which model is cheaper over N years (depends on the build price), and
-whether the nominal hosting fee is fixed or per-project.
-
-## Minimum term (decided 2026-08-15)
-
-Twelve months from launch. This **replaces the "no contract, cancel anytime"
-line the site launched with** — that claim is gone from every page.
-
-The reasoning is stated in the copy rather than buried: the build is weeks of
-work, nobody is paying for it up front, so the first year of subscription is
-what pays it off. It's framed throughout as the explicit price of $0 down,
-with the one-time build offered as the alternative for anyone who'd rather pay
-up front and skip the term.
+**Say less, and let the FAQ carry the detail.** Body copy (hero, price band,
+price card, "Why a Monthly Fee?") states the term in one clause at most —
+"twelve-month minimum, then month to month" — and points at the FAQ. Do not
+restate the reasoning, the start date, the notice period and the cancellation
+mechanics in every paragraph that mentions the price; the 2026-08-15 rewrite
+did, and it read like the contract pasted into a brochure.
 
 **"$0 down" means no upfront lump sum. It does not mean a period of free
 work** — billing starts when the work does. Keep the phrase; it is accurate
 and it's the SEO hook in the title tags. What it cannot be paired with is
-"nothing is owed until you approve the finished site" or "full refund any time
-before launch" — both shipped with the 2026-08-15 rewrite, both are false
-under the current model, both are gone from the homepage, small-business and
-contact pages (2026-08-16). The true version that survives: no *term* until
-launch, and stopping pre-launch costs the client only the months already
-worked.
+"nothing is owed until you approve the finished site", "full refund any time
+before launch", "refundable in the first month" or "no term until launch" —
+all shipped in 2026-08-15/16 rewrites, all false under the current model, all
+gone (2026-08-16).
 
 Don't soften "$0 down" into hedged substitutes either — an earlier pass
 swapped in "no build fee," which concedes ground the phrase doesn't need to
@@ -75,25 +81,25 @@ Same shape as Oak Harbor's 12-month minimum — the pattern, not the sentences.
 
 ## Cancellation
 
-One line divides it, and the line is **approval + deployment**, not the design
-stage:
+The site says one thing: cancelling inside the first year means the remaining
+monthly payments are still owed, with no penalty on top, and after month
+twelve it's 30 days' notice. That's it.
 
-- *Before* the site is approved and live — including mid-build, on the preview
-  link — either party can say it isn't working and walk. No term, no
-  cancellation fee; the client has paid for the months worked and owes nothing
-  further. The copy says this everywhere the term is mentioned, because it's
-  what makes a 12-month minimum reasonable to ask for.
-- *After* approval and deployment: the first year of payments is owed —
-  **$1,800 less whatever has already been paid**. No penalty on top, nothing
-  owed for leaving after month 12.
+The contract is stricter after launch than before it (Kevin, 2026-08-16), but
+that distinction is **contract detail, not site copy** — don't describe a
+pre-launch/post-launch split, a "shake hands and walk" pre-launch exit, or a
+launch-based cancellation fee anywhere on the site. The one softening that
+stays is the design-fit FAQ ("What if I don't like the design? Then we don't
+launch it") — it's about not shipping something the client hates, not about
+money.
 
 ## Ownership
 
 Green Cove owns the code. The client owns the domain and every asset/word they
 wrote or sent. Site comes down on cancel.
 
-Say it candidly and lead with what they *do* keep. The exception is the
-one-time build, where code and design transfer to the client.
+Say it candidly and lead with what they *do* keep. There is no case where the
+code changes hands.
 
 ## What's included, and what to call it
 
@@ -116,5 +122,3 @@ Chase these down with Kevin before leaning on them harder:
 - Content edits "within a couple of business days"
 - Two-to-four-week turnaround
 - The "$5,000 agency build" comparison
-- That a one-time build's "changes quoted as they come up" is
-  billing-per-change rather than a small retainer

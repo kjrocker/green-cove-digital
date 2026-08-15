@@ -6,6 +6,7 @@ import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
 import { SITE, BUSINESS, PERSON } from "../data/client";
+import { PRICING, usd } from "../data/pricing";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -35,22 +36,21 @@ const jsonLd = {
       name: "US",
     },
   ],
-  priceRange: "$150/month",
+  priceRange: `${usd(PRICING.monthly)}/month`,
 };
 ---
 
 <BaseLayout
-  title={`Small Business Websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} — $150/Month, $0 Down | ${SITE.title}`}
+  title={`Small Business Websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} — ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
   path="/"
-  description={`Custom websites for small businesses in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. $150/month, zero down — design, hosting, maintenance and local SEO included. Built by hand by a senior software engineer, not a template.`}
-  ogDescription={`Custom small business websites from ${BUSINESS.address.city}, ${BUSINESS.address.state}. $150/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
+  description={`Custom websites for small businesses in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. ${usd(PRICING.monthly)}/month, zero down — design, hosting, maintenance and local SEO included. Built by hand by a senior software engineer, not a template.`}
+  ogDescription={`Custom small business websites from ${BUSINESS.address.city}, ${BUSINESS.address.state}. ${usd(PRICING.monthly)}/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Websites for Small Businesses, Built by a Real Engineer" brandSize="hero">
     <p>
-      A custom site for your {BUSINESS.address.city} business — designed,
-      built, hosted and looked after by one experienced engineer. $150 a
-      month, nothing down, twelve-month minimum once it's live.
+      A custom site for your business — designed, built, hosted and looked
+      after by one experienced engineer. {usd(PRICING.monthly)} a month, nothing down.
     </p>
     <div class="cluster">
       <a href="/contact">Get a Free Quote</a>
@@ -99,26 +99,22 @@ const jsonLd = {
   <SpotBand>
     <h2>One Flat Price. Everything Included.</h2>
     <p>
-      <strong>$150 a month. $0 down.</strong> That covers a custom design,
+      <strong>{usd(PRICING.monthly)} a month. $0 down.</strong> That covers a custom design,
       professional, search-optimized content, hosting, your domain,
       security updates, ongoing changes, and the local-search groundwork
       that gets you found. No surprise invoices and no separate maintenance
       plan.
     </p>
     <p>
-      $0 down means there's no lump sum up front — the first month's $150 is
-      what starts the work. The commitment is <strong>twelve months, and it
-      starts the day the site goes live</strong> — building the site is weeks of work,
-      and the first year of subscription is what pays for it. After that
-      you're month to month, cancel with 30 days' notice. If you'd rather pay
-      for the build once and own it outright,
-      <a href="/services/small-business#own-it">that's an option too</a>.
+      $0 down means there's no lump sum up front — the first month's {usd(PRICING.monthly)} is
+      what starts the work. The first year is a twelve-month commitment; after
+      that you're month to month.
     </p>
     <p>
       For comparison: a template on Squarespace costs $33 a month before
       you've paid anyone to set it up, and a typical agency build starts
-      around $5,000 up front — before hosting or a single change. Three
-      years with me is $5,400, with hosting and every update already in.
+      around $5,000 up front — before hosting or a single change. Mine is
+      {usd(PRICING.monthly)} a month, with hosting and every update already in.
     </p>
     <p>
       <a href="/services/small-business">Full pricing and what's included</a>
@@ -210,7 +206,7 @@ const jsonLd = {
         <ul class="flow" data-flow="sm">
           <li>Need a large e-commerce store with thousands of products</li>
           <li>Want a custom web application, not a marketing site</li>
-          <li>Can't commit to twelve months once the site is live — a one-time build has no term</li>
+          <li>Aren't ready to commit to a first year</li>
           <li>Are looking for the cheapest possible option — a $0 builder is cheaper</li>
         </ul>
         <p>

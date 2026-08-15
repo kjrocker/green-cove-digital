@@ -153,7 +153,7 @@ a:hover {
   text-decoration: none;
 }
 
-:focus {
+:focus-visible {
   outline: 2px solid;
   outline-offset: 0.3ch;
 }
@@ -162,7 +162,7 @@ a:hover {
   scroll-margin-top: 2ex;
 }
 
-main:focus {
+main:focus-visible {
   outline: none;
 }
 

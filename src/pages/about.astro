@@ -7,6 +7,7 @@ import Grid from "../components/Grid.astro";
 import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
 import { SITE, BUSINESS, PERSON } from "../data/client";
+import { PRICING, usd } from "../data/pricing";
 import kevinPhoto from "../assets/kevin.jpg";
 const jsonLd = {
   "@context": "https://schema.org",
@@ -82,7 +83,7 @@ const jsonLd = {
           <a href="/services/small-business"
             >custom sites for small businesses</a
           >
-          for $150/month with nothing down, and I keep them fast, secure and
+          for {usd(PRICING.monthly)}/month with nothing down, and I keep them fast, secure and
           up to date for as long as you're a client. You talk to me, the
           person writing the code, every time.
         </p>
