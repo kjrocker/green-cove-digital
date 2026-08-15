@@ -1,0 +1,67 @@
+---
+import { SITE } from "../data/client";
+
+interface Props {
+  /** Rendered verbatim into <title>. No site-name suffix is appended. */
+  title: string;
+  /** Path only, e.g. "/" or "/about". Joined onto SITE.url for rel=canonical. */
+  path?: string;
+  /**
+   * meta[name=description]. Omitting it suppresses the whole SEO block
+   * (canonical + description + og:* + twitter:*), which is what thanks.astro
+   * does today.
+   */
+  description?: string;
+  /** og:title and twitter:title. Defaults to title. */
+  ogTitle?: string;
+  /** og:description. Defaults to description. */
+  ogDescription?: string;
+  /** twitter:description. Defaults to ogDescription. */
+  twitterDescription?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
+}
+
+const {
+  title,
+  path = "/",
+  description,
+  ogTitle,
+  ogDescription,
+  twitterDescription,
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+// The five SEO'd pages genuinely differ at each level — <title> is not
+// og:title on four of them, description is not og:description on three, and
+// og:description is not twitter:description on two. twitter:title always
+// tracks og:title, so it is derived rather than exposed as a prop.
+const og = ogTitle ?? title;
+const ogDesc = ogDescription ?? description;
+const twitterDesc = twitterDescription ?? ogDesc;
+---
+
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+{noindex && <meta name="robots" content="noindex" />}
+{
+  description && (
+    <>
+      <link rel="canonical" href={`${SITE.url}${path}`} />
+      <meta name="description" content={description} />
+      <meta property="og:title" content={og} />
+      <meta property="og:description" content={ogDesc} />
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={og} />
+      <meta name="twitter:description" content={twitterDesc} />
+    </>
+  )
+}
+<title>{title}</title>
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+<slot name="head" />

@@ -1,196 +1,166 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
-import Footer from "../components/Footer.astro";
-import "../css/reset.css";
-import "../css/global.css";
-import "../css/index.css";
 import { SITE, BUSINESS } from "../data/client";
 
-const hasError = Astro.url.searchParams.get("error") === "1";
----
+const hasError = Astro.url.searchParams.get("error") === "1";---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={`${SITE.url}/contact`} />
-    <meta
-      name="description"
-      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
-    />
-    <meta property="og:title" content={`Contact ${SITE.title}`} />
-    <meta
-      property="og:description"
-      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={`Contact ${SITE.title}`} />
-    <meta
-      name="twitter:description"
-      content={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
-    />
-    <title>Contact - {SITE.title}</title>
-  </head>
-  <body>
-    <Hero title="Get in Touch">
-      <p>
-        Ready to get your business online or need technical guidance? Send
-        me a message and I'll get back to you within one business day.
-      </p>
-    </Hero>
+<BaseLayout
+  title={`Contact - ${SITE.title}`}
+  path="/contact"
+  ogTitle={`Contact ${SITE.title}`}
+  description={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
+>
+  <Hero slot="header" title="Get in Touch">
+    <p>
+      Ready to get your business online or need technical guidance? Send
+      me a message and I'll get back to you within one business day.
+    </p>
+  </Hero>
 
-    <main>
-      <Section>
-        <h2>Send a Message</h2>
-        <p>
-          <strong>Email:</strong>
-          <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
-        </p>
-        <p>
-          <strong>Based in:</strong>
-          {BUSINESS.address.city}, {BUSINESS.address.state} — working with businesses
-          locally and remotely.
-        </p>
-        <Grid layout="50-50">
-          <form
-            class="flow contact-form"
-            action="/api/contact"
-            method="POST"
-          >
-            {
-              hasError && (
-                <p class="form-error" role="alert">
-                  Something went wrong sending your message. Please try again,
-                  or email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> directly.
-                </p>
-              )
-            }
-            <div class="form-field flow" data-flow="sm">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                autocomplete="name"
-              />
-            </div>
-            <div class="form-field flow" data-flow="sm">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                autocomplete="email"
-              />
-            </div>
-            <div class="form-field flow" data-flow="sm">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required
-              ></textarea>
-            </div>
-            <div class="honeypot" aria-hidden="true">
-              <label for="company">Company (leave blank)</label>
-              <input
-                type="text"
-                id="company"
-                name="company"
-                tabindex="-1"
-                autocomplete="off"
-              />
-            </div>
-            <button type="submit">Send Message</button>
-          </form>
-        </Grid>
-      </Section>
+  <Section>
+    <h2>Send a Message</h2>
+    <p>
+      <strong>Email:</strong>
+      <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+    </p>
+    <p>
+      <strong>Based in:</strong>
+      {BUSINESS.address.city}, {BUSINESS.address.state} — working with businesses
+      locally and remotely.
+    </p>
+    <Grid layout="50-50">
+      <form
+        class="flow contact-form"
+        action="/api/contact"
+        method="POST"
+      >
+        {
+          hasError && (
+            <p class="form-error" role="alert">
+              Something went wrong sending your message. Please try again,
+              or email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> directly.
+            </p>
+          )
+        }
+        <div class="form-field flow" data-flow="sm">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
+          />
+        </div>
+        <div class="form-field flow" data-flow="sm">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+        </div>
+        <div class="form-field flow" data-flow="sm">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required
+          ></textarea>
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label for="company">Company (leave blank)</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </Grid>
+  </Section>
 
-      <SpotBand>
-        <h2>What Happens Next</h2>
-        <p>
-          I'll reply within one business day with some initial questions
-          about your project. From there we'll set up a short call to talk
-          through scope and next steps — no obligation.
-        </p>
-      </SpotBand>
-    </main>
+  <SpotBand>
+    <h2>What Happens Next</h2>
+    <p>
+      I'll reply within one business day with some initial questions
+      about your project. From there we'll set up a short call to talk
+      through scope and next steps — no obligation.
+    </p>
+  </SpotBand>
+</BaseLayout>
 
-    <Footer />
+<style>
+  .contact-form {
+    max-width: 50ch;
+  }
 
-    <style>
-      .contact-form {
-        max-width: 50ch;
-      }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
 
-      .form-field {
-        display: flex;
-        flex-direction: column;
-      }
+  .form-field label {
+    font-weight: 700;
+    font-size: var(--size-step-0);
+  }
 
-      .form-field label {
-        font-weight: 700;
-        font-size: var(--size-step-0);
-      }
+  .form-field input,
+  .form-field textarea {
+    border: 2px solid var(--color-dark);
+    border-radius: calc(var(--border-radius) / 2);
+    font-family: var(--font-base);
+    font-size: var(--size-step-0);
+    padding: var(--space-xs);
+    max-width: 100%;
+  }
 
-      .form-field input,
-      .form-field textarea {
-        border: 2px solid var(--color-dark);
-        border-radius: calc(var(--border-radius) / 2);
-        font-family: var(--font-base);
-        font-size: var(--size-step-0);
-        padding: var(--space-xs);
-        max-width: 100%;
-      }
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 
-      .form-field input:focus,
-      .form-field textarea:focus {
-        border-color: var(--color-primary);
-        outline: 2px solid var(--color-primary);
-        outline-offset: 2px;
-      }
+  button[type="submit"] {
+    background: var(--color-primary);
+    border: none;
+    border-radius: calc(var(--border-radius) / 2);
+    color: var(--color-light);
+    cursor: pointer;
+    font-family: var(--font-base);
+    font-size: var(--size-step-1);
+    font-weight: 700;
+    padding: var(--space-xs) var(--space-m);
+  }
 
-      button[type="submit"] {
-        background: var(--color-primary);
-        border: none;
-        border-radius: calc(var(--border-radius) / 2);
-        color: var(--color-light);
-        cursor: pointer;
-        font-family: var(--font-base);
-        font-size: var(--size-step-1);
-        font-weight: 700;
-        padding: var(--space-xs) var(--space-m);
-      }
+  button[type="submit"]:hover {
+    opacity: 0.9;
+  }
 
-      button[type="submit"]:hover {
-        opacity: 0.9;
-      }
+  .form-error {
+    background: var(--color-secondary);
+    color: var(--color-dark);
+    padding: var(--space-xs) var(--space-s);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: var(--size-step-0);
+  }
 
-      .form-error {
-        background: var(--color-secondary);
-        color: var(--color-dark);
-        padding: var(--space-xs) var(--space-s);
-        border-radius: calc(var(--border-radius) / 2);
-        font-size: var(--size-step-0);
-      }
+  .form-error a {
+    color: inherit;
+  }
 
-      .form-error a {
-        color: inherit;
-      }
-
-      .honeypot {
-        position: absolute;
-        left: -10000px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      }
-    </style>
-  </body>
-</html>
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>

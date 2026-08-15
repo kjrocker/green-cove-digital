@@ -1,217 +1,181 @@
 ---
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import Card from "../../components/Card.astro";
 import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
-import Footer from "../../components/Footer.astro";
-import "../../css/reset.css";
-import "../../css/global.css";
-import "../../css/index.css";
 import { SITE, BUSINESS } from "../../data/client";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Small Business Website Development",
+  provider: {
+    "@type": "LocalBusiness",
+    name: BUSINESS.name,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: BUSINESS.address.city,
+      addressRegion: BUSINESS.address.state,
+      addressCountry: "US",
+    },
+  },
+  description:
+    "Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance.",
+  areaServed: {
+    "@type": "Country",
+    name: "US",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "150",
+    priceCurrency: "USD",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "150",
+      priceCurrency: "USD",
+      unitText: "month",
+    },
+  },
+};
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={`${SITE.url}/services/small-business`} />
-    <meta
-      name="description"
-      content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance. Cancel anytime."
-    />
-    <meta
-      property="og:title"
-      content={`Small Business Website Pricing & Features | ${SITE.title}`}
-    />
-    <meta
-      property="og:description"
-      content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:title"
-      content={`Small Business Website Pricing & Features | ${SITE.title}`}
-    />
-    <meta
-      name="twitter:description"
-      content="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
-    />
-    <title>Small Business Website Pricing & Features - {SITE.title}</title>
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        name: "Small Business Website Development",
-        provider: {
-          "@type": "LocalBusiness",
-          name: BUSINESS.name,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: BUSINESS.address.city,
-            addressRegion: BUSINESS.address.state,
-            addressCountry: "US",
-          },
-        },
-        description:
-          "Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance.",
-        areaServed: {
-          "@type": "Country",
-          name: "US",
-        },
-        offers: {
-          "@type": "Offer",
-          price: "150",
-          priceCurrency: "USD",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "150",
-            priceCurrency: "USD",
-            unitText: "month",
-          },
-        },
-      })}
-    />
-  </head>
-  <body>
-    <Hero title="Small Business Websites" wrapNav>
-      <p class="big">
-        A custom website designed for your business — built by hand,
-        optimized for local search, and fast enough to score 100 on Google
-        Lighthouse. Serving small businesses in {BUSINESS.address.city}, {
-          BUSINESS.address.state
-        } and everywhere else.
-      </p>
-    </Hero>
+<BaseLayout
+  title={`Small Business Website Pricing & Features - ${SITE.title}`}
+  path="/services/small-business"
+  ogTitle={`Small Business Website Pricing & Features | ${SITE.title}`}
+  description="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance. Cancel anytime."
+  ogDescription="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
+  jsonLd={jsonLd}
+>
+  <Hero slot="header" title="Small Business Websites" wrapNav>
+    <p class="big">
+      A custom website designed for your business — built by hand,
+      optimized for local search, and fast enough to score 100 on Google
+      Lighthouse. Serving small businesses in {BUSINESS.address.city}, {
+        BUSINESS.address.state
+      } and everywhere else.
+    </p>
+  </Hero>
 
-    <main>
-      <Section>
-        <h2>Pricing That Makes Sense</h2>
-        <Grid layout="50-50">
-          <div class="flow">
-            <h3>$150/Month</h3>
-            <p>
-              One predictable monthly payment that covers design, hosting,
-              maintenance, and updates. Squarespace charges $33/month for a
-              template — I build something custom for $150.
-            </p>
-            <p>
-              <strong>Zero down payment.</strong> Pay as you grow. Cancel anytime
-              with 30 days notice.
-            </p>
-            <p>
-              <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
-              to a live site, depending on content and scope.
-            </p>
-          </div>
-          <Card>
-            <h3>What's Included</h3>
-            <ul class="flow" data-flow="sm">
-              <li>Custom branded website design</li>
-              <li>Domain name management</li>
-              <li>Responsive mobile-friendly design</li>
-              <li>
-                Content management (you can update text and images yourself)
-              </li>
-              <li>Basic SEO optimization</li>
-              <li>Hosting and maintenance</li>
-              <li>Regular updates and security patches</li>
-              <li>Translation services (available for an additional fee)</li>
-            </ul>
-          </Card>
-        </Grid>
-      </Section>
+  <Section>
+    <h2>Pricing That Makes Sense</h2>
+    <Grid layout="50-50">
+      <div class="flow">
+        <h3>$150/Month</h3>
+        <p>
+          One predictable monthly payment that covers design, hosting,
+          maintenance, and updates. Squarespace charges $33/month for a
+          template — I build something custom for $150.
+        </p>
+        <p>
+          <strong>Zero down payment.</strong> Pay as you grow. Cancel anytime
+          with 30 days notice.
+        </p>
+        <p>
+          <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
+          to a live site, depending on content and scope.
+        </p>
+      </div>
+      <Card>
+        <h3>What's Included</h3>
+        <ul class="flow" data-flow="sm">
+          <li>Custom branded website design</li>
+          <li>Domain name management</li>
+          <li>Responsive mobile-friendly design</li>
+          <li>
+            Content management (you can update text and images yourself)
+          </li>
+          <li>Basic SEO optimization</li>
+          <li>Hosting and maintenance</li>
+          <li>Regular updates and security patches</li>
+          <li>Translation services (available for an additional fee)</li>
+        </ul>
+      </Card>
+    </Grid>
+  </Section>
 
-      <SpotBand>
-        <h2>Built for Performance</h2>
-        <p>
-          Every extra second of load time costs you visitors and sales. My
-          sites load in under a second — I optimize images, strip out
-          unnecessary code, and use modern hosting infrastructure to keep
-          things fast.
-        </p>
-        <p>
-          Fast sites rank higher on Google and convert better. This site
-          scores 100 on Google Lighthouse, and yours will too.
-        </p>
-      </SpotBand>
+  <SpotBand>
+    <h2>Built for Performance</h2>
+    <p>
+      Every extra second of load time costs you visitors and sales. My
+      sites load in under a second — I optimize images, strip out
+      unnecessary code, and use modern hosting infrastructure to keep
+      things fast.
+    </p>
+    <p>
+      Fast sites rank higher on Google and convert better. This site
+      scores 100 on Google Lighthouse, and yours will too.
+    </p>
+  </SpotBand>
 
-      <Section>
-        <h2>Perfect For</h2>
-        <Grid as="ul" layout="50-50" role="list">
-          <Card as="li">
-            <h3>Local Services</h3>
-            <p>
-              Plumbers, electricians, landscapers, contractors. A
-              mobile-friendly site with clear contact info, service areas, and
-              the SEO work needed to show up when someone searches "plumber near
-              me."
-            </p>
-          </Card>
-          <Card as="li">
-            <h3>Retail & E-commerce</h3>
-            <p>
-              Small shops and boutiques. Product showcases, payment processing
-              if you need it, and a site that works on phones and tablets where
-              most shopping happens.
-            </p>
-          </Card>
-          <Card as="li">
-            <h3>Professional Services</h3>
-            <p>
-              Consultants, lawyers, accountants. A site that establishes
-              credibility, explains your services clearly, and makes it easy for
-              clients to schedule a consultation.
-            </p>
-          </Card>
-          <Card as="li">
-            <h3>Restaurants & Hospitality</h3>
-            <p>
-              Easy-to-update menus, hours, location info, and reservation
-              integration if needed. Update specials yourself without calling a
-              developer.
-            </p>
-          </Card>
-        </Grid>
-      </Section>
+  <Section>
+    <h2>Perfect For</h2>
+    <Grid as="ul" layout="50-50" role="list">
+      <Card as="li">
+        <h3>Local Services</h3>
+        <p>
+          Plumbers, electricians, landscapers, contractors. A
+          mobile-friendly site with clear contact info, service areas, and
+          the SEO work needed to show up when someone searches "plumber near
+          me."
+        </p>
+      </Card>
+      <Card as="li">
+        <h3>Retail & E-commerce</h3>
+        <p>
+          Small shops and boutiques. Product showcases, payment processing
+          if you need it, and a site that works on phones and tablets where
+          most shopping happens.
+        </p>
+      </Card>
+      <Card as="li">
+        <h3>Professional Services</h3>
+        <p>
+          Consultants, lawyers, accountants. A site that establishes
+          credibility, explains your services clearly, and makes it easy for
+          clients to schedule a consultation.
+        </p>
+      </Card>
+      <Card as="li">
+        <h3>Restaurants & Hospitality</h3>
+        <p>
+          Easy-to-update menus, hours, location info, and reservation
+          integration if needed. Update specials yourself without calling a
+          developer.
+        </p>
+      </Card>
+    </Grid>
+  </Section>
 
-      <SpotBand>
-        <h2>No Vendor Lock-In</h2>
-        <p>
-          Your content, your domain, your customer data—it all stays yours.
-          Unlike Squarespace or Wix, you're not trapped in a proprietary
-          platform that controls your business.
-        </p>
-        <p>
-          I build sites on open web standards, which means your content is
-          portable and you're not subject to arbitrary price hikes, forced
-          feature restrictions, or platform policy changes that could hurt
-          your business overnight.
-        </p>
-        <p>
-          If your needs change or you want to move in a different direction,
-          you won't have to rebuild from scratch. Your digital presence is
-          yours to control.
-        </p>
-      </SpotBand>
+  <SpotBand>
+    <h2>No Vendor Lock-In</h2>
+    <p>
+      Your content, your domain, your customer data—it all stays yours.
+      Unlike Squarespace or Wix, you're not trapped in a proprietary
+      platform that controls your business.
+    </p>
+    <p>
+      I build sites on open web standards, which means your content is
+      portable and you're not subject to arbitrary price hikes, forced
+      feature restrictions, or platform policy changes that could hurt
+      your business overnight.
+    </p>
+    <p>
+      If your needs change or you want to move in a different direction,
+      you won't have to rebuild from scratch. Your digital presence is
+      yours to control.
+    </p>
+  </SpotBand>
 
-      <Section>
-        <h2>Ready to Get Started?</h2>
-        <p>
-          Tell me about your business and I'll let you know what a site would
-          look like and how long it'll take. No commitment.
-        </p>
-        <p>
-          <a href="/contact">Start Your Website — $0 Down</a>
-        </p>
-      </Section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+  <Section>
+    <h2>Ready to Get Started?</h2>
+    <p>
+      Tell me about your business and I'll let you know what a site would
+      look like and how long it'll take. No commitment.
+    </p>
+    <p>
+      <a href="/contact">Start Your Website — $0 Down</a>
+    </p>
+  </Section>
+</BaseLayout>

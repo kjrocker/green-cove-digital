@@ -1,47 +1,28 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
-import Footer from "../components/Footer.astro";
-import "../css/reset.css";
-import "../css/global.css";
-import "../css/index.css";
 import { SITE, BUSINESS } from "../data/client";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="noindex" />
-    <title>Thanks - {SITE.title}</title>
-  </head>
-  <body>
-    <Hero title="Thanks — message received">
-      <p>
-        I'll get back to you within one business day. If it's urgent, you
-        can also reach me directly at
-        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
-      </p>
-    </Hero>
+<BaseLayout title={`Thanks - ${SITE.title}`} noindex>
+  <Hero slot="header" title="Thanks — message received">
+    <p>
+      I'll get back to you within one business day. If it's urgent, you can also
+      reach me directly at
+      <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+    </p>
+  </Hero>
 
-    <main>
-      <Section>
-        <h2>What Happens Next</h2>
-        <p>
-          You should see a confirmation email in your inbox shortly. I'll reply
-          with some initial questions about your project, and from there we'll
-          set up a short call to talk through scope and next steps — no
-          obligation.
-        </p>
-        <p>
-          <a href="/">← Back to home</a>
-        </p>
-      </Section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+  <Section>
+    <h2>What Happens Next</h2>
+    <p>
+      You should see a confirmation email in your inbox shortly. I'll reply with
+      some initial questions about your project, and from there we'll set up a
+      short call to talk through scope and next steps — no obligation.
+    </p>
+    <p>
+      <a href="/">← Back to home</a>
+    </p>
+  </Section>
+</BaseLayout>
