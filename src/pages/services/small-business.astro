@@ -58,6 +58,10 @@ const faqs: { q: string; a: string }[] = [
     a: "Every site ships with the technical SEO groundwork done properly: fast load times, mobile-first layout, clean structure, local business schema, and copy written around what your customers actually search for. That's a real advantage over most small business sites. But nobody can promise a specific ranking — how fast you climb depends on your competition, your reviews, and time.",
   },
   {
+    q: "How is this different from Wix or Squarespace?",
+    a: `Wix and Squarespace sell you a tool; I sell you a finished, looked-after website. With a builder you pay $20–40 a month and then do the design, the writing, the SEO and every update yourself, on a template thousands of other businesses use. With me it's ${usd(PRICING.monthly)} a month for a custom site that's designed, written and maintained for you, and that's built to load faster and rank better than a template can. If you enjoy building websites, a builder is cheaper. If you'd rather run your business, this is.`,
+  },
+  {
     q: "Where is the site hosted, and how secure is it?",
     a: "On modern, professionally run hosting infrastructure with a global network in front of it — not a shared server or a computer in my office. Sites without a content editor are served as plain pre-built pages, so there is almost nothing to break into; sites with one are kept patched as part of the subscription. Either way, SSL and backups are handled and you never see a hosting bill.",
   },
@@ -119,18 +123,18 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Small Business Website Pricing — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
+  title={`Website Subscription Pricing — ${usd(PRICING.monthly)}/mo, $0 Down, No Build Fee | ${SITE.title}`}
   path="/services/small-business"
-  ogTitle={`Small Business Websites: ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
-  description={`${usd(PRICING.monthly)}/month, $0 down: custom small business websites, built remotely for businesses anywhere in the US. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month.`}
+  ogTitle={`Website Subscription Pricing: ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
+  description={`What a subscription website costs and what's included: ${usd(PRICING.monthly)}/month, $0 down, no up-front build fee. Custom design, hosting, domain, content updates and local SEO for plumbers, restaurants, shops and practices anywhere in the US.`}
   ogDescription={`Custom small business websites for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours.`}
   jsonLd={jsonLd}
 >
-  <Hero slot="header" title="Small Business Websites">
+  <Hero slot="header" title={`Website Subscription Pricing: ${usd(PRICING.monthly)} a Month, $0 Down`}>
     <p class="big">
-      A custom website for your business — built by hand, optimized for local
-      search, and fast. One flat monthly price, $0 down. Here's exactly what
-      it costs and what's included.
+      A custom small business website — built by hand, optimized for local
+      search, and fast — on one monthly subscription with no up-front build
+      fee. Here's exactly what it costs and what's included.
     </p>
     <div class="cluster">
       <a href="/contact">Book a Call</a>
@@ -139,7 +143,7 @@ const jsonLd = {
   </Hero>
 
   <Section>
-    <h2>What It Costs</h2>
+    <h2>What a Subscription Website Costs</h2>
     <Grid layout="50-50">
       <div class="flow">
         <h3>{usd(PRICING.monthly)}/Month. $0 Down.</h3>
@@ -181,7 +185,7 @@ const jsonLd = {
   </Section>
 
   <SpotBand>
-    <h2>Why a Monthly Fee?</h2>
+    <h2>Why a Monthly Subscription Instead of a Big Invoice?</h2>
     <p>
       Because a website is never done. The menu changes, the summer hours start,
       you add a service, a staff photo is three years old. Each fix is a
@@ -254,36 +258,37 @@ const jsonLd = {
   </SpotBand>
 
   <Section ornament>
-    <h2>Perfect For</h2>
+    <h2>Websites for Trades, Restaurants, Shops and Practices</h2>
     <Grid as="ul" layout="50-50" role="list">
       <Card as="li">
-        <h3>Local Services</h3>
+        <h3>Plumbers, Electricians and Contractors</h3>
         <p>
-          Plumbers, electricians, landscapers, contractors. A mobile-friendly
-          site with clear contact info, service areas, and the SEO work needed
+          Websites for the trades — plumbers, electricians, landscapers, HVAC,
+          general contractors. A mobile-friendly site with clear contact info, service areas, and the SEO work needed
           to show up when someone searches "plumber near me."
         </p>
       </Card>
       <Card as="li">
-        <h3>Retail & Small Shops</h3>
+        <h3>Boutiques and Small Shops</h3>
         <p>
-          Boutiques and specialty stores. Product showcases, simple
+          Websites for boutiques, specialty stores and makers. Product showcases, simple
           checkout for a handful of products if you need it, and a site that works on the phones and
           tablets where most browsing happens.
         </p>
       </Card>
       <Card as="li">
-        <h3>Professional Services</h3>
+        <h3>Lawyers, Accountants and Therapists</h3>
         <p>
-          Consultants, lawyers, accountants, therapists. A site that establishes
+          Websites for professional practices — law firms, accountants,
+          therapists, consultants. A site that establishes
           credibility, explains your services clearly, and makes it easy for
           clients to get in touch — online booking can be added if you use it.
         </p>
       </Card>
       <Card as="li">
-        <h3>Restaurants & Hospitality</h3>
+        <h3>Restaurants and Cafés</h3>
         <p>
-          Easy-to-update menus, hours, location info, and a link to your
+          Restaurant websites with easy-to-update menus, hours, location info, and a link to your
           reservation system if you use one. Update specials yourself — or email me and I'll
           do it.
         </p>

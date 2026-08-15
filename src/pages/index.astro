@@ -28,16 +28,17 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Small Business Websites — ${usd(PRICING.monthly)}/mo, $0 Down, Everything Included | ${SITE.title}`}
+  title={`Subscription Websites for Small Businesses — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
   path="/"
-  description={`Custom websites for small businesses anywhere in the US. ${usd(PRICING.monthly)}/month, $0 down — design, hosting, maintenance and local SEO included. Built by a senior engineer, not a template.`}
+  description={`Custom small business websites on one monthly subscription: ${usd(PRICING.monthly)}/month, $0 down, no up-front build fee. Design, hosting, maintenance, updates and local SEO included. Built by a senior engineer, not a template.`}
   ogDescription={`Custom small business websites, ${usd(PRICING.monthly)}/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
   jsonLd={jsonLd}
 >
-  <Hero slot="header" title="Websites for Small Businesses, Built by a Real Engineer" brandSize="hero">
+  <Hero slot="header" title={`Small Business Websites for ${usd(PRICING.monthly)} a Month, $0 Down`} brandSize="hero">
     <p>
-      A custom site for your business — designed, built, hosted and looked
-      after by one experienced engineer. {usd(PRICING.monthly)} a month, $0 down.
+      A custom website on one monthly subscription — designed, built, hosted
+      and looked after by an experienced engineer, not a template or an
+      agency. No up-front build fee.
     </p>
     <div class="cluster">
       <a href="/contact">Book a Call</a>
@@ -84,7 +85,7 @@ const jsonLd = {
   </Section>
 
   <SpotBand>
-    <h2>One Flat Price. Everything Included.</h2>
+    <h2>One Subscription. Everything Included.</h2>
     <p>
       <strong>{usd(PRICING.monthly)} a month. $0 down.</strong> That covers a custom design,
       professional, search-optimized content, hosting, your domain,
@@ -109,7 +110,7 @@ const jsonLd = {
   </SpotBand>
 
   <Section>
-    <h2>Why Work With Me?</h2>
+    <h2>Why an Engineer Instead of a Page Builder?</h2>
     <Grid as="ul" layout="50-50" role="list">
       <Card as="li">
         <h3>You Deal With Me, Start to Finish</h3>
@@ -174,8 +175,9 @@ const jsonLd = {
   <Section>
     <h2>Who This Is For</h2>
     <p>
-      Local service businesses, shops, restaurants, and professional
-      practices anywhere in the US — businesses
+      Plumbers, electricians and contractors; restaurants and cafés; boutiques
+      and small shops; lawyers, accountants and therapists — small businesses
+      anywhere in the US
       that need a professional site that gets found and turns visitors into
       calls, without an in-house marketing team.
     </p>
@@ -184,7 +186,7 @@ const jsonLd = {
         <h3>A good fit if you…</h3>
         <ul class="flow" data-flow="sm">
           <li>Want a site that ranks locally and works on every phone</li>
-          <li>Prefer a predictable monthly bill to a big up-front invoice</li>
+          <li>Prefer a predictable monthly subscription to a big up-front invoice</li>
           <li>Would rather email one person than learn a page builder</li>
           <li>Need it live in weeks, not months</li>
         </ul>

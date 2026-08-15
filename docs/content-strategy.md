@@ -176,6 +176,36 @@ honest Charlotte page — was not built; revisit only if there is a reason to.
 - [ ] Deepen homepage and small-business page content per the reference-site
       patterns below (UPDATE.md's original ask).
 
+## Keyword map (2026-08-16)
+
+With no location, the site targets the **model** and the **verticals**, not
+a city. Every heading and meta tag below was written against this map — keep
+it current when copy moves.
+
+| Page | Primary query family | Secondary | Where it lives |
+|---|---|---|---|
+| `/` | *small business website* + *subscription* / *$0 down* / *monthly* | *website for $180 a month*, *no upfront cost website*, *engineer not page builder*, *Wix/Squarespace alternative* | `<title>` "Subscription Websites for Small Businesses — $180/mo, $0 Down"; H1 "Small Business Websites for $180 a Month, $0 Down"; H2s "One Subscription. Everything Included." / "Why an Engineer Instead of a Page Builder?"; "Who This Is For" names the verticals |
+| `/services/small-business` | *website subscription pricing*, *pay monthly website*, *website with no build fee* | *what does a small business website cost*, *website for plumbers / restaurants / boutiques / lawyers / accountants / therapists*, *Squarespace vs web designer* | `<title>` "Website Subscription Pricing — $180/mo, $0 Down, No Build Fee"; H1 "Website Subscription Pricing: $180 a Month, $0 Down"; H2 "What a Subscription Website Costs"; H2 "Websites for Trades, Restaurants, Shops and Practices" with vertical-named H3s; FAQ "How is this different from Wix or Squarespace?" |
+| `/about` | *(none — trust page)* | *engineer-built website*, *PostgreSQL contributor* as E-E-A-T | body copy; anchor "custom small business websites on a monthly subscription" → pricing page |
+
+Rules of thumb:
+
+- **"Subscription"** is the noun for the model in headings and meta;
+  "monthly" and "$0 down" are its modifiers. Don't rotate synonyms
+  ("plan", "membership", "retainer") — pick the one people search.
+- **"No up-front build fee"** is the meta/hero gloss for $0 down. It's the
+  phrase that matches how people describe the problem; "$0 down" is the hook.
+- **Verticals are named, not categorised.** "Plumbers, Electricians and
+  Contractors" ranks; "Local Services" doesn't. Same for the homepage "Who
+  This Is For" paragraph. If a vertical page is ever added, it's for a trade
+  with a real example site behind it — not a templated set.
+- **One comparison FAQ**, not three. Wix/Squarespace is the query people
+  type; agencies aren't a search term, so that comparison stays in prose.
+- **Local SEO** in copy always means the *client's* local SEO. It is a
+  feature we deliver, never a claim about us.
+- Both H1s carry the price and are templated from `pricing.ts`, so a price
+  change flows through automatically.
+
 ## Standing rules
 
 - **This site gets no blog or content section.** All writing goes to the
