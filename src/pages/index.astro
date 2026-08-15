@@ -1,6 +1,6 @@
 ---
+import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
-import Curve from "../components/Curve.astro";
 import Footer from "../components/Footer.astro";
 import "../css/reset.css";
 import "../css/global.css";
@@ -139,25 +139,19 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
         </ul>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>10+ Years of Professional Engineering</h2>
-            <p>
-              I've spent my career building software that teams depend on —
-              dispatch systems for first responders, real estate platforms,
-              marketing analytics tools. My deep specialties are TypeScript
-              monorepos (Turborepo, Nx, pnpm workspaces) and PostgreSQL (schema
-              design, query optimization, migration planning).
-            </p>
-            <p>
-              <a href="/about">Learn more about my background</a>
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>10+ Years of Professional Engineering</h2>
+        <p>
+          I've spent my career building software that teams depend on —
+          dispatch systems for first responders, real estate platforms,
+          marketing analytics tools. My deep specialties are TypeScript
+          monorepos (Turborepo, Nx, pnpm workspaces) and PostgreSQL (schema
+          design, query optimization, migration planning).
+        </p>
+        <p>
+          <a href="/about">Learn more about my background</a>
+        </p>
+      </SpotBand>
 
       <Section>
         <h2>Services</h2>

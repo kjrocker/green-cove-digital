@@ -1,6 +1,6 @@
 ---
+import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
-import Curve from "../../components/Curve.astro";
 import Footer from "../../components/Footer.astro";
 import Cove from "../../components/Cove.astro";
 import Navigation from "../../components/Navigation.astro";
@@ -174,31 +174,25 @@ import { SITE, BUSINESS } from "../../data/client";
         </div>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>How It Works</h2>
-            <p>
-              Start with a free consultation. Tell me what you're working on — a
-              problem you're stuck on, a decision you're weighing, or a system
-              you need reviewed. I'll ask questions, give you my honest read on
-              the situation, and let you know whether and how I can help.
-            </p>
-            <p>
-              From there, we scope the engagement together. Some engagements are
-              a single session to answer a specific question. Others are ongoing
-              retainers where I'm available on a weekly basis. I'll recommend
-              the structure that fits your situation.
-            </p>
-            <p>
-              No retainer required to get started. No sales pitch on the first
-              call.
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>How It Works</h2>
+        <p>
+          Start with a free consultation. Tell me what you're working on — a
+          problem you're stuck on, a decision you're weighing, or a system
+          you need reviewed. I'll ask questions, give you my honest read on
+          the situation, and let you know whether and how I can help.
+        </p>
+        <p>
+          From there, we scope the engagement together. Some engagements are
+          a single session to answer a specific question. Others are ongoing
+          retainers where I'm available on a weekly basis. I'll recommend
+          the structure that fits your situation.
+        </p>
+        <p>
+          No retainer required to get started. No sales pitch on the first
+          call.
+        </p>
+      </SpotBand>
 
       <Section>
         <h2>How I Can Help</h2>
@@ -268,25 +262,19 @@ import { SITE, BUSINESS } from "../../data/client";
         </ul>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>Who I Work With</h2>
-            <p>
-              Engineering leads and CTOs at startups and mid-size companies
-              (typically teams of 5–50 engineers) who need senior-level
-              expertise without a full-time hire.
-            </p>
-            <p>
-              Non-technical founders making their first infrastructure
-              decisions. Small development teams that need a second opinion on
-              architecture. Companies evaluating a technical acquisition.
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>Who I Work With</h2>
+        <p>
+          Engineering leads and CTOs at startups and mid-size companies
+          (typically teams of 5–50 engineers) who need senior-level
+          expertise without a full-time hire.
+        </p>
+        <p>
+          Non-technical founders making their first infrastructure
+          decisions. Small development teams that need a second opinion on
+          architecture. Companies evaluating a technical acquisition.
+        </p>
+      </SpotBand>
 
       <Section>
         <h2>Let's Talk</h2>

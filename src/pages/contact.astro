@@ -1,6 +1,6 @@
 ---
+import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
-import Curve from "../components/Curve.astro";
 import Footer from "../components/Footer.astro";
 import Cove from "../components/Cove.astro";
 import "../css/reset.css";
@@ -123,20 +123,14 @@ const hasError = Astro.url.searchParams.get("error") === "1";
         </div>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>What Happens Next</h2>
-            <p>
-              I'll reply within one business day with some initial questions
-              about your project. From there we'll set up a short call to talk
-              through scope and next steps — no obligation.
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>What Happens Next</h2>
+        <p>
+          I'll reply within one business day with some initial questions
+          about your project. From there we'll set up a short call to talk
+          through scope and next steps — no obligation.
+        </p>
+      </SpotBand>
     </main>
 
     <Footer />

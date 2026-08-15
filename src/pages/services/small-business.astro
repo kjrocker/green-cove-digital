@@ -1,6 +1,6 @@
 ---
+import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
-import Curve from "../../components/Curve.astro";
 import Footer from "../../components/Footer.astro";
 import Cove from "../../components/Cove.astro";
 import "../../css/reset.css";
@@ -139,25 +139,19 @@ import { SITE, BUSINESS } from "../../data/client";
         </div>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>Built for Performance</h2>
-            <p>
-              Every extra second of load time costs you visitors and sales. My
-              sites load in under a second — I optimize images, strip out
-              unnecessary code, and use modern hosting infrastructure to keep
-              things fast.
-            </p>
-            <p>
-              Fast sites rank higher on Google and convert better. This site
-              scores 100 on Google Lighthouse, and yours will too.
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>Built for Performance</h2>
+        <p>
+          Every extra second of load time costs you visitors and sales. My
+          sites load in under a second — I optimize images, strip out
+          unnecessary code, and use modern hosting infrastructure to keep
+          things fast.
+        </p>
+        <p>
+          Fast sites rank higher on Google and convert better. This site
+          scores 100 on Google Lighthouse, and yours will too.
+        </p>
+      </SpotBand>
 
       <Section>
         <h2>Perfect For</h2>
@@ -198,31 +192,25 @@ import { SITE, BUSINESS } from "../../data/client";
         </ul>
       </Section>
 
-      <div class="section spot-color-primary">
-        <Curve />
-        <div class="section__inner">
-          <Section>
-            <h2>No Vendor Lock-In</h2>
-            <p>
-              Your content, your domain, your customer data—it all stays yours.
-              Unlike Squarespace or Wix, you're not trapped in a proprietary
-              platform that controls your business.
-            </p>
-            <p>
-              I build sites on open web standards, which means your content is
-              portable and you're not subject to arbitrary price hikes, forced
-              feature restrictions, or platform policy changes that could hurt
-              your business overnight.
-            </p>
-            <p>
-              If your needs change or you want to move in a different direction,
-              you won't have to rebuild from scratch. Your digital presence is
-              yours to control.
-            </p>
-          </Section>
-        </div>
-        <Curve />
-      </div>
+      <SpotBand>
+        <h2>No Vendor Lock-In</h2>
+        <p>
+          Your content, your domain, your customer data—it all stays yours.
+          Unlike Squarespace or Wix, you're not trapped in a proprietary
+          platform that controls your business.
+        </p>
+        <p>
+          I build sites on open web standards, which means your content is
+          portable and you're not subject to arbitrary price hikes, forced
+          feature restrictions, or platform policy changes that could hurt
+          your business overnight.
+        </p>
+        <p>
+          If your needs change or you want to move in a different direction,
+          you won't have to rebuild from scratch. Your digital presence is
+          yours to control.
+        </p>
+      </SpotBand>
 
       <Section>
         <h2>Ready to Get Started?</h2>

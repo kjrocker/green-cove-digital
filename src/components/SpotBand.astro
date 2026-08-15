@@ -1,0 +1,21 @@
+---
+import Curve from "./Curve.astro";
+import Section from "./Section.astro";
+
+interface Props {
+  /** Selects the .spot-color-* modifier that sets --spot-color. */
+  spot?: "primary" | "secondary";
+}
+
+const { spot = "primary" } = Astro.props;
+---
+
+<div class:list={["section", `spot-color-${spot}`]}>
+  <Curve />
+  <div class="section__inner">
+    <Section>
+      <slot />
+    </Section>
+  </div>
+  <Curve />
+</div>
