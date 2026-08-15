@@ -111,7 +111,8 @@ code changes hands.
   one may be hosted differently; we can't promise a single host. Say
   "professionally managed hosting" / "modern infrastructure".
 - **Small e-commerce** (a handful of products with checkout) is in scope;
-  large catalogues are not.
+  large catalogues are not. The canonical example is a coffee roaster — a
+  dozen coffees plus merch — which is why roasters are a named vertical.
 - **Design refresh** every four years is included.
 - **Translation**: offered case by case — no dedicated partner, no guarantee
   for any given language. Copy may say "often, yes… depends on the language,

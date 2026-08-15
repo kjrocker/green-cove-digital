@@ -185,7 +185,7 @@ it current when copy moves.
 | Page | Primary query family | Secondary | Where it lives |
 |---|---|---|---|
 | `/` | *small business website* + *subscription* / *$0 down* / *monthly* | *website for $180 a month*, *no upfront cost website*, *engineer not page builder*, *Wix/Squarespace alternative* | `<title>` "Subscription Websites for Small Businesses — $180/mo, $0 Down"; H1 "Small Business Websites for $180 a Month, $0 Down"; H2s "One Subscription. Everything Included." / "Why an Engineer Instead of a Page Builder?"; "Who This Is For" names the verticals |
-| `/services/small-business` | *website subscription pricing*, *pay monthly website*, *website with no build fee* | *what does a small business website cost*, *website for plumbers / restaurants / boutiques / lawyers / accountants / therapists*, *Squarespace vs web designer* | `<title>` "Website Subscription Pricing — $180/mo, $0 Down, No Build Fee"; H1 "Website Subscription Pricing: $180 a Month, $0 Down"; H2 "What a Subscription Website Costs"; H2 "Websites for Trades, Restaurants, Shops and Practices" with vertical-named H3s; FAQ "How is this different from Wix or Squarespace?" |
+| `/services/small-business` | *website subscription pricing*, *pay monthly website*, *website with no build fee* | *what does a small business website cost*, *website for plumbers / coffee roasters / restaurants / boutiques / lawyers / accountants / therapists*, *Squarespace vs web designer* | `<title>` "Website Subscription Pricing — $180/mo, $0 Down, No Build Fee"; H1 "Website Subscription Pricing: $180 a Month, $0 Down"; H2 "What a Subscription Website Costs"; H2 "Websites for Trades, Roasters, Shops and Practices" with vertical-named H3s; FAQ "How is this different from Wix or Squarespace?" |
 | `/about` | *(none — trust page)* | *engineer-built website*, *PostgreSQL contributor* as E-E-A-T | body copy; anchor "custom small business websites on a monthly subscription" → pricing page |
 
 Rules of thumb:
@@ -195,6 +195,11 @@ Rules of thumb:
   ("plan", "membership", "retainer") — pick the one people search.
 - **"No up-front build fee"** is the meta/hero gloss for $0 down. It's the
   phrase that matches how people describe the problem; "$0 down" is the hook.
+- **Coffee roasters are the flagship vertical** (Kevin, 2026-08-16): they
+  want exactly the small store — a dozen coffees, merch, checkout — that is
+  in scope, so they show what "small e-commerce" means. They lead the
+  food-and-drink card and are the example in the online-store FAQ. If a
+  vertical page or demo site is ever built, build the roaster one first.
 - **Verticals are named, not categorised.** "Plumbers, Electricians and
   Contractors" ranks; "Local Services" doesn't. Same for the homepage "Who
   This Is For" paragraph. If a vertical page is ever added, it's for a trade
