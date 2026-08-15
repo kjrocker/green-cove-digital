@@ -54,8 +54,8 @@ content, because the header and the hero share one `<Cove>` background.
 |---|---|---|
 | `layouts/BaseLayout` | `title`, `path`, `description`, `ogTitle`, `ogDescription`, `twitterDescription`, `noindex`, `jsonLd` | `<html>` / `<head>` / `<body>` / `<main>` / `<Footer>` |
 | `BaseHead` | same as above | the head tags, in a fixed order |
-| `Hero` | `title`, `brandAs`, `wrapNav` | `<Cove>` + `<SiteHeader>` + `.section__inner` > `.wrapper.flow.region` > `h1` |
-| `SiteHeader` | `brandAs`, `wrapNav` | `header.flow` + brand + `<Navigation>` |
+| `Hero` | `title`, `brandAs` | `<Cove>` + `<SiteHeader>` + `.section__inner` > `.wrapper.flow.region` > `h1` |
+| `SiteHeader` | `brandAs` | `header.flow` + brand + `<Navigation>` |
 | `Section` | `as` (default `article`), `class`, …rest | `.flow.region.wrapper` |
 | `SpotBand` | `spot` (default `primary`) | `.section.spot-color-*` + two `<Curve>` around a `<Section>` |
 | `Grid` | `as` (default `div`), `layout`, `class`, …rest | `.grid` + `data-layout` |
@@ -90,12 +90,17 @@ Three `<Cove>` instances can be on a page and the layout owns none of them:
 `<Cove top static>` inline for its "What I Believe" band. That one-off is
 deliberately not a component — one use is below the extraction threshold.
 
-## Two props that only exist to preserve bugs
+## One prop that only exists to preserve a bug
 
-`SiteHeader`'s `brandAs="h1"` and `wrapNav` reproduce divergences on the home
-and service pages rather than fixing them. Both are documented in
-[known-issues.md](known-issues.md); each is a one-line deletion once the
-corresponding design call is made.
+`SiteHeader`'s `brandAs="h1"` reproduces the home page's divergent brand
+treatment rather than fixing it — which is also why index has two `<h1>`s. See
+[known-issues.md](known-issues.md); it is a one-line deletion once the design
+call is made.
+
+A second such prop, `wrapNav`, existed briefly and has been removed —
+`Navigation` already emits its own `<nav>`, so the three pages that wrapped it
+in a second one rendered `<nav><nav>`. Dropping it made those three header
+strips 2px shorter, matching the other three.
 
 ## Deliberately not extracted
 

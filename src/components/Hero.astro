@@ -6,14 +6,13 @@ interface Props {
   /** The page's <h1>. Always plain text, always exactly one per page. */
   title: string;
   brandAs?: "link" | "h1";
-  wrapNav?: boolean;
 }
 
-const { title, brandAs, wrapNav } = Astro.props;
+const { title, brandAs } = Astro.props;
 ---
 
 <Cove>
-  <SiteHeader brandAs={brandAs} wrapNav={wrapNav} />
+  <SiteHeader brandAs={brandAs} />
   <div class="section__inner">
     <div class="wrapper flow region">
       <h1>{title}</h1>

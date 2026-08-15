@@ -8,17 +8,9 @@ interface Props {
    * uses an <h1>. See docs/known-issues.md — index ends up with two <h1>s.
    */
   brandAs?: "link" | "h1";
-  /**
-   * BUG SHIM. Navigation already emits its own <nav style="padding:1px 0">,
-   * so this wraps it in a second, redundant <nav>. index, small-business and
-   * consulting render that nested <nav><nav> today and this preserves it
-   * byte-for-byte. Deleting the prop and its three call sites is the whole
-   * fix — see docs/known-issues.md.
-   */
-  wrapNav?: boolean;
 }
 
-const { brandAs = "link", wrapNav = false } = Astro.props;
+const { brandAs = "link" } = Astro.props;
 ---
 
 <header class="flow">
@@ -32,13 +24,5 @@ const { brandAs = "link", wrapNav = false } = Astro.props;
       </p>
     )
   }
-  {
-    wrapNav ? (
-      <nav style="padding-top:1px;padding-bottom:1px;">
-        <Navigation />
-      </nav>
-    ) : (
-      <Navigation />
-    )
-  }
+  <Navigation />
 </header>

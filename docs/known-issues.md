@@ -37,28 +37,6 @@ page with **no visible error** — the form appears to have done nothing.
 Discovered while building the `run-green-cove-digital` skill; also noted in that
 skill's Gotchas.
 
-## Nested `<nav><nav>` on three pages
-
-**Severity:** low — invalid-ish markup and a 2px visual inconsistency.
-
-`Navigation.astro` emits its own `<nav style="padding-top:1px;padding-bottom:1px;">`.
-The home, small-business and consulting pages historically wrapped `<Navigation />`
-in a *second* identical `<nav>`, so those three render `<nav><nav>…</nav></nav>`.
-Because `index.css` has `.section nav { background: var(--color-light) }`, both navs
-get the light background and the outer one's inline 1px padding makes the header
-strip 2px taller than on `/about`, `/contact` and `/thanks`.
-
-The component extraction preserved this deliberately, behind a prop:
-
-```astro
-<SiteHeader wrapNav />        <!-- index, small-business, consulting -->
-```
-
-**Fix:** delete the `wrapNav` prop from `src/components/SiteHeader.astro` and its
-three call sites. That is the whole change. It makes those three headers 2px
-shorter, matching the other three — so it wants a screenshot check, which is why
-it was left out of the refactor-only pass.
-
 ## The home page has two `<h1>`s
 
 **Severity:** low — SEO/a11y, no visual defect.
