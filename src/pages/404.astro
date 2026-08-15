@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import { SITE } from "../data/client";
+---
+
+<BaseLayout title={`Page Not Found — ${SITE.title}`} noindex>
+  <Hero slot="header" title="That page isn't here">
+    <p>
+      The link may be old, or the address may have a typo in it. Nothing
+      you were looking for is lost — it's just somewhere else.
+    </p>
+  </Hero>
+
+  <Section>
+    <h2>Try one of these</h2>
+    <ul class="flow" data-flow="sm">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services/small-business">Websites and pricing</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </Section>
+</BaseLayout>

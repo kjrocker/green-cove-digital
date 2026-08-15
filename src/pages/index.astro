@@ -41,20 +41,20 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Small Business Websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} — ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
+  title={`Small Business Websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
   path="/"
-  description={`Custom websites for small businesses in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. ${usd(PRICING.monthly)}/month, zero down — design, hosting, maintenance and local SEO included. Built by hand by a senior software engineer, not a template.`}
+  description={`Custom websites for small businesses in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. ${usd(PRICING.monthly)}/month, $0 down — design, hosting, maintenance and local SEO included. Built by a senior engineer, not a template.`}
   ogDescription={`Custom small business websites from ${BUSINESS.address.city}, ${BUSINESS.address.state}. ${usd(PRICING.monthly)}/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Websites for Small Businesses, Built by a Real Engineer" brandSize="hero">
     <p>
       A custom site for your business — designed, built, hosted and looked
-      after by one experienced engineer. {usd(PRICING.monthly)} a month, nothing down.
+      after by one experienced engineer. {usd(PRICING.monthly)} a month, $0 down.
     </p>
     <div class="cluster">
-      <a href="/contact">Get a Free Quote</a>
-      <a href="/services/small-business">See What's Included</a>
+      <a href="/contact">Book a Call</a>
+      <a href="/services/small-business">See Pricing &amp; What's Included</a>
     </div>
   </Hero>
 
@@ -80,9 +80,9 @@ const jsonLd = {
       <Card as="li">
         <h3>"I built it myself and I hate touching it."</h3>
         <p>
-          Wix or Squarespace got you started, but every change is a
-          weekend, the monthly fee keeps creeping up, and you're not sure
-          who actually owns any of it.
+          Wix or Squarespace got you started, but every change eats a
+          weekend, it never quite looks professional, and it still isn't
+          showing up on Google.
         </p>
       </Card>
       <Card as="li">
@@ -111,7 +111,7 @@ const jsonLd = {
       that you're month to month.
     </p>
     <p>
-      For comparison: a template on Squarespace costs $33 a month before
+      For comparison: a template on Squarespace runs $20–40 a month before
       you've paid anyone to set it up, and a typical agency build starts
       around $5,000 up front — before hosting or a single change. Mine is
       {usd(PRICING.monthly)} a month, with hosting and every update already in.
@@ -125,7 +125,7 @@ const jsonLd = {
     <h2>Why Work With Me?</h2>
     <Grid as="ul" layout="50-50" role="list">
       <Card as="li">
-        <h3>One Person, Start to Finish</h3>
+        <h3>You Deal With Me, Start to Finish</h3>
         <p>
           You talk to the person who designs and builds your site. No account
           manager, no handoff. I've spent ten years building software that
@@ -137,7 +137,7 @@ const jsonLd = {
         <h3>Fast Enough to Rank</h3>
         <p>
           This site scores 100 on Google Lighthouse. Every site I build
-          hits the same bar, because speed is a ranking factor and a
+          is held to the same bar, because speed is a ranking factor and a
           conversion factor — people leave slow sites before they load.
         </p>
       </Card>
@@ -154,8 +154,9 @@ const jsonLd = {
         <p>
           The domain is registered in your name, and every word and file you
           write or send me stays yours. No platform is holding your business's
-          identity. The subscription covers the site I build and run, and
-          nothing else.
+          identity. What the subscription covers is the site itself — I own the design
+          and code, and run it for as long as you're a client. If you ever
+          leave, everything that's yours goes with you.
         </p>
       </Card>
     </Grid>
@@ -224,7 +225,7 @@ const jsonLd = {
       nothing to pay for the call.
     </p>
     <div class="cluster">
-      <a href="/contact">Get a Free Website Quote</a>
+      <a href="/contact">Book a Call — $0 Down</a>
     </div>
   </Section>
 </BaseLayout>

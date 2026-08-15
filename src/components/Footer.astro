@@ -14,7 +14,7 @@ import { BUSINESS } from "../data/client";
         <p>
           Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
         </p>
-        <!-- <p>Based in Charlotte, NC — serving small businesses everywhere.</p> -->
+        <p>Based in {BUSINESS.address.city}, {BUSINESS.address.state} — serving small businesses everywhere.</p>
       </div>
       <nav>
         <NavList />

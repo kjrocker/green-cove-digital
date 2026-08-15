@@ -12,7 +12,7 @@ import kevinPhoto from "../assets/kevin.jpg";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: PERSON.firstName,
+  name: PERSON.fullName,
   jobTitle: PERSON.jobTitle,
   url: `${SITE.url}/about`,
   worksFor: {
@@ -36,15 +36,15 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`About - ${SITE.title}`}
+  title={`About ${PERSON.fullName} — ${SITE.title}`}
   path="/about"
-  ogTitle={`About ${PERSON.firstName} - ${SITE.title}`}
+  ogTitle={`About ${PERSON.firstName} — ${SITE.title}`}
   description={`${PERSON.firstName} is a software engineer with 10+ years of experience building software teams depend on. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to give small businesses the kind of website usually reserved for companies with an engineering department — for a flat monthly price.`}
   ogDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build small business websites the way real software gets built.`}
   twitterDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. Founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build better small business websites.`}
   jsonLd={jsonLd}
 >
-  <Hero slot="header" title="About Me">
+  <Hero slot="header" title={`About ${PERSON.fullName}`}>
     <p class="big">
       Software engineer with a decade of experience, based in {BUSINESS.address.city}, {BUSINESS.address.state}.
       I founded {SITE.title} to build small business websites the way real
@@ -83,7 +83,7 @@ const jsonLd = {
           <a href="/services/small-business"
             >custom sites for small businesses</a
           >
-          for {usd(PRICING.monthly)}/month with nothing down, and I keep them fast, secure and
+          for {usd(PRICING.monthly)}/month with $0 down, and I keep them fast, secure and
           up to date for as long as you're a client. You talk to me, the
           person writing the code, every time.
         </p>
@@ -106,7 +106,7 @@ const jsonLd = {
           understanding of how people use it. I write every line of code
           myself, and I stand behind it. That's the standard I bring to
           every <a href="/services/small-business">small business website</a
-          >, whether it's five pages or fifty.
+          >, whether it's a five-page site or a fifteen-page one.
         </p>
       </Section>
     </div>
@@ -136,8 +136,8 @@ const jsonLd = {
           I contribute to PostgreSQL, the open-source database that runs a
           large part of the internet, and I build and operate my own
           software on top of it. That's not a service I'm selling you — it's
-          the reason I can promise your site will still work, still be
-          maintained, and still be fast in five years.
+          just the kind of engineer you're getting: one who maintains
+          software for the long haul, not one who ships and moves on.
         </p>
         <p>
           It also means I build on open web standards, not a proprietary

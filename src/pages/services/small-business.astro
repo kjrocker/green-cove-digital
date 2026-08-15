@@ -35,7 +35,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens after the first year?",
-    a: "The price doesn't move and the service doesn't change — there's no “introductory rate” that quietly steps up in month thirteen. Every couple of years I'll refresh the design so it doesn't go stale — that's included too.",
+    a: "The price doesn't move and the service doesn't change — there's no “introductory rate” that quietly steps up in month thirteen. Every four years I'll refresh the design so it doesn't go stale — that's included too.",
   },
   {
     q: "How long does it take?",
@@ -43,11 +43,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What do you need from me?",
-    a: "A short call about your business, your logo and any brand colours you have, some photos if you have them (I can source stock if not), and about an hour of your time reviewing drafts. Professional, search-optimized content is written for you from our conversation — you don't need to sit down and write your website.",
+    a: "A short call about your business, your logo and any brand colors you have, some photos if you have them (I can source stock if not), and about an hour of your time reviewing drafts. Professional, search-optimized content is written for you from our conversation — you don't need to sit down and write your website.",
   },
   {
     q: "What if I don't like the design?",
-    a: "Then we don't launch it. You can watch the build on a private preview link, so there are no surprises. If we can't land on a design you're happy with, we shake hands and walk away.",
+    a: "Then we don't launch it. You can watch the build on a private preview link, so there are no surprises, and we keep iterating until it's right — I'd rather spend another week on the design than put something live that you don't like.",
   },
   {
     q: "Can I update the site myself?",
@@ -63,7 +63,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do you build online stores?",
-    a: "Small ones — a handful of products or services with checkout, yes. A large catalogue with inventory, shipping rules and thousands of SKUs is a different kind of project with very different requirements.",
+    a: "Small ones — a handful of products or services with checkout, yes. A large catalog with inventory, shipping rules and thousands of SKUs is a different kind of project with very different requirements.",
   },
   {
     q: "Do you work with businesses outside Charlotte?",
@@ -75,7 +75,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do you offer other languages?",
-    a: "Yes. I can deliver your site in Spanish or other languages using certified professional translators — not machine translation — for an additional fee that depends on the amount of content.",
+    a: "Often, yes. For Spanish and other languages I bring in a professional translator — not machine translation — for an additional fee that depends on the amount of content. It depends on the language, so ask and I'll tell you whether I can do it.",
   },
 ];
 
@@ -127,22 +127,21 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Small Business Website Pricing — ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
+  title={`Small Business Website Pricing — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
   path="/services/small-business"
   ogTitle={`Small Business Websites: ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
-  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month. Your domain and content stay yours.`}
+  description={`${usd(PRICING.monthly)}/month, $0 down: custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month.`}
   ogDescription={`Custom small business websites for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Small Business Websites">
     <p class="big">
-      A custom website designed for your business: built by hand, optimized for
-      local search, and fast enough to score 100 on Google Lighthouse. Serving
-      small businesses in {BUSINESS.address.city}, {BUSINESS.address.state} and everywhere
-      else.
+      A custom website for your business — built by hand, optimized for local
+      search, and fast. One flat monthly price, $0 down. Here's exactly what
+      it costs and what's included.
     </p>
     <div class="cluster">
-      <a href="/contact">Get a Free Quote</a>
+      <a href="/contact">Book a Call</a>
       <a href="#faq">Read the FAQ</a>
     </div>
   </Hero>
@@ -154,8 +153,8 @@ const jsonLd = {
         <h3>{usd(PRICING.monthly)}/Month. $0 Down.</h3>
         <p>
           One predictable monthly payment that covers design, hosting,
-          maintenance, and updates. Squarespace charges $33/month and makes you
-          build it. I build something custom for {usd(PRICING.monthly)} and keep looking after it.
+          maintenance, and updates. Squarespace charges $20–40 a month and makes
+          you build it. I build something custom for {usd(PRICING.monthly)} and keep looking after it.
         </p>
         <p>
           <strong>What $0 down means:</strong> no lump sum up front. The first
@@ -184,7 +183,6 @@ const jsonLd = {
           <li>Hosting, SSL, and backups</li>
           <li>Ongoing content changes — just email me</li>
           <li>Security and software updates</li>
-          <li>Translation by certified professionals (additional fee)</li>
         </ul>
       </Card>
     </Grid>
@@ -201,8 +199,8 @@ const jsonLd = {
     </p>
     <p>
       A subscription puts those small fixes inside the price, so they actually
-      happen. It lines up my incentives with yours: I only get paid next month
-      if the site is still fast, secure and online this month. And it turns a
+      happen. It also lines up my incentives with yours: once the first year is
+      up, you only keep paying if the site is still fast, secure and online. And it turns a
       $5,000 decision into a {usd(PRICING.monthly)} one you can make this week.
     </p>
     <p>
@@ -220,8 +218,8 @@ const jsonLd = {
         <p>
           You tell me about your business, your customers, and what you want the
           site to do. I'll tell you what I'd build and how long it'll take. If
-          it's a fit, I send a one-page written summary — no contract to sign,
-          nothing to pay yet.
+          it's a fit, I send a one-page written summary of scope, timeline,
+          price and terms. Nothing is signed or paid on the call.
         </p>
       </Card>
       <Card as="li">
@@ -243,7 +241,7 @@ const jsonLd = {
       </Card>
     </Grid>
     <p>
-      <a href="/contact">Book the call</a>
+      <a href="/contact">Book a Call</a>
     </p>
   </Section>
 
@@ -256,7 +254,7 @@ const jsonLd = {
     </p>
     <p>
       Fast sites rank higher on Google and convert better. This site scores 100
-      on Google Lighthouse, and yours will too. Curious how your current site
+      on Google Lighthouse, and every site I build is held to the same bar. Curious how your current site
       does? Run it through Google's free
       <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> — then run this
       one.
@@ -277,8 +275,8 @@ const jsonLd = {
       <Card as="li">
         <h3>Retail & Small Shops</h3>
         <p>
-          Boutiques and specialty stores. Product showcases, simple payment
-          processing if you need it, and a site that works on the phones and
+          Boutiques and specialty stores. Product showcases, simple
+          checkout for a handful of products if you need it, and a site that works on the phones and
           tablets where most browsing happens.
         </p>
       </Card>
@@ -287,14 +285,14 @@ const jsonLd = {
         <p>
           Consultants, lawyers, accountants, therapists. A site that establishes
           credibility, explains your services clearly, and makes it easy for
-          clients to book a consultation.
+          clients to get in touch — online booking can be added if you use it.
         </p>
       </Card>
       <Card as="li">
         <h3>Restaurants & Hospitality</h3>
         <p>
-          Easy-to-update menus, hours, location info, and reservation
-          integration if needed. Update specials yourself — or email me and I'll
+          Easy-to-update menus, hours, location info, and a link to your
+          reservation system if you use one. Update specials yourself — or email me and I'll
           do it.
         </p>
       </Card>
@@ -302,7 +300,7 @@ const jsonLd = {
   </Section>
 
   <SpotBand>
-    <h2>No Vendor Lock-In</h2>
+    <h2>What You Keep</h2>
     <p>
       Your domain, your content, your customer data — it all stays yours,
       always. Unlike Squarespace or Wix, your business's identity isn't tied up
@@ -352,10 +350,11 @@ const jsonLd = {
     <h2>Ready to Get Started?</h2>
     <p>
       Tell me about your business and I'll let you know what a site would look
-      like and how long it'll take. No commitment.
+      like and how long it'll take. Nothing to sign and nothing to pay for the
+      call.
     </p>
     <p>
-      <a href="/contact">Start Your Website — $0 Down</a>
+      <a href="/contact">Book a Call — $0 Down</a>
     </p>
   </Section>
 </BaseLayout>

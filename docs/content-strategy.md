@@ -68,10 +68,10 @@ Two surfaces, one legal entity:
 
 ## Still to do
 
-- [ ] **Personal site "Work with me" page** (kevinrocker.com, not this repo):
-      scope, rate, how to engage, and one line — "engagements are contracted
-      through Green Cove Digital LLC". When it's live, 301
-      `/services/consulting` → that page and delete `consulting.astro`.
+- [x] **Personal site "Work with me" page** exists (kevinrocker.com). But
+      Kevin does **not** want Green Cove to link or redirect to it
+      (2026-08-16), so the planned 301 is off. `/services/consulting` stays
+      as-is for now — whether to `noindex` it is undecided.
 - [ ] **pgLantern proof** now goes on the homepage/about as "the agency ships
       real product" (pglantern-portfolio.md items 2, 4, 5). Item 3 (consulting
       page proof block) is dropped; that proof belongs on the personal site.

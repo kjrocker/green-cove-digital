@@ -44,7 +44,8 @@ the code; the site comes down if the subscription ends.
 - **Base is five pages**, one-time **$100 per extra page** (Oak Harbor's
   model). Additional Oui-style tiers can be added later without changing the
   shape of the offer.
-- Content edits included. Design refresh every few years included.
+- Content edits included. Design refresh **every four years** included
+  (Kevin, 2026-08-16).
 
 ## Minimum term (decided 2026-08-15, corrected 2026-08-16)
 
@@ -111,14 +112,29 @@ code changes hands.
   "professionally managed hosting" / "modern infrastructure".
 - **Small e-commerce** (a handful of products with checkout) is in scope;
   large catalogues are not.
-- **Design refresh** every few years is included.
+- **Design refresh** every four years is included.
+- **Translation**: offered case by case — no dedicated partner, no guarantee
+  for any given language. Copy may say "often, yes… depends on the language,
+  additional fee". It is **not** on the "What's Included" list (removed
+  2026-08-16).
+
+## Confirmed 2026-08-16 (from Kevin's answers to the content review)
+
+- **Backups, SSL, infrastructure** are the hosting provider's (Cloudflare,
+  CloudCannon, …). Copy may say they're "handled"; it must **not** name the
+  provider or describe how (see Hosting above).
+- **Tap-to-call** is a feature of the client's site and depends on the client
+  supplying a phone number. Fine to list.
+- **$5,000 agency comparison** is ad hoc — a ballpark, not a sourced figure.
+  Keep "around $5,000"; don't harden it.
+- **No phone number and no street address** are published for Green Cove
+  itself, and there's no plan to. Contact is email; location is city/state
+  only ("Based in Charlotte, NC"). The registered-agent address is in New
+  Mexico and is not to be used as NAP. Don't propose adding either.
+- **Email stays `me@kevinrocker.com`** for now — no greencovedigital.com
+  mailbox yet.
 
 ## Stated in copy, not explicitly confirmed
 
-Chase these down with Kevin before leaning on them harder:
-
-- Backups
-- Tap-to-call
 - Content edits "within a couple of business days"
 - Two-to-four-week turnaround
-- The "$5,000 agency build" comparison

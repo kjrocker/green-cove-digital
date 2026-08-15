@@ -9,15 +9,16 @@ import { SITE, BUSINESS } from "../data/client";
 const hasError = Astro.url.searchParams.get("error") === "1";---
 
 <BaseLayout
-  title={`Contact - ${SITE.title}`}
+  title={`Contact — ${SITE.title}`}
   path="/contact"
   ogTitle={`Contact ${SITE.title}`}
-  description={`Get in touch with ${SITE.title} for a free website quote. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
+  description={`Get in touch with ${SITE.title} to talk about a website for your business. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
 >
   <Hero slot="header" title="Get in Touch">
     <p>
-      Ready to get your business online? Tell me a little about what you
-      do and I'll get back to you within one business day.
+      Ready to talk about a website for your business — a first one or a
+      better one? Tell me a little about what you do and I'll get back to
+      you within one business day.
     </p>
   </Hero>
 

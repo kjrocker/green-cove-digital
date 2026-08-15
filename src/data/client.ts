@@ -2,8 +2,7 @@ import { PRICING, usd } from "./pricing";
 
 export const SITE = {
 	title: "Green Cove Digital",
-	tagline: "Web Expertise, Pure and Simple",
-	description: `Custom small business websites from Charlotte, NC — ${usd(PRICING.monthly)}/month, zero down, everything included.`,
+	description: `Custom small business websites from Charlotte, NC — ${usd(PRICING.monthly)}/month, $0 down, everything included.`,
 	url: "https://greencovedigital.com",
 	author: "Kevin Rocker",
 	locale: "en",
@@ -22,7 +21,7 @@ export const BUSINESS = {
 export const PERSON = {
 	firstName: "Kevin",
 	fullName: "Kevin Rocker",
-	jobTitle: "Software Engineer",
+	jobTitle: "Founder & Software Engineer",
 };
 
 export const OG = {
