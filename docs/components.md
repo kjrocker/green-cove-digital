@@ -54,8 +54,8 @@ content, because the header and the hero share one `<Cove>` background.
 |---|---|---|
 | `layouts/BaseLayout` | `title`, `path`, `description`, `ogTitle`, `ogDescription`, `twitterDescription`, `noindex`, `jsonLd` | `<html>` / `<head>` / `<body>` / `<main>` / `<Footer>` |
 | `BaseHead` | same as above | the head tags, in a fixed order |
-| `Hero` | `title`, `brandAs` | `<Cove>` + `<SiteHeader>` + `.section__inner` > `.wrapper.flow.region` > `h1` |
-| `SiteHeader` | `brandAs` | `header.flow` + brand + `<Navigation>` |
+| `Hero` | `title`, `brandSize` | `<Cove>` + `<SiteHeader>` + `.section__inner` > `.wrapper.flow.region` > `h1` |
+| `SiteHeader` | `brandSize` | `header.flow` + brand + `<Navigation>` |
 | `Section` | `as` (default `article`), `class`, …rest | `.flow.region.wrapper` |
 | `SpotBand` | `spot` (default `primary`) | `.section.spot-color-*` + two `<Curve>` around a `<Section>` |
 | `Grid` | `as` (default `div`), `layout`, `class`, …rest | `.grid` + `data-layout` |
@@ -90,17 +90,24 @@ Three `<Cove>` instances can be on a page and the layout owns none of them:
 `<Cove top static>` inline for its "What I Believe" band. That one-off is
 deliberately not a component — one use is below the extraction threshold.
 
-## One prop that only exists to preserve a bug
+## The brand header
 
-`SiteHeader`'s `brandAs="h1"` reproduces the home page's divergent brand
-treatment rather than fixing it — which is also why index has two `<h1>`s. See
-[known-issues.md](known-issues.md); it is a one-line deletion once the design
-call is made.
+Every page uses the same markup — `<p class="wrapper …"><a class="big-brand">`
+— and `brandSize="hero"` only changes its size. The home page needs a larger
+brand, so it gets `.brand-hero`, which sets `--size-step-6` on the `<p>` *and*
+makes the link inherit it. Sizing the block as well as the inline is what keeps
+the line box identical to the `<h1>` this replaced.
 
-A second such prop, `wrapNav`, existed briefly and has been removed —
-`Navigation` already emits its own `<nav>`, so the three pages that wrapped it
-in a second one rendered `<nav><nav>`. Dropping it made those three header
-strips 2px shorter, matching the other three.
+The home page used to render its brand as an actual `<h1>`, which gave index
+two `<h1>`s. Converting it to the shared link markup fixed that with no visual
+change (verified pixel-identical). Two shims from the extraction —
+`brandAs="h1"` and `wrapNav` — are both gone.
+
+## Lead paragraphs
+
+`<p class="big">` under a hero `<h1>` renders at `--size-step-2`, one step above
+body text. The rule used to be written `h1.big`, so it matched nothing on a
+paragraph and the three pages using it silently rendered leads at body size.
 
 ## Deliberately not extracted
 

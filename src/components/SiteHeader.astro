@@ -4,25 +4,25 @@ import { SITE } from "../data/client";
 
 interface Props {
   /**
-   * "link" is the brand treatment on every page except the home page, which
-   * uses an <h1>. See docs/known-issues.md — index ends up with two <h1>s.
+   * The home page renders the brand at --size-step-6 rather than
+   * --size-step-4. Purely a size variant — the markup is the same link on
+   * every page, which is what keeps index down to a single <h1>.
    */
-  brandAs?: "link" | "h1";
+  brandSize?: "default" | "hero";
 }
 
-const { brandAs = "link" } = Astro.props;
+const { brandSize = "default" } = Astro.props;
 ---
 
 <header class="flow">
-  {
-    brandAs === "h1" ? (
-      <h1 class="wrapper ml-md-sm mt-l-xl big">{SITE.title}</h1>
-    ) : (
-      <p class="wrapper mt-m-l">
-        {/* prettier-ignore */}
-        <a href="/" class="big-brand">{SITE.title}</a>
-      </p>
-    )
-  }
+  <p
+    class:list={[
+      "wrapper",
+      brandSize === "hero" ? "ml-md-sm mt-l-xl brand-hero" : "mt-m-l",
+    ]}
+  >
+    {/* prettier-ignore */}
+    <a href="/" class="big-brand">{SITE.title}</a>
+  </p>
   <Navigation />
 </header>

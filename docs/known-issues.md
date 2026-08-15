@@ -37,35 +37,6 @@ page with **no visible error** — the form appears to have done nothing.
 Discovered while building the `run-green-cove-digital` skill; also noted in that
 skill's Gotchas.
 
-## The home page has two `<h1>`s
-
-**Severity:** low — SEO/a11y, no visual defect.
-
-`index.astro` renders the site title as an `<h1 class="wrapper ml-md-sm mt-l-xl big">`
-in the header *and* the page headline as a second `<h1>` in the hero. Every other
-page uses `<p class="wrapper mt-m-l"><a class="big-brand">` for the brand, so it has
-only one.
-
-Preserved behind `<SiteHeader brandAs="h1" />` — one grep-able token, one line to
-delete once the design call is made.
-
-**Why it wasn't just fixed:** there is no zero-pixel option. Switching index to the
-`big-brand` treatment drops the brand from `--size-step-6` to `--size-step-4`, makes
-it a link, and changes its margins; demoting the hero `<h1>` to `<h2>` is worse for
-SEO. Someone needs to decide what the home page header should look like.
-
-## `.big` on a `<p>` does nothing
-
-**Severity:** low — three lead paragraphs are smaller than intended.
-
-`src/css/index.css` defines only `h1.big`. But `about`, `services/small-business`
-and `services/consulting` each open with `<p class="big">` for the hero lead, which
-matches no rule and renders at body size — identical to the bare `<p>` leads on
-`index`, `contact` and `thanks`.
-
-Someone clearly meant those leads to be larger. **Fix** is a one-line rule, but it
-needs a size decision (`--size-step-2`?) and changes three pages visually.
-
 ## `typescript` is pinned to 6.x for `astro check`
 
 **Severity:** low — a dependency constraint, not a defect.

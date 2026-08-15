@@ -72,8 +72,9 @@
   margin-block-start: var(--space-l-2xl);
 }
 
-h1.big {
-  font-size: var(--size-step-6);
+/* Lead paragraph directly under a page's h1. */
+.big {
+  font-size: var(--size-step-2);
 }
 
 .big-brand {
@@ -82,6 +83,17 @@ h1.big {
   letter-spacing: var(--tracking-s);
   line-height: 1;
   text-decoration: none;
+}
+
+/* Home-page brand. Sized on the <p> as well as the link so the line box
+   matches the <h1> this replaced — see docs/known-issues.md. */
+.brand-hero {
+  font-size: var(--size-step-6);
+  line-height: 1;
+
+  .big-brand {
+    font-size: inherit;
+  }
 }
 
 .card {
