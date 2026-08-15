@@ -1,5 +1,5 @@
 ---
-import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
 import Card from "../components/Card.astro";
 import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
@@ -8,7 +8,6 @@ import Footer from "../components/Footer.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
-import Cove from "../components/Cove.astro";
 import { SITE, BUSINESS, PERSON } from "../data/client";
 ---
 
@@ -71,25 +70,19 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
     />
   </head>
   <body>
-    <Cove>
-      <SiteHeader brandAs="h1" wrapNav />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>Software Engineering for Businesses That Need It Done Right</h1>
-          <p>
-            I'm {PERSON.firstName}, a software engineer in {
-              BUSINESS.address.city
-            }, {BUSINESS.address.state}. I build custom websites for small
-            businesses and consult on TypeScript monorepos and PostgreSQL for
-            engineering teams.
-          </p>
-          <div class="cluster">
-            <a href="/services/small-business">I need a website</a>
-            <a href="/services/consulting">I need technical consulting</a>
-          </div>
-        </div>
+    <Hero title="Software Engineering for Businesses That Need It Done Right" brandAs="h1" wrapNav>
+      <p>
+        I'm {PERSON.firstName}, a software engineer in {
+          BUSINESS.address.city
+        }, {BUSINESS.address.state}. I build custom websites for small
+        businesses and consult on TypeScript monorepos and PostgreSQL for
+        engineering teams.
+      </p>
+      <div class="cluster">
+        <a href="/services/small-business">I need a website</a>
+        <a href="/services/consulting">I need technical consulting</a>
       </div>
-    </Cove>
+    </Hero>
 
     <main>
       <Section>

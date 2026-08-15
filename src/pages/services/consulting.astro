@@ -1,11 +1,10 @@
 ---
-import SiteHeader from "../../components/SiteHeader.astro";
+import Hero from "../../components/Hero.astro";
 import Card from "../../components/Card.astro";
 import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
 import Footer from "../../components/Footer.astro";
-import Cove from "../../components/Cove.astro";
 import "../../css/reset.css";
 import "../../css/global.css";
 import "../../css/index.css";
@@ -82,20 +81,14 @@ import { SITE, BUSINESS } from "../../data/client";
     />
   </head>
   <body>
-    <Cove>
-      <SiteHeader wrapNav />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>Technical Consulting</h1>
-          <p class="big">
-            I specialize in TypeScript monorepos and PostgreSQL — two
-            technologies that large teams depend on and that are genuinely hard
-            to get right. Hourly and project-based engagements for engineering
-            teams in {BUSINESS.address.city}, {BUSINESS.address.state} and remote.
-          </p>
-        </div>
-      </div>
-    </Cove>
+    <Hero title="Technical Consulting" wrapNav>
+      <p class="big">
+        I specialize in TypeScript monorepos and PostgreSQL — two
+        technologies that large teams depend on and that are genuinely hard
+        to get right. Hourly and project-based engagements for engineering
+        teams in {BUSINESS.address.city}, {BUSINESS.address.state} and remote.
+      </p>
+    </Hero>
 
     <main>
       <Section>

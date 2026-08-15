@@ -1,8 +1,7 @@
 ---
-import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
 import Footer from "../components/Footer.astro";
-import Cove from "../components/Cove.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -20,19 +19,13 @@ import { SITE, BUSINESS } from "../data/client";
     <title>Thanks - {SITE.title}</title>
   </head>
   <body>
-    <Cove>
-      <SiteHeader />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>Thanks — message received</h1>
-          <p>
-            I'll get back to you within one business day. If it's urgent, you
-            can also reach me directly at
-            <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
-          </p>
-        </div>
-      </div>
-    </Cove>
+    <Hero title="Thanks — message received">
+      <p>
+        I'll get back to you within one business day. If it's urgent, you
+        can also reach me directly at
+        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+      </p>
+    </Hero>
 
     <main>
       <Section>

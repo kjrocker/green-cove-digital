@@ -1,11 +1,10 @@
 ---
-import SiteHeader from "../../components/SiteHeader.astro";
+import Hero from "../../components/Hero.astro";
 import Card from "../../components/Card.astro";
 import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
 import Footer from "../../components/Footer.astro";
-import Cove from "../../components/Cove.astro";
 import "../../css/reset.css";
 import "../../css/global.css";
 import "../../css/index.css";
@@ -80,21 +79,15 @@ import { SITE, BUSINESS } from "../../data/client";
     />
   </head>
   <body>
-    <Cove>
-      <SiteHeader wrapNav />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>Small Business Websites</h1>
-          <p class="big">
-            A custom website designed for your business — built by hand,
-            optimized for local search, and fast enough to score 100 on Google
-            Lighthouse. Serving small businesses in {BUSINESS.address.city}, {
-              BUSINESS.address.state
-            } and everywhere else.
-          </p>
-        </div>
-      </div>
-    </Cove>
+    <Hero title="Small Business Websites" wrapNav>
+      <p class="big">
+        A custom website designed for your business — built by hand,
+        optimized for local search, and fast enough to score 100 on Google
+        Lighthouse. Serving small businesses in {BUSINESS.address.city}, {
+          BUSINESS.address.state
+        } and everywhere else.
+      </p>
+    </Hero>
 
     <main>
       <Section>

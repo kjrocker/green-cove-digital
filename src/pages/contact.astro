@@ -1,10 +1,9 @@
 ---
-import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
 import Footer from "../components/Footer.astro";
-import Cove from "../components/Cove.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -40,18 +39,12 @@ const hasError = Astro.url.searchParams.get("error") === "1";
     <title>Contact - {SITE.title}</title>
   </head>
   <body>
-    <Cove>
-      <SiteHeader />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>Get in Touch</h1>
-          <p>
-            Ready to get your business online or need technical guidance? Send
-            me a message and I'll get back to you within one business day.
-          </p>
-        </div>
-      </div>
-    </Cove>
+    <Hero title="Get in Touch">
+      <p>
+        Ready to get your business online or need technical guidance? Send
+        me a message and I'll get back to you within one business day.
+      </p>
+    </Hero>
 
     <main>
       <Section>

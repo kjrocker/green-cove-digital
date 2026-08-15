@@ -1,11 +1,11 @@
 ---
-import SiteHeader from "../components/SiteHeader.astro";
+import Hero from "../components/Hero.astro";
+import Cove from "../components/Cove.astro";
 import Card from "../components/Card.astro";
 import Grid from "../components/Grid.astro";
 import Section from "../components/Section.astro";
 import { Image } from "astro:assets";
 import Footer from "../components/Footer.astro";
-import Cove from "../components/Cove.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
@@ -66,19 +66,13 @@ import kevinPhoto from "../assets/kevin.jpg";
     />
   </head>
   <body>
-    <Cove>
-      <SiteHeader />
-      <div class="section__inner">
-        <div class="wrapper flow region">
-          <h1>About Me</h1>
-          <p class="big">
-            Software engineer with a decade of experience, based in {BUSINESS.address.city}, {BUSINESS.address.state}.
-            I founded {SITE.title} to build better websites for small businesses and
-            offer senior-level consulting to engineering teams that need it.
-          </p>
-        </div>
-      </div>
-    </Cove>
+    <Hero title="About Me">
+      <p class="big">
+        Software engineer with a decade of experience, based in {BUSINESS.address.city}, {BUSINESS.address.state}.
+        I founded {SITE.title} to build better websites for small businesses and
+        offer senior-level consulting to engineering teams that need it.
+      </p>
+    </Hero>
 
     <main>
       <Section>
