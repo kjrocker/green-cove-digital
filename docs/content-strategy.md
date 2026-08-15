@@ -4,6 +4,12 @@ Decided 2026-08-15. Supersedes the "dual consultancy + agency" framing the site
 launched with, and the "highest-value edit" note in
 [pglantern-portfolio.md](pglantern-portfolio.md) item 3 (see below).
 
+**Scope of this file:** what the site says and why — positioning, audience,
+SEO, page structure, tone. The offer itself — prices, term, cancellation,
+ownership, what's included — lives in
+[business-model.md](business-model.md). If a note is a fact about the
+business rather than a decision about the site, it belongs there.
+
 ## The decision
 
 Green Cove Digital's website markets **one thing: subscription websites for
@@ -126,12 +132,11 @@ something happens to you?" continuity answer. Nearly empty JSON-LD.
 3. "What's included" checklist **plus a pricing FAQ right under the price**
    (page cap, extra pages, after month 12, out of scope) → small-business
    page.
-4. Ownership/cancellation stated plainly and early. **Model is the same as
-   both references: Green Cove owns the code; the client owns the domain and
-   every asset/word they wrote or sent.** Say it candidly, Oak Harbor style
-   ("otherwise everyone would sign up for a month and cancel") and lead with
-   what they *do* keep → homepage "Your Domain, Your Content, Your Data",
-   small-business FAQ + "No Vendor Lock-In".
+4. Ownership/cancellation stated plainly and early — our model is the same as
+   both references' (see [business-model.md](business-model.md)). Say it
+   candidly, Oak Harbor style ("otherwise everyone would sign up for a month
+   and cancel") and lead with what they *do* keep → homepage "Your Domain,
+   Your Content, Your Data", small-business FAQ + "No Vendor Lock-In".
 5. Process transparency instead of testimonials: design first, preview link,
    no big reveal; numbered 3 steps with a timeline → homepage "How It Works",
    small-business "How It Works".
@@ -172,68 +177,21 @@ hostages"). All rewritten. When mining competitor sites in future, take the
 *section* and the *question*, then write the answer cold in Kevin's voice —
 the engineer angle is ours and theirs isn't, so it should read differently.
 
-## Claims in the copy — confirmed 2026-08-15
+## Where the terms live
 
-Kevin reviewed the terms stated in the 2026-08-15 rewrite. Resolved:
+Prices, minimum term, cancellation, ownership and what's included are **not**
+in this file — they're in [business-model.md](business-model.md), which copy
+has to match. Split out 2026-08-16; before that they were the tail of this
+document.
 
-- **Content**: say "professional" / "search-optimized" content. Do **not**
-  say Kevin writes it himself — he may bring in a writer or SEO specialist.
-  It is included, and to a high standard.
-- **Ownership**: Green Cove owns the code; the client owns the domain and
-  every asset/word they wrote or sent. Site comes down on cancel.
-- **Small e-commerce** (a handful of products with checkout) is in scope;
-  large catalogues are not.
-- **Design refresh** every few years is included.
-- **Hosting**: do **not** name a provider. Sites without a CMS and sites with
-  one may be hosted differently; we can't promise a single host. Say
-  "professionally managed hosting" / "modern infrastructure".
-- **Pages**: Oak Harbor model for now — five-page base, one-time $100 per
-  extra page. Oui-style tiered packages are tempting; revisit later.
-- **Minimum term** (decided 2026-08-15, after the first rewrite): **twelve
-  months, starting at launch**, then month-to-month with 30 days' notice.
-  This replaces the "no contract, cancel anytime" line the site launched
-  with — that claim is gone from every page. The reasoning is stated in the
-  copy rather than buried: the build is weeks of work, nobody is paying for
-  it up front, so the first year of subscription is what pays it off. It is
-  framed throughout as the explicit price of $0 down, with the lump-sum
-  build offered as the alternative for anyone who'd rather pay up front and
-  skip the term. Nothing is owed before the site is live, so the
-  design-stage "walk away and owe nothing" guarantee is untouched.
-  Where it lands: homepage hero + price band + not-a-fit list;
+Where the terms surface in the copy:
+
+- **Minimum term** — homepage hero, price band and not-a-fit list;
   small-business price card, "Why a Monthly Fee?", "No Vendor Lock-In",
   meta/`Service` JSON-LD, and five FAQs ("Is there a contract or a minimum
   term?", "What if I have to cancel during the first year?", "Can I just buy
-  the site outright instead?", "What happens after the first year?", "What
-  if I don't like the design?"). This is the same shape as Oak Harbor's
-  12-month minimum noted above — the pattern, not the sentences.
-- **Cancellation, confirmed by Kevin 2026-08-15.** One line divides it, and
-  the line is **approval + deployment**, not the design stage:
-  - *Before* the site is approved and live — including mid-build, on the
-    preview link — either party can say it isn't working and walk. Nothing
-    owed, no invoice for the time. The copy says this everywhere the term is
-    mentioned, because it's what makes a 12-month minimum reasonable to ask
-    for.
-  - *After* approval and deployment: the first year of payments is owed —
-    **$1,800 less whatever has already been paid**. No penalty on top,
-    nothing owed for leaving after month 12.
-- **The one-time build is a second product, not a payment option** (Kevin,
-  2026-08-15). It has its own section, `#own-it` on the small-business page,
-  because the trade-offs are genuinely different rather than a footnote on
-  the subscription. Client pays for the build once and owns it outright —
-  **design and code included**, which is the one case where the code
-  changes hands — and there is no minimum term, because there's nothing left
-  to pay off. Two shapes after launch:
-  - **Built, then hosted.** Stays on the same managed infrastructure for a
-    *nominal* monthly fee — hosting, SSL, backups, security updates. Content
-    changes are quoted as they come up, **not** included.
-  - **Built, then handed over.** Files to the client, no hosting, no edits,
-    no monthly bill, nothing to cancel. Everything after launch is theirs.
-
-  No price is stated for either, and none should be until Kevin sets one —
-  the copy says "quoted per project" and routes to `/contact`. Deliberately
-  *not* claimed: which model is cheaper over N years (depends on the build
-  price), and whether the nominal hosting fee is fixed or per-project.
-- Still stated, not explicitly confirmed: backups; tap-to-call; content
-  edits "within a couple of business days"; two-to-four-week turnaround;
-  "$5,000 agency build" comparison; that a one-time build's "changes quoted
-  as they come up" is billing-per-change rather than a small retainer.
+  the site outright instead?", "What happens after the first year?", "What if
+  I don't like the design?").
+- **Ownership / cancellation** — homepage "Your Domain, Your Content, Your
+  Data"; small-business FAQ and "No Vendor Lock-In".
+- **One-time build** — its own section, `#own-it` on the small-business page.
