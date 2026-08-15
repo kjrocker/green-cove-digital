@@ -63,7 +63,11 @@ content, because the header and the hero share one `<Cove>` background.
 | `NavList` | `class` | the five-item `ul.cluster` |
 
 `Section`, `Grid` and `Card` spread their remaining props onto the element, so
-`role="list"`, `data-flow="sm"` and friends pass straight through.
+`role="list"`, `data-flow="sm"` and friends pass straight through. They get
+that by extending `HTMLAttributes<"div">` from `astro/types` — **not** a raw
+`[key: string]: unknown` index signature, which silently defeats type checking
+on the declared props (`astro check` will accept `<Card as="span">` and only
+warn that `Props` is "declared but never used").
 
 ### Head props
 

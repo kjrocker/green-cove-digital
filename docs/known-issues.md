@@ -88,6 +88,20 @@ matches no rule and renders at body size — identical to the bare `<p>` leads o
 Someone clearly meant those leads to be larger. **Fix** is a one-line rule, but it
 needs a size decision (`--size-step-2`?) and changes three pages visually.
 
+## `typescript` is pinned to 6.x for `astro check`
+
+**Severity:** low — a dependency constraint, not a defect.
+
+`pnpm check` (`astro check`) needs TypeScript's programmatic compiler API.
+TypeScript 7's native compiler does not ship it yet, so `astro check` fails
+outright on 7.x with:
+
+> The TypeScript module loaded (found 7.0.2) does not expose the programmatic
+> API that `astro check` relies on.
+
+`package.json` therefore pins `typescript` to `^6`. Track
+<https://github.com/withastro/roadmap/discussions/1321> before bumping.
+
 ## Smaller things noticed during the component extraction
 
 - **`data-flow="sm"` is a no-op in four places.** The rule compiles to

@@ -6,6 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `pnpm dev` - Development server at localhost:4321
 - `pnpm build` - Build to ./dist/
+- `pnpm check` - Type-check .astro files (`astro check`; needs typescript 6.x)
 - `pnpm preview` - Preview build locally
 
 ## Page Structure

@@ -1,8 +1,8 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
   as?: "article" | "section" | "div";
-  class?: string;
-  [key: string]: unknown;
 }
 
 const { as: Tag = "article", class: className, ...rest } = Astro.props;
