@@ -30,6 +30,36 @@
   }
 }
 
+.features {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem, 33%, 20rem);
+  --gutter: var(--space-l-xl);
+  --flow-space: var(--space-s);
+  text-align: center;
+
+  svg {
+    display: block;
+    height: 4em;
+    margin-inline: auto;
+  }
+
+  /* Icon slots are empty until artwork lands; collapse them so they contribute
+     no flow-space in the meantime. */
+  li > div:empty {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 0.08ex;
+      text-underline-offset: 0.2ex;
+    }
+  }
+}
+
 .ml-md-sm {
   margin-inline-start: var(--space-s-m);
 }
