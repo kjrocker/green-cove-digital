@@ -128,9 +128,15 @@ code changes hands.
 - **$5,000 agency comparison** is ad hoc — a ballpark, not a sourced figure.
   Keep "around $5,000"; don't harden it.
 - **No phone number and no street address** are published for Green Cove
-  itself, and there's no plan to. Contact is email; location is city/state
-  only ("Based in Charlotte, NC"). The registered-agent address is in New
-  Mexico and is not to be used as NAP. Don't propose adding either.
+  itself, and there's no plan to. Contact is email. The registered-agent
+  address is in New Mexico and is not to be used as NAP. Don't propose
+  adding either.
+- **Green Cove has no physical location.** Charlotte is Kevin's hometown, not
+  where he lives or works — he is in Europe, without a fixed address. Copy
+  may say "Charlotte native" / "from Charlotte"; it may **not** say "based
+  in Charlotte" or imply in-person meetings, travel, or a local service
+  area. See content-strategy.md, "The location problem", for the copy and
+  SEO consequences. (Flagged 2026-08-16; copy not yet corrected.)
 - **Email stays `me@kevinrocker.com`** for now — no greencovedigital.com
   mailbox yet.
 

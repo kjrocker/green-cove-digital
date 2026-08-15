@@ -44,6 +44,80 @@ Two surfaces, one legal entity:
   consistent NAP, one `LocalBusiness` schema, service-area copy — all of it is
   simpler and stronger with one offer.
 
+## ⚠ The location problem (flagged 2026-08-16)
+
+**"Based in Charlotte, NC" is not true.** Charlotte is Kevin's hometown; he
+has lived in Europe for years, has no fixed address (moves every few months),
+and the LLC is registered in New Mexico through a registered agent. There is
+no city Green Cove Digital operates *from* and no honest way to claim a
+persistent service area.
+
+The site currently asserts a Charlotte location in: both `<title>` tags and
+meta descriptions ("in Charlotte, NC"), the homepage `LocalBusiness` JSON-LD
+`address` and `areaServed: City`, the small-business `Service` JSON-LD
+address, `SITE.description` ("from Charlotte, NC"), the about hero and body
+("based in Charlotte, NC"), the contact page ("Based in… working with
+businesses locally and remotely"), the footer line, the FAQ "Do you work with
+businesses outside Charlotte?" ("I'm based in Charlotte… no travel
+surcharge"), and the consulting page hero. The "no travel surcharge" clause
+and "locally" both imply in-person is on the table; it isn't.
+
+Consequences for the plan in this file:
+
+- **Google Business Profile is off the table.** GBP requires a real
+  location, or a service-area business staffed from a real address in the
+  area. A profile on a hometown you don't live in is a guideline violation
+  that gets suspended, and it's the kind of thing a local competitor reports.
+  Remove the GBP / NAP / `geo` / `sameAs` to-dos below; the neighbourhood
+  service-area pages (deferred) are cancelled for the same reason.
+- **The map pack is unreachable.** Without GBP there is no local-pack
+  ranking. What's left is organic ranking for "web design charlotte"-type
+  queries, where a page that isn't from a business in Charlotte will compete
+  weakly and — if it claims to be — dishonestly.
+- **`LocalBusiness` with a Charlotte `PostalAddress` is a false statement in
+  structured data.** Same for `areaServed: City`.
+- **Time zone.** Kevin is 5–7 hours ahead of US Eastern. "Reply within one
+  business day" is fine; "a short call" needs US-morning slots and the site
+  shouldn't imply same-day, drop-by, or evening availability.
+
+### Recommendation
+
+Not disclosing where Kevin lives is fine. Claiming somewhere he doesn't is
+not. Reposition from *located in Charlotte* to *from Charlotte, works
+remotely with businesses anywhere in the US* — hometown as affinity, not as
+address — and stop trying to be a local business in the SEO sense.
+
+1. **Copy.** Replace every "based in Charlotte, NC" with either nothing or
+   "Charlotte native" / "grew up in Charlotte" where the personal angle
+   helps (about page, one line). Contact and footer: "Working remotely with
+   small businesses across the US." FAQ: retitle to "Do you work with
+   businesses in my area?" → "Yes — everything happens over calls and a
+   preview link, wherever you are. I'm a Charlotte native and work with
+   businesses across the US." Drop "no travel surcharge" and "locally".
+2. **Structured data.** Change `LocalBusiness` → `Organization` (or
+   `ProfessionalService` without an address); remove `address`; keep
+   `areaServed: Country US`; drop `priceRange` (it belongs on the `Offer`,
+   where it already is). Person schema on `/about`: remove `address` too.
+3. **Titles/H1s.** Take the city out of the homepage `<title>` and meta and
+   lean on the differentiator instead — the price, "$0 down", and the
+   engineer/subscription angle: "Small Business Websites — $180/mo, $0 Down".
+   The keyword strategy becomes model-led ("subscription website", "website
+   for $180 a month", "$0 down website") and vertical-led (plumbers,
+   restaurants), not city-led.
+4. **If a Charlotte page is still wanted**, make it one honest page:
+   "Websites for Charlotte small businesses, from a Charlotte native — built
+   remotely." That can rank a little and won't blow up. Do not templatize it
+   across cities.
+5. **Registered-agent address** (New Mexico) is never NAP, never in JSON-LD,
+   never on the site.
+6. **Update this file's "Why" section** — the "local SEO wants a
+   single-purpose entity" argument was sound, but the local half of it no
+   longer applies; the single-purpose half still does.
+
+None of the copy changes above have been made yet — this is a decision for
+Kevin, because it changes the SEO strategy the 2026-08-15 rewrite was built
+on. Once decided, the edit is mechanical (see the list of locations above).
+
 ## What changed on the site (2026-08-15)
 
 - **Homepage** — agency-only. Title/H1/description target small-business
@@ -75,8 +149,9 @@ Two surfaces, one legal entity:
 - [ ] **pgLantern proof** now goes on the homepage/about as "the agency ships
       real product" (pglantern-portfolio.md items 2, 4, 5). Item 3 (consulting
       page proof block) is dropped; that proof belongs on the personal site.
-- [ ] Google Business Profile, NAP consistency, and a real service-area
-      statement (Charlotte + surrounding, and "everywhere remotely").
+- [ ] ~~Google Business Profile, NAP consistency, and a real service-area
+      statement~~ — **cancelled**, see "The location problem" above.
+      Replace with a truthful remote-service statement.
 - [ ] Deepen homepage and small-business page content per the reference-site
       patterns below (UPDATE.md's original ask).
 
@@ -159,8 +234,8 @@ something happens to you?" continuity answer. Nearly empty JSON-LD.
 14. Honest expectation-setting on SEO → small-business FAQ.
 
 Deferred, not rejected: one soft "Not ready to talk?" self-check (Oui's free
-tools, cut to one); a handful of hand-written service-area pages
-(Charlotte neighbourhoods / nearby towns) — only once the GBP exists.
+tools, cut to one). Service-area / neighbourhood pages are **rejected** — see
+"The location problem".
 
 Not copying: templated city pages across many states, "Hours: 24/7 /
 Location: United States", bilingual site chrome, six free tools, industries

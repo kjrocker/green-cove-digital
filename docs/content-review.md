@@ -40,6 +40,24 @@ demo/mock site (§5); `og:image`; contact-form fields and the error-banner bug
 (known-issues.md); "couple of business days" and 2–4 weeks are still
 unconfirmed.
 
+## 0. The location claim (added 2026-08-16, after the first pass)
+
+**H — "Based in Charlotte, NC" is not true**, and the site says it or implies
+it in about a dozen places (titles, meta, JSON-LD `address`, about, contact,
+footer, FAQ "outside Charlotte" with "no travel surcharge", consulting page).
+Kevin is a Charlotte native living in Europe with no fixed address; the LLC
+is registered elsewhere. This reframes several items below: §5's NAP /
+address / hours items and §6's `geo` / `sameAs` / GBP items are not just
+*won't do* — they'd be false, and a Google Business Profile would be a
+guideline violation. The local-SEO premise of the 2026-08-15 strategy
+doesn't hold. Full analysis and a recommendation (hometown-as-affinity, not
+address; `Organization` not `LocalBusiness`; city out of the title; a
+model-led rather than city-led keyword strategy) are in
+[content-strategy.md → "The location problem"](content-strategy.md#-the-location-problem-flagged-2026-08-16).
+Copy is unchanged pending Kevin's call. Note that the footer line "Based in
+Charlotte, NC — serving small businesses everywhere" was *un*commented in this
+same pass — it should be the first thing to go.
+
 ## 1. Copy that contradicts the offer
 
 These are the ones that matter most: the site says one thing about money or
