@@ -1,4 +1,6 @@
 ---
+import { TILE, FIELD, waveTileUri, dotFieldUri } from "../lib/ornaments";
+
 interface Props {
   static?: boolean;
   top?: boolean;
@@ -6,33 +8,8 @@ interface Props {
 }
 const { static: isStatic = false, top = false, bottom = true } = Astro.props;
 
-// Each wave layer is a seamless horizontal tile: an integer number of sine
-// periods drawn with Q/T (T mirrors the previous control point, so crests and
-// troughs alternate and the end slope matches the start slope), then closed
-// down to the tile bottom so the fill covers everything below the wave line.
-const TILE = 900;
-
-function waveUriGen(height: number, amp: number, periods: number): string {
-  const half = TILE / periods / 2;
-  const baseline = amp + 1;
-  let d = `M0 ${baseline} Q ${half / 2} ${baseline - amp} ${half} ${baseline}`;
-  for (let i = 2; i <= periods * 2; i++) d += ` T ${half * i} ${baseline}`;
-  d += ` V${height} H0 Z`;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${TILE}" height="${height}"><path d="${d}" fill="#9fe8cf"/></svg>`;
-  return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
-}
-
-// Sparse field of tiny light motes — sunlight scattering through the water.
-const FIELD = 1400;
-function motesUri(count: number, size: number): string {
-  const dots = Array.from(
-    { length: count },
-    () =>
-      `<circle cx="${Math.floor(Math.random() * FIELD)}" cy="${Math.floor(Math.random() * FIELD)}" r="${size}"/>`,
-  ).join("");
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${FIELD}" height="${FIELD}"><g fill="#c8f2e2">${dots}</g></svg>`;
-  return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
-}
+const WAVE_FILL = "#9fe8cf";
+const MOTE_FILL = "#c8f2e2";
 
 // White wave that fills the area BELOW the wave line — used as ::after to
 // create the curved bottom edge. Fill matches --color-light (hsl 150 20% 96%).
@@ -41,12 +18,30 @@ const wavePathBelow =
 const waveSvgLight = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${wavePathBelow}" fill="#f3f7f5"/></svg>`;
 const edgeUri = `url("data:image/svg+xml;base64,${btoa(waveSvgLight)}")`;
 
-const wave1Uri = waveUriGen(260, 14, 2);
-const wave2Uri = waveUriGen(190, 18, 3);
-const wave3Uri = waveUriGen(130, 22, 4);
-const wave4Uri = waveUriGen(80, 26, 5);
-const motesSmallUri = motesUri(160, 1);
-const motesBigUri = motesUri(60, 2);
+const wave = (height: number, amp: number, periods: number) =>
+  waveTileUri({ height, amp, periods, fill: WAVE_FILL });
+
+const wave1Uri = wave(260, 14, 2);
+const wave2Uri = wave(190, 18, 3);
+const wave3Uri = wave(130, 22, 4);
+const wave4Uri = wave(80, 26, 5);
+
+// Sparse field of tiny light motes — sunlight scattering through the water.
+// Uniform radius and no stroke: dust, not bubbles.
+const motesSmallUri = dotFieldUri({
+  count: 160,
+  minR: 1,
+  maxR: 1,
+  fill: MOTE_FILL,
+  seed: 1,
+});
+const motesBigUri = dotFieldUri({
+  count: 60,
+  minR: 2,
+  maxR: 2,
+  fill: MOTE_FILL,
+  seed: 2,
+});
 ---
 
 <div

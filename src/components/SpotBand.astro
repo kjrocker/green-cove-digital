@@ -1,18 +1,24 @@
 ---
 import Curve from "./Curve.astro";
+import Drift from "./Drift.astro";
 import Section from "./Section.astro";
 
 interface Props {
   /** Selects the .spot-color-* modifier that sets --spot-color. */
   spot?: "primary" | "secondary";
+  /** Ambient wave + bubble layer. On by default. */
+  ornament?: boolean;
+  /** Pin the bubble scatter. Defaults to a fresh one per band. */
+  seed?: number;
 }
 
-const { spot = "primary" } = Astro.props;
+const { spot = "primary", ornament = true, seed } = Astro.props;
 ---
 
 <div class:list={["section", `spot-color-${spot}`]}>
   <Curve />
-  <div class="section__inner">
+  <div class="section__inner" data-ornament={ornament || undefined}>
+    {ornament && <Drift waves bubbles edge="bottom" tone="light" seed={seed} />}
     <Section>
       <slot />
     </Section>

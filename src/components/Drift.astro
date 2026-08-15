@@ -1,0 +1,149 @@
+---
+import {
+  TILE,
+  FIELD,
+  nextSeed,
+  waveTileUri,
+  dotFieldUri,
+} from "../lib/ornaments";
+
+interface Props {
+  /** Wave silhouette hugging one edge of the host. */
+  waves?: boolean;
+  /** Field of slowly rising circles. */
+  bubbles?: boolean;
+  /** Which edge the waves hug. */
+  edge?: "top" | "bottom";
+  /** Ornament tint: `light` on dark surfaces, `dark` on light ones. */
+  tone?: "light" | "dark";
+  /** Pin the scatter. Defaults to a fresh seed per instance. */
+  seed?: number;
+  /** Freeze every layer, matching Cove's escape hatch. */
+  static?: boolean;
+}
+
+const {
+  waves = false,
+  bubbles = true,
+  edge = "top",
+  tone = "light",
+  seed = nextSeed(),
+  static: isStatic = false,
+} = Astro.props;
+
+// Hex equivalents of --color-primary-glare and --color-dark. The generators
+// bake the color into the SVG, so it can't be a var() reference.
+const TINT = tone === "light" ? "#def2eb" : "#273533";
+
+const WAVE_HEIGHT = 120;
+
+const waveUri = waves
+  ? waveTileUri({
+      height: WAVE_HEIGHT,
+      amp: 15,
+      periods: 3,
+      fill: TINT,
+      anchor: edge,
+    })
+  : "none";
+
+const bubbleUri = bubbles
+  ? // Sparse, but dense enough that a single card-sized window is never empty.
+    dotFieldUri({ count: 45, minR: 3, maxR: 10, fill: TINT, stroke: TINT, seed })
+  : "none";
+---
+
+<div class="drift" aria-hidden="true" data-static={isStatic || undefined}>
+  {waves && <div class="drift__wave" data-edge={edge} />}
+  {bubbles && <div class="drift__bubbles" />}
+</div>
+
+<style
+  define:vars={{
+    waveUri,
+    bubbleUri,
+    tilePx: `${TILE}px`,
+    fieldPx: `${FIELD}px`,
+    waveHeightPx: `${WAVE_HEIGHT}px`,
+  }}
+>
+  /* Sits between the host's own background and its in-flow content: the host
+     isolates, so z-index: -1 paints above the background but below the text. */
+  .drift {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* One tile wider than the host; translating by exactly one tile width and
+     looping is seamless because the tile repeats. */
+  .drift__wave {
+    position: absolute;
+    left: 0;
+    width: calc(100% + var(--tilePx));
+    height: var(--waveHeightPx);
+    background-image: var(--waveUri);
+    background-repeat: repeat-x;
+    opacity: var(--drift-wave-opacity, 0.1);
+    animation: drift-x linear infinite;
+    animation-duration: var(--drift-wave-time, 180s);
+
+    /* The silhouette is solid up to the anchored edge, which would read as a
+       straight rule where the layer starts. Fade that edge out instead. */
+    &[data-edge="top"] {
+      top: 0;
+      background-position: left top;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
+      mask-image: linear-gradient(to bottom, transparent, #000 45%);
+    }
+
+    &[data-edge="bottom"] {
+      bottom: 0;
+      background-position: left bottom;
+      -webkit-mask-image: linear-gradient(to top, transparent, #000 45%);
+      mask-image: linear-gradient(to top, transparent, #000 45%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  /* Overhangs one full field on every side, so drifting up-and-left by exactly
+     one field keeps the host covered for the whole cycle. */
+  .drift__bubbles {
+    position: absolute;
+    inset: calc(-1 * var(--fieldPx));
+    background-image: var(--bubbleUri);
+    background-repeat: repeat;
+    background-size: var(--fieldPx) var(--fieldPx);
+    opacity: var(--drift-bubble-opacity, 0.12);
+    animation: drift-diagonal linear infinite;
+    animation-duration: var(--drift-bubble-time, 220s);
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  .drift[data-static] :is(.drift__wave, .drift__bubbles) {
+    animation: none;
+  }
+
+  @keyframes drift-x {
+    to {
+      transform: translateX(calc(-1 * var(--tilePx)));
+    }
+  }
+
+  @keyframes drift-diagonal {
+    to {
+      transform: translate(
+        calc(-1 * var(--fieldPx)),
+        calc(-1 * var(--fieldPx))
+      );
+    }
+  }
+</style>

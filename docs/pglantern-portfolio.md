@@ -36,13 +36,13 @@ curl-first landing copy here.
    legitimacy signal. Don't add a `/products` page or nav item for a single
    product — revisit if a second product exists.
 
-3. **Consulting page proof block**
-   (`src/pages/services/consulting.astro`): this is the highest-value edit.
-   The page already sells PostgreSQL consulting (schema design, query
-   optimization); add one short paragraph under the PostgreSQL section:
-   Green Cove Digital builds and operates pgLantern — a production Postgres system
-   (full-text search over ~770k messages, keyset pagination throughout) — with
-   the link. Concrete operated-product > any adjective on a services page.
+3. ~~**Consulting page proof block**~~ — **dropped 2026-08-15** by
+   [content-strategy.md](content-strategy.md): this site no longer markets
+   consulting, and `/services/consulting` is unlinked and slated for a 301 to
+   the personal site. The "we build and operate a production Postgres system"
+   proof paragraph belongs on the personal site's "Work with me" page. On
+   *this* site the pgLantern proof is item 2 (homepage) and item 4 (about),
+   framed for small-business owners: "the agency ships and runs real product".
 
 4. **About page**: one sentence in the existing narrative mentioning pgLantern
    as the in-house product, linked. Keep it to a sentence — the about page is

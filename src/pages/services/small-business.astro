@@ -5,47 +5,125 @@ import Card from "../../components/Card.astro";
 import Grid from "../../components/Grid.astro";
 import SpotBand from "../../components/SpotBand.astro";
 import Section from "../../components/Section.astro";
-import { SITE, BUSINESS } from "../../data/client";
+import { SITE, BUSINESS, PERSON } from "../../data/client";
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "What does $150 a month actually cover?",
+    a: "Design and build of your site (up to five pages to start), hosting, SSL, your domain, security and software updates, and ongoing content changes — new hours, a new service, a photo swap. Email me the change and it's done, usually within a couple of business days. There is no separate maintenance plan and no hosting bill.",
+  },
+  {
+    q: "Is there a contract or a minimum term?",
+    a: "No. There's no down payment and no minimum term. You can cancel with 30 days' notice at any time.",
+  },
+  {
+    q: "Do I keep my website if I cancel?",
+    a: "The site itself, no — the monthly price is what pays for it, so when the subscription ends the site comes down (otherwise everyone would sign up for a month and cancel, and there'd be no business). What you always keep: your domain, which is registered in your name from day one; every word of content you wrote or approved; and every logo, photo and file you sent me. I'll hand all of it back in a tidy folder and point the domain wherever you tell me. Nothing of yours is ever held hostage.",
+  },
+  {
+    q: "What if I need more than five pages?",
+    a: "Extra pages are a one-time $100 each — not a monthly increase. If you need something much larger, tell me and I'll quote it honestly.",
+  },
+  {
+    q: "What happens after the first year?",
+    a: "Nothing changes. The price doesn't step up, and there's no “introductory rate”. Every couple of years I'll refresh the design so it doesn't go stale — that's included too.",
+  },
+  {
+    q: "How long does it take?",
+    a: "Typically two to four weeks from our first call to a live site, depending on how quickly we can get your content together. A simple site with content ready can be faster.",
+  },
+  {
+    q: "What do you need from me?",
+    a: "A short call about your business, your logo and any brand colours you have, some photos if you have them (I can source stock if not), and about an hour of your time reviewing drafts. Professional, search-optimized content is written for you from our conversation — you don't need to sit down and write your website.",
+  },
+  {
+    q: "What if I don't like the design?",
+    a: "You'll see it before anything is built, and you'll see the build as it happens via a private preview link — there is no big reveal at the end. If I can't design something you're happy with, we part ways and you owe nothing. With $0 down that's not a marketing line, it's just how it works.",
+  },
+  {
+    q: "Can I update the site myself?",
+    a: "Yes, for text and images — you get a simple content editor. Most clients find it faster to just email me the change, and that's included, so it's your call.",
+  },
+  {
+    q: "Will it show up on Google?",
+    a: "Every site ships with the technical SEO groundwork done properly: fast load times, mobile-first layout, clean structure, local business schema, and copy written around what your customers actually search for. That's a real advantage over most small business sites. But nobody honest can promise a ranking — how fast you climb depends on your competition, your reviews, and time. I'll tell you what to expect for your specific market on our call.",
+  },
+  {
+    q: "Where is the site hosted, and how secure is it?",
+    a: "On modern, professionally run hosting infrastructure with a global network in front of it — not a shared server or a computer in my office. Sites without a content editor are served as plain pre-built pages, so there is almost nothing to break into; sites with one are kept patched as part of the subscription. Either way, SSL and backups are handled and you never see a hosting bill.",
+  },
+  {
+    q: "Do you build online stores?",
+    a: "Small ones — a handful of products or services with checkout, yes. A large catalogue with inventory, shipping rules and thousands of SKUs is a different kind of project and I'll say so up front rather than sell you the wrong thing.",
+  },
+  {
+    q: "Do you work with businesses outside Charlotte?",
+    a: "Yes. I'm based in Charlotte, NC and happy to meet local clients in person, but everything about the process works just as well over a call. I have no preference and no travel surcharge.",
+  },
+  {
+    q: "What if something happens to you?",
+    a: "Fair question to ask a one-person business. Your site runs on professionally managed hosting, not on a computer in my house, so it doesn't go offline because I'm unreachable. Your domain is in your name and your content is yours, so if I ever wound the business down you would get a full export and any web designer could rebuild from it. You are never locked out of your own business's presence.",
+  },
+  {
+    q: "Do you offer other languages?",
+    a: "Yes. I can deliver your site in Spanish or other languages using certified professional translators — not machine translation — for an additional fee that depends on the amount of content.",
+  },
+];
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Small Business Website Development",
-  provider: {
-    "@type": "LocalBusiness",
-    name: BUSINESS.name,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: BUSINESS.address.city,
-      addressRegion: BUSINESS.address.state,
-      addressCountry: "US",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Small Business Website Design & Development",
+      serviceType: "Web Design",
+      provider: {
+        "@type": "LocalBusiness",
+        name: BUSINESS.name,
+        url: SITE.url,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: BUSINESS.address.city,
+          addressRegion: BUSINESS.address.state,
+          addressCountry: "US",
+        },
+      },
+      description:
+        "Custom small business websites for $150/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. No contract; cancel anytime.",
+      areaServed: [
+        { "@type": "City", name: BUSINESS.address.city },
+        { "@type": "Country", name: "US" },
+      ],
+      offers: {
+        "@type": "Offer",
+        price: "150",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "150",
+          priceCurrency: "USD",
+          unitText: "month",
+        },
+      },
     },
-  },
-  description:
-    "Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance.",
-  areaServed: {
-    "@type": "Country",
-    name: "US",
-  },
-  offers: {
-    "@type": "Offer",
-    price: "150",
-    priceCurrency: "USD",
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "150",
-      priceCurrency: "USD",
-      unitText: "month",
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
     },
-  },
+  ],
 };
 ---
 
 <BaseLayout
-  title={`Small Business Website Pricing & Features - ${SITE.title}`}
+  title={`Small Business Website Pricing — $150/Month, $0 Down | ${SITE.title}`}
   path="/services/small-business"
-  ogTitle={`Small Business Website Pricing & Features | ${SITE.title}`}
-  description="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance. Cancel anytime."
-  ogDescription="Custom small business websites starting at $150/month with zero down payment. Includes hosting, SEO, mobile-friendly design, and ongoing maintenance."
+  ogTitle={`Small Business Websites: $150/Month, $0 Down | ${SITE.title}`}
+  description={`Custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond for $150/month with zero down. Design, hosting, domain, updates and local SEO included. No contract, cancel anytime. Your domain and content stay yours.`}
+  ogDescription="Custom small business websites for $150/month with zero down. Design, hosting, updates and local SEO included. No contract, cancel anytime — your domain and content are always yours."
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Small Business Websites">
@@ -56,43 +134,107 @@ const jsonLd = {
         BUSINESS.address.state
       } and everywhere else.
     </p>
+    <div class="cluster">
+      <a href="/contact">Get a Free Quote</a>
+      <a href="#faq">Read the FAQ</a>
+    </div>
   </Hero>
 
   <Section>
     <h2>Pricing That Makes Sense</h2>
     <Grid layout="50-50">
       <div class="flow">
-        <h3>$150/Month</h3>
+        <h3>$150/Month. $0 Down.</h3>
         <p>
           One predictable monthly payment that covers design, hosting,
           maintenance, and updates. Squarespace charges $33/month for a
-          template — I build something custom for $150.
+          template you build yourself — I build something custom for $150
+          and keep looking after it.
         </p>
         <p>
-          <strong>Zero down payment.</strong> Pay as you grow. Cancel anytime
-          with 30 days notice.
+          <strong>No contract.</strong> No minimum term, no down payment.
+          Cancel anytime with 30 days' notice — your domain and your
+          content are yours either way.
         </p>
         <p>
-          <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
-          to a live site, depending on content and scope.
+          <strong>Typical turnaround:</strong> 2–4 weeks from our first
+          conversation to a live site, depending on content and scope.
+        </p>
+        <p>
+          <strong>Nothing to lose:</strong> you see the design before
+          anything is built. If I can't design something you like, we part
+          ways and you owe nothing.
         </p>
       </div>
       <Card>
         <h3>What's Included</h3>
         <ul class="flow" data-flow="sm">
-          <li>Custom branded website design</li>
-          <li>Domain name management</li>
-          <li>Responsive mobile-friendly design</li>
-          <li>
-            Content management (you can update text and images yourself)
-          </li>
-          <li>Basic SEO optimization</li>
-          <li>Hosting and maintenance</li>
-          <li>Regular updates and security patches</li>
-          <li>Translation services (available for an additional fee)</li>
+          <li>Custom design — not a template with your logo swapped in</li>
+          <li>Up to five pages to start (more available)</li>
+          <li>Professional, search-optimized content — you don't write it</li>
+          <li>Domain name registration and management</li>
+          <li>Mobile-first, responsive design</li>
+          <li>Content editor so you can change text and images yourself</li>
+          <li>Local SEO groundwork: schema, speed, structure, keywords</li>
+          <li>Hosting, SSL, and backups</li>
+          <li>Ongoing content changes — just email me</li>
+          <li>Security and software updates</li>
+          <li>Translation by certified professionals (additional fee)</li>
         </ul>
       </Card>
     </Grid>
+  </Section>
+
+  <SpotBand>
+    <h2>Why a Monthly Fee?</h2>
+    <p>
+      Websites don't break all at once. Prices go stale, hours change, a
+      photo needs swapping, a new service needs a page — and none of it is
+      ever quite urgent enough to chase down a developer and pay a minimum
+      fee. So most small business sites slowly rot.
+    </p>
+    <p>
+      A flat monthly price fixes that. You email me the change, I make it,
+      and there's no invoice to think about. It also means I'm on the hook
+      for the site staying fast, secure and online every single month — my
+      incentives are the same as yours. And it turns a $5,000 up-front
+      decision into one you can make this week.
+    </p>
+  </SpotBand>
+
+  <Section>
+    <h2>How It Works</h2>
+    <Grid as="ol" role="list">
+      <Card as="li">
+        <h3>1. A short call</h3>
+        <p>
+          You tell me about your business, your customers, and what you want
+          the site to do. I'll tell you honestly what I'd build and how long
+          it'll take. If it's a fit, I send a one-page written summary — no
+          contract to sign, nothing to pay yet.
+        </p>
+      </Card>
+      <Card as="li">
+        <h3>2. Design, then build — in the open</h3>
+        <p>
+          Professional, search-optimized content is written from our
+          conversation, and the design is built around your brand. You approve the design before anything is built, then
+          watch the build come together on a private preview link. There's
+          no big reveal to be disappointed by.
+        </p>
+      </Card>
+      <Card as="li">
+        <h3>3. Launch, then keep going</h3>
+        <p>
+          The site goes live on your domain and your first month starts. From
+          then on you email me changes and they get made. Hosting, backups
+          and updates happen without you thinking about them.
+        </p>
+      </Card>
+    </Grid>
+    <p>
+      <a href="/contact">Book the call</a>
+    </p>
   </Section>
 
   <SpotBand>
@@ -105,11 +247,14 @@ const jsonLd = {
     </p>
     <p>
       Fast sites rank higher on Google and convert better. This site
-      scores 100 on Google Lighthouse, and yours will too.
+      scores 100 on Google Lighthouse, and yours will too. Curious how
+      your current site does? Run it through Google's free
+      <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> — then
+      run this one.
     </p>
   </SpotBand>
 
-  <Section>
+  <Section ornament>
     <h2>Perfect For</h2>
     <Grid as="ul" layout="50-50" role="list">
       <Card as="li">
@@ -122,27 +267,27 @@ const jsonLd = {
         </p>
       </Card>
       <Card as="li">
-        <h3>Retail & E-commerce</h3>
+        <h3>Retail & Small Shops</h3>
         <p>
-          Small shops and boutiques. Product showcases, payment processing
-          if you need it, and a site that works on phones and tablets where
-          most shopping happens.
+          Boutiques and specialty stores. Product showcases, simple payment
+          processing if you need it, and a site that works on the phones and
+          tablets where most browsing happens.
         </p>
       </Card>
       <Card as="li">
         <h3>Professional Services</h3>
         <p>
-          Consultants, lawyers, accountants. A site that establishes
-          credibility, explains your services clearly, and makes it easy for
-          clients to schedule a consultation.
+          Consultants, lawyers, accountants, therapists. A site that
+          establishes credibility, explains your services clearly, and makes
+          it easy for clients to book a consultation.
         </p>
       </Card>
       <Card as="li">
         <h3>Restaurants & Hospitality</h3>
         <p>
           Easy-to-update menus, hours, location info, and reservation
-          integration if needed. Update specials yourself without calling a
-          developer.
+          integration if needed. Update specials yourself — or email me and
+          I'll do it.
         </p>
       </Card>
     </Grid>
@@ -151,22 +296,35 @@ const jsonLd = {
   <SpotBand>
     <h2>No Vendor Lock-In</h2>
     <p>
-      Your content, your domain, your customer data—it all stays yours.
-      Unlike Squarespace or Wix, you're not trapped in a proprietary
-      platform that controls your business.
+      Your domain, your content, your customer data — it all stays yours,
+      always. Unlike Squarespace or Wix, your business's identity isn't
+      tied up in a proprietary platform that can raise prices, restrict
+      features, or change its policies overnight.
     </p>
     <p>
-      I build sites on open web standards, which means your content is
-      portable and you're not subject to arbitrary price hikes, forced
-      feature restrictions, or platform policy changes that could hurt
-      your business overnight.
-    </p>
-    <p>
-      If your needs change or you want to move in a different direction,
-      you won't have to rebuild from scratch. Your digital presence is
-      yours to control.
+      The one thing the subscription covers is the site itself — my design
+      and code, hosted and looked after by me for as long as you're a
+      client. That's the trade that makes $0 down and $150 a month possible.
+      If you'd rather own the site outright, ask me about a one-time build
+      instead.
     </p>
   </SpotBand>
+
+  <Section id="faq">
+    <h2>Questions, Answered Honestly</h2>
+    {
+      faqs.map(({ q, a }) => (
+        <div class="flow" data-flow="sm">
+          <h3>{q}</h3>
+          <p>{a}</p>
+        </div>
+      ))
+    }
+    <p>
+      Something I didn't cover? <a href="/contact">Ask {PERSON.firstName}</a>
+      — I reply within one business day.
+    </p>
+  </Section>
 
   <Section>
     <h2>Ready to Get Started?</h2>

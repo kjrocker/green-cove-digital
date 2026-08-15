@@ -25,10 +25,11 @@ const jsonLd = {
     addressCountry: "US",
   },
   knowsAbout: [
-    "TypeScript",
-    "Monorepo Architecture",
-    "PostgreSQL",
     "Web Development",
+    "Web Design",
+    "Search Engine Optimization",
+    "TypeScript",
+    "PostgreSQL",
   ],
 };
 ---
@@ -37,16 +38,16 @@ const jsonLd = {
   title={`About - ${SITE.title}`}
   path="/about"
   ogTitle={`About ${PERSON.firstName} - ${SITE.title}`}
-  description={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to bring enterprise-quality web development and technical consulting to teams that need it most.`}
-  ogDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to bring enterprise-quality development to teams that need it most.`}
-  twitterDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience specializing in TypeScript monorepos and PostgreSQL. Founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state}.`}
+  description={`${PERSON.firstName} is a software engineer with 10+ years of experience building software teams depend on. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to give small businesses the kind of website usually reserved for companies with an engineering department — for a flat monthly price.`}
+  ogDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build small business websites the way real software gets built.`}
+  twitterDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. Founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build better small business websites.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="About Me">
     <p class="big">
       Software engineer with a decade of experience, based in {BUSINESS.address.city}, {BUSINESS.address.state}.
-      I founded {SITE.title} to build better websites for small businesses and
-      offer senior-level consulting to engineering teams that need it.
+      I founded {SITE.title} to build small business websites the way real
+      software gets built — and to charge for them in a way that makes sense.
     </p>
   </Hero>
 
@@ -61,27 +62,29 @@ const jsonLd = {
       </div>
       <div class="flow">
         <p>
-          I'm {PERSON.firstName}, a software engineer based in {BUSINESS.address.city}, {BUSINESS.address.state}. I've been
-          building web applications for over a decade — dispatch systems for
-          first responders, real estate platforms, marketing analytics
-          tools. My deep specialties are TypeScript monorepos and
-          PostgreSQL.
+          I'm {PERSON.firstName}, a software engineer based in {BUSINESS.address.city}, {BUSINESS.address.state}. I've spent
+          over a decade building software that other people's businesses run
+          on — dispatch systems for first responders, real estate platforms,
+          marketing analytics tools. Along the way I got deep into the
+          PostgreSQL database and the open-source community around it.
         </p>
         <p>
-          I started {SITE.title} because I kept seeing the same gap:
-          small businesses paying too much for mediocre websites, and
-          engineering teams paying too much for mediocre consulting. I knew
-          I could do better at both.
+          I started {SITE.title} because I kept seeing the same gap: small
+          businesses paying agency prices for a template with their logo
+          swapped in, or paying nothing and getting a Wix site that never
+          shows up on Google. The skills that make software reliable for a
+          911 dispatcher — speed, correctness, care — are exactly what a
+          plumber's or a bakery's website needs too. Almost nobody sells
+          them at that price.
         </p>
         <p>
-          On the web development side, I build
+          So that's what I do: I build
           <a href="/services/small-business"
             >custom sites for small businesses</a
           >
-          at a price that makes sense — $150/month, no upfront costs. On the <a
-            href="/services/consulting">consulting side</a
-          >, I help engineering teams untangle monorepo architectures and
-          fix database performance problems.
+          for $150/month with nothing down, and I keep them fast, secure and
+          up to date for as long as you're a client. You talk to me, the
+          person writing the code, every time.
         </p>
       </div>
     </Grid>
@@ -92,8 +95,8 @@ const jsonLd = {
       <Section>
         <h2>What I Believe</h2>
         <p>
-          The web should be fast, accessible, and owned by the people who
-          create content for it. You shouldn't need to be locked into a
+          The web should be fast, accessible, and respectful of the people
+          who create content for it. You shouldn't need to be locked into a
           platform or pay exorbitant fees just to have a professional online
           presence.
         </p>
@@ -102,43 +105,43 @@ const jsonLd = {
           understanding of how people use it. I write every line of code
           myself, and I stand behind it. That's the standard I bring to
           every <a href="/services/small-business">small business website</a
-          >
-          and <a href="/services/consulting">consulting engagement</a>.
+          >, whether it's five pages or fifty.
         </p>
       </Section>
     </div>
   </Cove>
 
-  <Section>
-    <h2>Technical Expertise</h2>
+  <Section ornament>
+    <h2>Why That Background Matters for Your Website</h2>
     <Grid layout="50-50">
       <Card>
-        <h3>TypeScript & Monorepos</h3>
+        <h3>Built Like Real Software</h3>
         <p>
-          Large TypeScript codebases are my home turf. I've spent years
-          working in and designing monorepos — the tooling, the tradeoffs,
-          and the patterns that make them work for big teams. Turborepo, Nx,
-          pnpm workspaces, TypeScript project references — I know where
-          these tools shine and where they break down.
+          Most small business sites are assembled in a page builder by
+          someone who has never had to keep software running under load. I
+          have — for over a decade, on systems where an outage meant a 911
+          call didn't get dispatched. Your site gets the same habits:
+          version control, automated builds, and a boring, reliable host.
         </p>
         <p>
-          If you're a team struggling with slow builds, tangled
-          dependencies, or a repo structure that's grown past what anyone
-          planned for, I can help you untangle it.
+          The practical result is a site that scores 100 on Google
+          Lighthouse, loads in under a second on a phone, and doesn't break
+          when a plugin updates — because there are no plugins.
         </p>
       </Card>
       <Card>
-        <h3>PostgreSQL</h3>
+        <h3>Deep in the Open-Source Community</h3>
         <p>
-          PostgreSQL is one of the most powerful databases available — and
-          one of the most commonly misused. I've worked extensively with
-          schema design, query optimization, indexing strategy, and
-          migration planning across projects at various scales.
+          I contribute to PostgreSQL, the open-source database that runs a
+          large part of the internet, and I build and operate my own
+          software on top of it. That's not a service I'm selling you — it's
+          the reason I can promise your site will still work, still be
+          maintained, and still be fast in five years.
         </p>
         <p>
-          When a database starts causing problems — slow queries, connection
-          pool exhaustion, schema debt — I know how to diagnose the root
-          cause and fix it without a complete rewrite.
+          It also means I build on open web standards, not a proprietary
+          platform. Your domain and your content are always yours, and
+          nothing about the site is a secret only I know.
         </p>
       </Card>
     </Grid>
@@ -147,7 +150,7 @@ const jsonLd = {
   <Section>
     <h2>Let's Work Together</h2>
     <p>
-      Need a website for your business or technical help with your codebase?
+      Need a website for your business — or a better one than you have now?
       I'd love to hear from you.
     </p>
     <p>

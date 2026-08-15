@@ -1,13 +1,27 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import Drift from "./Drift.astro";
 
 interface Props extends HTMLAttributes<"div"> {
   as?: "li" | "div";
+  /** Ambient bubble layer behind the card. On by default. */
+  ornament?: boolean;
+  /** Pin the bubble scatter. Defaults to a fresh one per card. */
+  seed?: number;
 }
 
-const { as: Tag = "div", class: className, ...rest } = Astro.props;
+const {
+  as: Tag = "div",
+  class: className,
+  ornament = true,
+  seed,
+  ...rest
+} = Astro.props;
 ---
 
 <Tag class:list={["card", "flow", className]} {...rest}>
   <slot />
+  {/* Last, not first: as a `.flow` child it would push the card's real first
+      element down by one flow-space. `.card > .drift` zeroes its own margin. */}
+  {ornament && <Drift bubbles tone="light" seed={seed} />}
 </Tag>

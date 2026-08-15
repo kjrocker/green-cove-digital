@@ -103,6 +103,19 @@
   color: var(--color-light);
   max-width: unset;
   padding: var(--space-m-l);
+  /* Hosts the <Drift> ornament: `isolate` keeps its negative-z layer above the
+     card's own background instead of sinking behind it. The offset box-shadow
+     is an outer shadow, so `overflow` does not clip it. */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /* Slowest of the three surfaces — a page can carry four or more cards. */
+  --drift-bubble-time: 300s;
+
+  /* The ornament is a `.flow` child; it must not take the sibling margin. */
+  > .drift {
+    margin-block-start: 0;
+  }
 
   ::selection {
     background-color: var(--color-secondary);
@@ -131,6 +144,14 @@
   .section__inner {
     background: var(--spot-color, var(--color-dark));
     color: var(--color-light);
+  }
+  /* SpotBand's inner paints --spot-color, so the ornament has to live inside
+     it — and `isolate` is what keeps the layer above that paint. Scoped to the
+     opted-in element so Hero's .section__inner is untouched. */
+  .section__inner[data-ornament] {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
   }
   blockquote {
     font-size: var(--size-step-4);

@@ -1,7 +1,7 @@
 export const SITE = {
 	title: "Green Cove Digital",
 	tagline: "Web Expertise, Pure and Simple",
-	description: "Custom Web Development & Technical Consulting based in Charlotte, NC — serving small businesses everywhere.",
+	description: "Custom small business websites from Charlotte, NC — $150/month, zero down, everything included.",
 	url: "https://greencovedigital.com",
 	author: "Kevin Rocker",
 	locale: "en",

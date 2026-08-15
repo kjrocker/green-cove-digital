@@ -12,16 +12,16 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
   title={`Contact - ${SITE.title}`}
   path="/contact"
   ogTitle={`Contact ${SITE.title}`}
-  description={`Get in touch with ${SITE.title} for a free website quote or consulting consultation. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
+  description={`Get in touch with ${SITE.title} for a free website quote. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
 >
   <Hero slot="header" title="Get in Touch">
     <p>
-      Ready to get your business online or need technical guidance? Send
-      me a message and I'll get back to you within one business day.
+      Ready to get your business online? Tell me a little about what you
+      do and I'll get back to you within one business day.
     </p>
   </Hero>
 
-  <Section>
+  <Section ornament>
     <h2>Send a Message</h2>
     <p>
       <strong>Email:</strong>
@@ -89,9 +89,10 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
   <SpotBand>
     <h2>What Happens Next</h2>
     <p>
-      I'll reply within one business day with some initial questions
-      about your project. From there we'll set up a short call to talk
-      through scope and next steps — no obligation.
+      I'll reply within one business day with a few questions about your
+      business and what you need the site to do. From there we'll set up a
+      short call, and if it's a fit I'll send a written summary of scope,
+      timeline and price — no obligation, no down payment.
     </p>
   </SpotBand>
 </BaseLayout>

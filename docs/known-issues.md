@@ -66,8 +66,10 @@ outright on 7.x with:
   are invalid HTML and would break any future anchor or `getElementById`. Mechanical
   one-file change to a class.
 - **Dead CSS.** `.b-primary`, `header.spot-color-primary`, both blockquote blocks
-  (no `<blockquote>` exists anywhere), `.features svg`, `.features a`, the three
-  `--color-*-glare` tokens and all four `--transition-*` tokens are unused. Keep
+  (no `<blockquote>` exists anywhere), `.features svg`, `.features a`,
+  `--color-light-glare`, `--color-secondary-glare` and all four
+  `--transition-*` tokens are unused. `--color-primary-glare` is no longer on
+  this list — `Drift` adopted its value as the light ornament tint. Keep
   `.spot-color-secondary` — `SpotBand`'s `spot` prop makes it reachable.
 - **`OG` in `src/data/client.ts` is exported but never imported**, and the
   `/assets/social.jpg` it points at does not exist in `public/`. No page emits

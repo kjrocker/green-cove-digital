@@ -1,13 +1,52 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import Drift from "./Drift.astro";
 
 interface Props extends HTMLAttributes<"div"> {
   as?: "article" | "section" | "div";
+  /** Ambient bubble layer behind the section. Off by default. */
+  ornament?: boolean;
+  /** Pin the bubble scatter. Defaults to a fresh one per section. */
+  seed?: number;
 }
 
-const { as: Tag = "article", class: className, ...rest } = Astro.props;
+const {
+  as: Tag = "article",
+  class: className,
+  ornament = false,
+  seed,
+  ...rest
+} = Astro.props;
 ---
 
-<Tag class:list={["flow", "region", "wrapper", className]} {...rest}>
-  <slot />
-</Tag>
+{
+  /* `.wrapper` is capped at 85rem, so the ornament can't be clipped to the tag
+     itself — it would show as a narrow band of texture inside a full-bleed
+     light background. The host div is full-bleed and carries the clipping. */
+}
+{
+  ornament ? (
+    <div class="ornament-host">
+      <Drift bubbles tone="dark" seed={seed} />
+      <Tag class:list={["flow", "region", "wrapper", className]} {...rest}>
+        <slot />
+      </Tag>
+    </div>
+  ) : (
+    <Tag class:list={["flow", "region", "wrapper", className]} {...rest}>
+      <slot />
+    </Tag>
+  )
+}
+
+<style>
+  .ornament-host {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    /* Dark ornament on a light band sits behind body copy — hold it at the
+       floor of the range. */
+    --drift-bubble-opacity: 0.045;
+    --drift-bubble-time: 260s;
+  }
+</style>
