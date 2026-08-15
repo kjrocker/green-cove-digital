@@ -161,6 +161,17 @@ Not copying: templated city pages across many states, "Hours: 24/7 /
 Location: United States", bilingual site chrome, six free tools, industries
 mega-menu, animations on either site.
 
+## Rule: borrow the pattern, never the sentence
+
+Audited 2026-08-15 after the first draft: six phrases had come across
+near-verbatim from Oui ("websites don't break all at once… chase down a
+developer"; "no reveal at the end to be disappointed by"; "you email me the
+change, I make it") and Oak Harbor ("otherwise everyone would… we'd be out of
+business"; "if we can't design something you like, money back"; "we never take
+hostages"). All rewritten. When mining competitor sites in future, take the
+*section* and the *question*, then write the answer cold in Kevin's voice —
+the engineer angle is ours and theirs isn't, so it should read differently.
+
 ## Claims in the copy — confirmed 2026-08-15
 
 Kevin reviewed the terms stated in the 2026-08-15 rewrite. Resolved:

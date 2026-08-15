@@ -28,6 +28,11 @@
     --grid-placement: auto-fit;
     --grid-min-item-size: clamp(16rem, 50vw, 26rem);
   }
+
+  &[data-layout="thirds"] {
+    --grid-placement: auto-fit;
+    --grid-min-item-size: clamp(16rem, 33vw, 22rem);
+  }
 }
 
 .features {

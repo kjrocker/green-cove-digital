@@ -18,7 +18,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do I keep my website if I cancel?",
-    a: "The site itself, no — the monthly price is what pays for it, so when the subscription ends the site comes down (otherwise everyone would sign up for a month and cancel, and there'd be no business). What you always keep: your domain, which is registered in your name from day one; every word of content you wrote or approved; and every logo, photo and file you sent me. I'll hand all of it back in a tidy folder and point the domain wherever you tell me. Nothing of yours is ever held hostage.",
+    a: "The site itself, no. There's no down payment because the monthly fee is how the build gets paid for over time — so when the subscription ends, the site comes down. What you always keep: your domain, which is registered in your name from day one; every word of content you wrote or approved; and every logo, photo and file you sent me. I hand all of it back in one folder and point the domain wherever you tell me. Nothing that belongs to your business is ever contingent on paying me.",
   },
   {
     q: "What if I need more than five pages?",
@@ -38,7 +38,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What if I don't like the design?",
-    a: "You'll see it before anything is built, and you'll see the build as it happens via a private preview link — there is no big reveal at the end. If I can't design something you're happy with, we part ways and you owe nothing. With $0 down that's not a marketing line, it's just how it works.",
+    a: "Then we don't build it. You approve the design before any code is written, and after that you can watch the build on a private preview link, so surprises don't accumulate. If we can't land on a design you're happy with, you walk away — and because there's no down payment, walking away costs you nothing.",
   },
   {
     q: "Can I update the site myself?",
@@ -161,9 +161,9 @@ const jsonLd = {
           conversation to a live site, depending on content and scope.
         </p>
         <p>
-          <strong>Nothing to lose:</strong> you see the design before
-          anything is built. If I can't design something you like, we part
-          ways and you owe nothing.
+          <strong>Nothing to lose:</strong> you approve the design before
+          any code is written. Don't like it? Walk away — with $0 down,
+          there's nothing to refund.
         </p>
       </div>
       <Card>
@@ -188,23 +188,25 @@ const jsonLd = {
   <SpotBand>
     <h2>Why a Monthly Fee?</h2>
     <p>
-      Websites don't break all at once. Prices go stale, hours change, a
-      photo needs swapping, a new service needs a page — and none of it is
-      ever quite urgent enough to chase down a developer and pay a minimum
-      fee. So most small business sites slowly rot.
+      Because a website is never finished. The menu changes, the summer
+      hours start, you add a service, a staff photo is three years old. Each
+      one is a ten-minute job — and each one is a small enough job that
+      nobody wants to open a ticket and pay a minimum fee for it. So it
+      doesn't get done, and a year later the site is quietly wrong about
+      your own business.
     </p>
     <p>
-      A flat monthly price fixes that. You email me the change, I make it,
-      and there's no invoice to think about. It also means I'm on the hook
-      for the site staying fast, secure and online every single month — my
-      incentives are the same as yours. And it turns a $5,000 up-front
-      decision into one you can make this week.
+      A subscription puts those ten-minute jobs inside the price, so they
+      actually happen. It also lines up my incentives with yours: I only get
+      paid next month if the site is still fast, secure and online this
+      month. And it turns a $5,000 decision into a $150 one you can make
+      this week.
     </p>
   </SpotBand>
 
   <Section>
     <h2>How It Works</h2>
-    <Grid as="ol" role="list">
+    <Grid as="ol" layout="thirds" role="list">
       <Card as="li">
         <h3>1. A short call</h3>
         <p>
@@ -219,8 +221,8 @@ const jsonLd = {
         <p>
           Professional, search-optimized content is written from our
           conversation, and the design is built around your brand. You approve the design before anything is built, then
-          watch the build come together on a private preview link. There's
-          no big reveal to be disappointed by.
+          follow the build on a private preview link as it comes together.
+          You are never waiting weeks to find out what you got.
         </p>
       </Card>
       <Card as="li">
