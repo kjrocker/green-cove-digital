@@ -1,4 +1,5 @@
 ---
+import SiteHeader from "../components/SiteHeader.astro";
 import Card from "../components/Card.astro";
 import Grid from "../components/Grid.astro";
 import Section from "../components/Section.astro";
@@ -8,7 +9,6 @@ import Cove from "../components/Cove.astro";
 import "../css/reset.css";
 import "../css/global.css";
 import "../css/index.css";
-import Navigation from "../components/Navigation.astro";
 import { SITE, BUSINESS, PERSON } from "../data/client";
 import kevinPhoto from "../assets/kevin.jpg";
 ---
@@ -67,12 +67,7 @@ import kevinPhoto from "../assets/kevin.jpg";
   </head>
   <body>
     <Cove>
-      <header class="flow">
-        <p class="wrapper mt-m-l">
-          <a href="/" class="big-brand">{SITE.title}</a>
-        </p>
-        <Navigation />
-      </header>
+      <SiteHeader />
       <div class="section__inner">
         <div class="wrapper flow region">
           <h1>About Me</h1>

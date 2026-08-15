@@ -1,0 +1,44 @@
+---
+import Navigation from "./Navigation.astro";
+import { SITE } from "../data/client";
+
+interface Props {
+  /**
+   * "link" is the brand treatment on every page except the home page, which
+   * uses an <h1>. See docs/known-issues.md — index ends up with two <h1>s.
+   */
+  brandAs?: "link" | "h1";
+  /**
+   * BUG SHIM. Navigation already emits its own <nav style="padding:1px 0">,
+   * so this wraps it in a second, redundant <nav>. index, small-business and
+   * consulting render that nested <nav><nav> today and this preserves it
+   * byte-for-byte. Deleting the prop and its three call sites is the whole
+   * fix — see docs/known-issues.md.
+   */
+  wrapNav?: boolean;
+}
+
+const { brandAs = "link", wrapNav = false } = Astro.props;
+---
+
+<header class="flow">
+  {
+    brandAs === "h1" ? (
+      <h1 class="wrapper ml-md-sm mt-l-xl big">{SITE.title}</h1>
+    ) : (
+      <p class="wrapper mt-m-l">
+        {/* prettier-ignore */}
+        <a href="/" class="big-brand">{SITE.title}</a>
+      </p>
+    )
+  }
+  {
+    wrapNav ? (
+      <nav style="padding-top:1px;padding-bottom:1px;">
+        <Navigation />
+      </nav>
+    ) : (
+      <Navigation />
+    )
+  }
+</header>
