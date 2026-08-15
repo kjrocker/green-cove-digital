@@ -54,9 +54,10 @@ doesn't hold. Full analysis and a recommendation (hometown-as-affinity, not
 address; `Organization` not `LocalBusiness`; city out of the title; a
 model-led rather than city-led keyword strategy) are in
 [content-strategy.md → "The location problem"](content-strategy.md#-the-location-problem-flagged-2026-08-16).
-Copy is unchanged pending Kevin's call. Note that the footer line "Based in
-Charlotte, NC — serving small businesses everywhere" was *un*commented in this
-same pass — it should be the first thing to go.
+**Resolved the same day**: Kevin chose national/remote; every location
+claim above was rewritten (Charlotte survives only as "Charlotte native" on
+the about page), JSON-LD is `Organization` without an address, and the city
+is out of titles and meta.
 
 ## 1. Copy that contradicts the offer
 

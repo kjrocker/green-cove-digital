@@ -136,7 +136,8 @@ code changes hands.
   may say "Charlotte native" / "from Charlotte"; it may **not** say "based
   in Charlotte" or imply in-person meetings, travel, or a local service
   area. See content-strategy.md, "The location problem", for the copy and
-  SEO consequences. (Flagged 2026-08-16; copy not yet corrected.)
+  SEO consequences. (Flagged and corrected 2026-08-16 — the site now says
+  "working remotely with small businesses across the US".)
 - **Email stays `me@kevinrocker.com`** for now — no greencovedigital.com
   mailbox yet.
 

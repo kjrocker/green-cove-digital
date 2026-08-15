@@ -12,7 +12,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
   title={`Contact — ${SITE.title}`}
   path="/contact"
   ogTitle={`Contact ${SITE.title}`}
-  description={`Get in touch with ${SITE.title} to talk about a website for your business. Based in ${BUSINESS.address.city}, ${BUSINESS.address.state} — serving small businesses everywhere.`}
+  description={`Get in touch with ${SITE.title} to talk about a website for your business. Working remotely with small businesses across the US.`}
 >
   <Hero slot="header" title="Get in Touch">
     <p>
@@ -29,9 +29,8 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
       <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
     </p>
     <p>
-      <strong>Based in:</strong>
-      {BUSINESS.address.city}, {BUSINESS.address.state} — working with businesses
-      locally and remotely.
+      Everything happens remotely — calls, previews and updates — with small
+      businesses across the US.
     </p>
     <Grid layout="50-50">
       <form

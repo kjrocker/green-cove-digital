@@ -40,19 +40,27 @@ Two surfaces, one legal entity:
   reputation. UPDATE.md already said consulting is driven by networking; the
   standing rule in pglantern-portfolio.md already sends all writing to the
   personal blog. This just makes the site consistent with both.
-- **Local SEO wants a single-purpose entity.** Google Business Profile,
-  consistent NAP, one `LocalBusiness` schema, service-area copy — all of it is
-  simpler and stronger with one offer.
+- ~~**Local SEO wants a single-purpose entity.**~~ Superseded 2026-08-16 —
+  there is no local SEO (see "The location problem"). The single-purpose
+  argument stands on its own.
 
-## ⚠ The location problem (flagged 2026-08-16)
+## ⚠ The location problem (flagged 2026-08-16; copy corrected the same day)
 
-**"Based in Charlotte, NC" is not true.** Charlotte is Kevin's hometown; he
+**Decision: national/remote.** Green Cove is positioned as working remotely
+with small businesses across the US. Charlotte appears exactly once, as
+"Charlotte native" on the about page (`PERSON.hometown`). `BUSINESS.address`
+is gone from `client.ts`; `BUSINESS.legalName` and `BUSINESS.areaServed`
+("US") replace it. JSON-LD is `Organization` (no `address`, no `priceRange`)
+on every page. Titles and meta carry no city. The rest of this section is
+the reasoning, kept so nobody reintroduces a location.
+
+**"Based in Charlotte, NC" was not true.** Charlotte is Kevin's hometown; he
 has lived in Europe for years, has no fixed address (moves every few months),
 and the LLC is registered in New Mexico through a registered agent. There is
 no city Green Cove Digital operates *from* and no honest way to claim a
 persistent service area.
 
-The site currently asserts a Charlotte location in: both `<title>` tags and
+Before the fix the site asserted a Charlotte location in: both `<title>` tags and
 meta descriptions ("in Charlotte, NC"), the homepage `LocalBusiness` JSON-LD
 `address` and `areaServed: City`, the small-business `Service` JSON-LD
 address, `SITE.description` ("from Charlotte, NC"), the about hero and body
@@ -128,9 +136,8 @@ is true everywhere it's said; prefer "across the US" over "global" — the
 audience is US small businesses and the phrasing signals that without
 disclosing where Kevin is.
 
-None of the copy changes above have been made yet — this is a decision for
-Kevin, because it changes the SEO strategy the 2026-08-15 rewrite was built
-on. Once decided, the edit is mechanical (see the list of locations above).
+All of the above was applied 2026-08-16 (items 1–3, 5). Item 4 — a single
+honest Charlotte page — was not built; revisit only if there is a reason to.
 
 ## What changed on the site (2026-08-15)
 
@@ -177,9 +184,10 @@ on. Once decided, the edit is mechanical (see the list of locations above).
   this site.** The about page may say what Kevin has *done* (dispatch
   software, PostgreSQL work, pgLantern) as credibility. It may not say what he
   *sells* beyond websites.
-- **One entity, one offer** in structured data: `LocalBusiness` → web design
-  for small businesses. Person schema on `/about` uses `worksFor` to point at
-  it.
+- **One entity, one offer** in structured data: `Organization` (not
+  `LocalBusiness` — there is no location) → web design for small businesses,
+  `areaServed` US. Person schema on `/about` uses `worksFor` to point at it.
+  No `address` anywhere.
 - Anything that would only make sense to a software team goes to the personal
   site.
 

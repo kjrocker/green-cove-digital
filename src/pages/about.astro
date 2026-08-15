@@ -19,12 +19,6 @@ const jsonLd = {
     "@type": "Organization",
     name: BUSINESS.name,
   },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: BUSINESS.address.city,
-    addressRegion: BUSINESS.address.state,
-    addressCountry: "US",
-  },
   knowsAbout: [
     "Web Development",
     "Web Design",
@@ -39,15 +33,15 @@ const jsonLd = {
   title={`About ${PERSON.fullName} — ${SITE.title}`}
   path="/about"
   ogTitle={`About ${PERSON.firstName} — ${SITE.title}`}
-  description={`${PERSON.firstName} is a software engineer with 10+ years of experience building software teams depend on. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to give small businesses the kind of website usually reserved for companies with an engineering department — for a flat monthly price.`}
-  ogDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. He founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build small business websites the way real software gets built.`}
-  twitterDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. Founded ${SITE.title} in ${BUSINESS.address.city}, ${BUSINESS.address.state} to build better small business websites.`}
+  description={`${PERSON.firstName} is a software engineer with 10+ years of experience building software teams depend on. He founded ${SITE.title} to give small businesses the kind of website usually reserved for companies with an engineering department — for a flat monthly price.`}
+  ogDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. He founded ${SITE.title} to build small business websites the way real software gets built.`}
+  twitterDescription={`${PERSON.firstName} is a software engineer with 10+ years of experience. Founded ${SITE.title} to build better small business websites.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title={`About ${PERSON.fullName}`}>
     <p class="big">
-      Software engineer with a decade of experience, based in {BUSINESS.address.city}, {BUSINESS.address.state}.
-      I founded {SITE.title} to build small business websites the way real
+      Software engineer with a decade of experience, working remotely with
+      small businesses across the US. I founded {SITE.title} to build small business websites the way real
       software gets built — and to charge for them in a way that makes sense.
     </p>
   </Hero>
@@ -63,7 +57,7 @@ const jsonLd = {
       </div>
       <div class="flow">
         <p>
-          I'm {PERSON.firstName}, a software engineer based in {BUSINESS.address.city}, {BUSINESS.address.state}. I've spent
+          I'm {PERSON.firstName}, a software engineer and {PERSON.hometown} native. I've spent
           over a decade building software that other people's businesses run
           on — dispatch systems for first responders, real estate platforms,
           marketing analytics tools. Along the way I got deep into the

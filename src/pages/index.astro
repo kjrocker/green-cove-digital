@@ -9,42 +9,29 @@ import { SITE, BUSINESS, PERSON } from "../data/client";
 import { PRICING, usd } from "../data/pricing";
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Organization",
   name: BUSINESS.name,
+  legalName: BUSINESS.legalName,
   description:
     "Custom small business websites for a flat monthly price — design, hosting, maintenance and SEO included.",
   url: SITE.url,
   email: BUSINESS.email,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: BUSINESS.address.city,
-    addressRegion: BUSINESS.address.state,
-    addressCountry: "US",
-  },
   founder: {
     "@type": "Person",
     name: PERSON.fullName,
   },
-  serviceType: ["Web Design", "Web Development"],
-  areaServed: [
-    {
-      "@type": "City",
-      name: BUSINESS.address.city,
-    },
-    {
-      "@type": "Country",
-      name: "US",
-    },
-  ],
-  priceRange: `${usd(PRICING.monthly)}/month`,
+  areaServed: {
+    "@type": "Country",
+    name: BUSINESS.areaServed,
+  },
 };
 ---
 
 <BaseLayout
-  title={`Small Business Websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
+  title={`Small Business Websites — ${usd(PRICING.monthly)}/mo, $0 Down, Everything Included | ${SITE.title}`}
   path="/"
-  description={`Custom websites for small businesses in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. ${usd(PRICING.monthly)}/month, $0 down — design, hosting, maintenance and local SEO included. Built by a senior engineer, not a template.`}
-  ogDescription={`Custom small business websites from ${BUSINESS.address.city}, ${BUSINESS.address.state}. ${usd(PRICING.monthly)}/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
+  description={`Custom websites for small businesses anywhere in the US. ${usd(PRICING.monthly)}/month, $0 down — design, hosting, maintenance and local SEO included. Built by a senior engineer, not a template.`}
+  ogDescription={`Custom small business websites, ${usd(PRICING.monthly)}/month, $0 down, everything included — built by a senior engineer, not a page builder.`}
   jsonLd={jsonLd}
 >
   <Hero slot="header" title="Websites for Small Businesses, Built by a Real Engineer" brandSize="hero">
@@ -188,7 +175,7 @@ const jsonLd = {
     <h2>Who This Is For</h2>
     <p>
       Local service businesses, shops, restaurants, and professional
-      practices in {BUSINESS.address.city} and anywhere else — businesses
+      practices anywhere in the US — businesses
       that need a professional site that gets found and turns visitors into
       calls, without an in-house marketing team.
     </p>

@@ -66,8 +66,8 @@ const faqs: { q: string; a: string }[] = [
     a: "Small ones — a handful of products or services with checkout, yes. A large catalog with inventory, shipping rules and thousands of SKUs is a different kind of project with very different requirements.",
   },
   {
-    q: "Do you work with businesses outside Charlotte?",
-    a: "Yes. I'm based in Charlotte, NC, but everything about the process works just as well over a call. I have no preference and no travel surcharge.",
+    q: "Do you work with businesses in my area?",
+    a: "Yes — anywhere in the US. Everything happens over calls, email and a private preview link, so it works the same wherever you are. Most of my clients I never meet in person, and it has never mattered.",
   },
   {
     q: "What if something happens to you?",
@@ -87,21 +87,13 @@ const jsonLd = {
       name: "Small Business Website Design & Development",
       serviceType: "Web Design",
       provider: {
-        "@type": "LocalBusiness",
+        "@type": "Organization",
         name: BUSINESS.name,
+        legalName: BUSINESS.legalName,
         url: SITE.url,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: BUSINESS.address.city,
-          addressRegion: BUSINESS.address.state,
-          addressCountry: "US",
-        },
       },
       description: `Custom small business websites for ${usd(PRICING.monthly)}/month with zero down payment. Includes design, hosting, domain, maintenance, content updates and local SEO. Twelve-month minimum, then month-to-month with 30 days' notice.`,
-      areaServed: [
-        { "@type": "City", name: BUSINESS.address.city },
-        { "@type": "Country", name: "US" },
-      ],
+      areaServed: { "@type": "Country", name: BUSINESS.areaServed },
       offers: {
         "@type": "Offer",
         price: String(PRICING.monthly),
@@ -130,7 +122,7 @@ const jsonLd = {
   title={`Small Business Website Pricing — ${usd(PRICING.monthly)}/mo, $0 Down | ${SITE.title}`}
   path="/services/small-business"
   ogTitle={`Small Business Websites: ${usd(PRICING.monthly)}/Month, $0 Down | ${SITE.title}`}
-  description={`${usd(PRICING.monthly)}/month, $0 down: custom small business websites in ${BUSINESS.address.city}, ${BUSINESS.address.state} and beyond. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month.`}
+  description={`${usd(PRICING.monthly)}/month, $0 down: custom small business websites, built remotely for businesses anywhere in the US. Design, hosting, domain, updates and local SEO included. Twelve-month minimum, then month to month.`}
   ogDescription={`Custom small business websites for ${usd(PRICING.monthly)}/month with zero down. Design, hosting, updates and local SEO included. Twelve-month minimum, then month to month — your domain and content are always yours.`}
   jsonLd={jsonLd}
 >

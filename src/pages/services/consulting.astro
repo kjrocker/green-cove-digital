@@ -11,14 +11,8 @@ const jsonLd = {
   "@type": "Service",
   name: "TypeScript Monorepo & PostgreSQL Consulting",
   provider: {
-    "@type": "LocalBusiness",
+    "@type": "Organization",
     name: BUSINESS.name,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: BUSINESS.address.city,
-      addressRegion: BUSINESS.address.state,
-      addressCountry: "US",
-    },
   },
   description:
     "TypeScript monorepo and PostgreSQL consulting. Expert guidance on Turborepo, Nx, pnpm workspaces, PostgreSQL schema design and query optimization.",
@@ -54,7 +48,7 @@ const jsonLd = {
       I specialize in TypeScript monorepos and PostgreSQL — two
       technologies that large teams depend on and that are genuinely hard
       to get right. Hourly and project-based engagements for engineering
-      teams in {BUSINESS.address.city}, {BUSINESS.address.state} and remote.
+      teams anywhere — fully remote.
     </p>
   </Hero>
 
