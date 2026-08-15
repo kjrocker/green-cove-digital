@@ -1,5 +1,6 @@
 ---
 import Cove from "./Cove.astro";
+import NavList from "./NavList.astro";
 import { BUSINESS } from "../data/client";
 ---
 
@@ -16,13 +17,7 @@ import { BUSINESS } from "../data/client";
         <!-- <p>Based in Charlotte, NC — serving small businesses everywhere.</p> -->
       </div>
       <nav>
-        <ul class="cluster" role="list">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/services/small-business">For Small Businesses</a></li>
-          <li><a href="/services/consulting">For Software Teams</a></li>
-        </ul>
+        <NavList />
       </nav>
     </footer>
   </div>
