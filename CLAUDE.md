@@ -8,6 +8,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `pnpm build` - Build to ./dist/
 - `pnpm preview` - Preview build locally
 
+## Page Structure
+
+Pages compose components rather than hand-rolling markup — see
+[docs/components.md](docs/components.md) for the full reference and a
+new-page template.
+
+`BaseLayout` owns `<html>`/`<head>`/`<body>`/`<main>`/`<Footer>` and the CSS
+imports. Inside it: `<Hero slot="header">` (the header and hero share one
+`<Cove>` background, so Hero goes in the `header` slot, not the default one),
+then `Section`, `SpotBand`, `Grid` and `Card` for the body.
+
+Components emit only classes that already exist in `index.css` — prefer
+composing existing utilities over adding new CSS.
+
 ## CSS Architecture
 
 Three-layer system: reset.css → global.css → index.css
