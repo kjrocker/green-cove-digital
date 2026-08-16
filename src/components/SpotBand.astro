@@ -10,12 +10,14 @@ interface Props {
   ornament?: boolean;
   /** Pin the bubble scatter. Defaults to a fresh one per band. */
   seed?: number;
+  /** Anchor target, e.g. for /#how-it-works. */
+  id?: string;
 }
 
-const { spot = "primary", ornament = true, seed } = Astro.props;
+const { spot = "primary", ornament = true, seed, id } = Astro.props;
 ---
 
-<div class:list={["section", `spot-color-${spot}`]}>
+<div class:list={["section", `spot-color-${spot}`]} id={id}>
   <Curve />
   <div class="section__inner" data-ornament={ornament || undefined}>
     {ornament && <Drift waves bubbles edge="bottom" tone="light" seed={seed} />}

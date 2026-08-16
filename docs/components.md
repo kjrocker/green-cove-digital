@@ -57,7 +57,7 @@ content, because the header and the hero share one `<Cove>` background.
 | `Hero` | `title`, `brandSize` | `<Cove>` + `<SiteHeader>` + `.section__inner` > `.wrapper.flow.region` > `h1` |
 | `SiteHeader` | `brandSize` | `header.flow` + brand + `<Navigation>` |
 | `Section` | `as` (default `article`), `ornament` (default off), `seed`, `class`, …rest | `.flow.region.wrapper`, wrapped in `.ornament-host` when `ornament` |
-| `SpotBand` | `spot` (default `primary`), `ornament` (default **on**), `seed` | `.section.spot-color-*` + two `<Curve>` around a `<Section>` |
+| `SpotBand` | `spot` (default `primary`), `ornament` (default **on**), `seed`, `id` | `.section.spot-color-*` + two `<Curve>` around a `<Section>` |
 | `Grid` | `as` (default `div`), `layout` (`50-50` \| `thirds`), `class`, …rest | `.grid` + `data-layout` |
 | `Card` | `as` (default `div`), `ornament` (default **on**), `seed`, `class`, …rest | `.card.flow` |
 | `Drift` | `waves`, `bubbles` (default on), `edge`, `tone`, `seed`, `static` | the absolutely-positioned ornament layers |

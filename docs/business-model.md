@@ -142,7 +142,11 @@ code changes hands.
 - **Email stays `me@kevinrocker.com`** for now — no greencovedigital.com
   mailbox yet.
 
+- **Turnaround: two to four weeks** from first call to live site (Kevin,
+  2026-08-16).
+- **Content edits: "within a few business days"** (Kevin, 2026-08-16 — not
+  "a couple"; copy updated).
+
 ## Stated in copy, not explicitly confirmed
 
-- Content edits "within a couple of business days"
-- Two-to-four-week turnaround
+Nothing outstanding as of 2026-08-16.

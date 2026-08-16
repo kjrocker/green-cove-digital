@@ -80,6 +80,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const name = (form.get("name") ?? "").toString().trim();
   const email = (form.get("email") ?? "").toString().trim();
   const message = (form.get("message") ?? "").toString().trim();
+  // Optional, never validated beyond length — an empty string means "not given".
+  const business = (form.get("business") ?? "").toString().trim().slice(0, 200);
+  const website = (form.get("website") ?? "").toString().trim().slice(0, 500);
 
   if (
     !name ||
@@ -94,6 +97,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+  const safeBusiness = escapeHtml(business);
+  const safeWebsite = escapeHtml(website);
+  const optionalHtml =
+    (business ? `<p><strong>Business:</strong> ${safeBusiness}</p>\n` : "") +
+    (website ? `<p><strong>Website:</strong> ${safeWebsite}</p>\n` : "");
+  const optionalText =
+    (business ? `Business: ${business}\n` : "") +
+    (website ? `Website: ${website}\n` : "");
 
   const aws = new AwsClient({
     accessKeyId: env.AWS_ACCESS_KEY_ID,
@@ -110,9 +121,9 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       subject: `New contact form submission from ${name}`,
       html: `<p><strong>Name:</strong> ${safeName}</p>
 <p><strong>Email:</strong> ${safeEmail}</p>
-<p><strong>Message:</strong></p>
+${optionalHtml}<p><strong>Message:</strong></p>
 <p>${safeMessage}</p>`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\n${optionalText}\n${message}`,
     });
   } catch (err) {
     console.error("Contact form owner notification failed:", err);

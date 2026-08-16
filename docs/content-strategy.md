@@ -270,8 +270,9 @@ something happens to you?" continuity answer. Nearly empty JSON-LD.
    and cancel") and lead with what they *do* keep → homepage "Your Domain,
    Your Content, Your Data", small-business FAQ + "No Vendor Lock-In".
 5. Process transparency instead of testimonials: design first, preview link,
-   no big reveal; numbered 3 steps with a timeline → homepage "How It Works",
-   small-business "How It Works".
+   no big reveal; numbered 3 steps with a timeline → homepage "How It Works"
+   (`#how-it-works`; the pricing page's copy of it was removed 2026-08-16 and
+   links here instead).
 6. Design-stage guarantee ("if I can't design something you like, we part
    ways and you owe nothing" — trivially true with $0 down) → small-business.
 7. Founder-direct positioning + founder story → about page.

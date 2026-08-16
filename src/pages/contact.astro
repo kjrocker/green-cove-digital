@@ -67,6 +67,26 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
           />
         </div>
         <div class="form-field flow" data-flow="sm">
+          <label for="business">Business name <span class="optional">(optional)</span></label>
+          <input
+            type="text"
+            id="business"
+            name="business"
+            autocomplete="organization"
+          />
+        </div>
+        <div class="form-field flow" data-flow="sm">
+          <label for="website">Current website, if you have one <span class="optional">(optional)</span></label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            inputmode="url"
+            placeholder="https://"
+            autocomplete="url"
+          />
+        </div>
+        <div class="form-field flow" data-flow="sm">
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6" required
           ></textarea>
@@ -111,6 +131,11 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
   .form-field label {
     font-weight: 700;
     font-size: var(--size-step-0);
+  }
+
+  .form-field .optional {
+    font-weight: 400;
+    opacity: 0.75;
   }
 
   .form-field input,

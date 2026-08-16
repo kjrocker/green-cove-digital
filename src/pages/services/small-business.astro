@@ -11,7 +11,7 @@ import { PRICING, usd } from "../../data/pricing";
 const faqs: { q: string; a: string }[] = [
   {
     q: `What does ${usd(PRICING.monthly)} a month actually cover?`,
-    a: "Design and build of your site (up to five pages to start), hosting, SSL, your domain, security and software updates, and ongoing content changes — new hours, a new service, a photo swap. Email me the change and it's done, usually within a couple of business days. There is no separate maintenance plan and no hosting bill.",
+    a: "Design and build of your site (up to five pages to start), hosting, SSL, your domain, security and software updates, and ongoing content changes — new hours, a new service, a photo swap. Email me the change and it's done within a few business days. There is no separate maintenance plan and no hosting bill.",
   },
   {
     q: "When does the first payment happen?",
@@ -132,9 +132,8 @@ const jsonLd = {
 >
   <Hero slot="header" title={`Website Subscription Pricing: ${usd(PRICING.monthly)} a Month, $0 Down`}>
     <p class="big">
-      A custom small business website — built by hand, optimized for local
-      search, and fast — on one monthly subscription with no up-front build
-      fee. Here's exactly what it costs and what's included.
+      One monthly subscription, no up-front build fee. Here's exactly what it
+      costs and what's included.
     </p>
     <div class="cluster">
       <a href="/contact">Book a Call</a>
@@ -163,7 +162,8 @@ const jsonLd = {
         </p>
         <p>
           <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
-          to a live site, depending on content and scope.
+          to a live site, depending on content and scope. New here?
+          <a href="/#how-it-works">See how it works</a>, start to finish.
         </p>
       </div>
       <Card>
@@ -205,41 +205,6 @@ const jsonLd = {
       ask you for twelve months than for a few thousand dollars on day one.
     </p>
   </SpotBand>
-
-  <Section>
-    <h2>How It Works</h2>
-    <Grid as="ol" layout="thirds" role="list">
-      <Card as="li">
-        <h3>1. A short call</h3>
-        <p>
-          You tell me about your business, your customers, and what you want the
-          site to do. I'll tell you what I'd build and how long it'll take. If
-          it's a fit, I send a one-page written summary of scope, timeline,
-          price and terms. Nothing is signed or paid on the call.
-        </p>
-      </Card>
-      <Card as="li">
-        <h3>2. Design, then build — in the open</h3>
-        <p>
-          Professional, search-optimized content is written from our
-          conversation, and the design is built around your brand. I'll work
-          with you on the design, and you can watch the site come together on a
-          private preview link. You're never waiting weeks for a reveal.
-        </p>
-      </Card>
-      <Card as="li">
-        <h3>3. Launch, then keep going</h3>
-        <p>
-          The site goes live on your domain. From then on you email me changes
-          and they get made. Hosting, backups and updates happen without you
-          thinking about them.
-        </p>
-      </Card>
-    </Grid>
-    <p>
-      <a href="/contact">Book a Call</a>
-    </p>
-  </Section>
 
   <SpotBand>
     <h2>Built for Performance</h2>

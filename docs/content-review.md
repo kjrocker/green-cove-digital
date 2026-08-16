@@ -33,12 +33,17 @@ years (FAQ updated). Backups/SSL/infra belong to the host and are not
 described in copy. $5,000 is an ad-hoc ballpark and stays. Tap-to-call stays.
 Nav item is now "Websites and Pricing".
 
-**Still open**: `/services/consulting` — the personal-site page exists but
-Kevin doesn't want to link to it from here, so the planned 301 is off; noindex
-or leave as-is is undecided. §4 restructure of the small-business page; a
-demo/mock site (§5); `og:image`; contact-form fields and the error-banner bug
-(known-issues.md); "couple of business days" and 2–4 weeks are still
-unconfirmed.
+**Also done (later on 2026-08-16)**: §4 — the small-business page is now the
+pricing page only (hero trimmed to one line, its "How It Works" removed; the
+homepage's has `id="how-it-works"` and carries the written-summary detail).
+Contact form has optional "Business name" and "Current website" fields, passed
+through to the notification email. 2–4 weeks and "within a few business
+days" are confirmed and the copy matches.
+
+**Still open**: `/services/consulting` (noindex or leave — Kevin doesn't want
+a 301 to the personal site); a demo/mock site (§5 — a fictional coffee
+roaster is the obvious candidate); `og:image`; the contact-form error-banner
+bug (known-issues.md).
 
 ## 0. The location claim (added 2026-08-16, after the first pass)
 
