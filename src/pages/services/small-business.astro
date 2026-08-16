@@ -206,7 +206,7 @@ const jsonLd = {
     </p>
   </SpotBand>
 
-  <SpotBand>
+  <Section ornament>
     <h2>Built for Performance</h2>
     <p>
       Every extra second of load time costs you visitors and sales. My sites
@@ -220,9 +220,9 @@ const jsonLd = {
       <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> — then run this
       one.
     </p>
-  </SpotBand>
+  </Section>
 
-  <Section ornament>
+  <Section>
     <h2>Websites for Trades, Roasters, Shops and Practices</h2>
     <Grid as="ul" layout="50-50" role="list">
       <Card as="li">
@@ -279,11 +279,11 @@ const jsonLd = {
   </SpotBand>
 
   <Section id="faq">
-    <h2>Frequently Asked Questions</h2>
+    <h2 style="max-width:40ch;">Frequently Asked Questions</h2>
     <div class="accordion">
       {
         faqs.map(({ q, a }) => (
-          <details open>
+          <details>
             <summary>
               <h3>{q}</h3>
             </summary>
@@ -292,19 +292,7 @@ const jsonLd = {
         ))
       }
     </div>
-    {
-      /* The only script on the site. Every panel is rendered `open`, so with
-         JavaScript off the FAQ is a plain list of questions and answers —
-         and `<details>` still toggles natively. This collapses them into an
-         accordion. `is:inline` keeps it here in the markup rather than
-         bundling it into a deferred module, so it runs while the parser is
-         still inside this section and the FAQ never paints open. */
-    }
-    <script is:inline>
-      for (const item of document.querySelectorAll("#faq details"))
-        item.open = false;
-    </script>
-    <p>
+    <p style="max-width:65ch;">
       Something I didn't cover? <a href="/contact">Ask {PERSON.firstName}</a>
       — I reply within one business day.
     </p>
