@@ -19,7 +19,9 @@ conversation for Kevin, not a promise on the site.
 Every figure the copy quotes lives in `src/data/pricing.ts`; page copy
 imports `PRICING` and `usd()` rather than writing numbers out. Three fields
 hold the whole offer — `monthly`, `termMonths`, `extraPage` — and changing
-`monthly` there is the *only* edit a price change needs.
+`monthly` there is the *only* edit a price change needs. That includes the
+non-HTML surfaces: `src/pages/llms.txt.ts` imports from `pricing.ts` for the
+same reason (see content-strategy.md, "llms.txt").
 
 Any total quoted on the site is **derived, not independent** — computed at the
 call site as `monthly × termMonths` — so it can't drift from the monthly

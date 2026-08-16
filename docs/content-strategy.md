@@ -211,6 +211,35 @@ Rules of thumb:
 - Both H1s carry the price and are templated from `pricing.ts`, so a price
   change flows through automatically.
 
+## llms.txt (added 2026-08-16)
+
+`/llms.txt` is a curated plain-text summary of the site for AI crawlers, per
+[llmstxt.org](https://llmstxt.org/): an H1, a blockquote of the offer, a few
+paragraphs of prose, then a `## Pages` list of markdown links with one-line
+descriptions. It's the answer we'd want an assistant to give when someone asks
+it who builds cheap small-business websites, written once instead of scraped
+out of marketing copy.
+
+Decisions baked into it:
+
+- **It's an endpoint, not a static file.** `src/pages/llms.txt.ts` imports
+  `PRICING`/`usd` like every page does, so the quoted figures can't drift from
+  [business-model.md](business-model.md)'s single source. A hardcoded price in
+  the one file LLMs read verbatim is the worst place for a stale number.
+- **`/services/consulting` is omitted entirely.** It is deliberately unlinked
+  and out of the sitemap; llms.txt is a curated entry point for the product
+  this site sells. `/thanks` and `/404` are omitted too — both `noindex`.
+- **It's out of the sitemap**, filtered in `astro.config.mjs` alongside the
+  consulting page. It isn't an HTML page.
+- **`public/robots.txt` points at it in a comment.** There's no standardised
+  directive for llms.txt, so a directive would be noise to conforming parsers.
+- **No performance implication.** No browser fetches it during a page load, so
+  it neither helps nor hurts the PageSpeed 100 the site targets. It was added
+  for AI-crawler discoverability, nothing else.
+
+Page descriptions in it are prose, not counts — don't write "an 18-question
+FAQ" or similar, since that goes stale silently and nothing type-checks it.
+
 ## Standing rules
 
 - **This site gets no blog or content section.** All writing goes to the

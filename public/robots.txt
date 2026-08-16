@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://greencovedigital.com/sitemap-index.xml
+
+# LLM-readable site summary: https://greencovedigital.com/llms.txt
