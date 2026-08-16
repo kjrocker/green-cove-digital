@@ -22,10 +22,10 @@ const body = `# ${SITE.title}
 
 ${SITE.title} is a one-person business run by ${PERSON.fullName}, a software engineer with
 over a decade of experience. The subscription covers everything: custom design (no
-templates), professionally written content, domain registration, hosting, SSL, backups,
+templates), copy written for them, domain registration, hosting, SSL, backups,
 security updates, ongoing content changes, and local SEO groundwork. ${PRICING.termMonths}-month minimum
 term, then month-to-month with 30 days' notice. Extra pages beyond the first five are ${usd(PRICING.extraPage)}
-one time each. Clients always keep their domain, content, and customer data.
+one time each. Clients always keep their domain, the files they sent, and anything they write on the site.
 
 ${SITE.title} works fully remotely and has no physical location or local service area.
 Typical clients: trades and contractors, coffee roasters and cafés, boutiques and small

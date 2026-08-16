@@ -104,6 +104,17 @@ wrote or sent. Site comes down on cancel.
 Say it candidly and lead with what they *do* keep. There is no case where the
 code changes hands.
 
+**What "your content" means in copy (Kevin, 2026-08-16):** the guarantee is
+narrower than "content". What is guaranteed to leave with the client is the
+domain, the files they sent (logos, photos), and **anything they wrote on the
+site themselves — a blog, announcements**. That last item is the one to spell
+out ("if you added a blog, every post is yours"), because it's the writing a
+client is most likely to worry about. The professionally written page copy is
+not part of the guarantee either way; Kevin doesn't care what clients do with
+it, so the copy neither promises it nor withholds it. Don't write "every word
+of content you wrote" without the blog example — on its own it reads as a
+quiet carve-out (copy-style-review.md §1).
+
 ## What's included, and what to call it
 
 - **Content**: say "professional" / "search-optimized". Do **not** say Kevin

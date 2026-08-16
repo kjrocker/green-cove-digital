@@ -10,24 +10,24 @@ import { PRICING, usd } from "../../data/pricing";
 
 const faqs: { q: string; a: string }[] = [
   {
-    q: `What does ${usd(PRICING.monthly)} a month actually cover?`,
+    q: `What does ${usd(PRICING.monthly)} a month cover?`,
     a: "Design and build of your site (up to five pages to start), hosting, SSL, your domain, security and software updates, and ongoing content changes — new hours, a new service, a photo swap. Email me the change and it's done within a few business days. There is no separate maintenance plan and no hosting bill.",
   },
   {
     q: "When does the first payment happen?",
-    a: `When the work starts. The first ${usd(PRICING.monthly)} is what puts you on the calendar — there's no lump sum up front and no deposit on top of it. From there it's the same ${usd(PRICING.monthly)} every month, while the site is being built and after it's live.`,
+    a: `When the work starts. The first month's ${usd(PRICING.monthly)} is what starts the work — there's no lump sum up front and no deposit on top of it. From there it's the same ${usd(PRICING.monthly)} every month, while the site is being built and after it's live.`,
   },
   {
     q: "Is there a contract or a minimum term?",
-    a: `Yes: twelve monthly payments, starting with the first one. A custom site is weeks of work, and at ${usd(PRICING.monthly)} a month it takes about a year for that work to be worth doing — that's the trade for $0 down. After the twelve months you're month to month and can cancel with 30 days' notice.`,
+    a: `Yes: twelve monthly payments, starting with the first one. The build takes weeks and nobody pays for it up front, so the first year's payments are what pay for it. That's the trade for $0 down. After the twelve months you're month to month and can cancel with 30 days' notice.`,
   },
   {
     q: "What if I have to cancel during the first year?",
-    a: `The first year is a commitment, so the remaining monthly payments are still owed — there's no penalty on top of that, and nothing at all once the year is up. Either way, your domain and your content are yours and stay yours.`,
+    a: `You still owe the remaining months of the first year — no penalty on top. After month twelve, cancelling costs nothing but 30 days' notice. Either way, your domain, your files and anything you've written on the site stay yours.`,
   },
   {
     q: "Do I keep my website if I cancel?",
-    a: "The site itself, no. What you always keep: your domain; every word of content you wrote; and every logo, photo and file you sent me. I'll make sure you have all of it and point the domain wherever you tell me. Nothing that belongs to your business is ever held hostage.",
+    a: "The site itself, no. What you always keep: your domain; every logo, photo and file you sent me; and anything you wrote on the site — if you added a blog, every post is yours. I'll make sure you have all of it and point the domain wherever you tell me. Nothing that belongs to your business is ever held hostage.",
   },
   {
     q: "What if I need more than five pages?",
@@ -35,7 +35,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens after the first year?",
-    a: "The price doesn't move and the service doesn't change — there's no “introductory rate” that quietly steps up in month thirteen. Every four years I'll refresh the design so it doesn't go stale — that's included too.",
+    a: "The price doesn't move and the service doesn't change. Every four years I'll refresh the design so it doesn't go stale — that's included too.",
   },
   {
     q: "How long does it take?",
@@ -43,11 +43,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What do you need from me?",
-    a: "A short call about your business, your logo and any brand colors you have, some photos if you have them (I can source stock if not), and about an hour of your time reviewing drafts. Professional, search-optimized content is written for you from our conversation — you don't need to sit down and write your website.",
+    a: "A short call about your business, your logo and any brand colors you have, some photos if you have them (I can source stock if not), and about an hour of your time reviewing drafts. The copy is written for you from our call — you don't need to sit down and write your website.",
   },
   {
     q: "What if I don't like the design?",
-    a: "Then we don't launch it. You can watch the build on a private preview link, so there are no surprises, and we keep iterating until it's right — I'd rather spend another week on the design than put something live that you don't like.",
+    a: "Then we don't launch it. You can watch the build on a private preview link, so there are no surprises, and we keep revising until it's right — I'd rather spend another week on the design than put something live that you don't like.",
   },
   {
     q: "Can I update the site myself?",
@@ -55,23 +55,23 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Will it show up on Google?",
-    a: "Every site ships with the technical SEO groundwork done properly: fast load times, mobile-first layout, clean structure, local business schema, and copy written around what your customers actually search for. That's a real advantage over most small business sites. But nobody can promise a specific ranking — how fast you climb depends on your competition, your reviews, and time.",
+    a: "Every site gets the technical SEO basics: fast load times, mobile-first layout, clean structure, local business markup, and copy written around what your customers search for. That puts you ahead of most small business sites. But nobody can promise a specific ranking — how fast you climb depends on your competition, your reviews, and time.",
   },
   {
     q: "How is this different from Wix or Squarespace?",
-    a: `Wix and Squarespace sell you a tool; I sell you a finished, looked-after website. With a builder you pay $20–40 a month and then do the design, the writing, the SEO and every update yourself, on a template thousands of other businesses use. With me it's ${usd(PRICING.monthly)} a month for a custom site that's designed, written and maintained for you, and that's built to load faster and rank better than a template can. If you enjoy building websites, a builder is cheaper. If you'd rather run your business, this is.`,
+    a: `Wix and Squarespace sell you a tool; I sell you a finished, looked-after website. With a builder you pay $20–40 a month and then do the design, the writing, the SEO and every update yourself, on a template thousands of other businesses use. With me it's ${usd(PRICING.monthly)} a month for a custom site that's designed, written and maintained for you, built to load faster and rank better than a template. If you enjoy building websites, a builder is cheaper. If you'd rather spend that time on your business, this is what it's for.`,
   },
   {
     q: "Where is the site hosted, and how secure is it?",
-    a: "On modern, professionally run hosting infrastructure with a global network in front of it — not a shared server or a computer in my office. Sites without a content editor are served as plain pre-built pages, so there is almost nothing to break into; sites with one are kept patched as part of the subscription. Either way, SSL and backups are handled and you never see a hosting bill.",
+    a: "On professionally managed hosting — not a shared server or a computer in my office. Sites without a content editor are served as plain pre-built pages, so there is almost nothing to break into; sites with one are kept patched as part of the subscription. Either way, SSL and backups are handled and you never see a hosting bill.",
   },
   {
     q: "Do you build online stores?",
-    a: "Small ones, yes — a coffee roaster selling a dozen coffees and some merch, a shop with a short list of products, a practice taking payment for a service. A handful of products with checkout is squarely in scope. A large catalog with inventory, shipping rules and thousands of SKUs is a different kind of project with very different requirements.",
+    a: "Small ones, yes — a coffee roaster selling a dozen coffees and some merch, a shop with a short list of products, a practice taking payment for a service. A handful of products with checkout is squarely in scope. A large catalog with inventory, shipping rules and thousands of SKUs is a different kind of project, and not one I take on.",
   },
   {
     q: "Do you work with businesses in my area?",
-    a: "Yes — anywhere in the US. Everything happens over calls, email and a private preview link, so it works the same wherever you are. Most of my clients I never meet in person, and it has never mattered.",
+    a: "Yes — anywhere in the US. Everything happens over calls, email and a private preview link, so it works the same wherever you are. I never meet most of my clients in person, and it has never mattered.",
   },
   {
     q: "What if something happens to you?",
@@ -79,7 +79,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do you offer other languages?",
-    a: "Often, yes. For Spanish and other languages I bring in a professional translator — not machine translation — for an additional fee that depends on the amount of content. It depends on the language, so ask and I'll tell you whether I can do it.",
+    a: "Sometimes. For Spanish and some other languages I bring in a professional translator (not machine translation) for an extra fee based on how much content there is. Ask, and I'll tell you whether I can do yours.",
   },
 ];
 
@@ -132,8 +132,8 @@ const jsonLd = {
 >
   <Hero slot="header" title={`Website Subscription Pricing: ${usd(PRICING.monthly)} a Month, $0 Down`}>
     <p class="big">
-      One monthly subscription, no up-front build fee. Here's exactly what it
-      costs and what's included.
+      One monthly subscription, no up-front build fee. What it costs and
+      what's included.
     </p>
     <div class="cluster">
       <a href="/contact">Book a Call</a>
@@ -152,8 +152,9 @@ const jsonLd = {
           you build it. I build something custom for {usd(PRICING.monthly)} and keep looking after it.
         </p>
         <p>
-          <strong>What $0 down means:</strong> no lump sum up front. The first
-          month's {usd(PRICING.monthly)} is what starts the work, and there's nothing else to pay.
+          <strong>What $0 down means:</strong> the first month's {usd(PRICING.monthly)} is what
+          starts the work — there's no lump sum up front and no deposit on top
+          of it.
         </p>
         <p>
           <strong>Twelve-month minimum.</strong> After the first year you're
@@ -162,8 +163,8 @@ const jsonLd = {
         </p>
         <p>
           <strong>Typical turnaround:</strong> 2–4 weeks from our first conversation
-          to a live site, depending on content and scope. New here?
-          <a href="/#how-it-works">See how it works</a>, start to finish.
+          to a live site, depending on content and scope. First time?
+          <a href="/#how-it-works">See how it works</a>.
         </p>
       </div>
       <Card>
@@ -171,7 +172,7 @@ const jsonLd = {
         <ul class="flow" data-flow="sm">
           <li>Custom design — no templates</li>
           <li>Up to five pages to start</li>
-          <li>Professional, search-optimized content</li>
+          <li>Copy written for you, tuned for search</li>
           <li>Domain name registration and management</li>
           <li>Mobile-first, responsive design</li>
           <li>Optional content editor for blogs, announcements, etc.</li>
@@ -188,35 +189,34 @@ const jsonLd = {
     <h2>Why a Monthly Subscription Instead of a Big Invoice?</h2>
     <p>
       Because a website is never done. The menu changes, the summer hours start,
-      you add a service, a staff photo is three years old. Each fix is a
-      five-minute job, but each one is small enough that nobody wants to file a
-      ticket or pay a minimum fee for it. So it doesn't get done, and a year
+      you add a service, a staff photo is three years old. Each fix takes
+      five minutes, and nobody files a ticket or pays a minimum fee for five
+      minutes. So it doesn't get done, and a year
       later your site is quietly wrong about your own business.
     </p>
     <p>
-      A subscription puts those small fixes inside the price, so they actually
-      happen. It also lines up my incentives with yours: once the first year is
-      up, you only keep paying if the site is still fast, secure and online. And it turns a
+      A subscription puts those small fixes inside the price, so they get
+      done. After the first year you only keep paying if the site is still
+      fast, secure and online — which is how I'd want it too. And it turns a
       $5,000 decision into a {usd(PRICING.monthly)} one you can make this week.
     </p>
     <p>
-      It's also the trade behind the twelve-month minimum. Building the site is
-      weeks of work, paid for by the first year of the subscription. I'd rather
-      ask you for twelve months than for a few thousand dollars on day one.
+      It's also why there's a twelve-month minimum. The build takes weeks and
+      nobody pays for it up front, so the first year's payments are what pay
+      for it. That's the trade for $0 down — I'd rather ask you for twelve
+      months than for a few thousand dollars on day one.
     </p>
   </SpotBand>
 
   <Section ornament>
     <h2>Built for Performance</h2>
     <p>
-      Every extra second of load time costs you visitors and sales. My sites
-      load in under a second — I optimize images, strip out unnecessary code,
-      and use modern hosting infrastructure to keep things fast.
+      Slow sites lose visitors and rank lower on Google. Mine load in under a
+      second on a phone — images optimized, no unnecessary code, fast hosting.
     </p>
     <p>
-      Fast sites rank higher on Google and convert better. This site scores 100
-      on Google Lighthouse, and every site I build is held to the same bar. Curious how your current site
-      does? Run it through Google's free
+      This site scores 100 on Google Lighthouse, and every site I build has to
+      match it. Curious how your current site does? Run it through Google's free
       <a href="https://pagespeed.web.dev/">PageSpeed Insights</a> — then run this
       one.
     </p>
@@ -228,26 +228,26 @@ const jsonLd = {
       <Card as="li">
         <h3>Plumbers, Electricians and Contractors</h3>
         <p>
-          Websites for the trades — plumbers, electricians, landscapers, HVAC,
-          general contractors. A mobile-friendly site with clear contact info, service areas, and the SEO work needed
-          to show up when someone searches "plumber near me."
+          A mobile-friendly site with clear contact info, your service areas,
+          and the SEO work needed to show up when someone searches "plumber
+          near me" — or landscaper, HVAC, or general contractor.
         </p>
       </Card>
       <Card as="li">
         <h3>Boutiques and Small Shops</h3>
         <p>
-          Websites for boutiques, specialty stores and makers. Product showcases, simple
-          checkout for a handful of products if you need it, and a site that works on the phones and
-          tablets where most browsing happens.
+          Product showcases for boutiques, specialty stores and makers, simple
+          checkout for a handful of products if you need it, and a site that
+          works on the phones and tablets where most browsing happens.
         </p>
       </Card>
       <Card as="li">
         <h3>Lawyers, Accountants and Therapists</h3>
         <p>
-          Websites for professional practices — law firms, accountants,
-          therapists, consultants. A site that establishes
-          credibility, explains your services clearly, and makes it easy for
-          clients to get in touch — online booking can be added if you use it.
+          Your practice areas, who you are, and how to get in touch, laid out
+          so a first-time client knows within a minute whether you're the
+          right call. Works for law firms, accountants, therapists and
+          consultants; online booking can be added if you use it.
         </p>
       </Card>
       <Card as="li">
@@ -266,15 +266,15 @@ const jsonLd = {
   <SpotBand>
     <h2>What You Keep</h2>
     <p>
-      Your domain, your content, your customer data — it all stays yours,
-      always. Unlike Squarespace or Wix, your business's identity isn't tied up
-      in a large corporation that can raise prices, restrict features, or change
-      its policies overnight.
+      Your domain, every file you send me, and anything you write on the
+      site — a blog, announcements — stays yours, always. Unlike Squarespace
+      or Wix, none of it is tied up in a large corporation that can raise
+      prices, restrict features, or change its policies overnight.
     </p>
     <p>
-      The only thing I own is the design and the code, hosted and looked after
-      for as long as you're a client. If you ever leave, you take everything
-      that's yours with you.
+      The site itself — design and code — is mine, hosted and looked after
+      for as long as you're a client. If you leave, your domain, your files
+      and your writing go with you, and the site comes down.
     </p>
   </SpotBand>
 
@@ -306,7 +306,7 @@ const jsonLd = {
       call.
     </p>
     <p>
-      <a href="/contact">Book a Call — $0 Down</a>
+      <a href="/contact">Book a Call</a>
     </p>
   </Section>
 </BaseLayout>
