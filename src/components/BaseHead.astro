@@ -1,5 +1,5 @@
 ---
-import { SITE } from "../data/client";
+import { OG, SITE } from "../data/client";
 
 interface Props {
   /** Rendered verbatim into <title>. No site-name suffix is appended. */
@@ -40,6 +40,10 @@ const {
 const og = ogTitle ?? title;
 const ogDesc = ogDescription ?? description;
 const twitterDesc = twitterDescription ?? ogDesc;
+
+// Scrapers reject a relative og:image, so this one URL is absolute even though
+// every other reference in the project is a path.
+const ogImage = `${SITE.url}${OG.image}`;
 ---
 
 <meta charset="utf-8" />
@@ -56,9 +60,20 @@ const twitterDesc = twitterDescription ?? ogDesc;
       <meta property="og:title" content={og} />
       <meta property="og:description" content={ogDesc} />
       <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
+      <meta property="og:url" content={`${SITE.url}${path}`} />
+      <meta property="og:site_name" content={SITE.title} />
+      <meta property="og:locale" content={OG.locale} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content={String(OG.width)} />
+      <meta property="og:image:height" content={String(OG.height)} />
+      <meta property="og:image:alt" content={OG.alt} />
+      {/* summary_large_image, not summary — otherwise the 1200×630 renders as
+          a small square thumbnail instead of a full-width card. */}
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={og} />
       <meta name="twitter:description" content={twitterDesc} />
+      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={OG.alt} />
     </>
   )
 }

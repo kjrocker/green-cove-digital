@@ -43,28 +43,52 @@ function dataUri(svg: string): string {
   return `url("data:image/svg+xml;base64,${btoa(svg)}")`;
 }
 
-interface WaveTileOptions {
+interface WaveGeometryOptions {
   /** Tile height. The silhouette fills the tile from the anchored edge. */
   height: number;
   /** Peak-to-baseline amplitude of the sine. */
   amp: number;
   /** Whole periods across the tile — must be an integer to stay seamless. */
   periods: number;
-  fill: string;
   /** Which edge the fill runs to. Default `"bottom"`. */
   anchor?: "top" | "bottom";
+  /** Tile width. Defaults to `TILE`; the og:image generator draws wider. */
+  width?: number;
+}
+
+interface WaveTileOptions extends WaveGeometryOptions {
+  fill: string;
 }
 
 /**
- * A seamless horizontal wave tile: an integer number of sine periods drawn with
- * Q/T (T mirrors the previous control point, so crests and troughs alternate
- * and the end slope matches the start slope), then closed to one edge so the
- * fill covers everything on that side of the wave line.
+ * The `d` of one seamless wave silhouette: an integer number of sine periods
+ * drawn with Q/T (T mirrors the previous control point, so crests and troughs
+ * alternate and the end slope matches the start slope), then closed to one edge
+ * so the fill covers everything on that side of the wave line.
  *
  * `anchor: "bottom"` puts the wave line near the tile top and fills downward —
  * a silhouette rising from the bottom of its container. `anchor: "top"` mirrors
  * that without a `scaleY(-1)`, which would collide with the drift `transform`.
+ *
+ * Split out from `waveTileUri` so `scripts/og/` can draw the site's actual wave
+ * geometry into a standalone SVG instead of keeping a copy that drifts from it.
  */
+export function wavePathD({
+  height,
+  amp,
+  periods,
+  anchor = "bottom",
+  width = TILE,
+}: WaveGeometryOptions): string {
+  const half = width / periods / 2;
+  const baseline = anchor === "top" ? height - amp - 1 : amp + 1;
+  let d = `M0 ${baseline} Q ${half / 2} ${baseline - amp} ${half} ${baseline}`;
+  for (let i = 2; i <= periods * 2; i++) d += ` T ${half * i} ${baseline}`;
+  d += anchor === "top" ? " V0 H0 Z" : ` V${height} H0 Z`;
+  return d;
+}
+
+/** A seamless horizontal wave tile, as a CSS-ready data URI. */
 export function waveTileUri({
   height,
   amp,
@@ -72,11 +96,7 @@ export function waveTileUri({
   fill,
   anchor = "bottom",
 }: WaveTileOptions): string {
-  const half = TILE / periods / 2;
-  const baseline = anchor === "top" ? height - amp - 1 : amp + 1;
-  let d = `M0 ${baseline} Q ${half / 2} ${baseline - amp} ${half} ${baseline}`;
-  for (let i = 2; i <= periods * 2; i++) d += ` T ${half * i} ${baseline}`;
-  d += anchor === "top" ? " V0 H0 Z" : ` V${height} H0 Z`;
+  const d = wavePathD({ height, amp, periods, anchor });
   return dataUri(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${TILE}" height="${height}"><path d="${d}" fill="${fill}"/></svg>`,
   );
@@ -94,27 +114,43 @@ interface DotFieldOptions {
    */
   stroke?: string;
   seed?: number;
+  /** Field width. Defaults to `FIELD`. */
+  width?: number;
+  /** Field height. Defaults to `FIELD`. */
+  height?: number;
 }
 
-/** A sparse square field of circles, tiled edge to edge in both axes. */
-export function dotFieldUri({
+/**
+ * The `<circle>` run of a sparse field, scattered by the seeded PRNG.
+ *
+ * Split out from `dotFieldUri` alongside `wavePathD`, so the og:image generator
+ * can scatter motes across a 1200×630 frame rather than a square tile.
+ */
+export function dotFieldCircles({
   count,
   minR,
   maxR,
   fill,
   stroke,
   seed = 1,
+  width = FIELD,
+  height = FIELD,
 }: DotFieldOptions): string {
   const rand = mulberry32(seed);
-  const circles = Array.from({ length: count }, () => {
-    const cx = Math.floor(rand() * FIELD);
-    const cy = Math.floor(rand() * FIELD);
+  return Array.from({ length: count }, () => {
+    const cx = Math.floor(rand() * width);
+    const cy = Math.floor(rand() * height);
     const r = Number((minR + rand() * (maxR - minR)).toFixed(1));
     const ring = stroke !== undefined && rand() < 0.55;
     return ring
       ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${stroke}" stroke-width="1"/>`
       : `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}"/>`;
   }).join("");
+}
+
+/** A sparse square field of circles, tiled edge to edge in both axes. */
+export function dotFieldUri(options: DotFieldOptions): string {
+  const circles = dotFieldCircles(options);
   return dataUri(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${FIELD}" height="${FIELD}">${circles}</svg>`,
   );

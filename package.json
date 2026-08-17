@@ -10,7 +10,8 @@
     "astro": "astro",
     "deploy": "./scripts/deploy",
     "deploy:preview": "./scripts/deploy preview",
-    "make-favicon": "./scripts/make-favicon"
+    "make-favicon": "./scripts/make-favicon",
+    "og": "node scripts/og/render.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
