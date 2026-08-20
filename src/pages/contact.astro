@@ -106,19 +106,30 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
     </Grid>
   </Section>
 
-  <SpotBand>
-    <h2>What Happens Next</h2>
-    <p>
-      I'll reply within one business day with a few questions about your
-      business and what you need the site to do. From there we'll set up a
-      short call, and if it's a fit I'll send a written summary of scope,
-      timeline, price and terms. No obligation, and nothing to pay until you've read the summary and
-      said yes.
-    </p>
-  </SpotBand>
+  <!--
+    Manual deviation from the section rhythm: this is the last band before the
+    footer, so its bottom curve would otherwise land right against the footer's
+    top curve. The extra margin gives the white gap between them some room.
+  -->
+  <div class="next-steps">
+    <SpotBand>
+      <h2>What Happens Next</h2>
+      <p>
+        I'll reply within one business day with a few questions about your
+        business and what you need the site to do. From there we'll set up a
+        short call, and if it's a fit I'll send a written summary of scope,
+        timeline, price and terms. No obligation, and nothing to pay until
+        you've read the summary and said yes.
+      </p>
+    </SpotBand>
+  </div>
 </BaseLayout>
 
 <style>
+  .next-steps {
+    margin-block-end: var(--space-l-xl);
+  }
+
   .contact-form {
     max-width: 50ch;
   }
