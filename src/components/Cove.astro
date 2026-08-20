@@ -29,14 +29,14 @@ const wave4Uri = wave(80, 26, 5);
 // Sparse field of tiny light motes — sunlight scattering through the water.
 // Uniform radius and no stroke: dust, not bubbles.
 const motesSmallUri = dotFieldUri({
-  count: 160,
+  count: 40,
   minR: 1,
   maxR: 1,
   fill: MOTE_FILL,
   seed: 1,
 });
 const motesBigUri = dotFieldUri({
-  count: 60,
+  count: 15,
   minR: 2,
   maxR: 2,
   fill: MOTE_FILL,
@@ -189,14 +189,14 @@ const motesBigUri = dotFieldUri({
   .motes-small {
     background-image: var(--motesSmallUri);
     opacity: 0.35;
-    animation-duration: 340s;
+    animation-duration: 170s;
     animation-name: drift-field;
   }
 
   .motes-big {
     background-image: var(--motesBigUri);
     opacity: 0.25;
-    animation-duration: 240s;
+    animation-duration: 120s;
     animation-name: drift-field;
     animation-direction: reverse;
   }

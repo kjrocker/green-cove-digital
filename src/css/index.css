@@ -115,16 +115,35 @@
   isolation: isolate;
   overflow: hidden;
   /* Slowest of the three surfaces — a page can carry four or more cards. */
-  --drift-bubble-time: 300s;
+  --drift-bubble-time: 150s;
 
   /* The ornament is a `.flow` child; it must not take the sibling margin. */
   > .drift {
     margin-block-start: 0;
   }
 
+
   ::selection {
     background-color: var(--color-secondary);
     color: var(--color-dark);
+  }
+}
+
+/* The only breakpoint on the site, and it is a performance one rather than a
+   layout one — every other rule here is intrinsic.
+
+   Ten cards on the home page means ten separately animated composited layers.
+   That is affordable on a desktop GPU and is not on a mid-range phone, where
+   the card is full width and the ornament is a barely-visible texture behind
+   body copy anyway. Dropping it here takes the home page from thirteen
+   animated bubble layers to three. See docs/known-issues.md.
+
+   Deliberately a top-level rule rather than a nested one: a bare `> .drift`
+   inside an `@media` nested in `.card` leans on relaxed-nesting parsing, and
+   this rule existing is the whole point of the fix. */
+@media (max-width: 48em) {
+  .card > .drift {
+    display: none;
   }
 }
 

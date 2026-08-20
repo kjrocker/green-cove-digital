@@ -13,16 +13,27 @@
 /** Width of a seamless wave tile, in SVG user units. */
 export const TILE = 900;
 
-/** Side of a square dot-field tile, in SVG user units. */
-export const FIELD = 1400;
+/**
+ * Side of a square dot-field tile, in SVG user units.
+ *
+ * This doubles as the drift distance and the `background-size` of every bubble
+ * layer, so it sets two costs at once: how far a layer has to overhang its host
+ * (and therefore how large a surface the compositor must hold), and how large a
+ * raster the browser must produce for one tile. At 1400 a single tile rasterised
+ * to ~71 MB on a 3x phone and the layers ran several times past the size Firefox
+ * will prerender a transform animation at. See docs/known-issues.md.
+ */
+export const FIELD = 700;
 
 let seedCounter = 0;
 
 /**
  * A distinct seed per ornament instance, so two cards on the same page don't
- * carry the same scatter in the same place. Render order is document order and
- * the build is single-pass, so this stays stable build to build — `pnpm build`
- * twice and diff `dist/` if that ever comes into question.
+ * carry the same scatter in the same place. It no longer seeds an SVG directly
+ * — it picks a shared tile plus a crop and a mirror; see `bubbleVariant`.
+ * Render order is document order and the build is single-pass, so this stays
+ * stable build to build — `pnpm build` twice and diff `dist/` if that ever
+ * comes into question.
  */
 export function nextSeed(): number {
   return (seedCounter += 1);
@@ -154,4 +165,80 @@ export function dotFieldUri(options: DotFieldOptions): string {
   return dataUri(
     `<svg xmlns="http://www.w3.org/2000/svg" width="${FIELD}" height="${FIELD}">${circles}</svg>`,
   );
+}
+
+/**
+ * Ornament tints: hex equivalents of --color-primary-glare and --color-dark.
+ * The generators bake the color into the SVG, so it can't be a var() reference.
+ */
+export const TINT = { light: "#def2eb", dark: "#273533" } as const;
+
+export type Tone = keyof typeof TINT;
+
+/**
+ * The shared bubble tiles.
+ *
+ * Every `<Drift>` draws from this fixed set instead of generating a tile per
+ * instance. Identical `url("data:…")` strings mean the browser decodes and
+ * rasterises ONE surface per tile and reuses it everywhere; a page used to mint
+ * a unique tile per card, so nothing was ever shared.
+ *
+ * Three tiles is enough because the visible variety comes from elsewhere — see
+ * `bubbleVariant`, whose crop and mirror are free at composite time.
+ */
+const BUBBLE_SEEDS = [11, 23, 37];
+
+/** Circles per tile. Chosen to hold the old density of 45 per 1400² field. */
+const BUBBLE_COUNT = 11;
+
+const bubbleTiles = (tone: Tone): string[] =>
+  BUBBLE_SEEDS.map((seed) =>
+    dotFieldUri({
+      count: BUBBLE_COUNT,
+      minR: 3,
+      maxR: 10,
+      fill: TINT[tone],
+      stroke: TINT[tone],
+      seed,
+    }),
+  );
+
+const BUBBLE_TILES: Record<Tone, string[]> = {
+  light: bubbleTiles("light"),
+  dark: bubbleTiles("dark"),
+};
+
+export interface BubbleVariant {
+  /** One of the shared tiles, as a CSS-ready data URI. */
+  tile: string;
+  /** `background-position` — crops a different corner of the shared tile. */
+  offset: string;
+  /**
+   * `1` or `-1`. Mirrors the field, and with it the drift direction: an
+   * unmirrored field rises to the left, a mirrored one rises to the right.
+   * Both still rise, which is the constraint that rules out a general rotation
+   * — half the angles would have the bubbles sinking.
+   */
+  flip: 1 | -1;
+}
+
+/**
+ * Pick a tile, a crop and a mirror for one ornament.
+ *
+ * This is what keeps two cards from wearing the same scatter now that they
+ * share a tile. All three choices are free at composite time: the crop is a
+ * static `background-position` and the mirror is folded into the existing
+ * transform animation, so neither adds a surface nor grows the layer.
+ *
+ * Deterministic in `seed`, so two builds emit byte-identical output.
+ */
+export function bubbleVariant(tone: Tone, seed: number): BubbleVariant {
+  // Spread consecutive seeds apart before sampling — mulberry32 on 1, 2, 3…
+  // gives visibly similar first draws.
+  const rand = mulberry32(seed * 2654435761);
+  return {
+    tile: BUBBLE_TILES[tone][seed % BUBBLE_SEEDS.length],
+    offset: `${Math.floor(rand() * FIELD)}px ${Math.floor(rand() * FIELD)}px`,
+    flip: rand() < 0.5 ? -1 : 1,
+  };
 }

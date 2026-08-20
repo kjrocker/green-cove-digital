@@ -2,9 +2,11 @@
 import {
   TILE,
   FIELD,
+  TINT,
+  type Tone,
   nextSeed,
   waveTileUri,
-  dotFieldUri,
+  bubbleVariant,
 } from "../lib/ornaments";
 
 interface Props {
@@ -15,8 +17,8 @@ interface Props {
   /** Which edge the waves hug. */
   edge?: "top" | "bottom";
   /** Ornament tint: `light` on dark surfaces, `dark` on light ones. */
-  tone?: "light" | "dark";
-  /** Pin the scatter. Defaults to a fresh seed per instance. */
+  tone?: Tone;
+  /** Pin the variant. Defaults to a fresh seed per instance. */
   seed?: number;
   /** Freeze every layer, matching Cove's escape hatch. */
   static?: boolean;
@@ -31,10 +33,6 @@ const {
   static: isStatic = false,
 } = Astro.props;
 
-// Hex equivalents of --color-primary-glare and --color-dark. The generators
-// bake the color into the SVG, so it can't be a var() reference.
-const TINT = tone === "light" ? "#def2eb" : "#273533";
-
 const WAVE_HEIGHT = 120;
 
 const waveUri = waves
@@ -42,26 +40,31 @@ const waveUri = waves
       height: WAVE_HEIGHT,
       amp: 15,
       periods: 3,
-      fill: TINT,
+      fill: TINT[tone],
       anchor: edge,
     })
   : "none";
 
-const bubbleUri = bubbles
-  ? // Sparse, but dense enough that a single card-sized window is never empty.
-    dotFieldUri({ count: 45, minR: 3, maxR: 10, fill: TINT, stroke: TINT, seed })
-  : "none";
+// One of a handful of shared tiles, plus a crop and a mirror that make this
+// instance look unlike its neighbours without costing a second surface.
+const variant = bubbles ? bubbleVariant(tone, seed) : null;
+
+const bubbleUri = variant?.tile ?? "none";
+const driftOffset = variant?.offset ?? "0 0";
+const driftFlip = variant?.flip ?? 1;
 ---
 
 <div class="drift" aria-hidden="true" data-static={isStatic || undefined}>
   {waves && <div class="drift__wave" data-edge={edge} />}
-  {bubbles && <div class="drift__bubbles" />}
+  {bubbles && <div class="drift__bubbles" data-flip={driftFlip === -1 || undefined} />}
 </div>
 
 <style
   define:vars={{
     waveUri,
     bubbleUri,
+    driftOffset,
+    driftFlip,
     tilePx: `${TILE}px`,
     fieldPx: `${FIELD}px`,
     waveHeightPx: `${WAVE_HEIGHT}px`,
@@ -111,17 +114,33 @@ const bubbleUri = bubbles
     }
   }
 
-  /* Overhangs one full field on every side, so drifting up-and-left by exactly
-     one field keeps the host covered for the whole cycle. */
+  /* Overhangs one full field on the two sides the field arrives from, so
+     drifting up-and-left by exactly one field keeps the host covered for the
+     whole cycle.
+
+     This used to overhang a full field on all FOUR sides, which made the layer
+     2 x FIELD wider and taller than its host — on a phone, a 360x320 card grew
+     a 3160x3120 composited layer. That is many times the size Firefox will
+     prerender a transform animation at, so the animation dropped to the main
+     thread and repainted during scroll. See docs/known-issues.md. */
   .drift__bubbles {
     position: absolute;
-    inset: calc(-1 * var(--fieldPx));
+    inset: 0 calc(-1 * var(--fieldPx)) calc(-1 * var(--fieldPx)) 0;
     background-image: var(--bubbleUri);
     background-repeat: repeat;
     background-size: var(--fieldPx) var(--fieldPx);
+    /* Crops a different part of the shared tile per instance. Free: it changes
+       neither the surface nor the layer's size. */
+    background-position: var(--driftOffset);
     opacity: var(--drift-bubble-opacity, 0.12);
     animation: drift-diagonal linear infinite;
-    animation-duration: var(--drift-bubble-time, 220s);
+    animation-duration: var(--drift-bubble-time, 110s);
+
+    /* A mirrored field drifts up-and-RIGHT, so its field of travel margin has
+       to sit on the left instead. */
+    &[data-flip] {
+      inset: 0 0 calc(-1 * var(--fieldPx)) calc(-1 * var(--fieldPx));
+    }
 
     @media (prefers-reduced-motion: reduce) {
       animation: none;
@@ -138,12 +157,20 @@ const bubbleUri = bubbles
     }
   }
 
+  /* The mirror has to live INSIDE the keyframe. This animates `transform`, so a
+     base `transform: scaleX(-1)` on the element would simply be overridden the
+     moment the animation started. The individual `scale:` property is no good
+     either: it composes as translate -> rotate -> scale, which applies the
+     translate in the parent's coordinate space rather than the mirrored one, so
+     the step would stop landing on the tile lattice and the field would jump
+     once per cycle instead of looping seamlessly. */
   @keyframes drift-diagonal {
+    from {
+      transform: scaleX(var(--driftFlip)) translate(0, 0);
+    }
     to {
-      transform: translate(
-        calc(-1 * var(--fieldPx)),
-        calc(-1 * var(--fieldPx))
-      );
+      transform: scaleX(var(--driftFlip))
+        translate(calc(-1 * var(--fieldPx)), calc(-1 * var(--fieldPx)));
     }
   }
 </style>

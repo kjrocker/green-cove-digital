@@ -76,3 +76,70 @@ outright on 7.x with:
   `og:image`.~~ Fixed: `OG` now points at a generated `public/og.png` and
   `BaseHead.astro` emits the full `og:image` / `twitter:image` set. See
   [og-image.md](og-image.md).
+
+## Ornament layers caused scroll lag on Firefox for Android — fixed 2026-08-20
+
+**Severity:** was high on mobile; not reproducible on desktop at all.
+
+Reported as "lagging scroll on Firefox on the phone" for a page that is
+essentially pure text. The bubbles are *not* DOM nodes — they are base64 SVG
+data URIs used as `background-image` on one `<div>` per ornament — so the DOM
+was never the problem. Three compounding costs were:
+
+1. **Oversized composited layers.** `.drift__bubbles` used
+   `inset: calc(-1 * var(--fieldPx))`, a full field of overhang on all four
+   sides. With `FIELD = 1400` that made every layer 2800px wider and taller
+   than its host: a 360×320 card on a phone grew a **3160×3120** layer.
+   Firefox only prerenders a transform animation up to roughly
+   `layout.animation.prerender.viewport-ratio-limit` (1.125) × the viewport,
+   capped at 4096px — about 442×958 on a phone. Every bubble layer was 3–7×
+   past that, so the animations fell back to the main thread and repainted
+   during scroll.
+
+2. **Unshared raster surfaces.** `background-size` was 1400×1400 CSS px, i.e. a
+   **~71 MB** surface at DPR 3 to hold 45 circles — and `nextSeed()` gave every
+   instance its own tile, so nothing was ever shared. The home page wanted 15
+   distinct tiles, over 1 GB of surfaces, on a device that has nothing like
+   that to spare.
+
+3. **Payload.** Astro's `define:vars` stamps the custom properties onto every
+   element in the component, so each ~10 KB data URI was emitted many times per
+   page. The home page was 363 KB of HTML, 92% of it base64.
+
+### What changed
+
+- `FIELD` 1400 → 700, bubble count 45 → 11 (same density). Drift durations
+  halved alongside it so apparent speed is unchanged.
+- Overhang is now one field on the **two sides the field arrives from**, not
+  all four — `inset: 0 -F -F 0`.
+- One shared set of tiles (`BUBBLE_TILES` in `src/lib/ornaments.ts`) instead of
+  one per instance. Per-instance variety comes from `bubbleVariant`: a
+  `background-position` crop and a `scaleX(±1)` mirror, both free at composite
+  time.
+- Card ornaments are dropped below `48em` — the site's only breakpoint, and a
+  performance one rather than a layout one.
+
+Home page: 363 KB → 126 KB, unique data URIs 21 → 12, bubble layers on a phone
+13 → 3, per-layer area ~9× smaller, tile surfaces 71 MB → 18 MB.
+
+### Gotchas if you touch this again
+
+- **The mirror must live inside `@keyframes drift-diagonal`.** The animation
+  animates `transform`, so a base `transform: scaleX(-1)` is overridden the
+  moment it starts. The individual `scale:` property does not work either: it
+  composes as translate → rotate → scale, which applies the translate in the
+  parent's coordinate space rather than the mirrored one, so the step stops
+  landing on the tile lattice and the field jumps once per cycle.
+- **A general rotation is not safe.** Rotating the field rotates the drift
+  vector with it, and half the angles have the bubbles *sinking*
+  (`rotate(180deg)`, `rotate(270deg)`, `scaleY(-1)`). Off-axis angles also
+  inflate the layer's bounding box by 24–36% and break the two-sided overhang,
+  because the side the field arrives from rotates too. `scaleX(±1)` is the one
+  variant that is free and always still rises.
+- **Verify the loop stays seamless** after changing `FIELD` or the inset: the
+  per-cycle translate must be exactly one `FIELD`, or the lattice will jump.
+- Builds are deterministic — `pnpm build` twice and diff `dist/` to confirm.
+
+Still outstanding: the `define:vars` duplication. The tile URIs are now shared
+constants, so they can be hoisted into `index.css` and referenced once, leaving
+only the small per-instance crop/mirror values inline.
