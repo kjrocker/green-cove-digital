@@ -4,7 +4,8 @@ import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
 import SpotBand from "../components/SpotBand.astro";
 import Section from "../components/Section.astro";
-import { SITE, BUSINESS } from "../data/client";
+import EmailLink from "../components/EmailLink.astro";
+import { SITE } from "../data/client";
 
 const hasError = Astro.url.searchParams.get("error") === "1";---
 
@@ -26,7 +27,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
     <h2>Send a Message</h2>
     <p>
       <strong>Email:</strong>
-      <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+      <EmailLink href="#contact-form" label="use the form below" />
     </p>
     <p>
       I work remotely with businesses anywhere in the US; calls, previews and
@@ -34,6 +35,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
     </p>
     <Grid layout="50-50">
       <form
+        id="contact-form"
         class="flow contact-form"
         action="/api/contact"
         method="POST"
@@ -42,7 +44,7 @@ const hasError = Astro.url.searchParams.get("error") === "1";---
           hasError && (
             <p class="form-error" role="alert">
               Something went wrong sending your message. Please try again,
-              or email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> directly.
+              or email <EmailLink label="me directly" />.
             </p>
           )
         }

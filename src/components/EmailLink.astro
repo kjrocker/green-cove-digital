@@ -1,0 +1,20 @@
+---
+import { BUSINESS } from "../data/client";
+import { EMAIL_ATTR, encodeEmail } from "../lib/email";
+
+interface Props {
+  /**
+   * What the link reads as, and where it goes, before the decoder in
+   * BaseLayout swaps in the address — i.e. what a scraper sees, and what a
+   * visitor without JavaScript gets. Both need to make sense in the sentence
+   * around them, since either can be the one that renders.
+   */
+  label?: string;
+  href?: string;
+}
+
+const { label = "get in touch", href = "/contact" } = Astro.props;
+const attrs = { [EMAIL_ATTR]: encodeEmail(BUSINESS.email) };
+---
+
+<a href={href} {...attrs}>{label}</a>

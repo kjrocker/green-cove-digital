@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { BUSINESS, PERSON, SITE } from "../data/client";
+import { PERSON, SITE } from "../data/client";
 import { PRICING, usd } from "../data/pricing";
 
 /**
@@ -39,8 +39,9 @@ shops, and professional practices such as lawyers, accountants, and therapists.
   detailed FAQ on the money mechanics.
 - [About ${PERSON.fullName}](${url("/about")}): background, engineering
   approach, and why an engineer rather than a page builder.
-- [Contact](${url("/contact")}): contact form and what happens next.
-  Direct email: ${BUSINESS.email}
+- [Contact](${url("/contact")}): contact form and what happens next. The form is
+  the only published contact route; the email address is deliberately not listed
+  here in plaintext (docs/performance.md).
 `;
 
 export const GET: APIRoute = () =>

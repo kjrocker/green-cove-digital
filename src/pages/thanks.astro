@@ -2,7 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
-import { SITE, BUSINESS } from "../data/client";
+import EmailLink from "../components/EmailLink.astro";
+import { SITE } from "../data/client";
 ---
 
 <BaseLayout title={`Thanks — ${SITE.title}`} noindex>
@@ -10,7 +11,7 @@ import { SITE, BUSINESS } from "../data/client";
     <p>
       I'll get back to you within one business day. If it's urgent, you can also
       reach me directly at
-      <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>.
+      <EmailLink label="the contact form" />.
     </p>
   </Hero>
 

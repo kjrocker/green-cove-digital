@@ -1,6 +1,7 @@
 ---
 import Cove from "./Cove.astro";
 import NavList from "./NavList.astro";
+import EmailLink from "./EmailLink.astro";
 import { BUSINESS } from "../data/client";
 ---
 
@@ -12,7 +13,7 @@ import { BUSINESS } from "../data/client";
           &copy; {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
         </p>
         <p>
-          Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+          Email: <EmailLink />
         </p>
         <p>Working remotely with small businesses across the US.</p>
       </div>
