@@ -1,10 +1,11 @@
 /**
  * Build-time SVG generators for the site's ambient motion layers.
  *
- * Everything here returns a `url("data:image/svg+xml;base64,…")` string meant
- * to be handed to CSS as a custom property (via Astro's `define:vars`) and used
- * as a `background-image`. One repeating tile per animated layer keeps each
- * layer a single composited surface no matter how many shapes it holds.
+ * Everything here returns a `url("data:image/svg+xml;base64,…")` string used as
+ * a CSS `background-image`. One repeating tile per animated layer keeps each
+ * layer a single composited surface no matter how many shapes it holds, and the
+ * whole tile set is named once per page by `ornamentRootCss` so a tile is one
+ * decoded surface shared by every ornament that points at it.
  *
  * Both generators are deterministic: positions come from a seeded PRNG, not
  * `Math.random()`, so two builds of the same source emit byte-identical output.
@@ -175,42 +176,159 @@ export const TINT = { light: "#def2eb", dark: "#273533" } as const;
 
 export type Tone = keyof typeof TINT;
 
+/** Which edge a wave silhouette hugs. */
+export type Edge = "top" | "bottom";
+
 /**
- * The shared bubble tiles.
- *
- * Every `<Drift>` draws from this fixed set instead of generating a tile per
- * instance. Identical `url("data:…")` strings mean the browser decodes and
- * rasterises ONE surface per tile and reuses it everywhere; a page used to mint
- * a unique tile per card, so nothing was ever shared.
- *
- * Three tiles is enough because the visible variety comes from elsewhere — see
- * `bubbleVariant`, whose crop and mirror are free at composite time.
+ * Shapes per tile at the site's ambient density, which was originally
+ * calibrated as 45 circles per 1400² field. Deriving it means a change to
+ * `FIELD` keeps the ornaments looking the same instead of silently thinning
+ * them out or packing them in.
  */
+const atDensity = (per1400: number): number =>
+  Math.round(per1400 * (FIELD / 1400) ** 2);
+
+/* ------------------------------------------------------------------ *
+ * The tile set
+ * ------------------------------------------------------------------ */
+
+/**
+ * Every ornament image the site can draw, keyed by the custom property that
+ * carries it. See `ornamentRootCss`.
+ *
+ * The set is fully enumerable — tone, edge and seed are all closed — which is
+ * what lets it be emitted once per page instead of once per element.
+ */
+
+/** Bubble scatters. Three per tone is plenty; see `bubbleVariant`. */
 const BUBBLE_SEEDS = [11, 23, 37];
 
-/** Circles per tile. Chosen to hold the old density of 45 per 1400² field. */
-const BUBBLE_COUNT = 11;
+/** Drift's wave silhouette. One geometry, drawn per tone and per edge. */
+const WAVE_HEIGHT = 120;
+const WAVE_AMP = 15;
+const WAVE_PERIODS = 3;
 
-const bubbleTiles = (tone: Tone): string[] =>
-  BUBBLE_SEEDS.map((seed) =>
-    dotFieldUri({
-      count: BUBBLE_COUNT,
-      minR: 3,
-      maxR: 10,
-      fill: TINT[tone],
-      stroke: TINT[tone],
-      seed,
-    }),
-  );
+/** Cove's four parallax wave bands, deepest first. */
+const COVE_WAVE_FILL = "#9fe8cf";
+const COVE_WAVES: ReadonlyArray<[height: number, amp: number, periods: number]> =
+  [
+    [260, 14, 2],
+    [190, 18, 3],
+    [130, 22, 4],
+    [80, 26, 5],
+  ];
 
-const BUBBLE_TILES: Record<Tone, string[]> = {
-  light: bubbleTiles("light"),
-  dark: bubbleTiles("dark"),
-};
+/** Cove's drifting light motes — dust, not bubbles: uniform radius, no ring. */
+const COVE_MOTE_FILL = "#c8f2e2";
+
+/**
+ * The white wave that fills the area BELOW the wave line, used as Cove's
+ * ::before/::after to cut its curved edge. Fill matches --color-light.
+ */
+const COVE_EDGE_D =
+  "M0 96 l80-5.3C160 85 320 75 480 64s320-21 480-21.3c160 .3 320 10.3 400 16l80 5.3V96H0Z";
+
+function bubbleTileVar(tone: Tone, index: number): string {
+  return `--o-bubble-${tone}-${index}`;
+}
+
+/** The custom property holding Drift's wave silhouette for this tone and edge. */
+export function waveTileVar(tone: Tone, edge: Edge): string {
+  return `--o-wave-${tone}-${edge}`;
+}
+
+function buildTiles(): Record<string, string> {
+  const tiles: Record<string, string> = {};
+
+  for (const tone of ["light", "dark"] as const) {
+    BUBBLE_SEEDS.forEach((seed, i) => {
+      tiles[bubbleTileVar(tone, i)] = dotFieldUri({
+        count: atDensity(45),
+        minR: 3,
+        maxR: 10,
+        fill: TINT[tone],
+        stroke: TINT[tone],
+        seed,
+      });
+    });
+    for (const edge of ["top", "bottom"] as const) {
+      tiles[waveTileVar(tone, edge)] = waveTileUri({
+        height: WAVE_HEIGHT,
+        amp: WAVE_AMP,
+        periods: WAVE_PERIODS,
+        fill: TINT[tone],
+        anchor: edge,
+      });
+    }
+  }
+
+  COVE_WAVES.forEach(([height, amp, periods], i) => {
+    tiles[`--o-cove-wave-${i + 1}`] = waveTileUri({
+      height,
+      amp,
+      periods,
+      fill: COVE_WAVE_FILL,
+    });
+  });
+
+  tiles["--o-cove-motes-small"] = dotFieldUri({
+    count: atDensity(160),
+    minR: 1,
+    maxR: 1,
+    fill: COVE_MOTE_FILL,
+    seed: 1,
+  });
+  tiles["--o-cove-motes-big"] = dotFieldUri({
+    count: atDensity(60),
+    minR: 2,
+    maxR: 2,
+    fill: COVE_MOTE_FILL,
+    seed: 2,
+  });
+  tiles["--o-cove-edge"] =
+    `url("data:image/svg+xml;base64,${btoa(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${COVE_EDGE_D}" fill="#f3f7f5"/></svg>`,
+    )}")`;
+
+  return tiles;
+}
+
+const TILES = buildTiles();
+
+/**
+ * The whole tile set as one `:root` rule, emitted once per page by
+ * `<OrnamentTiles>`.
+ *
+ * These used to reach CSS through Astro's `define:vars`, which stamps the
+ * component's entire variable set onto EVERY element it renders. The home page
+ * carried 132 copies of 12 distinct data URIs — 99 KB of base64, 92% of the
+ * document — for images that are build-time constants. Naming them here costs
+ * one copy per page and lets the component stylesheets bundle normally instead
+ * of being forced inline.
+ *
+ * The geometry constants ride along so `FIELD` and `TILE` stay single-sourced
+ * in TypeScript rather than being restated in CSS.
+ */
+export function ornamentRootCss(): string {
+  const vars = {
+    ...TILES,
+    "--tilePx": `${TILE}px`,
+    "--fieldPx": `${FIELD}px`,
+    "--waveHeightPx": `${WAVE_HEIGHT}px`,
+  };
+  const body = Object.entries(vars)
+    .map(([name, value]) => `${name}:${value}`)
+    .join(";");
+  return `:root{${body}}`;
+}
+
+/* ------------------------------------------------------------------ *
+ * Per-instance variation
+ * ------------------------------------------------------------------ */
 
 export interface BubbleVariant {
-  /** One of the shared tiles, as a CSS-ready data URI. */
-  tile: string;
+  /** The custom property naming this instance's tile, e.g. `--o-bubble-light-1`. */
+  tileVar: string;
   /** `background-position` — crops a different corner of the shared tile. */
   offset: string;
   /**
@@ -228,7 +346,9 @@ export interface BubbleVariant {
  * This is what keeps two cards from wearing the same scatter now that they
  * share a tile. All three choices are free at composite time: the crop is a
  * static `background-position` and the mirror is folded into the existing
- * transform animation, so neither adds a surface nor grows the layer.
+ * transform animation, so neither adds a surface nor grows the layer. They are
+ * also small enough to sit in an inline `style` attribute, which is what makes
+ * hoisting the tiles themselves worthwhile.
  *
  * Deterministic in `seed`, so two builds emit byte-identical output.
  */
@@ -237,7 +357,7 @@ export function bubbleVariant(tone: Tone, seed: number): BubbleVariant {
   // gives visibly similar first draws.
   const rand = mulberry32(seed * 2654435761);
   return {
-    tile: BUBBLE_TILES[tone][seed % BUBBLE_SEEDS.length],
+    tileVar: bubbleTileVar(tone, seed % BUBBLE_SEEDS.length),
     offset: `${Math.floor(rand() * FIELD)}px ${Math.floor(rand() * FIELD)}px`,
     flip: rand() < 0.5 ? -1 : 1,
   };

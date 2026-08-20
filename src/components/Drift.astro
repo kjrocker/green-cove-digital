@@ -1,11 +1,9 @@
 ---
 import {
-  TILE,
-  FIELD,
-  TINT,
   type Tone,
+  type Edge,
   nextSeed,
-  waveTileUri,
+  waveTileVar,
   bubbleVariant,
 } from "../lib/ornaments";
 
@@ -15,7 +13,7 @@ interface Props {
   /** Field of slowly rising circles. */
   bubbles?: boolean;
   /** Which edge the waves hug. */
-  edge?: "top" | "bottom";
+  edge?: Edge;
   /** Ornament tint: `light` on dark surfaces, `dark` on light ones. */
   tone?: Tone;
   /** Pin the variant. Defaults to a fresh seed per instance. */
@@ -33,43 +31,34 @@ const {
   static: isStatic = false,
 } = Astro.props;
 
-const WAVE_HEIGHT = 120;
-
-const waveUri = waves
-  ? waveTileUri({
-      height: WAVE_HEIGHT,
-      amp: 15,
-      periods: 3,
-      fill: TINT[tone],
-      anchor: edge,
-    })
-  : "none";
-
-// One of a handful of shared tiles, plus a crop and a mirror that make this
-// instance look unlike its neighbours without costing a second surface.
+// The tiles themselves live in one `:root` block emitted by <OrnamentTiles>;
+// all an instance carries is which one to point at, plus the crop and mirror
+// that keep it from looking like its neighbours.
 const variant = bubbles ? bubbleVariant(tone, seed) : null;
-
-const bubbleUri = variant?.tile ?? "none";
-const driftOffset = variant?.offset ?? "0 0";
-const driftFlip = variant?.flip ?? 1;
 ---
 
 <div class="drift" aria-hidden="true" data-static={isStatic || undefined}>
-  {waves && <div class="drift__wave" data-edge={edge} />}
-  {bubbles && <div class="drift__bubbles" data-flip={driftFlip === -1 || undefined} />}
+  {
+    waves && (
+      <div
+        class="drift__wave"
+        data-edge={edge}
+        style={`--drift-wave:var(${waveTileVar(tone, edge)})`}
+      />
+    )
+  }
+  {
+    variant && (
+      <div
+        class="drift__bubbles"
+        data-flip={variant.flip === -1 || undefined}
+        style={`--drift-tile:var(${variant.tileVar});--drift-crop:${variant.offset};--drift-flip:${variant.flip}`}
+      />
+    )
+  }
 </div>
 
-<style
-  define:vars={{
-    waveUri,
-    bubbleUri,
-    driftOffset,
-    driftFlip,
-    tilePx: `${TILE}px`,
-    fieldPx: `${FIELD}px`,
-    waveHeightPx: `${WAVE_HEIGHT}px`,
-  }}
->
+<style>
   /* Sits between the host's own background and its in-flow content: the host
      isolates, so z-index: -1 paints above the background but below the text. */
   .drift {
@@ -87,7 +76,7 @@ const driftFlip = variant?.flip ?? 1;
     left: 0;
     width: calc(100% + var(--tilePx));
     height: var(--waveHeightPx);
-    background-image: var(--waveUri);
+    background-image: var(--drift-wave);
     background-repeat: repeat-x;
     opacity: var(--drift-wave-opacity, 0.1);
     animation: drift-x linear infinite;
@@ -126,12 +115,12 @@ const driftFlip = variant?.flip ?? 1;
   .drift__bubbles {
     position: absolute;
     inset: 0 calc(-1 * var(--fieldPx)) calc(-1 * var(--fieldPx)) 0;
-    background-image: var(--bubbleUri);
+    background-image: var(--drift-tile);
     background-repeat: repeat;
     background-size: var(--fieldPx) var(--fieldPx);
     /* Crops a different part of the shared tile per instance. Free: it changes
        neither the surface nor the layer's size. */
-    background-position: var(--driftOffset);
+    background-position: var(--drift-crop);
     opacity: var(--drift-bubble-opacity, 0.12);
     animation: drift-diagonal linear infinite;
     animation-duration: var(--drift-bubble-time, 110s);
@@ -166,10 +155,10 @@ const driftFlip = variant?.flip ?? 1;
      once per cycle instead of looping seamlessly. */
   @keyframes drift-diagonal {
     from {
-      transform: scaleX(var(--driftFlip)) translate(0, 0);
+      transform: scaleX(var(--drift-flip)) translate(0, 0);
     }
     to {
-      transform: scaleX(var(--driftFlip))
+      transform: scaleX(var(--drift-flip))
         translate(calc(-1 * var(--fieldPx)), calc(-1 * var(--fieldPx)));
     }
   }

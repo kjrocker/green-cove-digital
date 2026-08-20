@@ -1,0 +1,19 @@
+---
+import { ornamentRootCss } from "../lib/ornaments";
+---
+
+{
+  /* Every ornament image on the site, named once per page.
+
+     Kept out of the component stylesheets on purpose: Astro's `define:vars`
+     forces a <style> block inline AND stamps its whole variable set onto every
+     element the component renders, so 12 distinct tiles became 132 copies and
+     99 KB of base64 on the home page. Naming them here costs one copy and lets
+     Drift's and Cove's stylesheets bundle and cache normally.
+
+     `is:inline` so Astro leaves it alone — it is a `:root` rule, not scoped
+     component CSS. Inline rather than a linked stylesheet because 9 KB of
+     already-gzipped base64 is cheaper than a second render-blocking round trip
+     on the slow phones this whole exercise is about. */
+}
+<style is:inline set:html={ornamentRootCss()}></style>

@@ -79,6 +79,9 @@ outright on 7.x with:
 
 ## Ornament layers caused scroll lag on Firefox for Android — fixed 2026-08-20
 
+The reusable lesson from this one is written up separately in
+[animated-svg-cost.md](animated-svg-cost.md); what follows is the incident log.
+
 **Severity:** was high on mobile; not reproducible on desktop at all.
 
 Reported as "lagging scroll on Firefox on the phone" for a page that is
@@ -140,6 +143,39 @@ Home page: 363 KB → 126 KB, unique data URIs 21 → 12, bubble layers on a pho
   per-cycle translate must be exactly one `FIELD`, or the lattice will jump.
 - Builds are deterministic — `pnpm build` twice and diff `dist/` to confirm.
 
-Still outstanding: the `define:vars` duplication. The tile URIs are now shared
-constants, so they can be hoisted into `index.css` and referenced once, leaving
-only the small per-instance crop/mirror values inline.
+### The `define:vars` duplication (also fixed)
+
+Astro's `define:vars` does two things: it forces the `<style>` block inline
+instead of bundling it, and it stamps the component's **entire** variable set
+onto **every element the component renders**. `<Drift>` renders up to three
+elements and `<Cove>` seven, so the home page carried 132 copies of 12 distinct
+data URIs — 99 KB of base64 for images that are build-time constants.
+
+The tile set is fully enumerable (tone × edge × seed are all closed), so it is
+now built once in `ornaments.ts` and emitted once per page as a `:root` block by
+`<OrnamentTiles>`, which `BaseLayout` renders in `<head>`. Components reference a
+tile by name and carry only their own small values:
+
+```html
+<div class="drift__bubbles" style="--drift-tile:var(--o-bubble-light-2);--drift-crop:112px 319px;--drift-flip:-1">
+```
+
+Neither `Drift` nor `Cove` uses `define:vars` any more, so their stylesheets
+bundle normally. `TILE`, `FIELD` and the wave height ride along in the same
+`:root` block, so they stay single-sourced in TypeScript instead of being
+restated in CSS.
+
+Home page **363 KB → 30 KB**; data URI occurrences **132 → 17**, all unique.
+
+Why inline rather than a linked stylesheet: the block is ~12 KB raw but only
+**~1.8 KB gzipped**, because the tiles are near-identical SVGs. A second
+stylesheet would cost a render-blocking round trip on exactly the slow phones
+this was all about, and cross-page caching is worth little here when
+`prefetchAll` already pulls other pages in the background. If it ever does need
+to be cached, percent-encoding the SVGs instead of base64 takes that 1.8 KB to
+1.3 KB — measured, but not worth the churn to `dataUri()` (which `scripts/og/`
+also uses) on its own.
+
+A page carries all 17 tiles even if it draws fewer; trimming to the used set
+would mean tracking usage across a render that emits `<head>` before `<body>`,
+which is not worth 12 KB raw / 1.8 KB on the wire.

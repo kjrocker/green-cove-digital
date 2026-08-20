@@ -1,6 +1,4 @@
 ---
-import { TILE, FIELD, waveTileUri, dotFieldUri } from "../lib/ornaments";
-
 interface Props {
   static?: boolean;
   top?: boolean;
@@ -8,40 +6,9 @@ interface Props {
 }
 const { static: isStatic = false, top = false, bottom = true } = Astro.props;
 
-const WAVE_FILL = "#9fe8cf";
-const MOTE_FILL = "#c8f2e2";
-
-// White wave that fills the area BELOW the wave line — used as ::after to
-// create the curved bottom edge. Fill matches --color-light (hsl 150 20% 96%).
-const wavePathBelow =
-  "M0 96 l80-5.3C160 85 320 75 480 64s320-21 480-21.3c160 .3 320 10.3 400 16l80 5.3V96H0Z";
-const waveSvgLight = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 96" preserveAspectRatio="none"><path d="${wavePathBelow}" fill="#f3f7f5"/></svg>`;
-const edgeUri = `url("data:image/svg+xml;base64,${btoa(waveSvgLight)}")`;
-
-const wave = (height: number, amp: number, periods: number) =>
-  waveTileUri({ height, amp, periods, fill: WAVE_FILL });
-
-const wave1Uri = wave(260, 14, 2);
-const wave2Uri = wave(190, 18, 3);
-const wave3Uri = wave(130, 22, 4);
-const wave4Uri = wave(80, 26, 5);
-
-// Sparse field of tiny light motes — sunlight scattering through the water.
-// Uniform radius and no stroke: dust, not bubbles.
-const motesSmallUri = dotFieldUri({
-  count: 40,
-  minR: 1,
-  maxR: 1,
-  fill: MOTE_FILL,
-  seed: 1,
-});
-const motesBigUri = dotFieldUri({
-  count: 15,
-  minR: 2,
-  maxR: 2,
-  fill: MOTE_FILL,
-  seed: 2,
-});
+// Cove draws no per-instance geometry: every tile it uses is a named constant
+// in the `:root` block that <OrnamentTiles> emits, so this component carries no
+// `define:vars` and its stylesheet bundles like any other.
 ---
 
 <div
@@ -60,19 +27,7 @@ const motesBigUri = dotFieldUri({
   <slot />
 </div>
 
-<style
-  define:vars={{
-    wave1Uri,
-    wave2Uri,
-    wave3Uri,
-    wave4Uri,
-    motesSmallUri,
-    motesBigUri,
-    edgeUri,
-    tilePx: `${TILE}px`,
-    fieldPx: `${FIELD}px`,
-  }}
->
+<style>
   #background-wrapper {
     --spot-color: transparent;
     overflow: hidden;
@@ -103,7 +58,7 @@ const motesBigUri = dotFieldUri({
     left: 0;
     width: 100%;
     height: calc(3.5em + 3px);
-    background-image: var(--edgeUri);
+    background-image: var(--o-cove-edge);
     background-size: 100% 100%;
     pointer-events: none;
     z-index: 2;
@@ -120,7 +75,7 @@ const motesBigUri = dotFieldUri({
     left: 0;
     width: 100%;
     height: calc(3.5em + 3px);
-    background-image: var(--edgeUri);
+    background-image: var(--o-cove-edge);
     background-size: 100% 100%;
     pointer-events: none;
     z-index: 2;
@@ -145,14 +100,14 @@ const motesBigUri = dotFieldUri({
 
   .wave-1 {
     height: 260px;
-    background-image: var(--wave1Uri);
+    background-image: var(--o-cove-wave-1);
     opacity: 0.07;
     animation-duration: 110s;
   }
 
   .wave-2 {
     height: 190px;
-    background-image: var(--wave2Uri);
+    background-image: var(--o-cove-wave-2);
     opacity: 0.1;
     animation-duration: 75s;
     animation-direction: reverse;
@@ -160,14 +115,14 @@ const motesBigUri = dotFieldUri({
 
   .wave-3 {
     height: 130px;
-    background-image: var(--wave3Uri);
+    background-image: var(--o-cove-wave-3);
     opacity: 0.14;
     animation-duration: 50s;
   }
 
   .wave-4 {
     height: 80px;
-    background-image: var(--wave4Uri);
+    background-image: var(--o-cove-wave-4);
     opacity: 0.2;
     animation-duration: 34s;
     animation-direction: reverse;
@@ -187,14 +142,14 @@ const motesBigUri = dotFieldUri({
   }
 
   .motes-small {
-    background-image: var(--motesSmallUri);
+    background-image: var(--o-cove-motes-small);
     opacity: 0.35;
     animation-duration: 170s;
     animation-name: drift-field;
   }
 
   .motes-big {
-    background-image: var(--motesBigUri);
+    background-image: var(--o-cove-motes-big);
     opacity: 0.25;
     animation-duration: 120s;
     animation-name: drift-field;
